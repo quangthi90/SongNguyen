@@ -121,7 +121,7 @@ $('input[name=\'filter_title\']').autocomplete({
 				response($.map(json, function(item) {
 					return {
 						label: item.title,
-						value: item.product_id
+						value: item.event_id
 					}
 				}));
 			}
