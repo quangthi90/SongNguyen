@@ -40,45 +40,85 @@ DD_belatedPNG.fix('#logo img');
 <body>
 <div id="wrap">
   <div id="header">
-    <div id="header">
-          <div id="banner">
-            <a href="<?php echo $home; ?>">
-              <img src="<?php echo $logo; ?>" width="266" height="87" alt="Song Nguyen Logo">
-            </a>
-          </div>
-          <div id="menu">
-            <ul>
-                <li>
-                  <a href="gioithieu.html" data-flexmenu="gioithieu">Giới Thiệu</a>
-                </li>
-                <li>
-                  <a href="duhoc.html" data-flexmenu="duhoc">Du Học</a>
-                </li>
-                <li>
-                  <a href="duhoche.html" data-flexmenu="duhoche">Các Trường</a>
-                </li>
-                <li>
-                  <a href="dichvu.html" data-flexmenu="dichvu">Dịch Vụ</a>
-                </li>
-                <li>
-                  <a class="example7 cboxElement" href="#">Tin Tức</a>
-                </li>
-                <li>
-                  <a href="caclophoc.html">Các Lớp Học</a>
-                </li>
-                <li>
-                  <a class="example7 cboxElement" href="cacclb.html">Các CLB</a>
-                </li>
-                <li>
-                  <a class="example7 cboxElement" href="faqs-vn.html">FAQ</a>
-                </li>
-                <li>
-                  <a class="example8 cboxElement" href="#sitemap-page">Sitemap</a>
-                </li>
-                <li>
-                  <a href="lienhe.html">Liên hệ</a>
-                </li>
-              </ul>
-          </div>
-    </div>
+        <div id="banner">
+          <a href="<?php echo $home; ?>">
+            <img src="<?php echo $logo; ?>" width="266" height="87" alt="Song Nguyen Logo">
+          </a>
+        </div>
+        <div id="menu">
+          <ul class="nav" data-breakpoint="800">
+              <li class="item-with-ul">
+                <a href="#">Giới Thiệu</a>
+                <ul style="display: none;">
+                    <li><a class="" href="#">Về Công Ty</a></li>
+                    <li><a class="" href="#">Giá Trị Cốt Lõi</a></li>
+                    <li><a class="" href="#">Nhiệm Vụ</a></li>
+                    <li><a class="" href="#">Nhân Sự</a></li>
+                    <li><a class="" href="#">Đối Tác</a></li>
+                </ul>
+              </li>
+              <li class="item-with-ul">
+                <a href="#">Du Học</a>
+                <ul style="display: none;">
+                  <li><a href="#">Du Học Mỹ</a></li>
+                  <li><a href="#">Du Học Úc</a></li>
+                  <li><a href="#">Du Học New Zealand</a></li>
+                  <li><a href="#">Du Học Anh</a></li>
+                  <li><a href="#">Du Học Sing</a></li>
+                  <li><a href="#">Du Học Pháp</a></li>
+                  <li><a href="#">Du Học Canada</a></li>        
+                </ul>
+              </li>
+              <li class="item-with-ul">
+                <a href="#">Các Trường</a>
+                <ul style="display: none;">
+                  <li><a href="#">Du Học Hè Singapore</a></li>
+                  <li><a href="#">Du Học Hè Mỹ</a></li>
+                  <li><a href="#">Du Học Hè Úc</a></li>
+                  <li><a href="#">Du Học Hè New Zealand</a></li>
+                  <li><a href="#">Du Học Hè Anh</a></li>
+                </ul>
+              </li>
+              <li class="item-with-ul">
+                <a href="#">Dịch Vụ</a>
+                <ul style="display: none;">               
+                  <li><a href="#">Đăng Ký Nhập Học</a></li>
+                  <li><a href="#">Thủ Tục Visa</a></li>
+                  <li><a href="#">Chứng Minh Tài Chính</a></li>
+                  <li><a href="#">Vé Máy Bay</a></li>
+                  <li><a href="#">Dịch Thuật Và Công Chứng</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Tin Tức</a>
+              </li>
+              <li class="item-with-ul">
+                <a href="#">Các Lớp Học</a>
+                <ul style="display: none;">
+                    <li><a href="#">IELTS, TOEFL</a></li>
+                    <li><a href="#">SAT, SAT II</a></li>
+                    <li><a href="#">Toán, Lý, Hóa bằng tiếng Anh</a></li>
+                    <li><a href="#">Văn Hóa Mỹ</a></li>
+                    <li><a href="#">Kỹ Năng</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Các CLB</a>
+              </li>
+              <li>
+                <a href="#">FAQ</a>
+              </li>
+              <li>
+                <a href="#sitemap-page">Sitemap</a>
+              </li>
+              <li class="item-with-ul">
+                <a href="#">Liên hệ</a>
+                <ul style="display: none;">
+                    <li><a href="#">Thông Tin Liên Hệ</a></li>
+                    <li><a href="#">Gửi Mail cho Song Nguyen</a></li>
+                    <li><a href="#">Hỗ Trợ Trực Tuyến</a></li>
+                </ul>
+              </li>
+            </ul>
+        </div>
   </div>
