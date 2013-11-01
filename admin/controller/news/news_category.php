@@ -35,16 +35,16 @@ class ControllerNewsNewsCategory extends Controller {
 
 		$this->getForm();
 	}
-/*
+
 	public function update() {
-		$this->language->load('catalog/category');
+		$this->language->load('news/news_category');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
-		$this->load->model('catalog/category');
+		$this->load->model('news/news_category');
 		
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_catalog_category->editCategory($this->request->get['category_id'], $this->request->post);
+			$this->model_news_news_category->editNewsCategory($this->request->get['news_category_id'], $this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 			
@@ -54,12 +54,12 @@ class ControllerNewsNewsCategory extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 						
-			$this->redirect($this->url->link('catalog/category', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->redirect($this->url->link('news/news_category', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 
 		$this->getForm();
 	}
-*/
+
 	public function delete() {
 		$this->language->load('news/news_category');
 
@@ -283,6 +283,9 @@ class ControllerNewsNewsCategory extends Controller {
 		
 		if (isset($this->request->post['path'])) {
 			$this->data['path'] = $this->request->post['path'];
+		} elseif (!empty($news_category_info)) {
+			$parent_descripntions = $this->model_news_news_category->getNewsCategoryDescriptions($news_category_info['parent_id']);
+			$this->data['path'] = $parent_descripntions[$this->config->get('config_language_id')]['name'];
 		} else {
 			$this->data['path'] = '';
 		}
