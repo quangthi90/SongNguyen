@@ -74,14 +74,14 @@ $('input[name=\'path\']').autocomplete({
 			dataType: 'json',
 			success: function(json) {
 				json.unshift({
-					'category_id':  0,
+					'news_category_id':  0,
 					'name':  '<?php echo $text_none; ?>'
 				});
 				
 				response($.map(json, function(item) {
 					return {
 						label: item.name,
-						value: item.category_id
+						value: item.news_category_id
 					}
 				}));
 			}

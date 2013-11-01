@@ -110,27 +110,20 @@ class ModelNewsNewsCategory extends Model {
 		
 		$this->cache->delete('category');
 	}
-	
-	public function deleteCategory($category_id) {
-		$this->db->query("DELETE FROM " . DB_PREFIX . "category_path WHERE category_id = '" . (int)$category_id . "'");
-		
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "category_path WHERE path_id = '" . (int)$category_id . "'");
-			
-		foreach ($query->rows as $result) {	
-			$this->deleteCategory($result['category_id']);
+*/	
+	public function deleteNewsCategory($news_category_id) {
+		$childern_ids = $this->db->query("SELECT id FROM " . DB_PREFIX . "news_category WHERE parent_id = '" . (int)$news_category_id . "'")->rows;
+		foreach ($childern_ids as $childern) {
+			$this->deleteNewsCategory( $childern['id'] );
 		}
+
+		$this->db->query("DELETE FROM " . DB_PREFIX . "news_category WHERE id = '" . (int)$news_category_id . "'");
+		$this->db->query("DELETE FROM " . DB_PREFIX . "news_category_description WHERE news_category_id = '" . (int)$news_category_id . "'");
+		$this->db->query("DELETE FROM " . DB_PREFIX . "news_to_news_category WHERE news_category_id = '" . (int)$news_category_id . "'");
 		
-		$this->db->query("DELETE FROM " . DB_PREFIX . "category WHERE category_id = '" . (int)$category_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "category_description WHERE category_id = '" . (int)$category_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "category_filter WHERE category_id = '" . (int)$category_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "category_to_store WHERE category_id = '" . (int)$category_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "category_to_layout WHERE category_id = '" . (int)$category_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "product_to_category WHERE category_id = '" . (int)$category_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'category_id=" . (int)$category_id . "'");
-		
-		$this->cache->delete('category');
+		$this->cache->delete('news_category');
 	} 
-	
+/*	
 	// Function to repair any erroneous categories that are not in the category path table.
 	public function repairCategories($parent_id = 0) {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "category WHERE parent_id = '" . (int)$parent_id . "'");

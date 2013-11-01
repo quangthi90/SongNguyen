@@ -59,17 +59,17 @@ class ControllerNewsNewsCategory extends Controller {
 
 		$this->getForm();
 	}
-
+*/
 	public function delete() {
-		$this->language->load('catalog/category');
+		$this->language->load('news/news_category');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		
-		$this->load->model('catalog/category');
+		$this->load->model('news/news_category');
 		
 		if (isset($this->request->post['selected']) && $this->validateDelete()) {
-			foreach ($this->request->post['selected'] as $category_id) {
-				$this->model_catalog_category->deleteCategory($category_id);
+			foreach ($this->request->post['selected'] as $news_category_id) {
+				$this->model_news_news_category->deleteNewsCategory($news_category_id);
 			}
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -80,12 +80,12 @@ class ControllerNewsNewsCategory extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 			
-			$this->redirect($this->url->link('catalog/category', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->redirect($this->url->link('news/news_category', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 		
 		$this->getList();
 	}
-	
+/*	
 	public function repair() {
 		$this->language->load('catalog/category');
 
@@ -341,9 +341,9 @@ class ControllerNewsNewsCategory extends Controller {
 			return false;
 		}
 	}
-/*	
+	
 	protected function validateDelete() {
-		if (!$this->user->hasPermission('modify', 'catalog/category')) {
+		if (!$this->user->hasPermission('modify', 'news/news_category')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
  
@@ -353,7 +353,7 @@ class ControllerNewsNewsCategory extends Controller {
 			return false;
 		}
 	}
-	
+/*	
 	protected function validateRepair() {
 		if (!$this->user->hasPermission('modify', 'catalog/category')) {
 			$this->error['warning'] = $this->language->get('error_permission');
