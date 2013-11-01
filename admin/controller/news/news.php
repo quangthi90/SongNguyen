@@ -51,38 +51,24 @@ class ControllerNewsNews extends Controller {
 	
     	$this->getForm();
   	}
-/*
+
   	public function update() {
-    	$this->language->load('catalog/product');
+    	$this->language->load('news/news');
 
     	$this->document->setTitle($this->language->get('heading_title'));
 		
-		$this->load->model('catalog/product');
+		$this->load->model('news/news');
 	
     	if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_catalog_product->editProduct($this->request->get['product_id'], $this->request->post);
-
-            $this->openbay->productUpdateListen($this->request->get['product_id'], $this->request->post);
+			$this->model_news_news->editNews($this->request->get['news_id'], $this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 			
 			$url = '';
 			
-			if (isset($this->request->get['filter_name'])) {
-				$url .= '&filter_name=' . urlencode(html_entity_decode($this->request->get['filter_name'], ENT_QUOTES, 'UTF-8'));
+			if (isset($this->request->get['filter_title'])) {
+				$url .= '&filter_title=' . urlencode(html_entity_decode($this->request->get['filter_title'], ENT_QUOTES, 'UTF-8'));
 			}
-		
-			if (isset($this->request->get['filter_model'])) {
-				$url .= '&filter_model=' . urlencode(html_entity_decode($this->request->get['filter_model'], ENT_QUOTES, 'UTF-8'));
-			}
-			
-			if (isset($this->request->get['filter_price'])) {
-				$url .= '&filter_price=' . $this->request->get['filter_price'];
-			}
-			
-			if (isset($this->request->get['filter_quantity'])) {
-				$url .= '&filter_quantity=' . $this->request->get['filter_quantity'];
-			}	
 		
 			if (isset($this->request->get['filter_status'])) {
 				$url .= '&filter_status=' . $this->request->get['filter_status'];
@@ -100,12 +86,12 @@ class ControllerNewsNews extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 			
-			$this->redirect($this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->redirect($this->url->link('news/news', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 
     	$this->getForm();
   	}
-*/
+
   	public function delete() {
     	$this->language->load('news/news');
 
@@ -610,7 +596,7 @@ class ControllerNewsNews extends Controller {
 			$news_category_info = $this->model_news_news_category->getNewsCategory($news_category_id);
 			
 			if ($news_category_info) {
-				$this->data['product_categories'][] = array(
+				$this->data['news_categories'][] = array(
 					'news_category_id' => $news_category_info['news_category_id'],
 					'name'        => $news_category_info['name']
 				);

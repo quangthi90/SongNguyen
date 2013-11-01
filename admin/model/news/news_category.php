@@ -63,7 +63,7 @@ class ModelNewsNewsCategory extends Model {
 	}
 */			
 	public function getNewsCategory($news_category_id) {
-		$query = $this->db->query("SELECT DISTINCT nc.parent_id, nc.sort_order, nc.status FROM " . DB_PREFIX . "news_category nc WHERE nc.id = '" . (int)$news_category_id . "'");
+		$query = $this->db->query("SELECT DISTINCT nc.id AS news_category_id, nc.parent_id, nc.sort_order, nc.status, ncd.name FROM " . DB_PREFIX . "news_category nc LEFT JOIN " . DB_PREFIX . "news_category_description ncd ON (nc.id = ncd.news_category_id) WHERE nc.id = '" . (int)$news_category_id . "'");
 		
 		return $query->row;
 	} 

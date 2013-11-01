@@ -84,7 +84,7 @@
                   <?php $class = 'odd'; ?>
                   <?php foreach ($news_categories as $news_category) { ?>
                   <?php $class = ($class == 'even' ? 'odd' : 'even'); ?>
-                  <div id="news-category<?php echo $news_category['news_category_id']; ?>" class="<?php echo $class; ?>"><?php echo $news_category['title']; ?><img src="view/image/delete.png" alt="" />
+                  <div id="news-category<?php echo $news_category['news_category_id']; ?>" class="<?php echo $class; ?>"><?php echo $news_category['name']; ?><img src="view/image/delete.png" alt="" />
                     <input type="hidden" name="news_category[]" value="<?php echo $news_category['news_category_id']; ?>" />
                   </div>
                   <?php } ?>
