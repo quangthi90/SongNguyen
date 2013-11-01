@@ -27,6 +27,7 @@
                 <?php } else { ?>
                 <a href="<?php echo $sort_question; ?>"><?php echo $column_question; ?></a>
                 <?php } ?></td>-->
+              <td class="center"><?php echo $column_id; ?></td>
               <td class="left"><?php if ($sort == 'n.status') { ?>
                 <a href="<?php echo $sort_status; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_status; ?></a>
                 <?php } else { ?>
@@ -37,6 +38,7 @@
           </thead>
           <tbody>
             <tr class="filter">
+              <td></td>
               <td></td>
               <!--<td><input type="text" name="filter_question" value="<?php echo $filter_question; ?>" /></td>-->
               <td><select name="filter_status">
@@ -62,6 +64,7 @@
                 <?php } else { ?>
                 <input type="checkbox" name="selected[]" value="<?php echo $faq['faq_id']; ?>" />
                 <?php } ?></td>
+              <td><?php echo $faq['faq_id']; ?></td>
               <!--<td class="left"><?php echo $faq['question']; ?></td>-->
               <td class="left"><?php echo $faq['status']; ?></td>
               <td class="right"><?php foreach ($faq['action'] as $action) { ?>

@@ -6,6 +6,7 @@ $_['heading_title'] 		= 'FAQ';
 $_['text_success']			= 'Success: You have modified faq!';
 
 // column
+$_['column_id'] 			= 'FAQ Id';
 $_['column_question'] 			= 'Question';
 $_['column_status'] 			= 'Status';
 $_['column_action'] 			= 'Action';

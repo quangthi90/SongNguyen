@@ -298,7 +298,8 @@ class ControllerFaqFaq extends Controller {
 		$this->data['text_disabled'] = $this->language->get('text_disabled');		
 		$this->data['text_no_results'] = $this->language->get('text_no_results');		
 		$this->data['text_image_manager'] = $this->language->get('text_image_manager');		
-			
+					
+		$this->data['column_id'] = $this->language->get('column_id');	
 		$this->data['column_question'] = $this->language->get('column_question');	
 		$this->data['column_anwser'] = $this->language->get('column_anwser');			
 		$this->data['column_status'] = $this->language->get('column_status');		
