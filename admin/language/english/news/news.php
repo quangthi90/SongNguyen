@@ -10,6 +10,7 @@ $_['text_image_manager']			= 'Image Manager';
 
 // column
 $_['column_title'] 			= 'Title';
+$_['column_news_category_name'] 			= 'Category';
 $_['column_image'] 			= 'Image';
 $_['column_status'] 			= 'Status';
 $_['column_action'] 			= 'Action';

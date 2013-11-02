@@ -84,9 +84,9 @@ class ModelNewsNews extends Model {
 	}
 	
 	public function getNewses($data = array()) {
-		$sql = "SELECT * FROM " . DB_PREFIX . "news n LEFT JOIN " . DB_PREFIX . "news_description nd ON (n.id = nd.news_id)";
+		$sql = "SELECT * FROM " . DB_PREFIX . "news n LEFT JOIN " . DB_PREFIX . "news_description nd ON (n.id = nd.news_id) LEFT JOIN " . DB_PREFIX . "news_category nc ON (n.news_category_id = nc.id) LEFT JOIN " . DB_PREFIX . "news_category_description ncd ON (nc.id = ncd.news_category_id)";
 				
-		$sql .= " WHERE nd.language_id = '" . (int)$this->config->get('config_language_id') . "'"; 
+		$sql .= " WHERE nd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND ncd.language_id = '" . (int)$this->config->get('config_language_id') . "'"; 
 		
 		if (!empty($data['filter_news_category_id'])) {
 			$sql .= " AND n.news_category_id = '" . (int)$data['filter_news_category_id'] . "'";			
@@ -94,6 +94,10 @@ class ModelNewsNews extends Model {
 		
 		if (!empty($data['filter_title'])) {
 			$sql .= " AND nd.title LIKE '" . $this->db->escape($data['filter_title']) . "%'";
+		}
+		
+		if (!empty($data['filter_news_category_name'])) {
+			$sql .= " AND ncd.name LIKE '" . $this->db->escape($data['filter_news_category_name']) . "%'";
 		}
 		
 		if (isset($data['filter_status']) && !is_null($data['filter_status'])) {
@@ -104,6 +108,7 @@ class ModelNewsNews extends Model {
 					
 		$sort_data = array(
 			'nd.title',
+			'ncd.name',
 			'n.status',
 			'n.sort_order',
 			'n.date_modified',
@@ -112,7 +117,7 @@ class ModelNewsNews extends Model {
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
 			$sql .= " ORDER BY " . $data['sort'];	
 		} else {
-			$sql .= " ORDER BY nd.date_modified";	
+			$sql .= " ORDER BY n.date_modified";	
 		}
 		
 		if (isset($data['order']) && ($data['order'] == 'DESC')) {
@@ -137,6 +142,7 @@ class ModelNewsNews extends Model {
 	
 		return $query->rows;
 	}
+
 /*	
 	public function getProductsByCategoryId($category_id) {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) LEFT JOIN " . DB_PREFIX . "product_to_category p2c ON (p.product_id = p2c.product_id) WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p2c.category_id = '" . (int)$category_id . "' ORDER BY pd.name ASC");

@@ -28,6 +28,11 @@
                 <?php } else { ?>
                 <a href="<?php echo $sort_title; ?>"><?php echo $column_title; ?></a>
                 <?php } ?></td>
+              <td class="left"><?php if ($sort == 'ncd.name') { ?>
+                <a href="<?php echo $sort_news_category_name; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_news_category_name; ?></a>
+                <?php } else { ?>
+                <a href="<?php echo $sort_news_category_name; ?>"><?php echo $column_news_category_name; ?></a>
+                <?php } ?></td>
               <td class="left"><?php if ($sort == 'n.status') { ?>
                 <a href="<?php echo $sort_status; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_status; ?></a>
                 <?php } else { ?>
@@ -41,6 +46,7 @@
               <td></td>
               <td></td>
               <td><input type="text" name="filter_title" value="<?php echo $filter_title; ?>" /></td>
+              <td><input type="text" name="filter_news_category_name" value="<?php echo $filter_news_category_name; ?>" /></td>
               <td><select name="filter_status">
                   <option value="*"></option>
                   <?php if ($filter_status) { ?>
@@ -66,6 +72,7 @@
                 <?php } ?></td>
               <td class="center"><img src="<?php echo $news['image']; ?>" alt="<?php echo $news['title']; ?>" style="padding: 1px; border: 1px solid #DDDDDD;" /></td>
               <td class="left"><?php echo $news['title']; ?></td>
+              <td class="left"><?php echo $news['news_category_name']; ?></td>
               <td class="left"><?php echo $news['status']; ?></td>
               <td class="right"><?php foreach ($news['action'] as $action) { ?>
                 [ <a href="<?php echo $action['href']; ?>"><?php echo $action['text']; ?></a> ]
@@ -74,7 +81,7 @@
             <?php } ?>
             <?php } else { ?>
             <tr>
-              <td class="center" colspan="5"><?php echo $text_no_results; ?></td>
+              <td class="center" colspan="6"><?php echo $text_no_results; ?></td>
             </tr>
             <?php } ?>
           </tbody>
@@ -93,6 +100,12 @@ function filter() {
 	if (filter_title) {
 		url += '&filter_title=' + encodeURIComponent(filter_title);
 	}
+  
+  var filter_news_category_name = $('input[name=\'filter_news_category_name\']').attr('value');
+  
+  if (filter_news_category_name) {
+    url += '&filter_news_category_name=' + encodeURIComponent(filter_news_category_name);
+  }
 	
 	var filter_status = $('select[name=\'filter_status\']').attr('value');
 	
@@ -135,6 +148,32 @@ $('input[name=\'filter_title\']').autocomplete({
 	focus: function(event, ui) {
       	return false;
    	}
+});
+
+$('input[name=\'filter_news_category_name\']').autocomplete({
+  delay: 500,
+  source: function(request, response) {
+    $.ajax({
+      url: 'index.php?route=news/news_category/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
+      dataType: 'json',
+      success: function(json) {   
+        response($.map(json, function(item) {
+          return {
+            label: item.name,
+            value: item.product_id
+          }
+        }));
+      }
+    });
+  }, 
+  select: function(event, ui) {
+    $('input[name=\'filter_news_category_name\']').val(ui.item.label);
+            
+    return false;
+  },
+  focus: function(event, ui) {
+        return false;
+    }
 });
 //--></script> 
 <?php echo $footer; ?>
