@@ -48,6 +48,18 @@
                 <input type="hidden" name="parent_id" value="<?php echo $parent_id; ?>" /></td>
             </tr>
             <tr>
+              <td><?php echo $entry_primary_image; ?></td>
+              <td><div class="primary_image"><img src="<?php echo $primary_thumb; ?>" alt="" id="primary_thumb" /><br />
+                  <input type="hidden" name="primary_image" value="<?php echo $primary_image; ?>" id="primary_image" />
+                  <a onclick="image_upload('primary_image', 'primary_thumb');"><?php echo $text_browse; ?></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a onclick="$('#primary_thumb').attr('src', '<?php echo $no_image; ?>'); $('#primary_image').attr('value', '');"><?php echo $text_clear; ?></a></div></td>
+            </tr>
+            <tr>
+              <td><?php echo $entry_second_image; ?></td>
+              <td><div class="second_image"><img src="<?php echo $second_thumb; ?>" alt="" id="second_thumb" /><br />
+                  <input type="hidden" name="second_image" value="<?php echo $second_image; ?>" id="second_image" />
+                  <a onclick="image_upload('second_image', 'second_thumb');"><?php echo $text_browse; ?></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a onclick="$('#second_thumb').attr('src', '<?php echo $no_image; ?>'); $('#second_image').attr('value', '');"><?php echo $text_clear; ?></a></div></td>
+            </tr>
+            <tr>
               <td><?php echo $entry_sort_order; ?></td>
               <td><input type="text" name="sort_order" value="<?php echo $sort_order; ?>" size="1" /></td>
             </tr>
@@ -114,6 +126,33 @@ $('input[name=\'path\']').autocomplete({
       	return false;
    	}
 });
+//--></script> 
+<script type="text/javascript"><!--
+function image_upload(field, thumb) {
+  $('#dialog').remove();
+  
+  $('#content').prepend('<div id="dialog" style="padding: 3px 0px 0px 0px;"><iframe src="index.php?route=common/filemanager&token=<?php echo $token; ?>&field=' + encodeURIComponent(field) + '" style="padding:0; margin: 0; display: block; width: 100%; height: 100%;" frameborder="no" scrolling="auto"></iframe></div>');
+  
+  $('#dialog').dialog({
+    title: '<?php echo $text_image_manager; ?>',
+    close: function (event, ui) {
+      if ($('#' + field).attr('value')) {
+        $.ajax({
+          url: 'index.php?route=common/filemanager/image&token=<?php echo $token; ?>&image=' + encodeURIComponent($('#' + field).attr('value')),
+          dataType: 'text',
+          success: function(text) {
+            $('#' + thumb).replaceWith('<img src="' + text + '" alt="" id="' + thumb + '" />');
+          }
+        });
+      }
+    },  
+    bgiframe: false,
+    width: 800,
+    height: 400,
+    resizable: false,
+    modal: false
+  });
+};
 //--></script> 
 <script type="text/javascript"><!--
 $('#tabs a').tabs(); 

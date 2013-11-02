@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2013 at 10:24 AM
+-- Generation Time: Nov 02, 2013 at 11:26 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -57,6 +57,8 @@ CREATE TABLE IF NOT EXISTS `news` (
 
 CREATE TABLE IF NOT EXISTS `news_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `primary_image` varchar(255) NOT NULL,
+  `second_image` varchar(255) NOT NULL,
   `sort_order` int(3) NOT NULL,
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL,

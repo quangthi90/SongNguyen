@@ -4,6 +4,14 @@ class ModelNewsNewsCategory extends Model {
 		$this->db->query("INSERT INTO " . DB_PREFIX . "news_category SET parent_id = '" . (int)$data['parent_id'] . "', sort_order = '" . (int)$data['sort_order'] . "', status = '" . (int)$data['status'] . "', date_modified = NOW(), date_added = NOW()");
 
 		$news_category_id = $this->db->getLastId();
+
+		if (isset($data['primary_image'])) {
+			$this->db->query("UPDATE " . DB_PREFIX . "news_category SET primary_image = '" . $this->db->escape(html_entity_decode($data['primary_image'], ENT_QUOTES, 'UTF-8')) . "' WHERE id = '" . (int)$news_category_id . "'");
+		}
+
+		if (isset($data['second_image'])) {
+			$this->db->query("UPDATE " . DB_PREFIX . "news_category SET second_image = '" . $this->db->escape(html_entity_decode($data['second_image'], ENT_QUOTES, 'UTF-8')) . "' WHERE id = '" . (int)$news_category_id . "'");
+		}
 		
 		foreach ($data['news_category_description'] as $language_id => $value) {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "news_category_description SET news_category_id = '" . (int)$news_category_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', description = '" . $this->db->escape($value['description']) . "'");
@@ -14,6 +22,14 @@ class ModelNewsNewsCategory extends Model {
 	
 	public function editNewsCategory($news_category_id, $data) {
 		$this->db->query("UPDATE " . DB_PREFIX . "news_category SET parent_id = '" . (int)$data['parent_id'] . "', sort_order = '" . (int)$data['sort_order'] . "', status = '" . (int)$data['status'] . "', date_modified = NOW() WHERE id = '" . (int)$news_category_id . "'");
+
+		if (isset($data['primary_image'])) {
+			$this->db->query("UPDATE " . DB_PREFIX . "news_category SET primary_image = '" . $this->db->escape(html_entity_decode($data['primary_image'], ENT_QUOTES, 'UTF-8')) . "' WHERE id = '" . (int)$news_category_id . "'");
+		}
+
+		if (isset($data['second_image'])) {
+			$this->db->query("UPDATE " . DB_PREFIX . "news_category SET second_image = '" . $this->db->escape(html_entity_decode($data['second_image'], ENT_QUOTES, 'UTF-8')) . "' WHERE id = '" . (int)$news_category_id . "'");
+		}
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "news_category_description WHERE news_category_id = '" . (int)$news_category_id . "'");
 
@@ -68,7 +84,7 @@ class ModelNewsNewsCategory extends Model {
 	}
 */			
 	public function getNewsCategory($news_category_id) {
-		$query = $this->db->query("SELECT DISTINCT nc.id AS news_category_id, nc.parent_id, nc.sort_order, nc.status, ncd.name FROM " . DB_PREFIX . "news_category nc LEFT JOIN " . DB_PREFIX . "news_category_description ncd ON (nc.id = ncd.news_category_id) WHERE nc.id = '" . (int)$news_category_id . "'");
+		$query = $this->db->query("SELECT DISTINCT nc.id AS news_category_id, nc.parent_id, nc.sort_order, nc.status, ncd.name, nc.primary_image AS primary_image, nc.second_image AS second_image FROM " . DB_PREFIX . "news_category nc LEFT JOIN " . DB_PREFIX . "news_category_description ncd ON (nc.id = ncd.news_category_id) WHERE nc.id = '" . (int)$news_category_id . "'");
 		
 		return $query->row;
 	} 

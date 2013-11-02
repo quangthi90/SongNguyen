@@ -216,9 +216,14 @@ class ControllerNewsNewsCategory extends Controller {
 		$this->data['text_default'] = $this->language->get('text_default');
 		$this->data['text_enabled'] = $this->language->get('text_enabled');
     	$this->data['text_disabled'] = $this->language->get('text_disabled');
+		$this->data['text_image_manager'] = $this->language->get('text_image_manager');
+		$this->data['text_browse'] = $this->language->get('text_browse');
+		$this->data['text_clear'] = $this->language->get('text_clear');
 				
 		$this->data['entry_name'] = $this->language->get('entry_name');
 		$this->data['entry_description'] = $this->language->get('entry_description');
+    	$this->data['entry_primary_image'] = $this->language->get('entry_primary_image');
+    	$this->data['entry_second_image'] = $this->language->get('entry_second_image');
 		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
 		$this->data['entry_status'] = $this->language->get('entry_status');
 		$this->data['entry_parent'] = $this->language->get('entry_parent');
@@ -281,6 +286,42 @@ class ControllerNewsNewsCategory extends Controller {
 		} else {
 			$this->data['news_category_description'] = array();
 		}
+		
+		if (isset($this->request->post['primary_image'])) {
+			$this->data['primary_image'] = $this->request->post['primary_image'];
+		} elseif (!empty($news_category_info)) {
+			$this->data['primary_image'] = $news_category_info['primary_image'];
+		} else {
+			$this->data['primary_image'] = '';
+		}
+		
+		if (isset($this->request->post['second_image'])) {
+			$this->data['second_image'] = $this->request->post['second_image'];
+		} elseif (!empty($news_category_info)) {
+			$this->data['second_image'] = $news_category_info['second_image'];
+		} else {
+			$this->data['second_image'] = '';
+		}
+
+		$this->load->model('tool/image');
+		
+		if (isset($this->request->post['primary_image']) && file_exists(DIR_IMAGE . $this->request->post['primary_image'])) {
+			$this->data['primary_thumb'] = $this->model_tool_image->resize($this->request->post['primary_image'], 100, 100);
+		} elseif (!empty($news_category_info) && $news_category_info['primary_image'] && file_exists(DIR_IMAGE . $news_category_info['primary_image'])) {
+			$this->data['primary_thumb'] = $this->model_tool_image->resize($news_category_info['primary_image'], 100, 100);
+		} else {
+			$this->data['primary_thumb'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
+		}
+		
+		if (isset($this->request->post['second_image']) && file_exists(DIR_IMAGE . $this->request->post['second_image'])) {
+			$this->data['second_thumb'] = $this->model_tool_image->resize($this->request->post['second_image'], 100, 100);
+		} elseif (!empty($news_category_info) && $news_category_info['second_image'] && file_exists(DIR_IMAGE . $news_category_info['second_image'])) {
+			$this->data['second_thumb'] = $this->model_tool_image->resize($news_category_info['second_image'], 100, 100);
+		} else {
+			$this->data['second_thumb'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
+		}
+
+		$this->data['no_image'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
 		
 		$this->data['path'] = '';
 		if (isset($this->request->post['path'])) {
