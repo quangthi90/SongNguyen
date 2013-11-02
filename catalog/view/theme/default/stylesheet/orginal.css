@@ -117,29 +117,30 @@ a:hover{
 }
 .box-item .item-avatar {
 	display: block;
+	position: relative;
+	height: 100%;
+	width: 100%;
 }
-.box-item .item-avatar .item-avatar-img {
-	-webkit-transition: all 0.2s ease;                  
-    -moz-transition: all 0.2s ease;                 
-    -o-transition: all 0.2s ease;   
-    -ms-transition: all 0.2s ease;          
-    transition: all 0.2s ease;
+.box-item .item-avatar .item-avatar-img {	
+	position: absolute;
+	left: 0px;
+	-webkit-transition: all 0.1s ease;                  
+    -moz-transition: all 0.1s ease;                 
+    -o-transition: all 0.1s ease;   
+    -ms-transition: all 0.1s ease;          
+    transition: all 0.1s ease;
 }
-.box-item .item-avatar .item-avatar-img.on {
-	visibility: visible;
-	display: block;
+.item-avatar .item-avatar-img.on {
+	opacity: 1;
 }
-.box-item .item-avatar .item-avatar-img.off {
-	visibility: hidden;
-	display: none;
+.item-avatar .item-avatar-img.off {
+	opacity: 0;	
 }
-.box-item .item-avatar:hover .item-avatar-img.on {
-	display: none;
-	visibility: hidden;
+.item-avatar:hover .item-avatar-img.on {
+	opacity: 0;
 }
-.box-item .item-avatar:hover .item-avatar-img.off {
-	visibility: visible;
-	display: block;
+.item-avatar:hover .item-avatar-img.off {
+	opacity: 1;
 }
 
 #body-content .box1{
@@ -225,23 +226,40 @@ a:hover{
 	float:left;
 	text-align:center;
 }
-.menulang{
-	width:1000px;
-	float:left;
-	text-align:right;
-	border-top:2px solid #666;
-	padding-top:5px;
-	font-weight:bold;
+#menulang {
+	text-align: center;
+	border-top: 2px solid #021D63;
+	padding: 10px 0px;
+	font-weight: bold;
+	clear: both;
+}
+#menulang .list-flag {	
+}
+#menulang .list-flag li {	
+	display: inline-block;
+	text-align:center;
+	cursor: pointer;
+	padding: 5px 20px;
+	margin: 0px;
+}
+#menulang .list-flag li:hover {
+	background-color: #f0f0f0;
+}
+#menulang .list-flag img {
+}
+#menulang .list-flag span {
+	display: block;
+}
+#menulang .list-flag li:hover span {
+	color: #000;	
 }
 
 /* Contact Page */
 .contact-map{
 	width:520px;
 	height:400px;
-	float:right;
 	border-left:1px solid #999;
-	padding-left:10px;
-	overflow:hidden;
+	text-align: center;
 }
 .contact-form input{
 	width:95%;

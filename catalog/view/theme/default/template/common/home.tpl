@@ -18,19 +18,19 @@
 	<div class="box-item box5">
 		<a class="item-avatar" href="#">
 			<img class="item-avatar-img on" src="<?php echo $categoryImgUrl; ?>/banner-duhocuc.jpg" alt="Du Học Úc">
-			<img class="item-avatar-img off" src="<?php echo $categoryImgUrl; ?>/banner-duhocuc.jpg" alt="Du Học Úc">
+			<img class="item-avatar-img off" src="<?php echo $categoryImgUrl; ?>/banner-duhocmy.jpg" alt="Du Học Mỹ">
 		</a>
 	</div>
 	<div class="box-item box5">
 		<a class="item-avatar" href="#">
 			<img class="item-avatar-img on" src="<?php echo $categoryImgUrl; ?>/banner-duhocnewzealand.jpg" alt="Du Học New Zealand">
-			<img class="item-avatar-img off" src="<?php echo $categoryImgUrl; ?>/banner-duhocnewzealand.jpg" alt="Du Học New Zealand">
+			<img class="item-avatar-img off" src="<?php echo $categoryImgUrl; ?>/banner-duhocanh.jpg" alt="Du Học Anh">
 		</a>
 	</div>
 	<div class="box-item box5">
 		<a class="item-avatar" href="#">
 			<img class="item-avatar-img on" src="<?php echo $categoryImgUrl; ?>/banner-duhocanh.jpg" alt="Du Học Anh">
-			<img class="item-avatar-img off" src="<?php echo $categoryImgUrl; ?>/banner-duhocanh.jpg" alt="Du Học Anh">
+			<img class="item-avatar-img off" src="<?php echo $categoryImgUrl; ?>/banner-duhocnewzealand.jpg" alt="Du Học New Zealand">
 		</a>
 	</div>
 </div>
