@@ -126,6 +126,11 @@ $('input[name=\'news_category\']').autocomplete({
 			url: 'index.php?route=news/news_category/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
 			dataType: 'json',
 			success: function(json) {		
+        json.unshift({
+          'news_category_id':  0,
+          'name':  '<?php echo $text_none; ?>'
+        });
+        
 				response($.map(json, function(item) {
 					return {
 						label: item.name,

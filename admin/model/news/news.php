@@ -71,8 +71,8 @@ class ModelNewsNews extends Model {
 	}
 */	
 	public function deleteNews($news_id) {
-		$this->db->query("DELETE FROM " . DB_PREFIX . "news WHERE id = '" . (int) $news_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "news_description WHERE news_id = '" . (int) $news_id . "'");
+		$this->db->query("DELETE FROM " . DB_PREFIX . "news WHERE id = '" . (int)$news_id . "'");
+		$this->db->query("DELETE FROM " . DB_PREFIX . "news_description WHERE news_id = '" . (int)$news_id . "'");
 		
 		$this->cache->delete('news');
 	}

@@ -291,7 +291,7 @@ class ControllerNewsNews extends Controller {
 			}
 	
       		$this->data['newses'][] = array(
-				'news_id' => $result['id'],
+				'news_id' => $result['news_id'],
 				'title'       => $result['title'],
 				'image'      => $image,
 				'status'     => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
@@ -689,7 +689,7 @@ class ControllerNewsNews extends Controller {
 			
 			foreach ($results as $result) {
 				$json[] = array(
-					'news_id' => $result['id'],
+					'news_id' => $result['news_id'],
 					'title'       => strip_tags(html_entity_decode($result['title'], ENT_QUOTES, 'UTF-8'))
 				);	
 			}
