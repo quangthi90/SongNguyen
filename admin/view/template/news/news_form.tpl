@@ -44,7 +44,7 @@
           <table class="form">
             <tr>
               <td><?php echo $entry_news_category; ?></td>
-              <td><input type="text" name="news_category" value="<?php echo $news_category['name']; ?>" /><input type="hidden" name="news_category_id" value="<?php echo $news_category['id']; ?>" />
+              <td><input type="text" name="news_category" value="<?php echo $news_category['name']; ?>" /><input type="hidden" name="news_category_id" value="<?php echo $news_category['news_category_id']; ?>" />
                 <?php if (isset($error_news_category)) { ?>
                 <span class="error"><?php echo $error_news_category; ?></span>
                 <?php } ?></td>
