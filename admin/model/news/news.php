@@ -105,19 +105,20 @@ class ModelNewsNews extends Model {
 		$sort_data = array(
 			'nd.title',
 			'n.status',
-			'n.sort_order'
+			'n.sort_order',
+			'n.date_modified',
 		);	
 		
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
 			$sql .= " ORDER BY " . $data['sort'];	
 		} else {
-			$sql .= " ORDER BY nd.title";	
+			$sql .= " ORDER BY nd.date_modified";	
 		}
 		
 		if (isset($data['order']) && ($data['order'] == 'DESC')) {
-			$sql .= " DESC";
-		} else {
 			$sql .= " ASC";
+		} else {
+			$sql .= " DESC";
 		}
 	
 		if (isset($data['start']) || isset($data['limit'])) {

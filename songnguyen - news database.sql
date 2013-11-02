@@ -3,10 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2013 at 12:51 AM
+-- Generation Time: Nov 02, 2013 at 10:24 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
-
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -75,6 +74,7 @@ CREATE TABLE IF NOT EXISTS `news_category` (
 CREATE TABLE IF NOT EXISTS `news_category_description` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
+  `description` text NOT NULL,
   `news_category_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)

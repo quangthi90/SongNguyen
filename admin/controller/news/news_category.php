@@ -140,7 +140,7 @@ class ControllerNewsNewsCategory extends Controller {
 		// limit config
 		$data = array(
 			'start' => ($page - 1) * $this->config->get('config_admin_limit'),
-			'limit' => $this->config->get('config_admin_limit')
+			'limit' => 10,//$this->config->get('config_admin_limit')
 		);
 				
 		$news_category_total = $this->model_news_news_category->getTotalNewsCategories();
