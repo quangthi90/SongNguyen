@@ -6,7 +6,7 @@ class ModelNewsNewsCategory extends Model {
 		$news_category_id = $this->db->getLastId();
 		
 		foreach ($data['news_category_description'] as $language_id => $value) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "news_category_description SET news_category_id = '" . (int)$news_category_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "'");
+			$this->db->query("INSERT INTO " . DB_PREFIX . "news_category_description SET news_category_id = '" . (int)$news_category_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', description = '" . $this->db->escape($value['description']) . "'");
 		}
 		
 		$this->cache->delete('news_category');
@@ -18,7 +18,7 @@ class ModelNewsNewsCategory extends Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "news_category_description WHERE news_category_id = '" . (int)$news_category_id . "'");
 
 		foreach ($data['news_category_description'] as $language_id => $value) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "news_category_description SET news_category_id = '" . (int)$news_category_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "'");
+			$this->db->query("INSERT INTO " . DB_PREFIX . "news_category_description SET news_category_id = '" . (int)$news_category_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', description = '" . $this->db->escape($value['description']) . "'");
 		}
 		
 		$this->cache->delete('news_category');
@@ -74,7 +74,7 @@ class ModelNewsNewsCategory extends Model {
 	} 
 	
 	public function getNewsCategories($data) {
-		$sql = "SELECT nc.id AS news_category_id, ncd.name, nc.sort_order, nc.date_added, nc.date_modified, nc.status, nc.parent_id, ncd.language_id FROM " . DB_PREFIX . "news_category nc LEFT JOIN " . DB_PREFIX . "news_category_description ncd ON (nc.id = ncd.news_category_id) WHERE ncd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
+		$sql = "SELECT nc.id AS news_category_id, ncd.name, ncd.description, nc.sort_order, nc.date_added, nc.date_modified, nc.status, nc.parent_id, ncd.language_id FROM " . DB_PREFIX . "news_category nc LEFT JOIN " . DB_PREFIX . "news_category_description ncd ON (nc.id = ncd.news_category_id) WHERE ncd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
 		
 		if (!empty($data['filter_name'])) {
 			$sql .= " AND ncd.name LIKE '" . $this->db->escape($data['filter_name']) . "%'";
@@ -107,6 +107,7 @@ class ModelNewsNewsCategory extends Model {
 		foreach ($query->rows as $result) {
 			$news_category_description_data[$result['language_id']] = array(
 				'name'             => $result['name'],
+				'description'             => $result['description'],
 			);
 		}
 		

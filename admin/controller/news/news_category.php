@@ -218,6 +218,7 @@ class ControllerNewsNewsCategory extends Controller {
     	$this->data['text_disabled'] = $this->language->get('text_disabled');
 				
 		$this->data['entry_name'] = $this->language->get('entry_name');
+		$this->data['entry_description'] = $this->language->get('entry_description');
 		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
 		$this->data['entry_status'] = $this->language->get('entry_status');
 		$this->data['entry_parent'] = $this->language->get('entry_parent');
@@ -286,7 +287,7 @@ class ControllerNewsNewsCategory extends Controller {
 			$this->data['path'] = $this->request->post['path'];
 		} elseif (!empty($news_category_info)) {
 			$parent_descripntions = $this->model_news_news_category->getNewsCategoryDescriptions($news_category_info['parent_id']);
-			if (!empty($parent_descripntions[$this->config->get('config_language_id')['name']])) {
+			if (!empty($parent_descripntions[$this->config->get('config_language_id')]['name'])) {
 				$this->data['path'] = $parent_descripntions[$this->config->get('config_language_id')]['name'];
 			}
 		}

@@ -12,6 +12,7 @@ $_['column_action']          = 'Action';
 
 // entry
 $_['entry_name']            = 'News Category Name:';
+$_['entry_description']            = 'Description:';
 $_['entry_sort_order']            = 'Sort Order:';
 $_['entry_status']            = 'Status:';
 $_['entry_parent']           = 'Parent:';
