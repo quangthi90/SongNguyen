@@ -570,9 +570,6 @@ class ControllerNewsNews extends Controller {
 		} else {
       		$this->data['status'] = 1;
     	}
-		
-		// Categories
-		$this->load->model('news/news_category');
 
 		if (isset($this->request->post['news_category_id'])) {
 			$news_category_id = $this->request->post['news_category_id'];
@@ -581,12 +578,15 @@ class ControllerNewsNews extends Controller {
 		} else {
 			$news_category_id = 0;
 		}
+		
+		// Categories
+		$this->load->model('news/news_category');
 
-		if (isset($this->request->get['news_id'])) {
+		if ($news_category_id) {
 			$news_category_info = $this->model_news_news_category->getNewsCategory($news_category_id);
 		}
 
-		if (isset($news_category_info) && $news_category_info) {		
+		if (!empty($news_category_info)) {		
 			$this->data['news_category'] = array(
 					'news_category_id' => $news_category_info['news_category_id'],
 					'name'        => $news_category_info['name']

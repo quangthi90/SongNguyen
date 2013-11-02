@@ -281,13 +281,14 @@ class ControllerNewsNewsCategory extends Controller {
 			$this->data['news_category_description'] = array();
 		}
 		
+		$this->data['path'] = '';
 		if (isset($this->request->post['path'])) {
 			$this->data['path'] = $this->request->post['path'];
 		} elseif (!empty($news_category_info)) {
 			$parent_descripntions = $this->model_news_news_category->getNewsCategoryDescriptions($news_category_info['parent_id']);
-			$this->data['path'] = $parent_descripntions[$this->config->get('config_language_id')]['name'];
-		} else {
-			$this->data['path'] = '';
+			if (!empty($parent_descripntions[$this->config->get('config_language_id')['name']])) {
+				$this->data['path'] = $parent_descripntions[$this->config->get('config_language_id')]['name'];
+			}
 		}
 		
 		if (isset($this->request->post['parent_id'])) {
