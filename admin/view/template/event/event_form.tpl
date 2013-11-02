@@ -14,7 +14,7 @@
       <div class="buttons"><a onclick="$('#form').submit();" class="button"><?php echo $button_save; ?></a><a href="<?php echo $cancel; ?>" class="button"><?php echo $button_cancel; ?></a></div>
     </div>
     <div class="content">
-      <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-data"><?php echo $tab_data; ?></a><a href="#tab-links"><?php echo $tab_links; ?></a></div>
+      <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-data"><?php echo $tab_data; ?></a><!--<a href="#tab-links"><?php echo $tab_links; ?></a>--></div>
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
         <div id="tab-general">
           <div id="languages" class="htabs">
@@ -66,7 +66,7 @@
             </tr>
           </table>
         </div>
-        <div id="tab-links">
+        <!--<div id="tab-links">
           <table class="form">
             <tr>
               <td><?php echo $entry_event_category; ?></td>
@@ -85,7 +85,7 @@
                 </div></td>
             </tr> 
           </table>
-        </div>
+        </div>-->
       </form>
     </div>
   </div>
@@ -121,7 +121,7 @@ $.widget('custom.catcomplete', $.ui.autocomplete, {
 });
 
 // Category
-$('input[name=\'event_category\']').autocomplete({
+/*$('input[name=\'event_category\']').autocomplete({
 	delay: 500,
 	source: function(request, response) {
 		$.ajax({
@@ -157,7 +157,7 @@ $('#event-category div img').live('click', function() {
 	
 	$('#event-category div:odd').attr('class', 'odd');
 	$('#event-category div:even').attr('class', 'even');	
-});
+});*/
 //--></script> 
 <script type="text/javascript"><!--
 function image_upload(field, thumb) {

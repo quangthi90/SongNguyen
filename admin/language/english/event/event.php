@@ -20,7 +20,7 @@ $_['entry_content'] 			= 'Content:';
 $_['entry_image'] 			= 'Image:';
 $_['entry_status'] 			= 'Status:';
 $_['entry_sort_order'] 			= 'Sort Order:';
-$_['entry_event_category'] 			= 'Event Category:';
+//$_['entry_event_category'] 			= 'Event Category:';
 
 // error
 $_['error_warning']          = 'Warning: Please check the form carefully for errors!';

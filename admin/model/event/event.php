@@ -13,11 +13,11 @@ class ModelEventEvent extends Model {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "event_description SET event_id = '" . (int)$event_id . "', language_id = '" . (int)$language_id . "', title = '" . $this->db->escape($value['title']) . "', content = '" . $this->db->escape($value['content']) . "'");
 		}
 		
-		if (isset($data['event_category'])) {
+		/*if (isset($data['event_category'])) {
 			foreach ($data['event_category'] as $event_category_id) {
 				$this->db->query("INSERT INTO " . DB_PREFIX . "event_to_event_category SET event_id = '" . (int)$event_id . "', event_category_id = '" . (int)$event_category_id . "'");
 			}
-		}
+		}*/
 		
 		$this->cache->delete('event');
 	}
@@ -35,13 +35,13 @@ class ModelEventEvent extends Model {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "event_description SET event_id = '" . (int)$event_id . "', language_id = '" . (int)$language_id . "', title = '" . $this->db->escape($value['title']) . "', content = '" . $this->db->escape($value['content']) . "'");
 		}
 		
-		$this->db->query("DELETE FROM " . DB_PREFIX . "event_to_event_category WHERE event_id = '" . (int)$event_id . "'");
+		/*$this->db->query("DELETE FROM " . DB_PREFIX . "event_to_event_category WHERE event_id = '" . (int)$event_id . "'");
 		
 		if (isset($data['event_category'])) {
 			foreach ($data['event_category'] as $event_category_id) {
 				$this->db->query("INSERT INTO " . DB_PREFIX . "event_to_event_category SET event_id = '" . (int)$event_id . "', event_category_id = '" . (int)$event_category_id . "'");
 			}		
-		}
+		}*/
 	}
 /*	
 	public function copyProduct($product_id) {
@@ -79,7 +79,7 @@ class ModelEventEvent extends Model {
 	public function deleteEvent($event_id) {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "event WHERE id = '" . (int) $event_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "event_description WHERE event_id = '" . (int) $event_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "event_to_event_category WHERE event_id = '" . (int) $event_id . "'");
+		//$this->db->query("DELETE FROM " . DB_PREFIX . "event_to_event_category WHERE event_id = '" . (int) $event_id . "'");
 		
 		$this->cache->delete('event');
 	}
@@ -93,9 +93,9 @@ class ModelEventEvent extends Model {
 	public function getEvents($data = array()) {
 		$sql = "SELECT * FROM " . DB_PREFIX . "event n LEFT JOIN " . DB_PREFIX . "event_description nd ON (n.id = nd.event_id)";
 		
-		if (!empty($data['filter_event_category_id'])) {
+		/*if (!empty($data['filter_event_category_id'])) {
 			$sql .= " LEFT JOIN " . DB_PREFIX . "event_to_event_category n2nc ON (n.id = n2nc.event_id)";			
-		}
+		}*/
 				
 		$sql .= " WHERE nd.language_id = '" . (int)$this->config->get('config_language_id') . "'"; 
 		
@@ -165,7 +165,7 @@ class ModelEventEvent extends Model {
 		return $event_description_data;
 	}
 		
-	public function getEventCategories($event_id) {
+	/*public function getEventCategories($event_id) {
 		$event_category_data = array();
 		
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "event_to_event_category WHERE event_id = '" . (int)$event_id . "'");
@@ -175,14 +175,14 @@ class ModelEventEvent extends Model {
 		}
 
 		return $event_category_data;
-	}
+	}*/
 
 	public function getTotalEvents($data = array()) {
 		$sql = "SELECT COUNT(DISTINCT n.id) AS total FROM " . DB_PREFIX . "event n LEFT JOIN " . DB_PREFIX . "event_description nd ON (n.id = nd.event_id)";
 
-		if (!empty($data['filter_event_category_id'])) {
+		/*if (!empty($data['filter_event_category_id'])) {
 			$sql .= " LEFT JOIN " . DB_PREFIX . "event_to_event_category n2nc ON (n.id = n2nc.event_id)";			
-		}
+		}*/
 		 
 		$sql .= " WHERE nd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
 		 			

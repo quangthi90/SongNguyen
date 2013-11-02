@@ -291,7 +291,7 @@ class ControllerEventEvent extends Controller {
 			}
 	
       		$this->data['events'][] = array(
-				'event_id' => $result['id'],
+				'event_id' => $result['event_id'],
 				'title'       => $result['title'],
 				'image'      => $image,
 				'status'     => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
@@ -423,26 +423,13 @@ class ControllerEventEvent extends Controller {
 		$this->data['entry_title'] = $this->language->get('entry_title');
 		$this->data['entry_content'] = $this->language->get('entry_content');
     	$this->data['entry_image'] = $this->language->get('entry_image');
-    	$this->data['entry_event_category'] = $this->language->get('entry_event_category');
+    	//$this->data['entry_event_category'] = $this->language->get('entry_event_category');
 		$this->data['entry_text'] = $this->language->get('entry_text');
 		$this->data['entry_required'] = $this->language->get('entry_required');
 		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
 		$this->data['entry_status'] = $this->language->get('entry_status');
 		$this->data['entry_date_start'] = $this->language->get('entry_date_start');
 		$this->data['entry_date_end'] = $this->language->get('entry_date_end');
-		$this->data['entry_priority'] = $this->language->get('entry_priority');
-
-		$this->data['text_recurring_help'] = $this->language->get('text_recurring_help');
-		$this->data['text_recurring_title'] = $this->language->get('text_recurring_title');
-		$this->data['entry_trial_freq'] = $this->language->get('entry_trial_freq');
-		$this->data['entry_trial_length'] = $this->language->get('entry_trial_length');
-		$this->data['entry_trial_cycle'] = $this->language->get('entry_trial_cycle');
-
-		$this->data['text_length_day'] = $this->language->get('text_length_day');
-		$this->data['text_length_week'] = $this->language->get('text_length_week');
-		$this->data['text_length_month'] = $this->language->get('text_length_month');
-		$this->data['text_length_month_semi'] = $this->language->get('text_length_month_semi');
-		$this->data['text_length_year'] = $this->language->get('text_length_year');
 
     	$this->data['button_save'] = $this->language->get('button_save');
     	$this->data['button_cancel'] = $this->language->get('button_cancel');
@@ -450,7 +437,7 @@ class ControllerEventEvent extends Controller {
 		
     	$this->data['tab_general'] = $this->language->get('tab_general');
     	$this->data['tab_data'] = $this->language->get('tab_data');		
-		$this->data['tab_links'] = $this->language->get('tab_links');
+		//$this->data['tab_links'] = $this->language->get('tab_links');
 		 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -538,7 +525,7 @@ class ControllerEventEvent extends Controller {
 		
 		if (isset($this->request->post['image']) && file_exists(DIR_IMAGE . $this->request->post['image'])) {
 			$this->data['thumb'] = $this->model_tool_image->resize($this->request->post['image'], 100, 100);
-		} elseif (!empty($event_info) && $event_info['thumb'] && file_exists(DIR_IMAGE . $event_info['image'])) {
+		} elseif (!empty($event_info) && $event_info['image'] && file_exists(DIR_IMAGE . $event_info['image'])) {
 			$this->data['thumb'] = $this->model_tool_image->resize($event_info['image'], 100, 100);
 		} else {
 			$this->data['thumb'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
@@ -562,7 +549,7 @@ class ControllerEventEvent extends Controller {
       		$this->data['status'] = 1;
     	}
 		
-		// Categories
+		/*/ Categories
 		$this->load->model('event/event_category');
 		
 		if (isset($this->request->post['event_category'])) {
@@ -584,7 +571,7 @@ class ControllerEventEvent extends Controller {
 					'name'        => $event_category_info['name']
 				);
 			}
-		}
+		}*/
 										
 		$this->template = 'event/event_form.tpl';
 		$this->children = array(
@@ -644,7 +631,7 @@ class ControllerEventEvent extends Controller {
 	public function autocomplete() {
 		$json = array();
 		
-		if (isset($this->request->get['filter_title']) || isset($this->request->get['filter_event_category_id'])) {
+		if (isset($this->request->get['filter_title'])) {
 			$this->load->model('event/event');
 			
 			if (isset($this->request->get['filter_title'])) {
@@ -669,7 +656,7 @@ class ControllerEventEvent extends Controller {
 			
 			foreach ($results as $result) {
 				$json[] = array(
-					'event_id' => $result['id'],
+					'event_id' => $result['event_id'],
 					'title'       => strip_tags(html_entity_decode($result['title'], ENT_QUOTES, 'UTF-8'))
 				);	
 			}
