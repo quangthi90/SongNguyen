@@ -1,7 +1,7 @@
 <?php
 class ModelNewsNews extends Model {
 	public function addNews($data) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "news SET status = '" . (int)$data['status'] . "', sort_order = '" . (int)$data['sort_order'] . "', date_added = NOW(), date_modified = NOW()");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "news SET status = '" . (int)$data['status'] . "', sort_order = '" . (int)$data['sort_order'] . "', news_category_id = '" . (int)$data['news_category_id'] . "', date_added = NOW(), date_modified = NOW()");
 		
 		$news_id = $this->db->getLastId();
 		
@@ -17,17 +17,11 @@ class ModelNewsNews extends Model {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "news_description SET news_id = '" . (int)$news_id . "', language_id = '" . (int)$language_id . "', title = '" . $this->db->escape($value['title']) . "', content = '" . $this->db->escape($value['content']) . "'");
 		}
 		
-		if (isset($data['news_category'])) {
-			foreach ($data['news_category'] as $news_category_id) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "news_to_news_category SET news_id = '" . (int)$news_id . "', news_category_id = '" . (int)$news_category_id . "'");
-			}
-		}
-		
 		$this->cache->delete('news');
 	}
 	
 	public function editNews($news_id, $data) {
-		$this->db->query("UPDATE " . DB_PREFIX . "news SET status = '" . (int)$data['status'] . "', sort_order = '" . (int)$data['sort_order'] . "', date_modified = NOW() WHERE id = '" . (int)$news_id . "'");
+		$this->db->query("UPDATE " . DB_PREFIX . "news SET status = '" . (int)$data['status'] . "', sort_order = '" . (int)$data['sort_order'] . "', news_category_id = '" . (int)$data['news_category_id'] . "', date_modified = NOW() WHERE id = '" . (int)$news_id . "'");
 
 		if (isset($data['primary_image'])) {
 			$this->db->query("UPDATE " . DB_PREFIX . "news SET primary_image = '" . $this->db->escape(html_entity_decode($data['primary_image'], ENT_QUOTES, 'UTF-8')) . "' WHERE id = '" . (int)$news_id . "'");
@@ -41,14 +35,6 @@ class ModelNewsNews extends Model {
 		
 		foreach ($data['news_description'] as $language_id => $value) {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "news_description SET news_id = '" . (int)$news_id . "', language_id = '" . (int)$language_id . "', title = '" . $this->db->escape($value['title']) . "', content = '" . $this->db->escape($value['content']) . "'");
-		}
-		
-		$this->db->query("DELETE FROM " . DB_PREFIX . "news_to_news_category WHERE news_id = '" . (int)$news_id . "'");
-		
-		if (isset($data['news_category'])) {
-			foreach ($data['news_category'] as $news_category_id) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "news_to_news_category SET news_id = '" . (int)$news_id . "', news_category_id = '" . (int)$news_category_id . "'");
-			}		
 		}
 	}
 /*	
@@ -87,7 +73,6 @@ class ModelNewsNews extends Model {
 	public function deleteNews($news_id) {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "news WHERE id = '" . (int) $news_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "news_description WHERE news_id = '" . (int) $news_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "news_to_news_category WHERE news_id = '" . (int) $news_id . "'");
 		
 		$this->cache->delete('news');
 	}
@@ -100,12 +85,12 @@ class ModelNewsNews extends Model {
 	
 	public function getNewses($data = array()) {
 		$sql = "SELECT * FROM " . DB_PREFIX . "news n LEFT JOIN " . DB_PREFIX . "news_description nd ON (n.id = nd.news_id)";
-		
-		if (!empty($data['filter_news_category_id'])) {
-			$sql .= " LEFT JOIN " . DB_PREFIX . "news_to_news_category n2nc ON (n.id = n2nc.news_id)";			
-		}
 				
 		$sql .= " WHERE nd.language_id = '" . (int)$this->config->get('config_language_id') . "'"; 
+		
+		if (!empty($data['filter_news_category_id'])) {
+			$sql .= " AND n.news_category_id = '" . (int)$data['filter_news_category_id'] . "'";			
+		}
 		
 		if (!empty($data['filter_title'])) {
 			$sql .= " AND nd.title LIKE '" . $this->db->escape($data['filter_title']) . "%'";
@@ -172,27 +157,15 @@ class ModelNewsNews extends Model {
 		
 		return $news_description_data;
 	}
-		
-	public function getNewsCategories($news_id) {
-		$news_category_data = array();
-		
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "news_to_news_category WHERE news_id = '" . (int)$news_id . "'");
-		
-		foreach ($query->rows as $result) {
-			$news_category_data[] = $result['news_category_id'];
-		}
-
-		return $news_category_data;
-	}
 
 	public function getTotalNewses($data = array()) {
 		$sql = "SELECT COUNT(DISTINCT n.id) AS total FROM " . DB_PREFIX . "news n LEFT JOIN " . DB_PREFIX . "news_description nd ON (n.id = nd.news_id)";
-
-		if (!empty($data['filter_news_category_id'])) {
-			$sql .= " LEFT JOIN " . DB_PREFIX . "news_to_news_category n2nc ON (n.id = n2nc.news_id)";			
-		}
 		 
 		$sql .= " WHERE nd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
+		
+		if (!empty($data['filter_news_category_id'])) {
+			$sql .= " AND n.news_category_id = '" . (int)$data['filter_news_category_id'] . "'";			
+		}
 		 			
 		if (!empty($data['filter_title'])) {
 			$sql .= " AND nd.title LIKE '" . $this->db->escape($data['filter_title']) . "%'";

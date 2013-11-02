@@ -14,7 +14,7 @@
       <div class="buttons"><a onclick="$('#form').submit();" class="button"><?php echo $button_save; ?></a><a href="<?php echo $cancel; ?>" class="button"><?php echo $button_cancel; ?></a></div>
     </div>
     <div class="content">
-      <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-data"><?php echo $tab_data; ?></a><a href="#tab-links"><?php echo $tab_links; ?></a></div>
+      <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-data"><?php echo $tab_data; ?></a><!--<a href="#tab-links"><?php echo $tab_links; ?></a>--></div>
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
         <div id="tab-general">
           <div id="languages" class="htabs">
@@ -42,6 +42,13 @@
         </div>
         <div id="tab-data">
           <table class="form">
+            <tr>
+              <td><?php echo $entry_news_category; ?></td>
+              <td><input type="text" name="news_category" value="<?php echo $news_category['name']; ?>" /><input type="hidden" name="news_category_id" value="<?php echo $news_category['id']; ?>" />
+                <?php if (isset($error_news_category)) { ?>
+                <span class="error"><?php echo $error_news_category; ?></span>
+                <?php } ?></td>
+            </tr>
             <tr>
               <td><?php echo $entry_primary_image; ?></td>
               <td><div class="primary_image"><img src="<?php echo $primary_thumb; ?>" alt="" id="primary_thumb" /><br />
@@ -72,26 +79,11 @@
             </tr>
           </table>
         </div>
-        <div id="tab-links">
+        <!--<div id="tab-links">
           <table class="form">
-            <tr>
-              <td><?php echo $entry_news_category; ?></td>
-              <td><input type="text" name="news_category" value="" /></td>
-            </tr>
-            <tr>
-              <td>&nbsp;</td>
-              <td><div id="news-category" class="scrollbox">
-                  <?php $class = 'odd'; ?>
-                  <?php foreach ($news_categories as $news_category) { ?>
-                  <?php $class = ($class == 'even' ? 'odd' : 'even'); ?>
-                  <div id="news-category<?php echo $news_category['news_category_id']; ?>" class="<?php echo $class; ?>"><?php echo $news_category['name']; ?><img src="view/image/delete.png" alt="" />
-                    <input type="hidden" name="news_category[]" value="<?php echo $news_category['news_category_id']; ?>" />
-                  </div>
-                  <?php } ?>
-                </div></td>
-            </tr> 
+            
           </table>
-        </div>
+        </div>-->
       </form>
     </div>
   </div>
@@ -144,25 +136,14 @@ $('input[name=\'news_category\']').autocomplete({
 		});
 	}, 
 	select: function(event, ui) {
-		$('#news-category' + ui.item.value).remove();
-		
-		$('#news-category').append('<div id="news-category' + ui.item.value + '">' + ui.item.label + '<img src="view/image/delete.png" alt="" /><input type="hidden" name="news_category[]" value="' + ui.item.value + '" /></div>');
-
-		$('#news-category div:odd').attr('class', 'odd');
-		$('#news-category div:even').attr('class', 'even');
+    $('input[name=\'news_category\']').val(ui.item.label);
+		$('input[name=\'news_category_id\']').val(ui.item.value);
 				
 		return false;
 	},
 	focus: function(event, ui) {
       return false;
    }
-});
-
-$('#news-category div img').live('click', function() {
-	$(this).parent().remove();
-	
-	$('#news-category div:odd').attr('class', 'odd');
-	$('#news-category div:even').attr('class', 'even');	
 });
 //--></script> 
 <script type="text/javascript"><!--

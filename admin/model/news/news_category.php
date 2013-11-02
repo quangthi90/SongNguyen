@@ -32,7 +32,7 @@ class ModelNewsNewsCategory extends Model {
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "news_category WHERE id = '" . (int)$news_category_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "news_category_description WHERE news_category_id = '" . (int)$news_category_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "news_to_news_category WHERE news_category_id = '" . (int)$news_category_id . "'");
+		$this->db->query("DELETE FROM " . DB_PREFIX . "news WHERE news_category_id = '" . (int)$news_category_id . "'");
 		
 		$this->cache->delete('news_category');
 	} 

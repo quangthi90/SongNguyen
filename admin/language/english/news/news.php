@@ -27,4 +27,5 @@ $_['entry_news_category'] 			= 'News Category:';
 $_['error_warning']          = 'Warning: Please check the form carefully for errors!';
 $_['error_permission']       = 'Warning: You do not have permission to modify news!';
 $_['error_title']            = 'News Title must be between 2 and 255 characters!';
+//$_['error_news_category']            = 'News Category id required!';
 ?>
