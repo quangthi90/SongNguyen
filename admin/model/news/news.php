@@ -84,7 +84,7 @@ class ModelNewsNews extends Model {
 	}
 	
 	public function getNewses($data = array()) {
-		$sql = "SELECT * FROM " . DB_PREFIX . "news n LEFT JOIN " . DB_PREFIX . "news_description nd ON (n.id = nd.news_id) LEFT JOIN " . DB_PREFIX . "news_category nc ON (n.news_category_id = nc.id) LEFT JOIN " . DB_PREFIX . "news_category_description ncd ON (nc.id = ncd.news_category_id)";
+		$sql = "SELECT n.id AS news_id, nd.title AS title, n.primary_image AS primary_image, n.second_image AS second_image, ncd.name AS news_category_name FROM " . DB_PREFIX . "news n LEFT JOIN " . DB_PREFIX . "news_description nd ON (n.id = nd.news_id) LEFT JOIN " . DB_PREFIX . "news_category nc ON (n.news_category_id = nc.id) LEFT JOIN " . DB_PREFIX . "news_category_description ncd ON (nc.id = ncd.news_category_id)";
 				
 		$sql .= " WHERE nd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND ncd.language_id = '" . (int)$this->config->get('config_language_id') . "'"; 
 		

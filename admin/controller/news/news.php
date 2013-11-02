@@ -306,7 +306,7 @@ class ControllerNewsNews extends Controller {
 				'news_id' => $result['news_id'],
 				'title'       => $result['title'],
 				'image'      => $image,
-				'news_category_name' => $result['name'],
+				'news_category_name' => $result['news_category_name'],
 				'status'     => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
 				'selected'   => isset($this->request->post['selected']) && in_array($result['news_id'], $this->request->post['selected']),
 				'action'     => $action
