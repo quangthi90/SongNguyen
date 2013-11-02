@@ -1,7 +1,7 @@
 <?php
 class ModelFaqFaq extends Model {
 	public function addFaq($data) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "faq SET status = '" . (int)$data['status'] . "', sort_order = '" . (int)$data['sort_order'] . "', date_added = NOW(), date_modified = NOW()");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "faq SET status = '" . (int)$data['status'] . "', sort_order = '" . (int)$data['sort_order'] . "', faq_category_id = '" . (int)$data['faq_category_id'] . "', date_added = NOW(), date_modified = NOW()");
 		
 		$faq_id = $this->db->getLastId();
 		
@@ -9,30 +9,16 @@ class ModelFaqFaq extends Model {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "faq_description SET faq_id = '" . (int)$faq_id . "', language_id = '" . (int)$language_id . "', question = '" . $this->db->escape($value['question']) . "', answer = '" . $this->db->escape($value['answer']) . "'");
 		}
 		
-		if (isset($data['faq_category'])) {
-			foreach ($data['faq_category'] as $faq_category_id) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "faq_to_faq_category SET faq_id = '" . (int)$faq_id . "', faq_category_id = '" . (int)$faq_category_id . "'");
-			}
-		}
-		
 		$this->cache->delete('faq');
 	}
 	
 	public function editFaq($faq_id, $data) {
-		$this->db->query("UPDATE " . DB_PREFIX . "faq SET status = '" . (int)$data['status'] . "', sort_order = '" . (int)$data['sort_order'] . "', date_modified = NOW() WHERE id = '" . (int)$faq_id . "'");
+		$this->db->query("UPDATE " . DB_PREFIX . "faq SET status = '" . (int)$data['status'] . "', sort_order = '" . (int)$data['sort_order'] . "', faq_category_id = '" . (int)$data['faq_category_id'] . "', date_modified = NOW() WHERE id = '" . (int)$faq_id . "'");
 		
 		$this->db->query("DELETE FROM " . DB_PREFIX . "faq_description WHERE faq_id = '" . (int)$faq_id . "'");
 		
 		foreach ($data['faq_description'] as $language_id => $value) {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "faq_description SET faq_id = '" . (int)$faq_id . "', language_id = '" . (int)$language_id . "', question = '" . $this->db->escape($value['question']) . "', answer = '" . $this->db->escape($value['answer']) . "'");
-		}
-		
-		$this->db->query("DELETE FROM " . DB_PREFIX . "faq_to_faq_category WHERE faq_id = '" . (int)$faq_id . "'");
-		
-		if (isset($data['faq_category'])) {
-			foreach ($data['faq_category'] as $faq_category_id) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "faq_to_faq_category SET faq_id = '" . (int)$faq_id . "', faq_category_id = '" . (int)$faq_category_id . "'");
-			}		
 		}
 	}
 /*	
@@ -71,7 +57,6 @@ class ModelFaqFaq extends Model {
 	public function deleteFaq($faq_id) {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "faq WHERE id = '" . (int) $faq_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "faq_description WHERE faq_id = '" . (int) $faq_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "faq_to_faq_category WHERE faq_id = '" . (int) $faq_id . "'");
 		
 		$this->cache->delete('faq');
 	}
@@ -155,18 +140,6 @@ class ModelFaqFaq extends Model {
 		}
 		
 		return $faq_description_data;
-	}
-		
-	public function getFaqCategories($faq_id) {
-		$faq_category_data = array();
-		
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "faq_to_faq_category WHERE faq_id = '" . (int)$faq_id . "'");
-		
-		foreach ($query->rows as $result) {
-			$faq_category_data[] = $result['faq_category_id'];
-		}
-
-		return $faq_category_data;
 	}
 
 	public function getTotalFaqs($data = array()) {

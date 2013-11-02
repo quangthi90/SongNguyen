@@ -14,7 +14,7 @@
       <div class="buttons"><a onclick="$('#form').submit();" class="button"><?php echo $button_save; ?></a><a href="<?php echo $cancel; ?>" class="button"><?php echo $button_cancel; ?></a></div>
     </div>
     <div class="content">
-      <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-data"><?php echo $tab_data; ?></a><a href="#tab-links"><?php echo $tab_links; ?></a></div>
+      <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-data"><?php echo $tab_data; ?></a><!--<a href="#tab-links"><?php echo $tab_links; ?></a>--></div>
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
         <div id="tab-general">
           <div id="languages" class="htabs">
@@ -46,6 +46,10 @@
         <div id="tab-data">
           <table class="form">
             <tr>
+              <td><?php echo $entry_faq_category; ?></td>
+              <td><input type="text" name="faq_category" value="<?php echo $faq_category['name']; ?>" /><input type="hidden" name="faq_category_id" value="<?php echo $faq_category['faq_category_id']; ?>" /></td>
+            </tr>
+            <tr>
               <td><?php echo $entry_status; ?></td>
               <td><select name="status">
                   <?php if ($status) { ?>
@@ -63,26 +67,11 @@
             </tr>
           </table>
         </div>
-        <div id="tab-links">
+        <!--<div id="tab-links">
           <table class="form">
-            <tr>
-              <td><?php echo $entry_faq_category; ?></td>
-              <td><input type="text" name="faq_category" value="" /></td>
-            </tr>
-            <tr>
-              <td>&nbsp;</td>
-              <td><div id="faq-category" class="scrollbox">
-                  <?php $class = 'odd'; ?>
-                  <?php foreach ($faq_categories as $faq_category) { ?>
-                  <?php $class = ($class == 'even' ? 'odd' : 'even'); ?>
-                  <div id="faq-category<?php echo $faq_category['faq_category_id']; ?>" class="<?php echo $class; ?>"><?php echo $faq_category['name']; ?><img src="view/image/delete.png" alt="" />
-                    <input type="hidden" name="faq_category[]" value="<?php echo $faq_category['faq_category_id']; ?>" />
-                  </div>
-                  <?php } ?>
-                </div></td>
-            </tr> 
+            
           </table>
-        </div>
+        </div>-->
       </form>
     </div>
   </div>
@@ -134,6 +123,11 @@ $('input[name=\'faq_category\']').autocomplete({
 			url: 'index.php?route=faq/faq_category/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
 			dataType: 'json',
 			success: function(json) {		
+        json.unshift({
+          'faq_category_id':  0,
+          'name':  '<?php echo $text_none; ?>'
+        });
+        
 				response($.map(json, function(item) {
 					return {
 						label: item.name,
@@ -144,25 +138,14 @@ $('input[name=\'faq_category\']').autocomplete({
 		});
 	}, 
 	select: function(event, ui) {
-		$('#faq-category' + ui.item.value).remove();
-		
-		$('#faq-category').append('<div id="faq-category' + ui.item.value + '">' + ui.item.label + '<img src="view/image/delete.png" alt="" /><input type="hidden" name="faq_category[]" value="' + ui.item.value + '" /></div>');
-
-		$('#faq-category div:odd').attr('class', 'odd');
-		$('#faq-category div:even').attr('class', 'even');
+    $('input[name=\'faq_category\']').val(ui.item.label);
+    $('input[name=\'faq_category_id\']').val(ui.item.value);
 				
 		return false;
 	},
 	focus: function(event, ui) {
       return false;
    }
-});
-
-$('#faq-category div img').live('click', function() {
-	$(this).parent().remove();
-	
-	$('#faq-category div:odd').attr('class', 'odd');
-	$('#faq-category div:even').attr('class', 'even');	
 });
 //--></script> 
 <script type="text/javascript" src="view/javascript/jquery/ui/jquery-ui-timepicker-addon.js"></script> 

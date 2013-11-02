@@ -32,7 +32,12 @@ class ModelFaqFaqCategory extends Model {
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "faq_category WHERE id = '" . (int)$faq_category_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "faq_category_description WHERE faq_category_id = '" . (int)$faq_category_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "faq_to_faq_category WHERE faq_category_id = '" . (int)$faq_category_id . "'");
+		
+		$faqs = $this->db->query("SELECT id FROM faq WHERE faq_category_id = '" . $faq_category_id . "'")->rows;
+		foreach ($faqs as $faq) {
+			$this->db->query("DELETE FROM " . DB_PREFIX . "faq WHERE id = '" . (int)$faq['id'] . "'");
+			$this->db->query("DELETE FROM " . DB_PREFIX . "faq_description WHERE faq_id = '" . (int)$faq['id'] . "'");
+		}
 		
 		$this->cache->delete('faq_category');
 	} 

@@ -283,7 +283,7 @@ class ControllerFaqFaq extends Controller {
 			);
 	
       		$this->data['faqs'][] = array(
-				'faq_id' => $result['id'],
+				'faq_id' => $result['faq_id'],
 				'question'       => $result['question'],
 				'answer'       => $result['answer'],
 				'status'     => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
@@ -507,14 +507,6 @@ class ControllerFaqFaq extends Controller {
 			$this->data['faq_description'] = array();
 		}
 		
-		if (isset($this->request->post['image'])) {
-			$this->data['image'] = $this->request->post['image'];
-		} elseif (!empty($faq_info)) {
-			$this->data['image'] = $faq_info['image'];
-		} else {
-			$this->data['image'] = '';
-		}
-		
 		if (isset($this->request->post['sort_order'])) {
       		$this->data['sort_order'] = $this->request->post['sort_order'];
     	} elseif (!empty($faq_info)) {
@@ -531,28 +523,31 @@ class ControllerFaqFaq extends Controller {
       		$this->data['status'] = 1;
     	}
 		
+		if (isset($this->request->post['faq_category_id'])) {
+			$faq_category_id = $this->request->post['faq_category_id'];
+		} elseif (isset($this->request->get['faq_id'])) {		
+			$faq_category_id = $faq_info['faq_category_id'];
+		} else {
+			$faq_category_id = 0;
+		}
+		
 		// Categories
 		$this->load->model('faq/faq_category');
 		
-		if (isset($this->request->post['faq_category'])) {
-			$faq_categories = $this->request->post['faq_category'];
-		} elseif (isset($this->request->get['faq_id'])) {		
-			$faq_categories = $this->model_faq_faq->getFaqCategories($this->request->get['faq_id']);
-		} else {
-			$faq_categories = array();
-		}
-	
-		$this->data['faq_categories'] = array();
+		if ($faq_category_id) {	
+			$faq_category_infor = $this->model_faq_faq_category->getFaqCategory($faq_category_id);
+		} 
 		
-		foreach ($faq_categories as $faq_category_id) {
-			$faq_category_info = $this->model_faq_faq_category->getFaqCategory($faq_category_id);
-			
-			if ($faq_category_info) {
-				$this->data['faq_categories'][] = array(
-					'faq_category_id' => $faq_category_info['faq_category_id'],
-					'name'        => $faq_category_info['name']
+		if ( !empty($faq_category_infor) ) {
+			$this->data['faq_category'] = array(
+				'faq_category_id' => $faq_category_infor['faq_category_id'],
+				'name' => $faq_category_infor['name'],
 				);
-			}
+		}else {
+			$this->data['faq_category'] = array(
+				'faq_category_id' => 0,
+				'name' => '',
+				);
 		}
 										
 		$this->template = 'faq/faq_form.tpl';
