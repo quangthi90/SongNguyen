@@ -17,10 +17,16 @@ class ModelNewsNews extends Model {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "news_description SET news_id = '" . (int)$news_id . "', language_id = '" . (int)$language_id . "', title = '" . $this->db->escape($value['title']) . "', content = '" . $this->db->escape($value['content']) . "'");
 		}
 
-		foreach ($data['news_option'] as $news_option) {
-			foreach ($news_option as $language_id => $value) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "news_option SET news_id = '" . (int)$news_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', value = '" . $this->db->escape($value['value']) . "'");
+		if ( !empty($data['news_option'])) {
+			foreach ($data['news_option'] as $news_option) {
+				foreach ($news_option as $language_id => $value) {
+					$this->db->query("INSERT INTO " . DB_PREFIX . "news_option SET news_id = '" . (int)$news_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', value = '" . $this->db->escape($value['value']) . "'");
+				}
 			}
+		}
+
+		if ($data['keyword']) {
+			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'news_id=" . (int) $news_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
 		}
 		
 		$this->cache->delete('news');
@@ -45,10 +51,18 @@ class ModelNewsNews extends Model {
 		
 		$this->db->query("DELETE FROM " . DB_PREFIX . "news_option WHERE news_id = '" . (int)$news_id . "'");
 
-		foreach ($data['news_option'] as $news_option) {
-			foreach ($news_option as $language_id => $value) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "news_option SET news_id = '" . (int)$news_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', value = '" . $this->db->escape($value['value']) . "'");
+		if ( !empty($data['news_option'])) {
+			foreach ($data['news_option'] as $news_option) {
+				foreach ($news_option as $language_id => $value) {
+					$this->db->query("INSERT INTO " . DB_PREFIX . "news_option SET news_id = '" . (int)$news_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', value = '" . $this->db->escape($value['value']) . "'");
+				}
 			}
+		}
+		
+		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'news_id=" . (int)$news_id . "'");
+
+		if ($data['keyword']) {
+			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'news_id=" . (int) $news_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
 		}
 	}
 /*	
@@ -88,6 +102,7 @@ class ModelNewsNews extends Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "news WHERE id = '" . (int)$news_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "news_description WHERE news_id = '" . (int)$news_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "news_option WHERE news_id = '" . (int)$news_id . "'");
+		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'news_id=" . (int)$news_id . "'");
 		
 		$this->cache->delete('news');
 	}
@@ -107,15 +122,15 @@ class ModelNewsNews extends Model {
 	}
 	
 	public function getNews($news_id) {
-		$query = $this->db->query("SELECT DISTINCT n.id AS news_id, n.sort_order AS sort_order, n.format AS format, nd.title AS title, n.status AS status, n.primary_image AS primary_image, n.second_image AS second_image, n.news_category_id AS news_category_id FROM " . DB_PREFIX . "news n LEFT JOIN " . DB_PREFIX . "news_description nd ON (n.id = nd.news_id) WHERE n.id = '" . (int)$news_id . "' AND nd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
+		$query = $this->db->query("SELECT DISTINCT n.id AS news_id, (SELECT keyword FROM " . DB_PREFIX . "url_alias WHERE query = 'news_id=" . (int)$news_id . "') AS keyword, n.sort_order AS sort_order, n.format AS format, nd.title AS title, n.status AS status, n.primary_image AS primary_image, n.second_image AS second_image, n.news_category_id AS news_category_id FROM " . DB_PREFIX . "news n LEFT JOIN " . DB_PREFIX . "news_description nd ON (n.id = nd.news_id) WHERE n.id = '" . (int)$news_id . "' AND nd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
 				
 		return $query->row;
 	}
 	
 	public function getNewses($data = array()) {
-		$sql = "SELECT n.id AS news_id, n.sort_order AS sort_order, n.format AS format, nd.title AS title, n.status AS status, n.primary_image AS primary_image, n.second_image AS second_image, ncd.name AS news_category_name, n.news_category_id AS news_category_id FROM " . DB_PREFIX . "news n LEFT JOIN " . DB_PREFIX . "news_description nd ON (n.id = nd.news_id) LEFT JOIN " . DB_PREFIX . "news_category nc ON (n.news_category_id = nc.id) LEFT JOIN " . DB_PREFIX . "news_category_description ncd ON (nc.id = ncd.news_category_id)";
+		$sql = "SELECT n.id AS news_id, n.sort_order AS sort_order, n.format AS format, n.status AS status, n.primary_image AS primary_image, n.second_image AS second_image, n.news_category_id AS news_category_id, nd.title AS title, (SELECT ncd.name FROM " . "news_category nc LEFT JOIN " . DB_PREFIX . "news_category_description ncd ON(nc.id = ncd.news_category_id) WHERE ncd.language_id = '" . (int)$this->config->get('config_language_id') . "') AS news_category_name FROM " . DB_PREFIX . "news n LEFT JOIN " . DB_PREFIX . "news_description nd ON (n.id = nd.news_id)";
 				
-		$sql .= " WHERE nd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND ncd.language_id = '" . (int)$this->config->get('config_language_id') . "'"; 
+		$sql .= " WHERE nd.language_id = '" . (int)$this->config->get('config_language_id') . "'"; 
 		
 		if (!empty($data['filter_news_category_id'])) {
 			$sql .= " AND n.news_category_id = '" . (int)$data['filter_news_category_id'] . "'";			

@@ -26,6 +26,7 @@ $_['entry_content'] 			= 'Content:';
 $_['entry_primary_image'] 			= 'Primary Image:';
 $_['entry_second_image'] 			= 'Second Image:';
 $_['entry_format'] 			= 'Format:';
+$_['entry_keyword'] 			= 'Keyword:';
 $_['entry_status'] 			= 'Status:';
 $_['entry_news_option'] 			= 'Option:';
 $_['entry_news_option_value'] 			= 'Value:';

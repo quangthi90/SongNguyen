@@ -446,6 +446,7 @@ class ControllerNewsNews extends Controller {
 
 		$this->data['entry_title'] = $this->language->get('entry_title');
 		$this->data['entry_content'] = $this->language->get('entry_content');
+		$this->data['entry_keyword'] = $this->language->get('entry_keyword');
     	$this->data['entry_primary_image'] = $this->language->get('entry_primary_image');
     	$this->data['entry_second_image'] = $this->language->get('entry_second_image');
     	$this->data['entry_news_category'] = $this->language->get('entry_news_category');
@@ -596,6 +597,14 @@ class ControllerNewsNews extends Controller {
     	} else {
 			$this->data['sort_order'] = 1;
 		}
+				
+    	if (isset($this->request->post['keyword'])) {
+      		$this->data['keyword'] = $this->request->post['keyword'];
+    	} elseif (!empty($news_info)) {
+			$this->data['keyword'] = $news_info['keyword'];
+		} else {
+      		$this->data['keyword'] = '';
+    	}
 				
     	if (isset($this->request->post['status'])) {
       		$this->data['status'] = $this->request->post['status'];

@@ -14,7 +14,7 @@
       <div class="buttons"><a onclick="$('#form').submit();" class="button"><?php echo $button_save; ?></a><a href="<?php echo $cancel; ?>" class="button"><?php echo $button_cancel; ?></a></div>
     </div>
     <div class="content">
-      <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-data"><?php echo $tab_data; ?></a><!--<a href="#tab-links"><?php echo $tab_links; ?></a>--><a href="#tab-news-option"><?php echo $tab_option; ?></a></div>
+      <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-data"><?php echo $tab_data; ?></a><!--<a href="#tab-links"><?php echo $tab_links; ?></a>--><a href="#tab-option"><?php echo $tab_option; ?></a></div>
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
         <div id="tab-general">
           <div id="languages" class="htabs">
@@ -60,6 +60,10 @@
               <td><div class="second_image"><img src="<?php echo $second_thumb; ?>" alt="" id="second_thumb" /><br />
                   <input type="hidden" name="second_image" value="<?php echo $second_image; ?>" id="second_image" />
                   <a onclick="image_upload('second_image', 'second_thumb');"><?php echo $text_browse; ?></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a onclick="$('#second_thumb').attr('src', '<?php echo $no_image; ?>'); $('#second_image').attr('value', '');"><?php echo $text_clear; ?></a></div></td>
+            </tr>
+            <tr>
+              <td><?php echo $entry_keyword; ?></td>
+              <td><input type="text" name="keyword" value="<?php echo $keyword; ?>"/></td>
             </tr>
             <tr>
               <td><?php echo $entry_format; ?></td>
