@@ -52,6 +52,10 @@ class ModelDesignBanner extends Model {
 	public function getBanners($data = array()) {
 		$sql = "SELECT * FROM " . DB_PREFIX . "banner";
 		
+		if (!empty($data['filter_name'])) {
+			$sql .= " WHERE name LIKE '" . $this->db->escape($data['filter_name']) . "%'";
+		}
+
 		$sort_data = array(
 			'name',
 			'status'

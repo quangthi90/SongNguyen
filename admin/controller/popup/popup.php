@@ -1,26 +1,26 @@
 <?php 
-class ControllerPopupPopupVideo extends Controller {
+class ControllerPopupPopup extends Controller {
 	private $error = array(); 
    
   	public function index() {
-		$this->language->load('popup/popup_video');
+		$this->language->load('popup/popup');
     	
 		$this->document->setTitle($this->language->get('heading_title')); 
 		
-		$this->load->model('popup/popup_video');
+		$this->load->model('popup/popup');
 		
 		$this->getList();
   	}
 
   	public function insert() {
-    	$this->language->load('popup/popup_video');
+    	$this->language->load('popup/popup');
 
     	$this->document->setTitle($this->language->get('heading_title')); 
 		
-		$this->load->model('popup/popup_video');
+		$this->load->model('popup/popup');
 		
     	if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_popup_popup_video->addPopupVideo($this->request->post);
+			$this->model_popup_popup->addPopup($this->request->post);
 	  		
 			$this->session->data['success'] = $this->language->get('text_success');
 	  
@@ -46,21 +46,21 @@ class ControllerPopupPopupVideo extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 			
-			$this->redirect($this->url->link('popup/popup_video', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->redirect($this->url->link('popup/popup', 'token=' . $this->session->data['token'] . $url, 'SSL'));
     	}
 	
     	$this->getForm();
   	}
  
   	public function update() {
-    	$this->language->load('popup/popup_video');
+    	$this->language->load('popup/popup');
 
     	$this->document->setTitle($this->language->get('heading_title'));
 		
-		$this->load->model('popup/popup_video');
+		$this->load->model('popup/popup');
 	
     	if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_popup_popup_video->editPopupVideo($this->request->get['popup_video_id'], $this->request->post);
+			$this->model_popup_popup->editPopup($this->request->get['popup_id'], $this->request->post);
 			
 			$this->session->data['success'] = $this->language->get('text_success');
 			
@@ -86,22 +86,22 @@ class ControllerPopupPopupVideo extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 			
-			$this->redirect($this->url->link('popup/popup_video', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->redirect($this->url->link('popup/popup', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 
     	$this->getForm();
   	}
 
   	public function delete() {
-    	$this->language->load('popup/popup_video');
+    	$this->language->load('popup/popup');
 
     	$this->document->setTitle($this->language->get('heading_title'));
 		
-		$this->load->model('popup/popup_video');
+		$this->load->model('popup/popup');
 		
 		if (isset($this->request->post['selected']) && $this->validateDelete()) {
-			foreach ($this->request->post['selected'] as $popup_video_id) {
-				$this->model_popup_popup_video->deletePopupVideo($popup_video_id);
+			foreach ($this->request->post['selected'] as $popup_id) {
+				$this->model_popup_popup->deletePopup($popup_id);
 	  		}
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -128,7 +128,7 @@ class ControllerPopupPopupVideo extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 			
-			$this->redirect($this->url->link('popup/popup_video', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+			$this->redirect($this->url->link('popup/popup', 'token=' . $this->session->data['token'] . $url, 'SSL'));
 		}
 
     	$this->getList();
@@ -197,14 +197,14 @@ class ControllerPopupPopupVideo extends Controller {
 
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
-			'href'      => $this->url->link('popup/popup_video', 'token=' . $this->session->data['token'] . $url, 'SSL'),       		
+			'href'      => $this->url->link('popup/popup', 'token=' . $this->session->data['token'] . $url, 'SSL'),       		
       		'separator' => ' :: '
    		);
 		
-		$this->data['insert'] = $this->url->link('popup/popup_video/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		$this->data['delete'] = $this->url->link('popup/popup_video/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$this->data['insert'] = $this->url->link('popup/popup/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$this->data['delete'] = $this->url->link('popup/popup/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
     	
-		$this->data['popup_videos'] = array();
+		$this->data['popups'] = array();
 
 		$data = array(
 			'filter_title'	  => $filter_title, 
@@ -215,23 +215,23 @@ class ControllerPopupPopupVideo extends Controller {
 			'limit'           => $this->config->get('config_admin_limit')
 		);
 		
-		$popup_video_total = $this->model_popup_popup_video->getTotalPopupVideos($data);
+		$popup_total = $this->model_popup_popup->getTotalPopups($data);
 			
-		$results = $this->model_popup_popup_video->getPopupVideos($data);
+		$results = $this->model_popup_popup->getPopups($data);
 				    	
 		foreach ($results as $result) {
 			$action = array();
 			
 			$action[] = array(
 				'text' => $this->language->get('text_edit'),
-				'href' => $this->url->link('popup/popup_video/update', 'token=' . $this->session->data['token'] . '&popup_video_id=' . $result['popup_video_id'] . $url, 'SSL')
+				'href' => $this->url->link('popup/popup/update', 'token=' . $this->session->data['token'] . '&popup_id=' . $result['popup_id'] . $url, 'SSL')
 			);
 	
-      		$this->data['popup_videos'][] = array(
-				'popup_video_id' => $result['popup_video_id'],
+      		$this->data['popups'][] = array(
+				'popup_id' => $result['popup_id'],
 				'title'       => $result['title'],
 				'status'     => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
-				'selected'   => isset($this->request->post['selected']) && in_array($result['popup_video_id'], $this->request->post['selected']),
+				'selected'   => isset($this->request->post['selected']) && in_array($result['popup_id'], $this->request->post['selected']),
 				'action'     => $action
 			);
     	}
@@ -309,11 +309,11 @@ class ControllerPopupPopupVideo extends Controller {
 		}
 				
 		$pagination = new Pagination();
-		$pagination->total = $popup_video_total;
+		$pagination->total = $popup_total;
 		$pagination->page = $page;
 		$pagination->limit = $this->config->get('config_admin_limit');
 		$pagination->text = $this->language->get('text_pagination');
-		$pagination->url = $this->url->link('popup/popup_video', 'token=' . $this->session->data['token'] . $url . '&page={page}', 'SSL');
+		$pagination->url = $this->url->link('popup/popup', 'token=' . $this->session->data['token'] . $url . '&page={page}', 'SSL');
 			
 		$this->data['pagination'] = $pagination->render();
 	
@@ -323,7 +323,7 @@ class ControllerPopupPopupVideo extends Controller {
 		$this->data['sort'] = $sort;
 		$this->data['order'] = $order;
 
-		$this->template = 'popup/popup_video_list.tpl';
+		$this->template = 'popup/popup_list.tpl';
 		$this->children = array(
 			'common/header',
 			'common/footer'
@@ -338,9 +338,15 @@ class ControllerPopupPopupVideo extends Controller {
     	$this->data['text_enabled'] = $this->language->get('text_enabled');
     	$this->data['text_disabled'] = $this->language->get('text_disabled');
     	$this->data['text_none'] = $this->language->get('text_none');
+    	$this->data['text_video_popup'] = $this->language->get('text_video_popup');
+    	$this->data['text_text_popup'] = $this->language->get('text_text_popup');
+    	$this->data['text_carousel_popup'] = $this->language->get('text_carousel_popup');
 
 		$this->data['entry_title'] = $this->language->get('entry_title');
 		$this->data['entry_description'] = $this->language->get('entry_description');
+		$this->data['entry_banner'] = $this->language->get('entry_banner');
+		$this->data['entry_content'] = $this->language->get('entry_content');
+		$this->data['entry_type'] = $this->language->get('entry_type');
 		$this->data['entry_embbed'] = $this->language->get('entry_embbed');
 		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
 		$this->data['entry_status'] = $this->language->get('entry_status');
@@ -395,20 +401,20 @@ class ControllerPopupPopupVideo extends Controller {
 
    		$this->data['breadcrumbs'][] = array(
        		'text'      => $this->language->get('heading_title'),
-			'href'      => $this->url->link('popup/popup_video', 'token=' . $this->session->data['token'] . $url, 'SSL'),
+			'href'      => $this->url->link('popup/popup', 'token=' . $this->session->data['token'] . $url, 'SSL'),
       		'separator' => ' :: '
    		);
 									
-		if (!isset($this->request->get['popup_video_id'])) {
-			$this->data['action'] = $this->url->link('popup/popup_video/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		if (!isset($this->request->get['popup_id'])) {
+			$this->data['action'] = $this->url->link('popup/popup/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		} else {
-			$this->data['action'] = $this->url->link('popup/popup_video/update', 'token=' . $this->session->data['token'] . '&popup_video_id=' . $this->request->get['popup_video_id'] . $url, 'SSL');
+			$this->data['action'] = $this->url->link('popup/popup/update', 'token=' . $this->session->data['token'] . '&popup_id=' . $this->request->get['popup_id'] . $url, 'SSL');
 		}
 		
-		$this->data['cancel'] = $this->url->link('popup/popup_video', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$this->data['cancel'] = $this->url->link('popup/popup', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
-		if (isset($this->request->get['popup_video_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
-      		$popup_video_info = $this->model_popup_popup_video->getPopupVideo($this->request->get['popup_video_id']);
+		if (isset($this->request->get['popup_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+      		$popup_info = $this->model_popup_popup->getPopup($this->request->get['popup_id']);
     	}
 
 		$this->data['token'] = $this->session->data['token'];
@@ -417,39 +423,69 @@ class ControllerPopupPopupVideo extends Controller {
 		
 		$this->data['languages'] = $this->model_localisation_language->getLanguages();
 		
-		if (isset($this->request->post['popup_video_description'])) {
-			$this->data['popup_video_description'] = $this->request->post['popup_video_description'];
-		} elseif (isset($this->request->get['popup_video_id'])) {
-			$this->data['popup_video_description'] = $this->model_popup_popup_video->getPopupVideoDescriptions($this->request->get['popup_video_id']);
+		if (isset($this->request->post['popup_description'])) {
+			$this->data['popup_description'] = $this->request->post['popup_description'];
+		} elseif (isset($this->request->get['popup_id'])) {
+			$this->data['popup_description'] = $this->model_popup_popup->getPopupDescriptions($this->request->get['popup_id']);
 		} else {
-			$this->data['popup_video_description'] = array();
+			$this->data['popup_description'] = array();
 		}
 		
 		if (isset($this->request->post['embbed'])) {
       		$this->data['embbed'] = $this->request->post['embbed'];
-    	} elseif (!empty($popup_video_info)) {
-      		$this->data['embbed'] = $popup_video_info['embbed'];
+    	} elseif (!empty($popup_info)) {
+      		$this->data['embbed'] = $popup_info['embbed'];
     	} else {
 			$this->data['embbed'] = '';
 		}
 		
+		if (isset($this->request->post['banner_id'])) {
+      		$this->data['banner_id'] = $this->request->post['banner_id'];
+    	} elseif (!empty($popup_info)) {
+      		$this->data['banner_id'] = $popup_info['banner_id'];
+    	} else {
+			$this->data['banner_id'] = 0;
+		}
+		
+		$this->load->model('design/banner');
+		$banner_data = $this->model_design_banner->getBanner($this->data['banner_id']);
+		if (!empty($banner_data)) {
+			$this->data['banner'] = array(
+				'banner_id' => $banner_data['banner_id'],
+				'name' => $banner_data['name'],
+				);
+		}else {
+			$this->data['banner'] = array(
+				'banner_id' => 0,
+				'name' => '',
+				);
+		}
+		
+		if (isset($this->request->post['type'])) {
+      		$this->data['type'] = $this->request->post['type'];
+    	} elseif (!empty($popup_info)) {
+      		$this->data['type'] = $popup_info['type'];
+    	} else {
+			$this->data['type'] = 0;
+		}
+		
 		if (isset($this->request->post['sort_order'])) {
       		$this->data['sort_order'] = $this->request->post['sort_order'];
-    	} elseif (!empty($popup_video_info)) {
-      		$this->data['sort_order'] = $popup_video_info['sort_order'];
+    	} elseif (!empty($popup_info)) {
+      		$this->data['sort_order'] = $popup_info['sort_order'];
     	} else {
 			$this->data['sort_order'] = 1;
 		}
 				
     	if (isset($this->request->post['status'])) {
       		$this->data['status'] = $this->request->post['status'];
-    	} elseif (!empty($popup_video_info)) {
-			$this->data['status'] = $popup_video_info['status'];
+    	} elseif (!empty($popup_info)) {
+			$this->data['status'] = $popup_info['status'];
 		} else {
       		$this->data['status'] = 1;
     	}
 										
-		$this->template = 'popup/popup_video_form.tpl';
+		$this->template = 'popup/popup_form.tpl';
 		$this->children = array(
 			'common/header',
 			'common/footer'
@@ -459,11 +495,11 @@ class ControllerPopupPopupVideo extends Controller {
   	} 
 	
   	protected function validateForm() { 
-    	if (!$this->user->hasPermission('modify', 'popup/popup_video')) {
+    	if (!$this->user->hasPermission('modify', 'popup/popup')) {
       		$this->error['warning'] = $this->language->get('error_permission');
     	}
 
-    	foreach ($this->request->post['popup_video_description'] as $language_id => $value) {
+    	foreach ($this->request->post['popup_description'] as $language_id => $value) {
       		if ((utf8_strlen($value['title']) < 1) || (utf8_strlen($value['title']) > 255)) {
         		$this->error['title'][$language_id] = $this->language->get('error_title');
       		}
@@ -481,7 +517,7 @@ class ControllerPopupPopupVideo extends Controller {
   	}
 	
   	protected function validateDelete() {
-    	if (!$this->user->hasPermission('modify', 'popup/popup_video')) {
+    	if (!$this->user->hasPermission('modify', 'popup/popup')) {
       		$this->error['warning'] = $this->language->get('error_permission');  
     	}
 		
@@ -496,7 +532,7 @@ class ControllerPopupPopupVideo extends Controller {
 		$json = array();
 		
 		if (isset($this->request->get['filter_title'])) {
-			$this->load->model('popup/popup_video');
+			$this->load->model('popup/popup');
 			
 			if (isset($this->request->get['filter_title'])) {
 				$filter_title = $this->request->get['filter_title'];
@@ -516,11 +552,11 @@ class ControllerPopupPopupVideo extends Controller {
 				'limit'        => $limit
 			);
 			
-			$results = $this->model_popup_popup_video->getPopupVideos($data);
+			$results = $this->model_popup_popup->getPopups($data);
 			
 			foreach ($results as $result) {
 				$json[] = array(
-					'popup_video_id' => $result['popup_video_id'],
+					'popup_id' => $result['popup_id'],
 					'title'       => strip_tags(html_entity_decode($result['title'], ENT_QUOTES, 'UTF-8'))
 				);	
 			}

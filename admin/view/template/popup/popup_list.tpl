@@ -13,7 +13,7 @@
   <?php } ?>
   <div class="box">
     <div class="heading">
-      <h1><img src="view/image/popup_text.png" alt="" /> <?php echo $heading_title; ?></h1>
+      <h1><img src="view/image/popup.png" alt="" /> <?php echo $heading_title; ?></h1>
       <div class="buttons"><a href="<?php echo $insert; ?>" class="button"><?php echo $button_insert; ?></a><a onclick="$('form').submit();" class="button"><?php echo $button_delete; ?></a></div>
     </div>
     <div class="content">
@@ -54,17 +54,17 @@
                 </select></td>
               <td align="right"><a onclick="filter();" class="button"><?php echo $button_filter; ?></a></td>
             </tr>
-            <?php if ($popup_texts) { ?>
-            <?php foreach ($popup_texts as $popup_text) { ?>
+            <?php if ($popups) { ?>
+            <?php foreach ($popups as $popup) { ?>
             <tr>
-              <td style="text-align: center;"><?php if ($popup_text['selected']) { ?>
-                <input type="checkbox" name="selected[]" value="<?php echo $popup_text['popup_text_id']; ?>" checked="checked" />
+              <td style="text-align: center;"><?php if ($popup['selected']) { ?>
+                <input type="checkbox" name="selected[]" value="<?php echo $popup['popup_id']; ?>" checked="checked" />
                 <?php } else { ?>
-                <input type="checkbox" name="selected[]" value="<?php echo $popup_text['popup_text_id']; ?>" />
+                <input type="checkbox" name="selected[]" value="<?php echo $popup['popup_id']; ?>" />
                 <?php } ?></td>
-              <td class="left"><?php echo $popup_text['title']; ?></td>
-              <td class="left"><?php echo $popup_text['status']; ?></td>
-              <td class="right"><?php foreach ($popup_text['action'] as $action) { ?>
+              <td class="left"><?php echo $popup['title']; ?></td>
+              <td class="left"><?php echo $popup['status']; ?></td>
+              <td class="right"><?php foreach ($popup['action'] as $action) { ?>
                 [ <a href="<?php echo $action['href']; ?>"><?php echo $action['text']; ?></a> ]
                 <?php } ?></td>
             </tr>
@@ -83,7 +83,7 @@
 </div>
 <script type="text/javascript"><!--
 function filter() {
-  url = 'index.php?route=popup/popup_text&token=<?php echo $token; ?>';
+  url = 'index.php?route=popup/popup&token=<?php echo $token; ?>';
   
   var filter_title = $('input[name=\'filter_title\']').attr('value');
   
@@ -112,13 +112,13 @@ $('input[name=\'filter_title\']').autocomplete({
   delay: 500,
   source: function(request, response) {
     $.ajax({
-      url: 'index.php?route=popup/popup_text/autocomplete&token=<?php echo $token; ?>&filter_title=' +  encodeURIComponent(request.term),
+      url: 'index.php?route=popup/popup/autocomplete&token=<?php echo $token; ?>&filter_title=' +  encodeURIComponent(request.term),
       dataType: 'json',
       success: function(json) {   
         response($.map(json, function(item) {
           return {
             label: item.title,
-            value: item.popup_text_id
+            value: item.popup_id
           }
         }));
       }
