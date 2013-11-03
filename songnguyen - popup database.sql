@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2013 at 02:11 PM
+-- Generation Time: Nov 03, 2013 at 02:31 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -134,7 +134,6 @@ CREATE TABLE IF NOT EXISTS `popup_video` (
 
 CREATE TABLE IF NOT EXISTS `popup_video_description` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `popup_video_id` int(11) NOT NULL,

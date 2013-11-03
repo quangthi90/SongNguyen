@@ -3,7 +3,7 @@
 $_['heading_title']      = 'Popup Text';
 
 // Text
-$_['text_success']      = '';
+$_['text_success']           = 'Success: You have modified popup texts!';
 
 // Column
 $_['column_title']      = 'Title';
