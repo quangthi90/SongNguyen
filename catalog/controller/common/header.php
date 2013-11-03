@@ -15,7 +15,6 @@ class ControllerCommonHeader extends Controller {
         } else {
             $this->data['error'] = '';
         }
-
 		$this->data['base'] = $server;
 		$this->data['description'] = $this->document->getDescription();
 		$this->data['keywords'] = $this->document->getKeywords();

@@ -17,10 +17,14 @@
 <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
 <?php } ?>
 <link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/orginal.css" />
+<link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/colorbox/colorbox.css" />
+<link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/mcustomscrollbar.css" />
 <?php foreach ($styles as $style) { ?>
 <link rel="<?php echo $style['rel']; ?>" type="text/css" href="<?php echo $style['href']; ?>" media="<?php echo $style['media']; ?>" />
 <?php } ?>
 <script type="text/javascript" src="catalog/view/javascript/jquery/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="catalog/view/javascript/jquery/colorbox/jquery.colorbox-min.js"></script>
+<script type="text/javascript" src="catalog/view/javascript/jquery/jquery.mcustomscrollbar.min.js"></script>
 <script type="text/javascript" src="catalog/view/javascript/common.js"></script>
 <?php foreach ($scripts as $script) { ?>
 <script type="text/javascript" src="<?php echo $script; ?>"></script>
@@ -70,7 +74,7 @@ DD_belatedPNG.fix('#logo img');
                 </ul>
               </li>
               <li class="item-with-ul">
-                <a href="#">Các Trường</a>
+                <a href="#">Du Học Hè</a>
                 <ul style="display: none;">
                   <li><a href="#">Du Học Hè Singapore</a></li>
                   <li><a href="#">Du Học Hè Mỹ</a></li>
@@ -78,6 +82,9 @@ DD_belatedPNG.fix('#logo img');
                   <li><a href="#">Du Học Hè New Zealand</a></li>
                   <li><a href="#">Du Học Hè Anh</a></li>
                 </ul>
+              </li>
+              <li>
+                <a href="#">Chương trình</a>
               </li>
               <li class="item-with-ul">
                 <a href="#">Dịch Vụ</a>
@@ -90,7 +97,7 @@ DD_belatedPNG.fix('#logo img');
                 </ul>
               </li>
               <li>
-                <a href="#">Tin Tức</a>
+                <a href="#">Tin Tức & Sự Kiện</a>
               </li>
               <li class="item-with-ul">
                 <a href="#">Các Lớp Học</a>
@@ -101,15 +108,9 @@ DD_belatedPNG.fix('#logo img');
                     <li><a href="#">Văn Hóa Mỹ</a></li>
                     <li><a href="#">Kỹ Năng</a></li>
                 </ul>
-              </li>
-              <li>
-                <a href="#">Các CLB</a>
-              </li>
+              </li>              
               <li>
                 <a href="#">FAQ</a>
-              </li>
-              <li>
-                <a href="#sitemap-page">Sitemap</a>
               </li>
               <li class="item-with-ul">
                 <a href="#">Liên hệ</a>

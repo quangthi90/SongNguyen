@@ -171,13 +171,8 @@ a:hover{
 	font-weight:bold;
 	font-style:italic;
 	padding: 5px 0px 5px 20px;
-	background: transparent url("../image/icon-redbox.gif") 0 50% no-repeat;
 }
 .contentbox{
-	width:870px;
-	height:440px;
-	float:left;
-	overflow:-moz-scrollbars-horizontal;
 	overflow-x:hidden;
 	overflow-y:auto;	
 }
@@ -253,6 +248,11 @@ a:hover{
 #menulang .list-flag li:hover span {
 	color: #000;	
 }
+#menulang .has-site-map li {
+	padding: 3px 10px;
+	margin: 0px 2px;
+	border: 1px solid #ddd;
+}
 
 /* Contact Page */
 .contact-map{
@@ -281,13 +281,6 @@ a:hover{
 	padding-top:20px;
 }
 /* News Page */
-.datepost{
-	font-size:9px;
-}
-.header1{
-	font-weight:bold;
-	text-decoration:underline;
-}
 
 /* Footer CSS*/
 #footer{
@@ -297,4 +290,42 @@ a:hover{
 	margin-top:30px;
 	float:left;
 	font-size:12px;
+}
+
+#site-map {
+	padding: 20px;
+}
+#site-map .contentbox {
+	overflow: hidden;
+}
+#site-map .contentbox a {
+	font-size: 15px;
+}
+#site-map .contentbox a:hover{
+	text-decoration: underline;
+}
+#site-map .contentbox > ul {
+	list-style: square;
+	padding-left: 30px;
+	float: left;
+}
+#site-map .contentbox > ul > li {
+	padding: 5px;
+}
+#site-map .contentbox > ul > li > a {
+	font-weight: bold;
+	font-size: 18px;
+}
+#site-map .contentbox > ul > li > ul {
+    padding-left: 20px;
+	list-style: circle;
+}
+#site-map .contentbox > ul > li > ul > li {
+	padding: 3px;
+}
+#site-map .contentbox > ul > li > ul > li > ul {
+	padding-left: 20px;
+}
+#site-map .contentbox > ul > li > ul > li > ul > li > ul{
+	padding-left: 20px;
 }
