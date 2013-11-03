@@ -441,8 +441,8 @@ class ControllerNewsNews extends Controller {
 		$this->data['text_option_value'] = $this->language->get('text_option_value');
 		$this->data['text_select'] = $this->language->get('text_select');
 		$this->data['text_none'] = $this->language->get('text_none');
-		$this->data['text_percent'] = $this->language->get('text_percent');
-		$this->data['text_amount'] = $this->language->get('text_amount');
+		$this->data['text_format_one'] = $this->language->get('text_format_one');
+		$this->data['text_format_two'] = $this->language->get('text_format_two');
 
 		$this->data['entry_title'] = $this->language->get('entry_title');
 		$this->data['entry_content'] = $this->language->get('entry_content');
@@ -453,9 +453,7 @@ class ControllerNewsNews extends Controller {
 		$this->data['entry_required'] = $this->language->get('entry_required');
 		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
 		$this->data['entry_status'] = $this->language->get('entry_status');
-		$this->data['entry_date_start'] = $this->language->get('entry_date_start');
-		$this->data['entry_date_end'] = $this->language->get('entry_date_end');
-		$this->data['entry_priority'] = $this->language->get('entry_priority');
+		$this->data['entry_format'] = $this->language->get('entry_format');
 
     	$this->data['button_save'] = $this->language->get('button_save');
     	$this->data['button_cancel'] = $this->language->get('button_cancel');
@@ -593,6 +591,14 @@ class ControllerNewsNews extends Controller {
 			$this->data['status'] = $news_info['status'];
 		} else {
       		$this->data['status'] = 1;
+    	}
+				
+    	if (isset($this->request->post['format'])) {
+      		$this->data['format'] = $this->request->post['format'];
+    	} elseif (!empty($news_info)) {
+			$this->data['format'] = $news_info['format'];
+		} else {
+      		$this->data['format'] = 1;
     	}
 
 		if (isset($this->request->post['news_category_id'])) {

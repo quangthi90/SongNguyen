@@ -219,3 +219,57 @@
 2013-11-02 8:21:40 - PHP Notice:  Undefined index: id in F:\Program Files\xampp\htdocs\Project\sn-edu\admin\view\template\news\news_form.tpl on line 47
 2013-11-02 8:21:59 - PHP Notice:  Undefined variable: copy in F:\Program Files\xampp\htdocs\Project\sn-edu\admin\view\template\news\news_list.tpl on line 17
 2013-11-02 8:21:59 - PHP Notice:  Undefined variable: button_copy in F:\Program Files\xampp\htdocs\Project\sn-edu\admin\view\template\news\news_list.tpl on line 17
+2013-11-02 14:25:44 - PHP Notice:  Error: Could not load template C:\xampp\htdocs\songnguyen/admin/view/theme/common/header.tpl! in C:\xampp\htdocs\songnguyen\system\engine\controller.php on line 90
+2013-11-02 14:27:13 - PHP Notice:  Error: Could not load template C:\xampp\htdocs\songnguyen/admin/view/theme/common/header.tpl! in C:\xampp\htdocs\songnguyen\system\engine\controller.php on line 90
+2013-11-02 14:27:15 - PHP Notice:  Error: Could not load template C:\xampp\htdocs\songnguyen/admin/view/theme/common/header.tpl! in C:\xampp\htdocs\songnguyen\system\engine\controller.php on line 90
+2013-11-02 14:28:46 - PHP Warning:  fopen(C:\xampp\htdocs\songnguyen/image/cache/test): failed to open stream: No such file or directory in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 65
+2013-11-02 14:28:46 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 67
+2013-11-02 14:28:46 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 69
+2013-11-02 14:28:46 - PHP Warning:  sprintf(): Too few arguments in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 72
+2013-11-02 14:28:46 - PHP Warning:  fopen(C:\xampp\htdocs\songnguyen/system/cache/test): failed to open stream: No such file or directory in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 82
+2013-11-02 14:28:46 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 84
+2013-11-02 14:28:46 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 86
+2013-11-02 14:28:46 - PHP Warning:  sprintf(): Too few arguments in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 89
+2013-11-02 14:28:47 - PHP Notice:  Use of undefined constant HTTP_CATALOG - assumed 'HTTP_CATALOG' in C:\xampp\htdocs\songnguyen\admin\controller\common\header.php on line 184
+2013-11-02 14:28:47 - PHP Warning:  fopen(C:\xampp\htdocs\songnguyen/system/cache/cache.store.1383402527): failed to open stream: No such file or directory in C:\xampp\htdocs\songnguyen\system\library\cache.php on line 32
+2013-11-02 14:28:47 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\songnguyen\system\library\cache.php on line 34
+2013-11-02 14:28:47 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\songnguyen\system\library\cache.php on line 36
+2013-11-02 14:29:09 - PHP Warning:  fopen(C:\xampp\htdocs\songnguyen/image/cache/test): failed to open stream: No such file or directory in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 65
+2013-11-02 14:29:09 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 67
+2013-11-02 14:29:09 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 69
+2013-11-02 14:29:09 - PHP Warning:  sprintf(): Too few arguments in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 72
+2013-11-02 14:29:09 - PHP Notice:  Use of undefined constant HTTP_CATALOG - assumed 'HTTP_CATALOG' in C:\xampp\htdocs\songnguyen\admin\controller\common\header.php on line 184
+2013-11-02 14:29:25 - PHP Warning:  fopen(C:\xampp\htdocs\songnguyen/image/cache/test): failed to open stream: No such file or directory in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 65
+2013-11-02 14:29:25 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 67
+2013-11-02 14:29:25 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 69
+2013-11-02 14:29:25 - PHP Warning:  sprintf(): Too few arguments in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 72
+2013-11-02 14:29:25 - PHP Warning:  fopen(C:\xampp\htdocs\songnguyen/system/cache/test): failed to open stream: Permission denied in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 82
+2013-11-02 14:29:25 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 84
+2013-11-02 14:29:25 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 86
+2013-11-02 14:29:25 - PHP Warning:  unlink(C:\xampp\htdocs\songnguyen/system/cache/test): Permission denied in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 93
+2013-11-02 14:29:29 - PHP Notice:  Use of undefined constant HTTP_CATALOG - assumed 'HTTP_CATALOG' in C:\xampp\htdocs\songnguyen\admin\controller\common\header.php on line 184
+2013-11-02 14:29:53 - PHP Warning:  fopen(C:\xampp\htdocs\songnguyen/image/cache/test): failed to open stream: Permission denied in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 65
+2013-11-02 14:29:53 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 67
+2013-11-02 14:29:53 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 69
+2013-11-02 14:29:53 - PHP Warning:  unlink(C:\xampp\htdocs\songnguyen/image/cache/test): Permission denied in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 76
+2013-11-02 14:29:53 - PHP Notice:  Use of undefined constant HTTP_CATALOG - assumed 'HTTP_CATALOG' in C:\xampp\htdocs\songnguyen\admin\controller\common\header.php on line 184
+2013-11-02 14:31:24 - PHP Warning:  fopen(C:\xampp\htdocs\songnguyen/image/cache/test): failed to open stream: Permission denied in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 65
+2013-11-02 14:31:24 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 67
+2013-11-02 14:31:24 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 69
+2013-11-02 14:31:24 - PHP Warning:  unlink(C:\xampp\htdocs\songnguyen/image/cache/test): Permission denied in C:\xampp\htdocs\songnguyen\admin\controller\common\home.php on line 76
+2013-11-02 14:31:25 - PHP Notice:  Use of undefined constant HTTP_CATALOG - assumed 'HTTP_CATALOG' in C:\xampp\htdocs\songnguyen\admin\controller\common\header.php on line 184
+2013-11-02 14:31:52 - PHP Notice:  Use of undefined constant HTTP_CATALOG - assumed 'HTTP_CATALOG' in C:\xampp\htdocs\songnguyen\admin\controller\common\header.php on line 184
+2013-11-02 14:32:40 - PHP Notice:  Undefined variable: copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-02 14:32:40 - PHP Notice:  Undefined variable: button_copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 1:38:56 - PHP Notice:  Undefined index: sort_order in C:\xampp\htdocs\songnguyen\admin\controller\news\news.php on line 583
+2013-11-03 1:38:56 - PHP Notice:  Undefined index: news_category_id in C:\xampp\htdocs\songnguyen\admin\controller\news\news.php on line 607
+2013-11-03 1:41:23 - PHP Notice:  Undefined index: format in C:\xampp\htdocs\songnguyen\admin\model\news\news.php on line 24
+2013-11-03 1:41:23 - PHP Notice:  Undefined variable: copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 1:41:23 - PHP Notice:  Undefined variable: button_copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 1:41:31 - PHP Notice:  Undefined index: format in C:\xampp\htdocs\songnguyen\admin\model\news\news.php on line 24
+2013-11-03 1:41:31 - PHP Notice:  Undefined variable: copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 1:41:31 - PHP Notice:  Undefined variable: button_copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 1:42:06 - PHP Notice:  Undefined variable: copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 1:42:06 - PHP Notice:  Undefined variable: button_copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 1:42:13 - PHP Notice:  Undefined variable: copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 1:42:13 - PHP Notice:  Undefined variable: button_copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17

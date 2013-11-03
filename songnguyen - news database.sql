@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2013 at 11:26 AM
+-- Generation Time: Nov 03, 2013 at 01:24 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -41,6 +41,7 @@ CREATE TABLE IF NOT EXISTS `news` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `primary_image` varchar(255) NOT NULL,
   `second_image` varchar(255) NOT NULL,
+  `format` tinyint(1) NOT NULL,
   `sort_order` int(3) NOT NULL,
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL,
@@ -92,6 +93,21 @@ CREATE TABLE IF NOT EXISTS `news_description` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
+  `news_id` int(11) NOT NULL,
+  `language_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news_option`
+--
+
+CREATE TABLE IF NOT EXISTS `news_option` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `value` varchar(255) NOT NULL,
   `news_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
