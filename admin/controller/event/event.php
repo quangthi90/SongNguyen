@@ -423,6 +423,7 @@ class ControllerEventEvent extends Controller {
 		$this->data['entry_title'] = $this->language->get('entry_title');
 		$this->data['entry_content'] = $this->language->get('entry_content');
     	$this->data['entry_image'] = $this->language->get('entry_image');
+    	$this->data['entry_keyword'] = $this->language->get('entry_keyword');
     	//$this->data['entry_event_category'] = $this->language->get('entry_event_category');
 		$this->data['entry_text'] = $this->language->get('entry_text');
 		$this->data['entry_required'] = $this->language->get('entry_required');
@@ -533,6 +534,14 @@ class ControllerEventEvent extends Controller {
 
 		$this->data['no_image'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
 		
+		if (isset($this->request->post['keyword'])) {
+      		$this->data['keyword'] = $this->request->post['keyword'];
+    	} elseif (!empty($event_info)) {
+      		$this->data['keyword'] = $event_info['keyword'];
+    	} else {
+			$this->data['keyword'] = '';
+		}
+
 		if (isset($this->request->post['sort_order'])) {
       		$this->data['sort_order'] = $this->request->post['sort_order'];
     	} elseif (!empty($event_info)) {

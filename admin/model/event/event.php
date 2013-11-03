@@ -12,6 +12,10 @@ class ModelEventEvent extends Model {
 		foreach ($data['event_description'] as $language_id => $value) {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "event_description SET event_id = '" . (int)$event_id . "', language_id = '" . (int)$language_id . "', title = '" . $this->db->escape($value['title']) . "', content = '" . $this->db->escape($value['content']) . "'");
 		}
+
+		if (isset($data['keyword'])) {
+			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'event_id=" . $event_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
+		}
 		
 		/*if (isset($data['event_category'])) {
 			foreach ($data['event_category'] as $event_category_id) {
@@ -42,6 +46,12 @@ class ModelEventEvent extends Model {
 				$this->db->query("INSERT INTO " . DB_PREFIX . "event_to_event_category SET event_id = '" . (int)$event_id . "', event_category_id = '" . (int)$event_category_id . "'");
 			}		
 		}*/
+
+		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'event_id=" . (int)$event_id . "'");
+		
+		if (isset($data['keyword'])) {
+			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'event_id=" . $event_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
+		}
 	}
 /*	
 	public function copyProduct($product_id) {
@@ -80,12 +90,13 @@ class ModelEventEvent extends Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "event WHERE id = '" . (int) $event_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "event_description WHERE event_id = '" . (int) $event_id . "'");
 		//$this->db->query("DELETE FROM " . DB_PREFIX . "event_to_event_category WHERE event_id = '" . (int) $event_id . "'");
+		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'event_id=" . (int)$event_id . "'");
 		
 		$this->cache->delete('event');
 	}
 	
 	public function getEvent($event_id) {
-		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "event n LEFT JOIN " . DB_PREFIX . "event_description nd ON (n.id = nd.event_id) WHERE n.id = '" . (int)$event_id . "' AND nd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
+		$query = $this->db->query("SELECT DISTINCT *, (SELECT ua.keyword FROM " . DB_PREFIX . "url_alias ua WHERE ua.query = 'event_id=" . $event_id . "') AS keyword FROM " . DB_PREFIX . "event n LEFT JOIN " . DB_PREFIX . "event_description nd ON (n.id = nd.event_id) WHERE n.id = '" . (int)$event_id . "' AND nd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
 				
 		return $query->row;
 	}
