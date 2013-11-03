@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2013 at 04:59 AM
+-- Generation Time: Nov 03, 2013 at 02:11 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -12,6 +12,10 @@
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `test`
+--
 
 -- --------------------------------------------------------
 
@@ -101,7 +105,6 @@ CREATE TABLE IF NOT EXISTS `popup_text` (
 
 CREATE TABLE IF NOT EXISTS `popup_text_description` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `popup_text_id` int(11) NOT NULL,
