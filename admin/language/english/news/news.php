@@ -17,6 +17,9 @@ $_['column_image'] 			= 'Image';
 $_['column_status'] 			= 'Status';
 $_['column_action'] 			= 'Action';
 
+// button
+$_['button_add_option'] 			= 'Add Option';
+
 // Entry
 $_['entry_title'] 			= 'Title:';
 $_['entry_content'] 			= 'Content:';
@@ -24,6 +27,8 @@ $_['entry_primary_image'] 			= 'Primary Image:';
 $_['entry_second_image'] 			= 'Second Image:';
 $_['entry_format'] 			= 'Format:';
 $_['entry_status'] 			= 'Status:';
+$_['entry_news_option'] 			= 'Option:';
+$_['entry_news_option_value'] 			= 'Value:';
 $_['entry_sort_order'] 			= 'Sort Order:';
 $_['entry_news_category'] 			= 'News Category:';
 

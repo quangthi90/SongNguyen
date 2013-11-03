@@ -454,14 +454,18 @@ class ControllerNewsNews extends Controller {
 		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
 		$this->data['entry_status'] = $this->language->get('entry_status');
 		$this->data['entry_format'] = $this->language->get('entry_format');
+		$this->data['entry_news_option_value'] = $this->language->get('entry_news_option_value');
+		$this->data['entry_news_option'] = $this->language->get('entry_news_option');
 
     	$this->data['button_save'] = $this->language->get('button_save');
     	$this->data['button_cancel'] = $this->language->get('button_cancel');
 		$this->data['button_remove'] = $this->language->get('button_remove');
+		$this->data['button_add_option'] = $this->language->get('button_add_option');
 		
     	$this->data['tab_general'] = $this->language->get('tab_general');
     	$this->data['tab_data'] = $this->language->get('tab_data');		
 		$this->data['tab_links'] = $this->language->get('tab_links');
+		$this->data['tab_option'] = $this->language->get('tab_option');
 		 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -539,6 +543,14 @@ class ControllerNewsNews extends Controller {
 			$this->data['news_description'] = $this->model_news_news->getNewsDescriptions($this->request->get['news_id']);
 		} else {
 			$this->data['news_description'] = array();
+		}
+		
+		if (isset($this->request->post['news_option'])) {
+			$this->data['news_options'] = $this->request->post['news_option'];
+		} elseif (isset($this->request->get['news_id'])) {
+			$this->data['news_options'] = $this->model_news_news->getNewsOptions($this->request->get['news_id']);
+		} else {
+			$this->data['news_options'] = array();
 		}
 		
 		if (isset($this->request->post['primary_image'])) {

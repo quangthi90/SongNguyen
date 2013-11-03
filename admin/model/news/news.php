@@ -16,6 +16,12 @@ class ModelNewsNews extends Model {
 		foreach ($data['news_description'] as $language_id => $value) {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "news_description SET news_id = '" . (int)$news_id . "', language_id = '" . (int)$language_id . "', title = '" . $this->db->escape($value['title']) . "', content = '" . $this->db->escape($value['content']) . "'");
 		}
+
+		foreach ($data['news_option'] as $news_option) {
+			foreach ($news_option as $language_id => $value) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "news_option SET news_id = '" . (int)$news_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', value = '" . $this->db->escape($value['value']) . "'");
+			}
+		}
 		
 		$this->cache->delete('news');
 	}
@@ -35,6 +41,14 @@ class ModelNewsNews extends Model {
 		
 		foreach ($data['news_description'] as $language_id => $value) {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "news_description SET news_id = '" . (int)$news_id . "', language_id = '" . (int)$language_id . "', title = '" . $this->db->escape($value['title']) . "', content = '" . $this->db->escape($value['content']) . "'");
+		}
+		
+		$this->db->query("DELETE FROM " . DB_PREFIX . "news_option WHERE news_id = '" . (int)$news_id . "'");
+
+		foreach ($data['news_option'] as $news_option) {
+			foreach ($news_option as $language_id => $value) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "news_option SET news_id = '" . (int)$news_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', value = '" . $this->db->escape($value['value']) . "'");
+			}
 		}
 	}
 /*	
@@ -73,8 +87,23 @@ class ModelNewsNews extends Model {
 	public function deleteNews($news_id) {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "news WHERE id = '" . (int)$news_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "news_description WHERE news_id = '" . (int)$news_id . "'");
+		$this->db->query("DELETE FROM " . DB_PREFIX . "news_option WHERE news_id = '" . (int)$news_id . "'");
 		
 		$this->cache->delete('news');
+	}
+
+	public function getNewsOptions($news_id) {
+		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "news_option WHERE news_id = '" . (int)$news_id . "'");
+
+		$results = array();
+		foreach ($query->rows as $option) {
+			$results[$option['news_id'] . 'x' . $option['id']][$option['language_id']] = array(
+				'name' => $option['name'],
+				'value' => $option['value'],
+				);
+		}
+				
+		return $results;
 	}
 	
 	public function getNews($news_id) {

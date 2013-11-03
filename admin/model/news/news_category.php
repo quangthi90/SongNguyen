@@ -53,9 +53,11 @@ class ModelNewsNewsCategory extends Model {
 		foreach ($newses as $news) {	
 			$this->db->query("DELETE FROM " . DB_PREFIX . "news WHERE id = '" . $news['id'] . "'");
 			$this->db->query("DELETE FROM " . DB_PREFIX . "news_description WHERE id = '" . $news['id'] . "'");
+			$this->db->query("DELETE FROM " . DB_PREFIX . "news_option WHERE news_id = '" . $news['id'] . "'");
 		}
 		
 		$this->cache->delete('news_category');
+		$this->cache->delete('news');
 	} 
 /*	
 	// Function to repair any erroneous categories that are not in the category path table.

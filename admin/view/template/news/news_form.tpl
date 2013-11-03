@@ -14,7 +14,7 @@
       <div class="buttons"><a onclick="$('#form').submit();" class="button"><?php echo $button_save; ?></a><a href="<?php echo $cancel; ?>" class="button"><?php echo $button_cancel; ?></a></div>
     </div>
     <div class="content">
-      <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-data"><?php echo $tab_data; ?></a><!--<a href="#tab-links"><?php echo $tab_links; ?></a>--></div>
+      <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-data"><?php echo $tab_data; ?></a><!--<a href="#tab-links"><?php echo $tab_links; ?></a>--><a href="#tab-news-option"><?php echo $tab_option; ?></a></div>
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
         <div id="tab-general">
           <div id="languages" class="htabs">
@@ -96,6 +96,40 @@
             
           </table>
         </div>-->
+        <div id="tab-option">
+          <table id="news-option" class="list">
+            <thead>
+              <tr>
+                <td class="left"><?php echo $entry_news_option; ?></td>
+                <td class="left"><?php echo $entry_news_option_value; ?></td>
+                <td></td>
+              </tr>
+            </thead>
+            <?php $news_option_row = 0; ?>
+            <?php foreach ($news_options as $news_option) { ?>
+            <tbody id="news-option-row<?php echo $news_option_row; ?>">
+              <tr>
+                <td class="left">
+                <?php foreach ($languages as $language) { ?>
+                <input type="text" name="news_option[<?php echo $news_option_row; ?>][<?php echo $language['language_id']; ?>][name]" value="<?php echo $news_option[$language['language_id']]['name']; ?>" /><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" align="top" /><br />
+                <?php } ?></td>
+                <td class="left">
+                <?php foreach ($languages as $language) { ?>
+                  <textarea name="news_option[<?php echo $news_option_row; ?>][<?php echo $language['language_id']; ?>][value]" cols="40" rows="5"><?php echo isset($news_option[$language['language_id']]) ? $news_option[$language['language_id']]['value'] : ''; ?></textarea><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" align="top" /><br />
+                <?php } ?></td>
+                <td class="left"><a onclick="$('#news-option-row<?php echo $news_option_row; ?>').remove();" class="button"><?php echo $button_remove; ?></a></td>
+              </tr>
+            </tbody>
+            <?php $news_option_row++; ?>
+            <?php } ?>
+            <tfoot>
+              <tr>
+                <td colspan="2"></td>
+                <td class="left"><a onclick="addNewsOption();" class="button"><?php echo $button_add_option; ?></a></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
       </form>
     </div>
   </div>
@@ -190,6 +224,31 @@ function image_upload(field, thumb) {
 	});
 };
 //--></script> 
+<script type="text/javascript"><!--
+function addNewsOption() {
+  var news_option_row = <?php echo $news_option_row; ?>;
+
+  html  = '<tbody id="news-option-row' + news_option_row + '">';
+    html += '  <tr>';
+  html += '    <td class="left">'
+  <?php foreach ($languages as $language) { ?>
+  html += '<input type="text" name="news_option[' + news_option_row + '][<?php echo $language['language_id']; ?>][name]" value="" /><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" align="top" /><br />'
+    <?php } ?>
+  html += '</td>';
+  html += '    <td class="left">';
+  <?php foreach ($languages as $language) { ?>
+  html += '<textarea name="news_option[' + news_option_row + '][<?php echo $language['language_id']; ?>][value]" cols="40" rows="5"></textarea><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" align="top" /><br />';
+    <?php } ?>
+  html += '    </td>';
+  html += '    <td class="left"><a onclick="$(\'#news-option-row' + news_option_row + '\').remove();" class="button"><?php echo $button_remove; ?></a></td>';
+    html += '  </tr>';  
+    html += '</tbody>';
+  
+  $('#news-option tfoot').before(html);
+  
+  news_option_row++;
+}
+//--></script>
 <script type="text/javascript" src="view/javascript/jquery/ui/jquery-ui-timepicker-addon.js"></script> 
 <script type="text/javascript"><!--
 $('.date').datepicker({dateFormat: 'yy-mm-dd'});

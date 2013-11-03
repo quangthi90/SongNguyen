@@ -273,3 +273,50 @@
 2013-11-03 1:42:06 - PHP Notice:  Undefined variable: button_copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
 2013-11-03 1:42:13 - PHP Notice:  Undefined variable: copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
 2013-11-03 1:42:13 - PHP Notice:  Undefined variable: button_copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 2:15:32 - PHP Notice:  Undefined variable: copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 2:15:32 - PHP Notice:  Undefined variable: button_copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 2:16:34 - PHP Notice:  Undefined variable: news_options in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_form.tpl on line 109
+2013-11-03 2:16:34 - PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_form.tpl on line 109
+2013-11-03 2:21:10 - PHP Notice:  Undefined variable: copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 2:21:10 - PHP Notice:  Undefined variable: button_copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 2:21:12 - PHP Warning:  Illegal string offset 'news_id' in C:\xampp\htdocs\songnguyen\admin\model\news\news.php on line 100
+2013-11-03 2:21:12 - PHP Warning:  Illegal string offset 'language_id' in C:\xampp\htdocs\songnguyen\admin\model\news\news.php on line 100
+2013-11-03 2:21:12 - PHP Warning:  Illegal string offset 'name' in C:\xampp\htdocs\songnguyen\admin\model\news\news.php on line 101
+2013-11-03 2:21:12 - PHP Warning:  Illegal string offset 'value' in C:\xampp\htdocs\songnguyen\admin\model\news\news.php on line 102
+2013-11-03 2:21:12 - PHP Warning:  Illegal string offset 'news_id' in C:\xampp\htdocs\songnguyen\admin\model\news\news.php on line 100
+2013-11-03 2:21:12 - PHP Warning:  Illegal string offset 'language_id' in C:\xampp\htdocs\songnguyen\admin\model\news\news.php on line 100
+2013-11-03 2:21:12 - PHP Warning:  Illegal string offset 'name' in C:\xampp\htdocs\songnguyen\admin\model\news\news.php on line 101
+2013-11-03 2:21:12 - PHP Warning:  Illegal string offset 'value' in C:\xampp\htdocs\songnguyen\admin\model\news\news.php on line 102
+2013-11-03 2:21:12 - PHP Warning:  Illegal string offset 'news_id' in C:\xampp\htdocs\songnguyen\admin\model\news\news.php on line 100
+2013-11-03 2:21:12 - PHP Warning:  Illegal string offset 'language_id' in C:\xampp\htdocs\songnguyen\admin\model\news\news.php on line 100
+2013-11-03 2:21:12 - PHP Warning:  Illegal string offset 'name' in C:\xampp\htdocs\songnguyen\admin\model\news\news.php on line 101
+2013-11-03 2:21:12 - PHP Warning:  Illegal string offset 'value' in C:\xampp\htdocs\songnguyen\admin\model\news\news.php on line 102
+2013-11-03 2:21:12 - PHP Warning:  Illegal string offset 'news_id' in C:\xampp\htdocs\songnguyen\admin\model\news\news.php on line 100
+2013-11-03 2:21:12 - PHP Warning:  Illegal string offset 'language_id' in C:\xampp\htdocs\songnguyen\admin\model\news\news.php on line 100
+2013-11-03 2:21:12 - PHP Warning:  Illegal string offset 'name' in C:\xampp\htdocs\songnguyen\admin\model\news\news.php on line 101
+2013-11-03 2:21:12 - PHP Warning:  Illegal string offset 'value' in C:\xampp\htdocs\songnguyen\admin\model\news\news.php on line 102
+2013-11-03 2:21:12 - PHP Warning:  Illegal string offset 'news_id' in C:\xampp\htdocs\songnguyen\admin\model\news\news.php on line 100
+2013-11-03 2:21:12 - PHP Warning:  Illegal string offset 'language_id' in C:\xampp\htdocs\songnguyen\admin\model\news\news.php on line 100
+2013-11-03 2:21:12 - PHP Warning:  Illegal string offset 'name' in C:\xampp\htdocs\songnguyen\admin\model\news\news.php on line 101
+2013-11-03 2:21:12 - PHP Warning:  Illegal string offset 'value' in C:\xampp\htdocs\songnguyen\admin\model\news\news.php on line 102
+2013-11-03 2:21:12 - PHP Notice:  Undefined offset: 1 in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_form.tpl on line 114
+2013-11-03 2:21:12 - PHP Notice:  Undefined offset: 1 in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_form.tpl on line 114
+2013-11-03 2:21:12 - PHP Notice:  Undefined offset: 1 in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_form.tpl on line 114
+2013-11-03 2:22:00 - PHP Notice:  Undefined index: news_option in C:\xampp\htdocs\songnguyen\admin\model\news\news.php on line 48
+2013-11-03 2:22:00 - PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\songnguyen\admin\model\news\news.php on line 48
+2013-11-03 2:22:00 - PHP Notice:  Undefined variable: copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 2:22:00 - PHP Notice:  Undefined variable: button_copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 2:22:10 - PHP Notice:  Undefined variable: copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 2:22:10 - PHP Notice:  Undefined variable: button_copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 2:23:31 - PHP Notice:  Undefined variable: copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 2:23:31 - PHP Notice:  Undefined variable: button_copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 2:25:24 - PHP Notice:  Undefined variable: copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 2:25:24 - PHP Notice:  Undefined variable: button_copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 2:25:54 - PHP Notice:  Undefined variable: copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 2:25:54 - PHP Notice:  Undefined variable: button_copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 2:26:02 - PHP Notice:  Undefined variable: copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 2:26:02 - PHP Notice:  Undefined variable: button_copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 2:26:16 - PHP Notice:  Undefined variable: copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 2:26:16 - PHP Notice:  Undefined variable: button_copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 2:26:23 - PHP Notice:  Undefined variable: copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
+2013-11-03 2:26:23 - PHP Notice:  Undefined variable: button_copy in C:\xampp\htdocs\songnguyen\admin\view\template\news\news_list.tpl on line 17
