@@ -50,6 +50,10 @@
               <td><input type="text" name="faq_category" value="<?php echo $faq_category['name']; ?>" /><input type="hidden" name="faq_category_id" value="<?php echo $faq_category['faq_category_id']; ?>" /></td>
             </tr>
             <tr>
+              <td><?php echo $entry_keyword; ?></td>
+              <td><input type="text" name="keyword" value="<?php echo $keyword; ?>" /></td>
+            </tr>
+            <tr>
               <td><?php echo $entry_status; ?></td>
               <td><select name="status">
                   <?php if ($status) { ?>

@@ -410,6 +410,7 @@ class ControllerFaqFaq extends Controller {
 
 		$this->data['entry_question'] = $this->language->get('entry_question');
 		$this->data['entry_answer'] = $this->language->get('entry_answer');
+		$this->data['entry_keyword'] = $this->language->get('entry_keyword');
     	$this->data['entry_faq_category'] = $this->language->get('entry_faq_category');
 		$this->data['entry_text'] = $this->language->get('entry_text');
 		$this->data['entry_required'] = $this->language->get('entry_required');
@@ -505,6 +506,14 @@ class ControllerFaqFaq extends Controller {
 			$this->data['faq_description'] = $this->model_faq_faq->getFaqDescriptions($this->request->get['faq_id']);
 		} else {
 			$this->data['faq_description'] = array();
+		}
+		
+		if (isset($this->request->post['keyword'])) {
+      		$this->data['keyword'] = $this->request->post['keyword'];
+    	} elseif (!empty($faq_info)) {
+      		$this->data['keyword'] = $faq_info['keyword'];
+    	} else {
+			$this->data['keyword'] = '';
 		}
 		
 		if (isset($this->request->post['sort_order'])) {

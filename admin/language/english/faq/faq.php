@@ -15,6 +15,7 @@ $_['column_action'] 			= 'Action';
 $_['entry_question'] 			= 'Question:';
 $_['entry_answer'] 			= 'Answer:';
 $_['entry_status'] 			= 'Status:';
+$_['entry_keyword'] 			= 'Keyword:';
 $_['entry_sort_order'] 			= 'Sort Order:';
 $_['entry_faq_category'] 			= 'FAQ Category:';
 

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2013 at 02:49 AM
+-- Generation Time: Nov 03, 2013 at 11:07 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -13,23 +13,6 @@
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
---
--- Database: `test`
---
-
-DELIMITER $$
---
--- Procedures
---
-CREATE DEFINER=`root`@`localhost` PROCEDURE `test_multi_sets`()
-    DETERMINISTIC
-begin
-        select user() as first_col;
-        select user() as first_col, now() as second_col;
-        select user() as first_col, now() as second_col, now() as third_col;
-        end$$
-
-DELIMITER ;
 
 -- --------------------------------------------------------
 

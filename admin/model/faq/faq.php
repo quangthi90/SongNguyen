@@ -8,6 +8,10 @@ class ModelFaqFaq extends Model {
 		foreach ($data['faq_description'] as $language_id => $value) {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "faq_description SET faq_id = '" . (int)$faq_id . "', language_id = '" . (int)$language_id . "', question = '" . $this->db->escape($value['question']) . "', answer = '" . $this->db->escape($value['answer']) . "'");
 		}
+
+		if (isset( $data['keyword'] ) ) {
+			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'faq_id=" . $faq_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
+		}
 		
 		$this->cache->delete('faq');
 	}
@@ -19,6 +23,12 @@ class ModelFaqFaq extends Model {
 		
 		foreach ($data['faq_description'] as $language_id => $value) {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "faq_description SET faq_id = '" . (int)$faq_id . "', language_id = '" . (int)$language_id . "', question = '" . $this->db->escape($value['question']) . "', answer = '" . $this->db->escape($value['answer']) . "'");
+		}
+
+		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'faq_id=" . $faq_id . "'");
+
+		if (isset( $data['keyword'] ) ) {
+			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'faq_id=" . $faq_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
 		}
 	}
 /*	
@@ -57,12 +67,13 @@ class ModelFaqFaq extends Model {
 	public function deleteFaq($faq_id) {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "faq WHERE id = '" . (int) $faq_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "faq_description WHERE faq_id = '" . (int) $faq_id . "'");
-		
+		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'faq_id=" . $faq_id . "'");
+
 		$this->cache->delete('faq');
 	}
 	
 	public function getFaq($faq_id) {
-		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "faq n LEFT JOIN " . DB_PREFIX . "faq_description nd ON (n.id = nd.faq_id) WHERE n.id = '" . (int)$faq_id . "' AND nd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
+		$query = $this->db->query("SELECT DISTINCT *, (SELECT ua.keyword FROM " . DB_PREFIX . "url_alias ua WHERE query = 'faq_id=" . (int)$faq_id . "') AS keyword FROM " . DB_PREFIX . "faq n LEFT JOIN " . DB_PREFIX . "faq_description nd ON (n.id = nd.faq_id) WHERE n.id = '" . (int)$faq_id . "' AND nd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
 				
 		return $query->row;
 	}
