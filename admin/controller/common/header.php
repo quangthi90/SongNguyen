@@ -122,6 +122,7 @@ class ControllerCommonHeader extends Controller {
 
 		$this->data['text_news'] = $this->language->get('text_news');
 		$this->data['text_news_category'] = $this->language->get('text_news_category');
+		$this->data['text_event'] = $this->language->get('text_event');
 
 		if (!$this->user->isLogged() || !isset($this->request->get['token']) || !isset($this->session->data['token']) || ($this->request->get['token'] != $this->session->data['token'])) {
 			$this->data['logged'] = '';
@@ -227,6 +228,7 @@ class ControllerCommonHeader extends Controller {
 
 			$this->data['news'] = $this->url->link('news/news', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['news_category'] = $this->url->link('news/news_category', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['event'] = $this->url->link('event/event', 'token=' . $this->session->data['token'], 'SSL');
 
 			$this->data['stores'] = array();
 			
