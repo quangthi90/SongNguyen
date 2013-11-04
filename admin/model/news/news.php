@@ -52,7 +52,7 @@ class ModelNewsNews extends Model {
 	}
 	
 	public function getNewses($data = array()) {
-		$sql = "SELECT n.id AS news_id, n.sort_order AS sort_order, n.format AS format, n.status AS status, n.primary_image AS primary_image, n.second_image AS second_image, n.news_category_id AS news_category_id, nd.title AS title, (SELECT ncd.name FROM " . "news_category nc LEFT JOIN " . DB_PREFIX . "news_category_description ncd ON(nc.id = ncd.news_category_id) WHERE ncd.language_id = '" . (int)$this->config->get('config_language_id') . "') AS news_category_name FROM " . DB_PREFIX . "news n LEFT JOIN " . DB_PREFIX . "news_description nd ON (n.id = nd.news_id)";
+		$sql = "SELECT n.id AS news_id, n.sort_order AS sort_order, n.format AS format, n.status AS status, n.primary_image AS primary_image, n.second_image AS second_image, n.news_category_id AS news_category_id, nd.title AS title FROM " . DB_PREFIX . "news n LEFT JOIN " . DB_PREFIX . "news_description nd ON (n.id = nd.news_id)";
 				
 		$sql .= " WHERE nd.language_id = '" . (int)$this->config->get('config_language_id') . "'"; 
 		
@@ -62,10 +62,6 @@ class ModelNewsNews extends Model {
 		
 		if (!empty($data['filter_title'])) {
 			$sql .= " AND nd.title LIKE '" . $this->db->escape($data['filter_title']) . "%'";
-		}
-		
-		if (!empty($data['filter_news_category_name'])) {
-			$sql .= " AND ncd.name LIKE '" . $this->db->escape($data['filter_news_category_name']) . "%'";
 		}
 		
 		if (isset($data['filter_status']) && !is_null($data['filter_status'])) {
@@ -124,6 +120,12 @@ class ModelNewsNews extends Model {
 		}
 		
 		return $news_description_data;
+	}
+
+	public function getNewsCategory($news_category_id) {
+		$query = $this->db->query("SELECT ncd.name AS name, nc.id AS news_category_id FROM " . DB_PREFIX . "news_category nc LEFT JOIN " . DB_PREFIX . "news_category_description ncd ON (nc.id = ncd.news_category_id) WHERE ncd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND nc.id = '" . (int)$news_category_id . "'");
+		
+		return $query->row;
 	}
 
 	public function getTotalNewses($data = array()) {
