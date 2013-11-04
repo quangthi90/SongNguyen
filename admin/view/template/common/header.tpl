@@ -74,6 +74,12 @@ $(document).ready(function(){
           <li><a href="<?php echo $event; ?>"><?php echo $text_event; ?></a></li>
         </ul>
       </li>
+      <li id="faq"><a class="top"><?php echo $text_news; ?></a>
+        <ul>
+          <li><a href="<?php echo $faq; ?>"><?php echo $text_faq; ?></a></li>
+          <li><a href="<?php echo $faq_category; ?>"><?php echo $text_faq_category; ?></a></li>
+        </ul>
+      </li>
       <li id="catalog"><a class="top"><?php echo $text_catalog; ?></a>
         <ul>
           <li><a href="<?php echo $category; ?>"><?php echo $text_category; ?></a></li>

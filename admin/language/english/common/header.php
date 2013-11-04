@@ -102,5 +102,7 @@ $_['text_recurring_profile']           = 'Recurring Profiles';
 $_['text_news']           = 'Newses';
 $_['text_news_category']           = 'News Categories';
 $_['text_event']           = 'Events';
+$_['text_faq']           = 'FAQs';
+$_['text_faq_category']           = 'FAQ Categories';
 
 ?>
