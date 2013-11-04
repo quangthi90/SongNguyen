@@ -16,18 +16,6 @@ class ModelNewsNews extends Model {
 		foreach ($data['news_description'] as $language_id => $value) {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "news_description SET news_id = '" . (int)$news_id . "', language_id = '" . (int)$language_id . "', title = '" . $this->db->escape($value['title']) . "', content = '" . $this->db->escape($value['content']) . "'");
 		}
-
-		if ( !empty($data['news_option'])) {
-			foreach ($data['news_option'] as $news_option) {
-				foreach ($news_option as $language_id => $value) {
-					$this->db->query("INSERT INTO " . DB_PREFIX . "news_option SET news_id = '" . (int)$news_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', value = '" . $this->db->escape($value['value']) . "'");
-				}
-			}
-		}
-
-		if ($data['keyword']) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'news_id=" . (int) $news_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
-		}
 		
 		$this->cache->delete('news');
 	}
@@ -48,81 +36,17 @@ class ModelNewsNews extends Model {
 		foreach ($data['news_description'] as $language_id => $value) {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "news_description SET news_id = '" . (int)$news_id . "', language_id = '" . (int)$language_id . "', title = '" . $this->db->escape($value['title']) . "', content = '" . $this->db->escape($value['content']) . "'");
 		}
-		
-		$this->db->query("DELETE FROM " . DB_PREFIX . "news_option WHERE news_id = '" . (int)$news_id . "'");
-
-		if ( !empty($data['news_option'])) {
-			foreach ($data['news_option'] as $news_option) {
-				foreach ($news_option as $language_id => $value) {
-					$this->db->query("INSERT INTO " . DB_PREFIX . "news_option SET news_id = '" . (int)$news_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', value = '" . $this->db->escape($value['value']) . "'");
-				}
-			}
-		}
-		
-		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'news_id=" . (int)$news_id . "'");
-
-		if ($data['keyword']) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'news_id=" . (int) $news_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
-		}
 	}
-/*	
-	public function copyProduct($product_id) {
-		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE p.product_id = '" . (int)$product_id . "' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
-		
-		if ($query->num_rows) {
-			$data = array();
-			
-			$data = $query->row;
-			
-			$data['sku'] = '';
-			$data['upc'] = '';
-			$data['viewed'] = '0';
-			$data['keyword'] = '';
-			$data['status'] = '0';
-						
-			$data = array_merge($data, array('product_attribute' => $this->getProductAttributes($product_id)));
-			$data = array_merge($data, array('product_description' => $this->getProductDescriptions($product_id)));			
-			$data = array_merge($data, array('product_discount' => $this->getProductDiscounts($product_id)));
-			$data = array_merge($data, array('product_filter' => $this->getProductFilters($product_id)));
-			$data = array_merge($data, array('product_image' => $this->getProductImages($product_id)));		
-			$data = array_merge($data, array('product_option' => $this->getProductOptions($product_id)));
-			$data = array_merge($data, array('product_related' => $this->getProductRelated($product_id)));
-			$data = array_merge($data, array('product_reward' => $this->getProductRewards($product_id)));
-			$data = array_merge($data, array('product_special' => $this->getProductSpecials($product_id)));
-			$data = array_merge($data, array('product_category' => $this->getProductCategories($product_id)));
-			$data = array_merge($data, array('product_download' => $this->getProductDownloads($product_id)));
-			$data = array_merge($data, array('product_layout' => $this->getProductLayouts($product_id)));
-			$data = array_merge($data, array('product_store' => $this->getProductStores($product_id)));
-			$data = array_merge($data, array('product_profiles' => $this->getProfiles($product_id)));
-			$this->addProduct($data);
-		}
-	}
-*/	
+
 	public function deleteNews($news_id) {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "news WHERE id = '" . (int)$news_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "news_description WHERE news_id = '" . (int)$news_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "news_option WHERE news_id = '" . (int)$news_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'news_id=" . (int)$news_id . "'");
 		
 		$this->cache->delete('news');
 	}
-
-	public function getNewsOptions($news_id) {
-		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "news_option WHERE news_id = '" . (int)$news_id . "'");
-
-		$results = array();
-		foreach ($query->rows as $option) {
-			$results[$option['news_id'] . 'x' . $option['id']][$option['language_id']] = array(
-				'name' => $option['name'],
-				'value' => $option['value'],
-				);
-		}
-				
-		return $results;
-	}
 	
 	public function getNews($news_id) {
-		$query = $this->db->query("SELECT DISTINCT n.id AS news_id, (SELECT keyword FROM " . DB_PREFIX . "url_alias WHERE query = 'news_id=" . (int)$news_id . "') AS keyword, n.sort_order AS sort_order, n.format AS format, nd.title AS title, n.status AS status, n.primary_image AS primary_image, n.second_image AS second_image, n.news_category_id AS news_category_id FROM " . DB_PREFIX . "news n LEFT JOIN " . DB_PREFIX . "news_description nd ON (n.id = nd.news_id) WHERE n.id = '" . (int)$news_id . "' AND nd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
+		$query = $this->db->query("SELECT DISTINCT n.id AS news_id, n.sort_order AS sort_order, n.format AS format, nd.title AS title, n.status AS status, n.primary_image AS primary_image, n.second_image AS second_image, n.news_category_id AS news_category_id FROM " . DB_PREFIX . "news n LEFT JOIN " . DB_PREFIX . "news_description nd ON (n.id = nd.news_id) WHERE n.id = '" . (int)$news_id . "' AND nd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
 				
 		return $query->row;
 	}
@@ -187,13 +111,6 @@ class ModelNewsNews extends Model {
 		return $query->rows;
 	}
 
-/*	
-	public function getProductsByCategoryId($category_id) {
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) LEFT JOIN " . DB_PREFIX . "product_to_category p2c ON (p.product_id = p2c.product_id) WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p2c.category_id = '" . (int)$category_id . "' ORDER BY pd.name ASC");
-								  
-		return $query->rows;
-	} 
-*/	
 	public function getNewsDescriptions($news_id) {
 		$news_description_data = array();
 		

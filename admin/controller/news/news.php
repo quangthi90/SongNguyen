@@ -134,61 +134,7 @@ class ControllerNewsNews extends Controller {
 
     	$this->getList();
   	}
-/*
-  	public function copy() {
-    	$this->language->load('catalog/product');
-
-    	$this->document->setTitle($this->language->get('heading_title'));
-		
-		$this->load->model('catalog/product');
-		
-		if (isset($this->request->post['selected']) && $this->validateCopy()) {
-			foreach ($this->request->post['selected'] as $product_id) {
-				$this->model_catalog_product->copyProduct($product_id);
-	  		}
-
-			$this->session->data['success'] = $this->language->get('text_success');
-			
-			$url = '';
-			
-			if (isset($this->request->get['filter_name'])) {
-				$url .= '&filter_name=' . urlencode(html_entity_decode($this->request->get['filter_name'], ENT_QUOTES, 'UTF-8'));
-			}
-		  
-			if (isset($this->request->get['filter_model'])) {
-				$url .= '&filter_model=' . urlencode(html_entity_decode($this->request->get['filter_model'], ENT_QUOTES, 'UTF-8'));
-			}
-			
-			if (isset($this->request->get['filter_price'])) {
-				$url .= '&filter_price=' . $this->request->get['filter_price'];
-			}
-			
-			if (isset($this->request->get['filter_quantity'])) {
-				$url .= '&filter_quantity=' . $this->request->get['filter_quantity'];
-			}	
-		
-			if (isset($this->request->get['filter_status'])) {
-				$url .= '&filter_status=' . $this->request->get['filter_status'];
-			}
-					
-			if (isset($this->request->get['sort'])) {
-				$url .= '&sort=' . $this->request->get['sort'];
-			}
-
-			if (isset($this->request->get['order'])) {
-				$url .= '&order=' . $this->request->get['order'];
-			}
-
-			if (isset($this->request->get['page'])) {
-				$url .= '&page=' . $this->request->get['page'];
-			}
-			
-			$this->redirect($this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, 'SSL'));
-		}
-
-    	$this->getList();
-  	}
-*/	
+	
   	protected function getList() {				
 		if (isset($this->request->get['filter_title'])) {
 			$filter_title = $this->request->get['filter_title'];
@@ -455,8 +401,6 @@ class ControllerNewsNews extends Controller {
 		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
 		$this->data['entry_status'] = $this->language->get('entry_status');
 		$this->data['entry_format'] = $this->language->get('entry_format');
-		$this->data['entry_news_option_value'] = $this->language->get('entry_news_option_value');
-		$this->data['entry_news_option'] = $this->language->get('entry_news_option');
 
     	$this->data['button_save'] = $this->language->get('button_save');
     	$this->data['button_cancel'] = $this->language->get('button_cancel');
@@ -464,9 +408,7 @@ class ControllerNewsNews extends Controller {
 		$this->data['button_add_option'] = $this->language->get('button_add_option');
 		
     	$this->data['tab_general'] = $this->language->get('tab_general');
-    	$this->data['tab_data'] = $this->language->get('tab_data');		
-		$this->data['tab_links'] = $this->language->get('tab_links');
-		$this->data['tab_option'] = $this->language->get('tab_option');
+    	$this->data['tab_data'] = $this->language->get('tab_data');	
 		 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -479,10 +421,6 @@ class ControllerNewsNews extends Controller {
 		} else {
 			$this->data['error_title'] = array();
 		}
-
- 		//if (isset($this->error['news_category'])) {
-		//	$this->data['error_news_category'] = $this->error['news_category'];
-		//}
 
 		$url = '';
 
@@ -544,14 +482,6 @@ class ControllerNewsNews extends Controller {
 			$this->data['news_description'] = $this->model_news_news->getNewsDescriptions($this->request->get['news_id']);
 		} else {
 			$this->data['news_description'] = array();
-		}
-		
-		if (isset($this->request->post['news_option'])) {
-			$this->data['news_options'] = $this->request->post['news_option'];
-		} elseif (isset($this->request->get['news_id'])) {
-			$this->data['news_options'] = $this->model_news_news->getNewsOptions($this->request->get['news_id']);
-		} else {
-			$this->data['news_options'] = array();
 		}
 		
 		if (isset($this->request->post['primary_image'])) {
@@ -662,10 +592,6 @@ class ControllerNewsNews extends Controller {
     	if (!$this->user->hasPermission('modify', 'news/news')) {
       		$this->error['warning'] = $this->language->get('error_permission');
     	}
-
-    	//if (empty($this->request->post['news_category_id'])) {
-    	//	$this->error['news_category'] = $this->language->get('news_category');
-    	//}
 
     	foreach ($this->request->post['news_description'] as $language_id => $value) {
       		if ((utf8_strlen($value['title']) < 1) || (utf8_strlen($value['title']) > 255)) {

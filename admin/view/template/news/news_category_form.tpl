@@ -60,6 +60,10 @@
                   <a onclick="image_upload('second_image', 'second_thumb');"><?php echo $text_browse; ?></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a onclick="$('#second_thumb').attr('src', '<?php echo $no_image; ?>'); $('#second_image').attr('value', '');"><?php echo $text_clear; ?></a></div></td>
             </tr>
             <tr>
+              <td><?php echo $entry_keyword; ?></td>
+              <td><input type="text" name="keyword" value="<?php echo $keyword; ?>"/></td>
+            </tr>
+            <tr>
               <td><?php echo $entry_sort_order; ?></td>
               <td><input type="text" name="sort_order" value="<?php echo $sort_order; ?>" size="1" /></td>
             </tr>

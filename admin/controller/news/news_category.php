@@ -85,25 +85,7 @@ class ControllerNewsNewsCategory extends Controller {
 		
 		$this->getList();
 	}
-/*	
-	public function repair() {
-		$this->language->load('catalog/category');
-
-		$this->document->setTitle($this->language->get('heading_title'));
-		
-		$this->load->model('catalog/category');
-		
-		if ($this->validateRepair()) {
-			$this->model_catalog_category->repairCategories();
-
-			$this->session->data['success'] = $this->language->get('text_success');
-			
-			$this->redirect($this->url->link('catalog/category', 'token=' . $this->session->data['token'], 'SSL'));
-		}
-		
-		$this->getList();	
-	}
-*/	
+	
 	protected function getList() {
 		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];
@@ -174,7 +156,6 @@ class ControllerNewsNewsCategory extends Controller {
 
 		$this->data['button_insert'] = $this->language->get('button_insert');
 		$this->data['button_delete'] = $this->language->get('button_delete');
- 		//$this->data['button_repair'] = $this->language->get('button_repair');
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -221,6 +202,7 @@ class ControllerNewsNewsCategory extends Controller {
 		$this->data['text_clear'] = $this->language->get('text_clear');
 				
 		$this->data['entry_name'] = $this->language->get('entry_name');
+		$this->data['entry_keyword'] = $this->language->get('entry_keyword');
 		$this->data['entry_description'] = $this->language->get('entry_description');
     	$this->data['entry_primary_image'] = $this->language->get('entry_primary_image');
     	$this->data['entry_second_image'] = $this->language->get('entry_second_image');
@@ -348,6 +330,14 @@ class ControllerNewsNewsCategory extends Controller {
 		} else {
 			$this->data['sort_order'] = 0;
 		}
+				
+    	if (isset($this->request->post['keyword'])) {
+      		$this->data['keyword'] = $this->request->post['keyword'];
+    	} elseif (!empty($news_category_info)) {
+			$this->data['keyword'] = $news_category_info['keyword'];
+		} else {
+      		$this->data['keyword'] = '';
+    	}
 		
 		if (isset($this->request->post['status'])) {
 			$this->data['status'] = $this->request->post['status'];
