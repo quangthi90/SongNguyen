@@ -140,7 +140,7 @@ class ControllerNewsNewsCategory extends Controller {
 			$this->data['news_categories'][] = array(
 				'news_category_id' => $result['news_category_id'],
 				'name'        => $result['name'],
-				'parent_name' => $result['parent_name'],
+				'parent_name' => ($result['parent_name']) ? $result['parent_name'] : 'root',
 				'sort_order'  => $result['sort_order'],
 				'selected'    => isset($this->request->post['selected']) && in_array($result['news_category_id'], $this->request->post['selected']),
 				'action'      => $action
