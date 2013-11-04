@@ -124,6 +124,7 @@ $('#form input').keydown(function(e) {
 });
 //--></script> 
 <script type="text/javascript"><!--
+
 $('input[name=\'filter_title\']').autocomplete({
 	delay: 500,
 	source: function(request, response) {
@@ -157,17 +158,24 @@ $('input[name=\'filter_news_category_name\']').autocomplete({
       url: 'index.php?route=news/news_category/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
       dataType: 'json',
       success: function(json) {   
+        json.unshift({
+          'news_category_id':  0,
+          'name':  '',
+          'parent_name': '<?php echo $text_none; ?>',
+        });
+
         response($.map(json, function(item) {
           return {
-            label: item.name,
-            value: item.news_category_id
+            label: (item.parent_name && item.name) ? item.parent_name + ' > ' + item.name : item.parent_name + item.name,
+            value: item.news_category_id,
+            name: item.name 
           }
         }));
       }
     });
   }, 
   select: function(event, ui) {
-    $('input[name=\'filter_news_category_name\']').val(ui.item.label);
+    $('input[name=\'filter_news_category_name\']').val(ui.item.name);
     $('input[name=\'filter_news_category_id\']').val(ui.item.value);
             
     return false;

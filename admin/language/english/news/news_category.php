@@ -13,6 +13,7 @@ $_['column_name']            = 'News Category Name';
 $_['column_image'] 			= 'Image';
 $_['column_sort_order']      = 'Sort Order';
 $_['column_action']          = 'Action';
+$_['column_parent']          = 'Parent Category';
 
 // entry
 $_['entry_name']            = 'News Category Name:';

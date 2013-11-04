@@ -109,22 +109,6 @@ CKEDITOR.replace('content<?php echo $language['language_id']; ?>', {
 <?php } ?>
 //--></script> 
 <script type="text/javascript"><!--
-$.widget('custom.catcomplete', $.ui.autocomplete, {
-	_renderMenu: function(ul, items) {
-		var self = this, currentCategory = '';
-		
-		$.each(items, function(index, item) {
-			if (item.category != currentCategory) {
-				ul.append('<li class="ui-autocomplete-category">' + item.category + '</li>');
-				
-				currentCategory = item.category;
-			}
-			
-			self._renderItem(ul, item);
-		});
-	}
-});
-
 // Category
 $('input[name=\'news_category\']').autocomplete({
 	delay: 500,
@@ -135,20 +119,22 @@ $('input[name=\'news_category\']').autocomplete({
 			success: function(json) {		
         json.unshift({
           'news_category_id':  0,
-          'name':  '<?php echo $text_none; ?>'
+          'name':  '',
+          'parent_name': '<?php echo $text_none; ?>',
         });
-        
-				response($.map(json, function(item) {
-					return {
-						label: item.name,
-						value: item.news_category_id
-					}
-				}));
+
+        response($.map(json, function(item) {
+          return {
+            label: (item.parent_name && item.name) ? item.parent_name + ' > ' + item.name : item.parent_name + item.name,
+            value: item.news_category_id,
+            name: item.name 
+          }
+        }));
 			}
 		});
 	}, 
 	select: function(event, ui) {
-    $('input[name=\'news_category\']').val(ui.item.label);
+    $('input[name=\'news_category\']').val(ui.item.name);
 		$('input[name=\'news_category_id\']').val(ui.item.value);
 				
 		return false;

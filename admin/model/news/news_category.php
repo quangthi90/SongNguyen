@@ -78,7 +78,7 @@ class ModelNewsNewsCategory extends Model {
 	} 
 	
 	public function getNewsCategories($data) {
-		$sql = "SELECT nc.id AS news_category_id, ncd.name, ncd.description, nc.sort_order, nc.date_added, nc.date_modified, nc.status, nc.parent_id, ncd.language_id FROM " . DB_PREFIX . "news_category nc LEFT JOIN " . DB_PREFIX . "news_category_description ncd ON (nc.id = ncd.news_category_id) WHERE ncd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
+		$sql = "SELECT nc.id AS news_category_id, ncd.name, ncd.description, nc.sort_order, nc.date_added, nc.date_modified, nc.status, nc.parent_id, ncd.language_id, pncd.name AS parent_name FROM " . DB_PREFIX . "news_category nc LEFT JOIN " . DB_PREFIX . "news_category_description ncd ON (nc.id = ncd.news_category_id) LEFT JOIN " . DB_PREFIX . "news_category pnc ON (nc.parent_id = pnc.id) LEFT JOIN " . DB_PREFIX . "news_category_description pncd ON (pnc.id = pncd.news_category_id) WHERE ncd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND (pncd.language_id = '" . (int)$this->config->get('config_language_id') . "' OR nc.parent_id = '0')";
 		
 		if (!empty($data['filter_name'])) {
 			$sql .= " AND ncd.name LIKE '" . $this->db->escape($data['filter_name']) . "%'";

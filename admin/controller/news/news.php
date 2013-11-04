@@ -261,7 +261,8 @@ class ControllerNewsNews extends Controller {
 		$this->data['heading_title'] = $this->language->get('heading_title');		
 				
 		$this->data['text_enabled'] = $this->language->get('text_enabled');		
-		$this->data['text_disabled'] = $this->language->get('text_disabled');		
+		$this->data['text_disabled'] = $this->language->get('text_disabled');	
+    	$this->data['text_none'] = $this->language->get('text_none');	
 		$this->data['text_no_results'] = $this->language->get('text_no_results');		
 		$this->data['text_image_manager'] = $this->language->get('text_image_manager');		
 			

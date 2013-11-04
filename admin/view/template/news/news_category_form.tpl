@@ -107,16 +107,18 @@ $('input[name=\'path\']').autocomplete({
 			dataType: 'json',
 			success: function(json) {
 				json.unshift({
-					'news_category_id':  0,
-					'name':  '<?php echo $text_none; ?>'
-				});
-				
-				response($.map(json, function(item) {
-					return {
-						label: item.name,
-						value: item.news_category_id
-					}
-				}));
+          'news_category_id':  0,
+          'name':  '',
+          'parent_name': '<?php echo $text_none; ?>',
+        });
+
+        response($.map(json, function(item) {
+          return {
+            label: (item.parent_name && item.name) ? item.parent_name + ' > ' + item.name : item.parent_name + item.name,
+            value: item.news_category_id,
+            name: item.name 
+          }
+        }));
 			}
 		});
 	},

@@ -140,7 +140,7 @@ class ControllerNewsNewsCategory extends Controller {
 			$this->data['news_categories'][] = array(
 				'news_category_id' => $result['news_category_id'],
 				'name'        => $result['name'],
-				//'parent_name' => $result['parent_name'],
+				'parent_name' => $result['parent_name'],
 				'sort_order'  => $result['sort_order'],
 				'selected'    => isset($this->request->post['selected']) && in_array($result['news_category_id'], $this->request->post['selected']),
 				'action'      => $action
@@ -154,6 +154,7 @@ class ControllerNewsNewsCategory extends Controller {
 		$this->data['column_name'] = $this->language->get('column_name');
 		$this->data['column_sort_order'] = $this->language->get('column_sort_order');
 		$this->data['column_action'] = $this->language->get('column_action');
+		$this->data['column_parent'] = $this->language->get('column_parent');
 
 		$this->data['button_insert'] = $this->language->get('button_insert');
 		$this->data['button_delete'] = $this->language->get('button_delete');
@@ -390,19 +391,7 @@ class ControllerNewsNewsCategory extends Controller {
 			return false;
 		}
 	}
-/*	
-	protected function validateRepair() {
-		if (!$this->user->hasPermission('modify', 'catalog/category')) {
-			$this->error['warning'] = $this->language->get('error_permission');
-		}
- 
-		if (!$this->error) {
-			return true; 
-		} else {
-			return false;
-		}
-	}
-*/			
+		
 	public function autocomplete() {
 		$json = array();
 		
@@ -420,6 +409,7 @@ class ControllerNewsNewsCategory extends Controller {
 			foreach ($results as $result) {
 				$json[] = array(
 					'news_category_id' => $result['news_category_id'], 
+					'parent_name' => strip_tags(html_entity_decode($result['parent_name'], ENT_QUOTES, 'UTF-8')), 
 					'name'        => strip_tags(html_entity_decode($result['name'], ENT_QUOTES, 'UTF-8'))
 				);
 			}		
