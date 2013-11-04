@@ -14,7 +14,7 @@
       <div class="buttons"><a onclick="$('#form').submit();" class="button"><?php echo $button_save; ?></a><a href="<?php echo $cancel; ?>" class="button"><?php echo $button_cancel; ?></a></div>
     </div>
     <div class="content">
-      <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-data"><?php echo $tab_data; ?></a><!--<a href="#tab-links"><?php echo $tab_links; ?></a>--></div>
+      <div id="tabs" class="htabs"><a href="#tab-general"><?php echo $tab_general; ?></a><a href="#tab-data"><?php echo $tab_data; ?></a></div>
       <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
         <div id="tab-general">
           <div id="languages" class="htabs">
@@ -50,10 +50,6 @@
               <td><input type="text" name="faq_category" value="<?php echo $faq_category['name']; ?>" /><input type="hidden" name="faq_category_id" value="<?php echo $faq_category['faq_category_id']; ?>" /></td>
             </tr>
             <tr>
-              <td><?php echo $entry_keyword; ?></td>
-              <td><input type="text" name="keyword" value="<?php echo $keyword; ?>" /></td>
-            </tr>
-            <tr>
               <td><?php echo $entry_status; ?></td>
               <td><select name="status">
                   <?php if ($status) { ?>
@@ -71,11 +67,6 @@
             </tr>
           </table>
         </div>
-        <!--<div id="tab-links">
-          <table class="form">
-            
-          </table>
-        </div>-->
       </form>
     </div>
   </div>

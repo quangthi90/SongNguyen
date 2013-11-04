@@ -14,7 +14,7 @@
   <div class="box">
     <div class="heading">
       <h1><img src="view/image/faq.png" alt="" /> <?php echo $heading_title; ?></h1>
-      <div class="buttons"><a href="<?php echo $insert; ?>" class="button"><?php echo $button_insert; ?></a><!--<a onclick="$('#form').attr('action', '<?php echo $copy; ?>'); $('#form').submit();" class="button"><?php echo $button_copy; ?></a>--><a onclick="$('form').submit();" class="button"><?php echo $button_delete; ?></a></div>
+      <div class="buttons"><a href="<?php echo $insert; ?>" class="button"><?php echo $button_insert; ?></a><a onclick="$('form').submit();" class="button"><?php echo $button_delete; ?></a></div>
     </div>
     <div class="content">
       <form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" id="form">
@@ -22,12 +22,7 @@
           <thead>
             <tr>
               <td width="1" style="text-align: center;"><input type="checkbox" onclick="$('input[name*=\'selected\']').attr('checked', this.checked);" /></td>
-              <!--<td class="left"><?php if ($sort == 'nd.id') { ?>
-                <a href="<?php echo $sort_question; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_question; ?></a>
-                <?php } else { ?>
-                <a href="<?php echo $sort_question; ?>"><?php echo $column_question; ?></a>
-                <?php } ?></td>-->
-              <td class="center"><?php echo $column_id; ?></td>
+              <td class="left"><?php echo $column_category; ?></td>
               <td class="left"><?php if ($sort == 'n.status') { ?>
                 <a href="<?php echo $sort_status; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_status; ?></a>
                 <?php } else { ?>
@@ -39,8 +34,7 @@
           <tbody>
             <tr class="filter">
               <td></td>
-              <td></td>
-              <!--<td><input type="text" name="filter_question" value="<?php echo $filter_question; ?>" /></td>-->
+              <td><!--<input type="text" name="filter_category_name" value="<?php echo $filter_category_name; ?>" /><input type="text" name="filter_faq_category_id" value="" />--></td>
               <td><select name="filter_status">
                   <option value="*"></option>
                   <?php if ($filter_status) { ?>
@@ -64,8 +58,7 @@
                 <?php } else { ?>
                 <input type="checkbox" name="selected[]" value="<?php echo $faq['faq_id']; ?>" />
                 <?php } ?></td>
-              <td><?php echo $faq['faq_id']; ?></td>
-              <!--<td class="left"><?php echo $faq['question']; ?></td>-->
+              <td><?php echo $faq['category_name']; ?></td>
               <td class="left"><?php echo $faq['status']; ?></td>
               <td class="right"><?php foreach ($faq['action'] as $action) { ?>
                 [ <a href="<?php echo $action['href']; ?>"><?php echo $action['text']; ?></a> ]
@@ -88,11 +81,11 @@
 function filter() {
 	url = 'index.php?route=faq/faq&token=<?php echo $token; ?>';
 	
-	/*var filter_question = $('input[name=\'filter_question\']').attr('value');
+	var filter_category_name = $('input[name=\'filter_category_name\']').attr('value');
 	
-	if (filter_question) {
-		url += '&filter_question=' + encodeURIComponent(filter_question);
-	}*/
+	if (filter_category_name) {
+		url += '&filter_category_name=' + encodeURIComponent(filter_category_name);
+	}
 	
 	var filter_status = $('select[name=\'filter_status\']').attr('value');
 	
@@ -111,30 +104,34 @@ $('#form input').keydown(function(e) {
 });
 //--></script> 
 <script type="text/javascript"><!--
-/*$('input[name=\'filter_question\']').autocomplete({
+$('input[name=\'filter_category_name\']').autocomplete({
 	delay: 500,
 	source: function(request, response) {
 		$.ajax({
-			url: 'index.php?route=faq/faq/autocomplete&token=<?php echo $token; ?>&filter_question=' +  encodeURIComponent(request.term),
+			url: 'index.php?route=faq/faq_category/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request.term),
 			dataType: 'json',
-			success: function(json) {		
+			success: function(json) {
 				response($.map(json, function(item) {
 					return {
-						label: item.question,
-						value: item.faq_id
+						label: item.name,
+						value: item.faq_category_id
 					}
 				}));
-			}
+			},
+      error: function (xhr, error) {
+        alert(xhr.responseText);
+      }
 		});
 	}, 
 	select: function(event, ui) {
-		$('input[name=\'filter_question\']').val(ui.item.label);
+		$('input[name=\'filter_category_name\']').val(ui.item.label);
+    $('input[name=\'filter_faq_category_id\']').val(ui.item.value);
 						
 		return false;
 	},
 	focus: function(event, ui) {
       	return false;
    	}
-});*/
+});
 //--></script> 
 <?php echo $footer; ?>

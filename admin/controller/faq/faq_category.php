@@ -85,25 +85,7 @@ class ControllerFaqFaqCategory extends Controller {
 		
 		$this->getList();
 	}
-/*	
-	public function repair() {
-		$this->language->load('catalog/category');
-
-		$this->document->setTitle($this->language->get('heading_title'));
-		
-		$this->load->model('catalog/category');
-		
-		if ($this->validateRepair()) {
-			$this->model_catalog_category->repairCategories();
-
-			$this->session->data['success'] = $this->language->get('text_success');
-			
-			$this->redirect($this->url->link('catalog/category', 'token=' . $this->session->data['token'], 'SSL'));
-		}
-		
-		$this->getList();	
-	}
-*/	
+	
 	protected function getList() {
 		if (isset($this->request->get['page'])) {
 			$page = $this->request->get['page'];
@@ -357,19 +339,7 @@ class ControllerFaqFaqCategory extends Controller {
 			return false;
 		}
 	}
-/*	
-	protected function validateRepair() {
-		if (!$this->user->hasPermission('modify', 'catalog/category')) {
-			$this->error['warning'] = $this->language->get('error_permission');
-		}
- 
-		if (!$this->error) {
-			return true; 
-		} else {
-			return false;
-		}
-	}
-*/			
+			
 	public function autocomplete() {
 		$json = array();
 		

@@ -41,32 +41,7 @@ class ModelFaqFaqCategory extends Model {
 		
 		$this->cache->delete('faq_category');
 	} 
-/*	
-	// Function to repair any erroneous categories that are not in the category path table.
-	public function repairCategories($parent_id = 0) {
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "category WHERE parent_id = '" . (int)$parent_id . "'");
-		
-		foreach ($query->rows as $category) {
-			// Delete the path below the current one
-			$this->db->query("DELETE FROM `" . DB_PREFIX . "category_path` WHERE category_id = '" . (int)$category['category_id'] . "'");
 			
-			// Fix for records with no paths
-			$level = 0;
-			
-			$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "category_path` WHERE category_id = '" . (int)$parent_id . "' ORDER BY level ASC");
-			
-			foreach ($query->rows as $result) {
-				$this->db->query("INSERT INTO `" . DB_PREFIX . "category_path` SET category_id = '" . (int)$category['category_id'] . "', `path_id` = '" . (int)$result['path_id'] . "', level = '" . (int)$level . "'");
-				
-				$level++;
-			}
-			
-			$this->db->query("REPLACE INTO `" . DB_PREFIX . "category_path` SET category_id = '" . (int)$category['category_id'] . "', `path_id` = '" . (int)$category['category_id'] . "', level = '" . (int)$level . "'");
-						
-			$this->repairCategories($category['category_id']);
-		}
-	}
-*/			
 	public function getFaqCategory($faq_category_id) {
 		$query = $this->db->query("SELECT DISTINCT nc.id AS faq_category_id, nc.parent_id, nc.sort_order, nc.status, ncd.name FROM " . DB_PREFIX . "faq_category nc LEFT JOIN " . DB_PREFIX . "faq_category_description ncd ON (nc.id = ncd.faq_category_id) WHERE nc.id = '" . (int)$faq_category_id . "'");
 		
@@ -74,7 +49,7 @@ class ModelFaqFaqCategory extends Model {
 	} 
 	
 	public function getFaqCategories($data) {
-		$sql = "SELECT nc.id AS faq_category_id, ncd.name, nc.sort_order, nc.date_added, nc.date_modified, nc.status, nc.parent_id, ncd.language_id FROM " . DB_PREFIX . "faq_category nc LEFT JOIN " . DB_PREFIX . "faq_category_description ncd ON (nc.id = ncd.faq_category_id) WHERE ncd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
+		$sql = "SELECT nc.id AS faq_category_id, ncd.name AS name, nc.sort_order, nc.date_added, nc.date_modified, nc.status, nc.parent_id, ncd.language_id FROM " . DB_PREFIX . "faq_category nc LEFT JOIN " . DB_PREFIX . "faq_category_description ncd ON (nc.id = ncd.faq_category_id) WHERE ncd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
 		
 		if (!empty($data['filter_name'])) {
 			$sql .= " AND ncd.name LIKE '" . $this->db->escape($data['filter_name']) . "%'";

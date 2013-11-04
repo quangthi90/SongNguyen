@@ -26,8 +26,8 @@ class ControllerFaqFaq extends Controller {
 	  
 			$url = '';
 			
-			if (isset($this->request->get['filter_title'])) {
-				$url .= '&filter_title=' . urlencode(html_entity_decode($this->request->get['filter_title'], ENT_QUOTES, 'UTF-8'));
+			if (isset($this->request->get['filter_category_name'])) {
+				$url .= '&filter_category_name=' . urlencode(html_entity_decode($this->request->get['filter_category_name'], ENT_QUOTES, 'UTF-8'));
 			}
 			
 			if (isset($this->request->get['filter_status'])) {
@@ -66,8 +66,8 @@ class ControllerFaqFaq extends Controller {
 			
 			$url = '';
 			
-			if (isset($this->request->get['filter_title'])) {
-				$url .= '&filter_title=' . urlencode(html_entity_decode($this->request->get['filter_title'], ENT_QUOTES, 'UTF-8'));
+			if (isset($this->request->get['filter_category_name'])) {
+				$url .= '&filter_category_name=' . urlencode(html_entity_decode($this->request->get['filter_category_name'], ENT_QUOTES, 'UTF-8'));
 			}
 		
 			if (isset($this->request->get['filter_status'])) {
@@ -108,8 +108,8 @@ class ControllerFaqFaq extends Controller {
 			
 			$url = '';
 			
-			if (isset($this->request->get['filter_title'])) {
-				$url .= '&filter_title=' . urlencode(html_entity_decode($this->request->get['filter_title'], ENT_QUOTES, 'UTF-8'));
+			if (isset($this->request->get['filter_category_name'])) {
+				$url .= '&filter_category_name=' . urlencode(html_entity_decode($this->request->get['filter_category_name'], ENT_QUOTES, 'UTF-8'));
 			}
 		
 			if (isset($this->request->get['filter_status'])) {
@@ -133,66 +133,12 @@ class ControllerFaqFaq extends Controller {
 
     	$this->getList();
   	}
-/*
-  	public function copy() {
-    	$this->language->load('catalog/product');
 
-    	$this->document->setTitle($this->language->get('heading_title'));
-		
-		$this->load->model('catalog/product');
-		
-		if (isset($this->request->post['selected']) && $this->validateCopy()) {
-			foreach ($this->request->post['selected'] as $product_id) {
-				$this->model_catalog_product->copyProduct($product_id);
-	  		}
-
-			$this->session->data['success'] = $this->language->get('text_success');
-			
-			$url = '';
-			
-			if (isset($this->request->get['filter_name'])) {
-				$url .= '&filter_name=' . urlencode(html_entity_decode($this->request->get['filter_name'], ENT_QUOTES, 'UTF-8'));
-			}
-		  
-			if (isset($this->request->get['filter_model'])) {
-				$url .= '&filter_model=' . urlencode(html_entity_decode($this->request->get['filter_model'], ENT_QUOTES, 'UTF-8'));
-			}
-			
-			if (isset($this->request->get['filter_price'])) {
-				$url .= '&filter_price=' . $this->request->get['filter_price'];
-			}
-			
-			if (isset($this->request->get['filter_quantity'])) {
-				$url .= '&filter_quantity=' . $this->request->get['filter_quantity'];
-			}	
-		
-			if (isset($this->request->get['filter_status'])) {
-				$url .= '&filter_status=' . $this->request->get['filter_status'];
-			}
-					
-			if (isset($this->request->get['sort'])) {
-				$url .= '&sort=' . $this->request->get['sort'];
-			}
-
-			if (isset($this->request->get['order'])) {
-				$url .= '&order=' . $this->request->get['order'];
-			}
-
-			if (isset($this->request->get['page'])) {
-				$url .= '&page=' . $this->request->get['page'];
-			}
-			
-			$this->redirect($this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, 'SSL'));
-		}
-
-    	$this->getList();
-  	}
-*/	
   	protected function getList() {				
-		if (isset($this->request->get['filter_question'])) {
-			$filter_question = $this->request->get['filter_question'];
+		if (isset($this->request->get['filter_category_name'])) {
+			$filter_category_name = $this->request->get['filter_category_name'];
 		} else {
-			$filter_question = null;
+			$filter_category_name = null;
 		}
 
 		if (isset($this->request->get['filter_status'])) {
@@ -204,7 +150,7 @@ class ControllerFaqFaq extends Controller {
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
 		} else {
-			$sort = 'pd.name';
+			$sort = 'n.sort_order';
 		}
 		
 		if (isset($this->request->get['order'])) {
@@ -221,8 +167,8 @@ class ControllerFaqFaq extends Controller {
 						
 		$url = '';
 						
-		if (isset($this->request->get['filter_question'])) {
-			$url .= '&filter_question=' . urlencode(html_entity_decode($this->request->get['filter_question'], ENT_QUOTES, 'UTF-8'));
+		if (isset($this->request->get['filter_category_name'])) {
+			$url .= '&filter_category_name=' . urlencode(html_entity_decode($this->request->get['filter_category_name'], ENT_QUOTES, 'UTF-8'));
 		}	
 
 		if (isset($this->request->get['filter_status'])) {
@@ -255,14 +201,13 @@ class ControllerFaqFaq extends Controller {
       		'separator' => ' :: '
    		);
 		
-		$this->data['insert'] = $this->url->link('faq/faq/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		//$this->data['copy'] = $this->url->link('faq/faq/copy', 'token=' . $this->session->data['token'] . $url, 'SSL');	
+		$this->data['insert'] = $this->url->link('faq/faq/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');	
 		$this->data['delete'] = $this->url->link('faq/faq/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
     	
 		$this->data['faqs'] = array();
 
 		$data = array(
-			'filter_question'	  => $filter_question, 
+			'filter_category_name'	  => $filter_category_name, 
 			'filter_status'   => $filter_status,
 			'sort'            => $sort,
 			'order'           => $order,
@@ -281,11 +226,14 @@ class ControllerFaqFaq extends Controller {
 				'text' => $this->language->get('text_edit'),
 				'href' => $this->url->link('faq/faq/update', 'token=' . $this->session->data['token'] . '&faq_id=' . $result['faq_id'] . $url, 'SSL')
 			);
+
+			$category_data = $this->model_faq_faq->getFaqCategory($result['faq_category_id']);
 	
       		$this->data['faqs'][] = array(
 				'faq_id' => $result['faq_id'],
 				'question'       => $result['question'],
 				'answer'       => $result['answer'],
+				'category_name' => (!empty($category_data)) ? $category_data['name'] : '',
 				'status'     => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
 				'selected'   => isset($this->request->post['selected']) && in_array($result['faq_id'], $this->request->post['selected']),
 				'action'     => $action
@@ -300,12 +248,12 @@ class ControllerFaqFaq extends Controller {
 		$this->data['text_image_manager'] = $this->language->get('text_image_manager');		
 					
 		$this->data['column_id'] = $this->language->get('column_id');	
+		$this->data['column_category'] = $this->language->get('column_category');
 		$this->data['column_question'] = $this->language->get('column_question');	
 		$this->data['column_anwser'] = $this->language->get('column_anwser');			
 		$this->data['column_status'] = $this->language->get('column_status');		
 		$this->data['column_action'] = $this->language->get('column_action');		
-				
-		//$this->data['button_copy'] = $this->language->get('button_copy');		
+					
 		$this->data['button_insert'] = $this->language->get('button_insert');		
 		$this->data['button_delete'] = $this->language->get('button_delete');		
 		$this->data['button_filter'] = $this->language->get('button_filter');
@@ -328,8 +276,8 @@ class ControllerFaqFaq extends Controller {
 
 		$url = '';
 
-		if (isset($this->request->get['filter_question'])) {
-			$url .= '&filter_question=' . urlencode(html_entity_decode($this->request->get['filter_question'], ENT_QUOTES, 'UTF-8'));
+		if (isset($this->request->get['filter_category_name'])) {
+			$url .= '&filter_category_name=' . urlencode(html_entity_decode($this->request->get['filter_category_name'], ENT_QUOTES, 'UTF-8'));
 		}
 		
 		if (isset($this->request->get['filter_status'])) {
@@ -345,15 +293,13 @@ class ControllerFaqFaq extends Controller {
 		if (isset($this->request->get['page'])) {
 			$url .= '&page=' . $this->request->get['page'];
 		}
-					
-		$this->data['sort_question'] = $this->url->link('faq/faq', 'token=' . $this->session->data['token'] . '&sort=nd.question' . $url, 'SSL');
+			
 		$this->data['sort_status'] = $this->url->link('faq/faq', 'token=' . $this->session->data['token'] . '&sort=n.status' . $url, 'SSL');
-		$this->data['sort_order'] = $this->url->link('faq/faq', 'token=' . $this->session->data['token'] . '&sort=n.sort_order' . $url, 'SSL');
 		
 		$url = '';
 
-		if (isset($this->request->get['filter_question'])) {
-			$url .= '&filter_question=' . urlencode(html_entity_decode($this->request->get['filter_question'], ENT_QUOTES, 'UTF-8'));
+		if (isset($this->request->get['filter_category_name'])) {
+			$url .= '&filter_category_name=' . urlencode(html_entity_decode($this->request->get['filter_category_name'], ENT_QUOTES, 'UTF-8'));
 		}
 
 		if (isset($this->request->get['filter_status'])) {
@@ -377,7 +323,7 @@ class ControllerFaqFaq extends Controller {
 			
 		$this->data['pagination'] = $pagination->render();
 	
-		$this->data['filter_question'] = $filter_question;
+		$this->data['filter_category_name'] = $filter_category_name;
 		$this->data['filter_status'] = $filter_status;
 		
 		$this->data['sort'] = $sort;
@@ -410,7 +356,6 @@ class ControllerFaqFaq extends Controller {
 
 		$this->data['entry_question'] = $this->language->get('entry_question');
 		$this->data['entry_answer'] = $this->language->get('entry_answer');
-		$this->data['entry_keyword'] = $this->language->get('entry_keyword');
     	$this->data['entry_faq_category'] = $this->language->get('entry_faq_category');
 		$this->data['entry_text'] = $this->language->get('entry_text');
 		$this->data['entry_required'] = $this->language->get('entry_required');
@@ -508,14 +453,6 @@ class ControllerFaqFaq extends Controller {
 			$this->data['faq_description'] = array();
 		}
 		
-		if (isset($this->request->post['keyword'])) {
-      		$this->data['keyword'] = $this->request->post['keyword'];
-    	} elseif (!empty($faq_info)) {
-      		$this->data['keyword'] = $faq_info['keyword'];
-    	} else {
-			$this->data['keyword'] = '';
-		}
-		
 		if (isset($this->request->post['sort_order'])) {
       		$this->data['sort_order'] = $this->request->post['sort_order'];
     	} elseif (!empty($faq_info)) {
@@ -605,24 +542,18 @@ class ControllerFaqFaq extends Controller {
 	  		return false;
 		}
   	}
-/*  	
-  	protected function validateCopy() {
-    	if (!$this->user->hasPermission('modify', 'catalog/product')) {
-      		$this->error['warning'] = $this->language->get('error_permission');  
-    	}
-		
-		if (!$this->error) {
-	  		return true;
-		} else {
-	  		return false;
-		}
-  	}
-*/		
+
 	public function autocomplete() {
 		$json = array();
 		
-		if (isset($this->request->get['filter_question']) || isset($this->request->get['filter_faq_category_id'])) {
+		if (isset($this->request->get['filter_question']) || isset($this->request->get['filter_faq_category_id']) || isset($this->request->get['filter_category_name'])) {
 			$this->load->model('faq/faq');
+
+			if (isset($this->request->get['filter_category_name'])) {
+				$filter_category_name = $this->request->get['filter_category_name'];
+			} else {
+				$filter_category_name = '';
+			}
 			
 			if (isset($this->request->get['filter_question'])) {
 				$filter_question = $this->request->get['filter_question'];
@@ -638,6 +569,7 @@ class ControllerFaqFaq extends Controller {
 						
 			$data = array(
 				'filter_question'  => $filter_question,
+				'filter_category_name'  => $filter_category_name,
 				'start'        => 0,
 				'limit'        => $limit
 			);
