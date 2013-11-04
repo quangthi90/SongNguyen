@@ -63,6 +63,12 @@ $(document).ready(function(){
   <div id="menu">
     <ul class="left" style="display: none;">
       <li id="dashboard"><a href="<?php echo $home; ?>" class="top"><?php echo $text_dashboard; ?></a></li>
+      <li id="news"><a class="top"><?php echo $text_news; ?></a>
+        <ul>
+          <li><a href="<?php echo $news; ?>"><?php echo $text_news; ?></a></li>
+          <li><a href="<?php echo $news_category; ?>"><?php echo $text_news_category; ?></a></li>
+        </ul>
+      </li>
       <li id="catalog"><a class="top"><?php echo $text_catalog; ?></a>
         <ul>
           <li><a href="<?php echo $category; ?>"><?php echo $text_category; ?></a></li>
