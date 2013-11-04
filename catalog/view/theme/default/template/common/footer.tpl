@@ -147,22 +147,10 @@
       </div>
     </div>
   </div>
-  <div id="contact-address" class="popup-container inline">
-    <h2>Thông tin liên hệ</h2>
+  <div id="contact-online-support" class="popup-container inline">
+    <h2>Hỗ trợ trực tuyến</h2>
     <div class="contentbox">
-      <div class="contact-info">
-        <p class="logo"><img src="<?php echo $urlImg; ?>logo.png" width="266" height="87" alt="Logo Song Nguyen Education Services"></p>
-        <p class="address">  
-          Địa chỉ: R4-92 Hưng Gia 2, Phú Mỹ Hưng, Quận 7, Hồ Chí Minh, Việt Nam<br>
-          Điện thoại: +84 8 5410 5770 / 5410 57771<br>
-          Fax: +84 8 5410 5772<br>
-          Email: contact@sn.edu.vn<br>
-          Website: www.sn.edu.vn
-        </p>
-      </div>
-      <div class="contact-map">
-        <img src="<?php echo $urlImg; ?>map.jpg" alt="Bản Đồ Đến Song Nguyen">
-      </div>
+      
     </div>
   </div>
 </div>

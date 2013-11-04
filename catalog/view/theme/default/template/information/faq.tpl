@@ -32,11 +32,16 @@ DD_belatedPNG.fix('#logo img');
         $(this).addClass('active');
         $(item).addClass('active').slideDown(300);
       });
-      $('.problem-item').click(function(e){
-        $('.problem-item').removeClass('active');
-        $('.problem-item-answer').hide(200);
-        $(this).addClass('active');       
-        $(this).children('.problem-item-answer').slideDown(300);
+      $('.problem-item').click(function(e){        
+        if($(this).hasClass('active')){
+          $(this).removeClass('active');       
+          $(this).children('.problem-item-answer').slideUp(300);
+        }else {
+          $('.problem-item').removeClass('active');
+          $('.problem-item-answer').hide(200);
+          $(this).addClass('active');       
+          $(this).children('.problem-item-answer').slideDown(300);
+        }        
       });
       $('.problem-list').mCustomScrollbar({
         set_width:false, /*optional element width: boolean, pixels, percentage*/
