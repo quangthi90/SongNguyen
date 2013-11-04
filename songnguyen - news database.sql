@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2013 at 01:24 AM
+-- Generation Time: Nov 04, 2013 at 02:15 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -16,20 +16,6 @@
 --
 -- Database: `test`
 --
-
-DELIMITER $$
---
--- Procedures
---
-CREATE DEFINER=`root`@`localhost` PROCEDURE `test_multi_sets`()
-    DETERMINISTIC
-begin
-        select user() as first_col;
-        select user() as first_col, now() as second_col;
-        select user() as first_col, now() as second_col, now() as third_col;
-        end$$
-
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -93,21 +79,6 @@ CREATE TABLE IF NOT EXISTS `news_description` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
-  `news_id` int(11) NOT NULL,
-  `language_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `news_option`
---
-
-CREATE TABLE IF NOT EXISTS `news_option` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `value` varchar(255) NOT NULL,
   `news_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
