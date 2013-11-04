@@ -28,12 +28,11 @@
                 <?php } else { ?>
                 <a href="<?php echo $sort_title; ?>"><?php echo $column_title; ?></a>
                 <?php } ?></td>
-              <!--<td class="left"><?php if ($sort == 'ncd.name') { ?>
+              <td class="left"><?php if ($sort == 'ncd.name') { ?>
                 <a href="<?php echo $sort_news_category_name; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_news_category_name; ?></a>
                 <?php } else { ?>
                 <a href="<?php echo $sort_news_category_name; ?>"><?php echo $column_news_category_name; ?></a>
-                <?php } ?></td>-->
-              <td class="left"><?php echo $column_news_category_name; ?></td>
+                <?php } ?></td>
               <td class="left"><?php if ($sort == 'n.status') { ?>
                 <a href="<?php echo $sort_status; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_status; ?></a>
                 <?php } else { ?>
@@ -47,7 +46,7 @@
               <td></td>
               <td></td>
               <td><input type="text" name="filter_title" value="<?php echo $filter_title; ?>" /></td>
-              <td><input type="text" name="filter_news_category_name" value="<?php echo $filter_news_category_name; ?>" /><input type="hidden" name="filter_news_category_id" value="<?php echo $filter_news_category_id; ?>" /></td>
+              <td><input type="text" name="filter_news_category_name" value="<?php echo $filter_news_category_name; ?>" /></td>
               <td><select name="filter_status">
                   <option value="*"></option>
                   <?php if ($filter_status) { ?>

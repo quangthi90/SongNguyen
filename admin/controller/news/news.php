@@ -142,12 +142,6 @@ class ControllerNewsNews extends Controller {
 			$filter_title = null;
 		}
 
-		if (isset($this->request->get['filter_news_category_id'])) {
-			$filter_news_category_id = $this->request->get['filter_news_category_id'];
-		} else {
-			$filter_news_category_id = null;
-		}
-
 		if (isset($this->request->get['filter_news_category_name'])) {
 			$filter_news_category_name = $this->request->get['filter_news_category_name'];
 		} else {
@@ -182,10 +176,6 @@ class ControllerNewsNews extends Controller {
 						
 		if (isset($this->request->get['filter_title'])) {
 			$url .= '&filter_title=' . urlencode(html_entity_decode($this->request->get['filter_title'], ENT_QUOTES, 'UTF-8'));
-		}	
-						
-		if (isset($this->request->get['filter_news_category_id'])) {
-			$url .= '&filter_news_category_id=' . urlencode(html_entity_decode($this->request->get['filter_news_category_id'], ENT_QUOTES, 'UTF-8'));
 		}	
 						
 		if (isset($this->request->get['filter_news_category_name'])) {
@@ -230,7 +220,6 @@ class ControllerNewsNews extends Controller {
 		$data = array(
 			'filter_title'	  => $filter_title, 
 			'filter_news_category_name'	  => $filter_news_category_name, 
-			'filter_news_category_id'	  => $filter_news_category_id, 
 			'filter_status'   => $filter_status,
 			'sort'            => $sort,
 			'order'           => $order,
@@ -257,14 +246,12 @@ class ControllerNewsNews extends Controller {
 			} else {
 				$image = $this->model_tool_image->resize('no_image.jpg', 40, 40);
 			}
-
-			$news_category_data = $this->model_news_news->getNewsCategory($result['news_category_id']);
 	
       		$this->data['newses'][] = array(
 				'news_id' => $result['news_id'],
 				'title'       => $result['title'],
 				'image'      => $image,
-				'news_category_name' => (!empty($news_category_data)) ? $news_category_data['name'] : '',
+				'news_category_name' => $result['news_category_name'],
 				'status'     => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
 				'selected'   => isset($this->request->post['selected']) && in_array($result['news_id'], $this->request->post['selected']),
 				'action'     => $action
@@ -283,8 +270,7 @@ class ControllerNewsNews extends Controller {
 		$this->data['column_news_category_name'] = $this->language->get('column_news_category_name');			
 		$this->data['column_status'] = $this->language->get('column_status');		
 		$this->data['column_action'] = $this->language->get('column_action');		
-				
-		//$this->data['button_copy'] = $this->language->get('button_copy');		
+					
 		$this->data['button_insert'] = $this->language->get('button_insert');		
 		$this->data['button_delete'] = $this->language->get('button_delete');		
 		$this->data['button_filter'] = $this->language->get('button_filter');
@@ -311,10 +297,6 @@ class ControllerNewsNews extends Controller {
 			$url .= '&filter_title=' . urlencode(html_entity_decode($this->request->get['filter_title'], ENT_QUOTES, 'UTF-8'));
 		}
 
-		if (isset($this->request->get['filter_news_category_id'])) {
-			$url .= '&filter_news_category_id=' . urlencode(html_entity_decode($this->request->get['filter_news_category_id'], ENT_QUOTES, 'UTF-8'));
-		}
-
 		if (isset($this->request->get['filter_news_category_name'])) {
 			$url .= '&filter_news_category_name=' . urlencode(html_entity_decode($this->request->get['filter_news_category_name'], ENT_QUOTES, 'UTF-8'));
 		}
@@ -334,6 +316,7 @@ class ControllerNewsNews extends Controller {
 		}
 					
 		$this->data['sort_title'] = $this->url->link('news/news', 'token=' . $this->session->data['token'] . '&sort=nd.title' . $url, 'SSL');
+		$this->data['sort_news_category_name'] = $this->url->link('news/news', 'token=' . $this->session->data['token'] . '&sort=ncd.name' . $url, 'SSL');
 		$this->data['sort_status'] = $this->url->link('news/news', 'token=' . $this->session->data['token'] . '&sort=n.status' . $url, 'SSL');
 		$this->data['sort_order'] = $this->url->link('news/news', 'token=' . $this->session->data['token'] . '&sort=n.sort_order' . $url, 'SSL');
 		
@@ -341,10 +324,6 @@ class ControllerNewsNews extends Controller {
 
 		if (isset($this->request->get['filter_title'])) {
 			$url .= '&filter_title=' . urlencode(html_entity_decode($this->request->get['filter_title'], ENT_QUOTES, 'UTF-8'));
-		}
-
-		if (isset($this->request->get['filter_news_category_id'])) {
-			$url .= '&filter_news_category_id=' . urlencode(html_entity_decode($this->request->get['filter_news_category_id'], ENT_QUOTES, 'UTF-8'));
 		}
 
 		if (isset($this->request->get['filter_news_category_name'])) {
@@ -374,7 +353,6 @@ class ControllerNewsNews extends Controller {
 	
 		$this->data['filter_title'] = $filter_title;
 		$this->data['filter_news_category_name'] = $filter_news_category_name;
-		$this->data['filter_news_category_id'] = $filter_news_category_id;
 		$this->data['filter_status'] = $filter_status;
 		
 		$this->data['sort'] = $sort;
