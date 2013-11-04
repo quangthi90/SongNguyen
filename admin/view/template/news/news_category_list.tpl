@@ -22,8 +22,8 @@
           <thead>
             <tr>
               <td width="1" style="text-align: center;"><input type="checkbox" onclick="$('input[name*=\'selected\']').attr('checked', this.checked);" /></td>
-              <td class="left"><?php echo $column_parent; ?></td>
               <td class="left"><?php echo $column_name; ?></td>
+              <td class="left"><?php echo $column_parent; ?></td>
               <td class="right"><?php echo $column_sort_order; ?></td>
               <td class="right"><?php echo $column_action; ?></td>
             </tr>
@@ -37,8 +37,8 @@
                 <?php } else { ?>
                 <input type="checkbox" name="selected[]" value="<?php echo $news_category['news_category_id']; ?>" />
                 <?php } ?></td>
-              <td class="left"><?php echo $news_category['parent_name']; ?></td>
               <td class="left"><?php echo $news_category['name']; ?></td>
+              <td class="left"><?php echo $news_category['parent_name']; ?></td>
               <td class="right"><?php echo $news_category['sort_order']; ?></td>
               <td class="right"><?php foreach ($news_category['action'] as $action) { ?>
                 [ <a href="<?php echo $action['href']; ?>"><?php echo $action['text']; ?></a> ]

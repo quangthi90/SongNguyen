@@ -161,12 +161,12 @@ $('input[name=\'filter_news_category_name\']').autocomplete({
         json.unshift({
           'news_category_id':  0,
           'name':  '',
-          'parent_name': '<?php echo $text_none; ?>',
+          'parent_name': 'root',
         });
 
         response($.map(json, function(item) {
           return {
-            label: (item.parent_name && item.name) ? item.parent_name + ' > ' + item.name : item.parent_name + item.name,
+            label: (item.name) ? item.parent_name + ' > ' + item.name : item.parent_name,
             value: item.news_category_id,
             name: item.name 
           }

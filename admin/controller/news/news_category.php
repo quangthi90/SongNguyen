@@ -409,7 +409,7 @@ class ControllerNewsNewsCategory extends Controller {
 			foreach ($results as $result) {
 				$json[] = array(
 					'news_category_id' => $result['news_category_id'], 
-					'parent_name' => strip_tags(html_entity_decode($result['parent_name'], ENT_QUOTES, 'UTF-8')), 
+					'parent_name' => ($result['parent_name']) ? strip_tags(html_entity_decode($result['parent_name'], ENT_QUOTES, 'UTF-8')) : 'root', 
 					'name'        => strip_tags(html_entity_decode($result['name'], ENT_QUOTES, 'UTF-8'))
 				);
 			}		
