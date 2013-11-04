@@ -142,7 +142,7 @@
             <span>Tiếng Việt</span>
           </li>   
           <li>
-            <a href="#site-map" class="link-popup">Sitemap</a>
+            <a href="#site-map" class="link-popup inline">Sitemap</a>
           </li>
           </ul>    
         <input type="hidden" name="language_code" value="">

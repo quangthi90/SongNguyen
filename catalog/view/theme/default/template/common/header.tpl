@@ -110,7 +110,7 @@ DD_belatedPNG.fix('#logo img');
                 </ul>
               </li>              
               <li>
-                <a href="#">FAQ</a>
+                <a href="<?php echo $faq; ?>" class="link-popup iframe">FAQ</a>
               </li>
               <li class="item-with-ul">
                 <a href="#">Liên hệ</a>

@@ -27,7 +27,7 @@ $(document).ready(function() {
 	});	
 
 	//JS For Song Nguyen:
-	$('.nav .item-with-ul').hover(function(){
+	$('.nav .item-with-ul').hover(function(){		
       	$('.nav .item-with-ul').removeClass('active');
       	$(this).children('ul').stop(true,true).slideDown(400);
       	$(this).addClass('active');
@@ -37,13 +37,18 @@ $(document).ready(function() {
     });
 
     //Popup:
-    $('.link-popup').colorbox({
+    $('.link-popup.inline').colorbox({
 		inline:true,
 		width:"75%", 
 		height:"85%",
 		onComplete: function(){
-			$('#cboxLoadedContent').makeCustomScroll();
+			$('#cboxLoadedContent').makeCustomScroll(false);
 		}
+	});
+	$('.link-popup.iframe').colorbox({
+		iframe:true,
+		width:"75%", 
+		height:"85%"
 	});
 });
 
