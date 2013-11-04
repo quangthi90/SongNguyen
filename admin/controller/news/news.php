@@ -163,7 +163,7 @@ class ControllerNewsNews extends Controller {
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
 		} else {
-			$sort = 'n.date_modified';
+			$sort = 'n.date_added';
 		}
 		
 		if (isset($this->request->get['order'])) {
