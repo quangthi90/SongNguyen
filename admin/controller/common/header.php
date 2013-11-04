@@ -120,6 +120,10 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_paypal_express_search'] = $this->language->get('text_paypal_search');
 		$this->data['text_recurring_profile'] = $this->language->get('text_recurring_profile');
 
+		$this->data['text_news'] = $this->language->get('text_news');
+		$this->data['text_news_category'] = $this->language->get('text_news_category');
+		$this->data['text_event'] = $this->language->get('text_event');
+
 		if (!$this->user->isLogged() || !isset($this->request->get['token']) || !isset($this->session->data['token']) || ($this->request->get['token'] != $this->session->data['token'])) {
 			$this->data['logged'] = '';
 			
@@ -221,6 +225,10 @@ class ControllerCommonHeader extends Controller {
 			$this->data['paypal_express'] = $this->url->link('payment/pp_express', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['paypal_express_search'] = $this->url->link('payment/pp_express/search', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['recurring_profile'] = $this->url->link('sale/recurring', 'token=' . $this->session->data['token'], 'SSL');
+
+			$this->data['news'] = $this->url->link('news/news', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['news_category'] = $this->url->link('news/news_category', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['event'] = $this->url->link('event/event', 'token=' . $this->session->data['token'], 'SSL');
 
 			$this->data['stores'] = array();
 			
