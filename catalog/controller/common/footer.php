@@ -7,7 +7,7 @@ class ControllerCommonFooter extends Controller {
 		} else {
 			$server = $this->config->get('config_url');
 		}
-		$this->data['base'] = $server;
+		$this->data['urlImg'] = $server.'image/data/';
 		$this->language->load('common/footer');
 		$this->data['powered'] = sprintf($this->language->get('text_powered'), $this->config->get('config_name'), date('Y', time()));
 		

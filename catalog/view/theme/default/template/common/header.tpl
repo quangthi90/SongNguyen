@@ -115,7 +115,7 @@ DD_belatedPNG.fix('#logo img');
               <li class="item-with-ul">
                 <a href="#">Liên hệ</a>
                 <ul style="display: none;">
-                    <li><a href="#">Thông Tin Liên Hệ</a></li>
+                    <li><a href="#contact-address" class="link-popup contact">Thông Tin Liên Hệ</a></li>
                     <li><a href="#">Gửi Mail cho Song Nguyen</a></li>
                     <li><a href="#">Hỗ Trợ Trực Tuyến</a></li>
                 </ul>

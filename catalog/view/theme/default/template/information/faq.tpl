@@ -67,7 +67,7 @@ DD_belatedPNG.fix('#logo img');
 </script>
 </head>
 <body>
-  <div id="faq-page">
+  <div id="faq-page" class="popup-container">
     <h2>Những câu hỏi thường gặp</h2>
     <div class="contentbox">
       <div id="topic-container"> 

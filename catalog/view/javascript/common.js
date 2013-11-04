@@ -39,16 +39,24 @@ $(document).ready(function() {
     //Popup:
     $('.link-popup.inline').colorbox({
 		inline:true,
-		width:"75%", 
-		height:"85%",
+		width:"85%", 
+		height:"90%",
+		onComplete: function(){
+			$('#cboxLoadedContent').makeCustomScroll(false);
+		}
+	});
+	$('.link-popup.contact').colorbox({
+		inline:true,
+		width:"1000px", 
+		height:"620px",
 		onComplete: function(){
 			$('#cboxLoadedContent').makeCustomScroll(false);
 		}
 	});
 	$('.link-popup.iframe').colorbox({
 		iframe:true,
-		width:"75%", 
-		height:"85%"
+		width:"85%", 
+		height:"90%"
 	});
 });
 
