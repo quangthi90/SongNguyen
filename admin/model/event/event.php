@@ -12,16 +12,6 @@ class ModelEventEvent extends Model {
 		foreach ($data['event_description'] as $language_id => $value) {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "event_description SET event_id = '" . (int)$event_id . "', language_id = '" . (int)$language_id . "', title = '" . $this->db->escape($value['title']) . "', content = '" . $this->db->escape($value['content']) . "'");
 		}
-
-		if (isset($data['keyword'])) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'event_id=" . $event_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
-		}
-		
-		/*if (isset($data['event_category'])) {
-			foreach ($data['event_category'] as $event_category_id) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "event_to_event_category SET event_id = '" . (int)$event_id . "', event_category_id = '" . (int)$event_category_id . "'");
-			}
-		}*/
 		
 		$this->cache->delete('event');
 	}
@@ -38,75 +28,23 @@ class ModelEventEvent extends Model {
 		foreach ($data['event_description'] as $language_id => $value) {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "event_description SET event_id = '" . (int)$event_id . "', language_id = '" . (int)$language_id . "', title = '" . $this->db->escape($value['title']) . "', content = '" . $this->db->escape($value['content']) . "'");
 		}
-		
-		/*$this->db->query("DELETE FROM " . DB_PREFIX . "event_to_event_category WHERE event_id = '" . (int)$event_id . "'");
-		
-		if (isset($data['event_category'])) {
-			foreach ($data['event_category'] as $event_category_id) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "event_to_event_category SET event_id = '" . (int)$event_id . "', event_category_id = '" . (int)$event_category_id . "'");
-			}		
-		}*/
+	}
 
-		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'event_id=" . (int)$event_id . "'");
-		
-		if (isset($data['keyword'])) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'event_id=" . $event_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
-		}
-	}
-/*	
-	public function copyProduct($product_id) {
-		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE p.product_id = '" . (int)$product_id . "' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
-		
-		if ($query->num_rows) {
-			$data = array();
-			
-			$data = $query->row;
-			
-			$data['sku'] = '';
-			$data['upc'] = '';
-			$data['viewed'] = '0';
-			$data['keyword'] = '';
-			$data['status'] = '0';
-						
-			$data = array_merge($data, array('product_attribute' => $this->getProductAttributes($product_id)));
-			$data = array_merge($data, array('product_description' => $this->getProductDescriptions($product_id)));			
-			$data = array_merge($data, array('product_discount' => $this->getProductDiscounts($product_id)));
-			$data = array_merge($data, array('product_filter' => $this->getProductFilters($product_id)));
-			$data = array_merge($data, array('product_image' => $this->getProductImages($product_id)));		
-			$data = array_merge($data, array('product_option' => $this->getProductOptions($product_id)));
-			$data = array_merge($data, array('product_related' => $this->getProductRelated($product_id)));
-			$data = array_merge($data, array('product_reward' => $this->getProductRewards($product_id)));
-			$data = array_merge($data, array('product_special' => $this->getProductSpecials($product_id)));
-			$data = array_merge($data, array('product_category' => $this->getProductCategories($product_id)));
-			$data = array_merge($data, array('product_download' => $this->getProductDownloads($product_id)));
-			$data = array_merge($data, array('product_layout' => $this->getProductLayouts($product_id)));
-			$data = array_merge($data, array('product_store' => $this->getProductStores($product_id)));
-			$data = array_merge($data, array('product_profiles' => $this->getProfiles($product_id)));
-			$this->addProduct($data);
-		}
-	}
-*/	
 	public function deleteEvent($event_id) {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "event WHERE id = '" . (int) $event_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "event_description WHERE event_id = '" . (int) $event_id . "'");
-		//$this->db->query("DELETE FROM " . DB_PREFIX . "event_to_event_category WHERE event_id = '" . (int) $event_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'event_id=" . (int)$event_id . "'");
 		
 		$this->cache->delete('event');
 	}
 	
 	public function getEvent($event_id) {
-		$query = $this->db->query("SELECT DISTINCT *, (SELECT ua.keyword FROM " . DB_PREFIX . "url_alias ua WHERE ua.query = 'event_id=" . $event_id . "') AS keyword FROM " . DB_PREFIX . "event n LEFT JOIN " . DB_PREFIX . "event_description nd ON (n.id = nd.event_id) WHERE n.id = '" . (int)$event_id . "' AND nd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
+		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "event n LEFT JOIN " . DB_PREFIX . "event_description nd ON (n.id = nd.event_id) WHERE n.id = '" . (int)$event_id . "' AND nd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
 				
 		return $query->row;
 	}
 	
 	public function getEvents($data = array()) {
 		$sql = "SELECT * FROM " . DB_PREFIX . "event n LEFT JOIN " . DB_PREFIX . "event_description nd ON (n.id = nd.event_id)";
-		
-		/*if (!empty($data['filter_event_category_id'])) {
-			$sql .= " LEFT JOIN " . DB_PREFIX . "event_to_event_category n2nc ON (n.id = n2nc.event_id)";			
-		}*/
 				
 		$sql .= " WHERE nd.language_id = '" . (int)$this->config->get('config_language_id') . "'"; 
 		
@@ -154,13 +92,7 @@ class ModelEventEvent extends Model {
 	
 		return $query->rows;
 	}
-/*	
-	public function getProductsByCategoryId($category_id) {
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) LEFT JOIN " . DB_PREFIX . "product_to_category p2c ON (p.product_id = p2c.product_id) WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p2c.category_id = '" . (int)$category_id . "' ORDER BY pd.name ASC");
-								  
-		return $query->rows;
-	} 
-*/	
+
 	public function getEventDescriptions($event_id) {
 		$event_description_data = array();
 		
@@ -175,25 +107,9 @@ class ModelEventEvent extends Model {
 		
 		return $event_description_data;
 	}
-		
-	/*public function getEventCategories($event_id) {
-		$event_category_data = array();
-		
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "event_to_event_category WHERE event_id = '" . (int)$event_id . "'");
-		
-		foreach ($query->rows as $result) {
-			$event_category_data[] = $result['event_category_id'];
-		}
-
-		return $event_category_data;
-	}*/
 
 	public function getTotalEvents($data = array()) {
 		$sql = "SELECT COUNT(DISTINCT n.id) AS total FROM " . DB_PREFIX . "event n LEFT JOIN " . DB_PREFIX . "event_description nd ON (n.id = nd.event_id)";
-
-		/*if (!empty($data['filter_event_category_id'])) {
-			$sql .= " LEFT JOIN " . DB_PREFIX . "event_to_event_category n2nc ON (n.id = n2nc.event_id)";			
-		}*/
 		 
 		$sql .= " WHERE nd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
 		 			

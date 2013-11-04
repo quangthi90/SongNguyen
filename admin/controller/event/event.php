@@ -133,61 +133,7 @@ class ControllerEventEvent extends Controller {
 
     	$this->getList();
   	}
-/*
-  	public function copy() {
-    	$this->language->load('catalog/product');
 
-    	$this->document->setTitle($this->language->get('heading_title'));
-		
-		$this->load->model('catalog/product');
-		
-		if (isset($this->request->post['selected']) && $this->validateCopy()) {
-			foreach ($this->request->post['selected'] as $product_id) {
-				$this->model_catalog_product->copyProduct($product_id);
-	  		}
-
-			$this->session->data['success'] = $this->language->get('text_success');
-			
-			$url = '';
-			
-			if (isset($this->request->get['filter_name'])) {
-				$url .= '&filter_name=' . urlencode(html_entity_decode($this->request->get['filter_name'], ENT_QUOTES, 'UTF-8'));
-			}
-		  
-			if (isset($this->request->get['filter_model'])) {
-				$url .= '&filter_model=' . urlencode(html_entity_decode($this->request->get['filter_model'], ENT_QUOTES, 'UTF-8'));
-			}
-			
-			if (isset($this->request->get['filter_price'])) {
-				$url .= '&filter_price=' . $this->request->get['filter_price'];
-			}
-			
-			if (isset($this->request->get['filter_quantity'])) {
-				$url .= '&filter_quantity=' . $this->request->get['filter_quantity'];
-			}	
-		
-			if (isset($this->request->get['filter_status'])) {
-				$url .= '&filter_status=' . $this->request->get['filter_status'];
-			}
-					
-			if (isset($this->request->get['sort'])) {
-				$url .= '&sort=' . $this->request->get['sort'];
-			}
-
-			if (isset($this->request->get['order'])) {
-				$url .= '&order=' . $this->request->get['order'];
-			}
-
-			if (isset($this->request->get['page'])) {
-				$url .= '&page=' . $this->request->get['page'];
-			}
-			
-			$this->redirect($this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, 'SSL'));
-		}
-
-    	$this->getList();
-  	}
-*/	
   	protected function getList() {				
 		if (isset($this->request->get['filter_title'])) {
 			$filter_title = $this->request->get['filter_title'];
@@ -423,8 +369,6 @@ class ControllerEventEvent extends Controller {
 		$this->data['entry_title'] = $this->language->get('entry_title');
 		$this->data['entry_content'] = $this->language->get('entry_content');
     	$this->data['entry_image'] = $this->language->get('entry_image');
-    	$this->data['entry_keyword'] = $this->language->get('entry_keyword');
-    	//$this->data['entry_event_category'] = $this->language->get('entry_event_category');
 		$this->data['entry_text'] = $this->language->get('entry_text');
 		$this->data['entry_required'] = $this->language->get('entry_required');
 		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
@@ -438,7 +382,6 @@ class ControllerEventEvent extends Controller {
 		
     	$this->data['tab_general'] = $this->language->get('tab_general');
     	$this->data['tab_data'] = $this->language->get('tab_data');		
-		//$this->data['tab_links'] = $this->language->get('tab_links');
 		 
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
@@ -533,14 +476,6 @@ class ControllerEventEvent extends Controller {
 		}
 
 		$this->data['no_image'] = $this->model_tool_image->resize('no_image.jpg', 100, 100);
-		
-		if (isset($this->request->post['keyword'])) {
-      		$this->data['keyword'] = $this->request->post['keyword'];
-    	} elseif (!empty($event_info)) {
-      		$this->data['keyword'] = $event_info['keyword'];
-    	} else {
-			$this->data['keyword'] = '';
-		}
 
 		if (isset($this->request->post['sort_order'])) {
       		$this->data['sort_order'] = $this->request->post['sort_order'];
@@ -557,30 +492,6 @@ class ControllerEventEvent extends Controller {
 		} else {
       		$this->data['status'] = 1;
     	}
-		
-		/*/ Categories
-		$this->load->model('event/event_category');
-		
-		if (isset($this->request->post['event_category'])) {
-			$event_categories = $this->request->post['event_category'];
-		} elseif (isset($this->request->get['event_id'])) {		
-			$event_categories = $this->model_event_event->getEventCategories($this->request->get['event_id']);
-		} else {
-			$event_categories = array();
-		}
-	
-		$this->data['event_categories'] = array();
-		
-		foreach ($event_categories as $event_category_id) {
-			$event_category_info = $this->model_event_event_category->getEventCategory($event_category_id);
-			
-			if ($event_category_info) {
-				$this->data['event_categories'][] = array(
-					'event_category_id' => $event_category_info['event_category_id'],
-					'name'        => $event_category_info['name']
-				);
-			}
-		}*/
 										
 		$this->template = 'event/event_form.tpl';
 		$this->children = array(
@@ -624,19 +535,7 @@ class ControllerEventEvent extends Controller {
 	  		return false;
 		}
   	}
-/*  	
-  	protected function validateCopy() {
-    	if (!$this->user->hasPermission('modify', 'catalog/product')) {
-      		$this->error['warning'] = $this->language->get('error_permission');  
-    	}
 		
-		if (!$this->error) {
-	  		return true;
-		} else {
-	  		return false;
-		}
-  	}
-*/		
 	public function autocomplete() {
 		$json = array();
 		
