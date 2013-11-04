@@ -116,7 +116,8 @@ DD_belatedPNG.fix('#logo img');
                 <a href="#">Liên hệ</a>
                 <ul style="display: none;">
                     <li><a href="#contact-address" class="link-popup contact">Thông Tin Liên Hệ</a></li>
-                    <li><a href="#">Gửi Mail cho Song Nguyen</a></li>
+                    <li><a href="<?php echo $contactus; ?>" class="link-popup iframe">Gửi Mail cho Song Nguyen</a>
+                    </li>
                     <li><a href="#">Hỗ Trợ Trực Tuyến</a></li>
                 </ul>
               </li>

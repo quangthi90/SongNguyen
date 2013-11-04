@@ -418,3 +418,48 @@ a:hover{
 	padding-left: 20px;
 	list-style: square;
 }
+
+/*Contact Us*/
+#contact-page {
+
+}
+#contact-page table {
+    width: 100%;
+    margin-top: 15px;
+}
+#contact-page table td {
+    padding: 5px;
+}
+#contact-page table td.label {
+    vertical-align: top;
+    width: 200px;
+}
+#contact-page table td.label .required {
+	color: red;
+	font-size: 12px;
+}
+#contact-page table td.value {
+    text-align: left;
+    vertical-align: top;
+}
+#contact-page table td.value input {
+    width: 60%;
+    padding: 5px;
+}
+#contact-page table td.value input[type="submit"] {
+	border: 1px solid #ddd;
+	background-color: #ddd;
+	color: #000;
+	padding: 5px 14px;
+	width: 90px;
+	font-weight: bold;
+}
+#contact-page table td.value input[type="submit"]:hover {
+	cursor: pointer;
+}
+#contact-page table td.value textarea {
+}
+#contact-page table td.value span.error {
+	color: red;
+	font-size: 12px;
+}
