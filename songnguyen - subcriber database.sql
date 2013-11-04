@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2013 at 02:47 PM
+-- Generation Time: Nov 04, 2013 at 03:42 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -26,6 +26,7 @@
 CREATE TABLE IF NOT EXISTS `subcriber` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
+  `status` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
