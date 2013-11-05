@@ -71,13 +71,31 @@
 </div>
 <div style="display: none;">
 	<div id="popup-text" class="popup-intro">
-		
+		<p>Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo </p>
+		<p>Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo </p>
+		<p>Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo </p>
+		<p>Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo </p>
+		<p>Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo </p>
 	</div>
 	<div id="popup-slide-image" class="popup-intro">
-		
+		<p>
+			<a class="group2" href="../content/ohoopee1.jpg" title="Title">
+			Grouped Photo 1
+			</a>
+		</p>
+		<p>
+			<a class="group2" href="../content/ohoopee2.jpg" title="Title">
+			Grouped Photo 2
+			</a>
+		</p>
+		<p>
+			<a class="group2" href="../content/ohoopee3.jpg" title="Title">
+			Grouped Photo 3
+			</a>
+		</p>
 	</div>
 	<div id="popup-video" class="popup-intro">
-		
+		<iframe width="854" height="510" src="//www.youtube.com/embed/HLphrgQFHUQ" frameborder="0" allowfullscreen></iframe>
 	</div>
 </div>
 <?php echo $footer; ?>

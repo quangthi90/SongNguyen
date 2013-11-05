@@ -58,6 +58,11 @@ $(document).ready(function() {
 		width:"85%", 
 		height:"90%"
 	});
+	$('.link-popup.video').colorbox({
+		iframe:true,
+		innerWidth:800, 
+		innerHeight:600
+	});	
 
 	if($('.content-list').children('.box5').length > 5){
 		$('.content-list').jcarousel({
