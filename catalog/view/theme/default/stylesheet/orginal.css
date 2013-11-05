@@ -143,6 +143,14 @@ a:hover{
 .item-avatar:hover .item-avatar-img.off {
 	opacity: 1;
 }
+
+#body-content .content-list{
+	overflow: hidden;
+}
+#body-content .box{
+	float: left;
+	overflow: hidden;
+}
 #body-content .box1{
 	width:275px;
 	height:186px;
@@ -152,25 +160,29 @@ a:hover{
 	height:auto;
 }
 #body-content .box3{
-	width:275px;
-	height:186px;
+	width: 275px;
+	height: 186px;
+	margin-right: 50px;	
 }
 .box3 img{
-	width:275px;
-	height:auto;
+	width: 100%;
+	height: auto;
 }
 #body-content .box5{
-	width:190px;
-	height:128px;
+	width: 190px;
+	height: 128px;
 }
 .box5 img{
-	width:190px;
+	width: 100%;
 	height:auto;
 }
 #body-content .pagelocation{
-	font-weight:bold;
-	font-style:italic;
+	font-weight: bold;
+	font-size: 16px;
 	padding: 5px 0px 5px 20px;
+	background: transparent url(../image/icon-redbox.gif) 0 50% no-repeat;
+	margin-bottom: 15px;
+	border-bottom: 1px solid #f0f0f0;
 }
 .contentbox{
 	overflow-x:hidden;

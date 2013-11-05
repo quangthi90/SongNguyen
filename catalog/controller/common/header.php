@@ -43,6 +43,7 @@ class ControllerCommonHeader extends Controller {
 		$this->data['home'] = $this->url->link('common/home');
 		$this->data['faq'] = $this->url->link('information/faq');
 		$this->data['contactus'] = $this->url->link('information/contact');
+		$this->data['pcontact'] = $this->url->link('information/pcontact');
 		
 		// Daniel's robot detector
 		$status = true;		

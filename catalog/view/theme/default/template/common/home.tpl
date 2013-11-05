@@ -1,7 +1,7 @@
 <?php echo $header; ?>
 <div id="body-content">
 	<div class="pagelocation">
-		<a href="duhoche.html">DU HỌC HÈ</a>
+		Du học
 	</div>
 	<div class="box-item box5">
 		<a class="item-avatar" href="#">
