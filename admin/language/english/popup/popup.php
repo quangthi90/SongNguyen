@@ -10,6 +10,7 @@ $_['text_carousel_popup']           = 'Carousel Popup';
 
 // Column
 $_['column_title']      = 'Title';
+$_['column_type']      = 'Popup Type';
 $_['column_status']      = 'Status';
 $_['column_action']      = 'Action';
 

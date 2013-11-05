@@ -226,10 +226,19 @@ class ControllerPopupPopup extends Controller {
 				'text' => $this->language->get('text_edit'),
 				'href' => $this->url->link('popup/popup/update', 'token=' . $this->session->data['token'] . '&popup_id=' . $result['popup_id'] . $url, 'SSL')
 			);
+
+			if ($result['type'] == 1) {
+				$type = $this->language->get('text_video_popup');
+			}elseif ($result['type'] == 2) {
+				$type = $this->language->get('text_carousel_popup');
+			}else {
+				$type = $this->language->get('text_text_popup');
+			}
 	
       		$this->data['popups'][] = array(
 				'popup_id' => $result['popup_id'],
 				'title'       => $result['title'],
+				'type'	=> $type,
 				'status'     => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
 				'selected'   => isset($this->request->post['selected']) && in_array($result['popup_id'], $this->request->post['selected']),
 				'action'     => $action
@@ -243,6 +252,7 @@ class ControllerPopupPopup extends Controller {
 		$this->data['text_no_results'] = $this->language->get('text_no_results');		
 				
 		$this->data['column_title'] = $this->language->get('column_title');	
+		$this->data['column_type'] = $this->language->get('column_type');	
 		$this->data['column_status'] = $this->language->get('column_status');		
 		$this->data['column_action'] = $this->language->get('column_action');		
 				
