@@ -79,6 +79,11 @@ $(document).ready(function(){
           <li><a href="<?php echo $faq_category; ?>"><?php echo $text_faq_category; ?></a></li>
         </ul>
       </li>
+      <li id="popup"><a class="top"><?php echo $text_popup; ?></a>
+        <ul>
+          <li><a href="<?php echo $popup; ?>"><?php echo $text_popup; ?></a></li>
+        </ul>
+      </li>
       <li id="system"><a class="top"><?php echo $text_system; ?></a>
         <ul>
           <li><a href="<?php echo $setting; ?>"><?php echo $text_setting; ?></a></li>
