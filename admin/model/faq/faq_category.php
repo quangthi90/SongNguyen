@@ -49,13 +49,13 @@ class ModelFaqFaqCategory extends Model {
 	} 
 	
 	public function getFaqCategories($data) {
-		$sql = "SELECT nc.id AS faq_category_id, ncd.name AS name, nc.sort_order, nc.date_added, nc.date_modified, nc.status, nc.parent_id, ncd.language_id FROM " . DB_PREFIX . "faq_category nc LEFT JOIN " . DB_PREFIX . "faq_category_description ncd ON (nc.id = ncd.faq_category_id) WHERE ncd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
+		$sql = "SELECT fc.id AS faq_category_id, fcd.name AS name, fc.sort_order, fc.date_added, fc.date_modified, fc.status, fc.parent_id, fcd.language_id, pfcd.name AS parent_name FROM " . DB_PREFIX . "faq_category fc LEFT JOIN " . DB_PREFIX . "faq_category_description fcd ON (fc.id = fcd.faq_category_id) LEFT JOIN " . DB_PREFIX . "faq_category pfc ON (fc.parent_id = pfc.id) LEFT JOIN " . DB_PREFIX . "faq_category_description pfcd ON (pfc.id = pfcd.faq_category_id) WHERE fcd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND (pfcd.language_id = '" . (int)$this->config->get('config_language_id') . "' OR fc.parent_id = '0')";
 		
 		if (!empty($data['filter_name'])) {
-			$sql .= " AND ncd.name LIKE '" . $this->db->escape($data['filter_name']) . "%'";
+			$sql .= " AND fcd.name LIKE '" . $this->db->escape($data['filter_name']) . "%'";
 		}
 
-		$sql .= " ORDER BY nc.sort_order";
+		$sql .= " ORDER BY fc.sort_order";
 		
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {

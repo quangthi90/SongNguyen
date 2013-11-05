@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2013 at 11:07 AM
+-- Generation Time: Nov 05, 2013 at 02:47 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -13,6 +13,9 @@
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
+--
+-- Database: `test`
+--
 
 -- --------------------------------------------------------
 
@@ -68,8 +71,8 @@ CREATE TABLE IF NOT EXISTS `faq_category_description` (
 
 CREATE TABLE IF NOT EXISTS `faq_description` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `question` text NOT NULL,
-  `answer` text NOT NULL,
+  `question` varchar(255) NOT NULL,
+  `answer` varchar(255) NOT NULL,
   `faq_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)

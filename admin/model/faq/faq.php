@@ -30,52 +30,51 @@ class ModelFaqFaq extends Model {
 	}
 	
 	public function getFaq($faq_id) {
-		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "faq n LEFT JOIN " . DB_PREFIX . "faq_description nd ON (n.id = nd.faq_id) WHERE n.id = '" . (int)$faq_id . "' AND nd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
+		$query = $this->db->query("SELECT DISTINCT f.id AS faq_id, f.sort_order AS sort_order, f.status AS status, f.faq_category_id AS faq_category_id FROM " . DB_PREFIX . "faq f LEFT JOIN " . DB_PREFIX . "faq_description fd ON (f.id = fd.faq_id) WHERE f.id = '" . (int)$faq_id . "' AND fd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
 				
 		return $query->row;
 	}
-
-	public function getFaqCategory($faq_category_id) {
-		$sql = "SELECT fc.id AS faq_category_id, (SELECT fcd.name FROM " . DB_PREFIX . "faq_category_description fcd WHERE fcd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND fcd.faq_category_id = '" . (int)$faq_category_id . "') AS name FROM " . DB_PREFIX . "faq_category fc WHERE fc.id = '" . (int)$faq_category_id . "'";
-
-		return $this->db->query($sql)->row;
-	}
 	
 	public function getFaqs($data = array()) {
-		$sql = "SELECT * FROM " . DB_PREFIX . "faq n LEFT JOIN " . DB_PREFIX . "faq_description nd ON (n.id = nd.faq_id)";
+		$sql = "SELECT f.id AS faq_id, f.sort_order AS sort_order, f.status AS status, f.faq_category_id AS faq_category_id, fd.question AS question, fd.answer AS answer, fcd.name AS faq_category_name FROM " . DB_PREFIX . "faq f LEFT JOIN " . DB_PREFIX . "faq_description fd ON (f.id = fd.faq_id) LEFT JOIN " . DB_PREFIX . "faq_category fc ON (fc.id = f.faq_category_id) LEFT JOIN faq_category_description fcd ON (fc.id = fcd.faq_category_id)";
 				
-		$sql .= " WHERE nd.language_id = '" . (int)$this->config->get('config_language_id') . "'"; 
+		$sql .= " WHERE fd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND (fcd.language_id = '" . (int)$this->config->get('config_language_id') . "' OR f.faq_category_id = '0')"; 
 		
 		if (!empty($data['filter_faq_category_id'])) {
-			$sql .= " AND n.faq_category_id = '" . (int)$data['filter_faq_category_id'] . "'";			
+			$sql .= " AND f.faq_category_id = '" . (int)$data['filter_faq_category_id'] . "'";	
+		}
+		
+		if (!empty($data['filter_faq_category_name'])) {
+			$sql .= " AND fcd.name LIKE '" . $this->db->escape($data['filter_faq_category_name']) . "%'";
 		}
 		
 		if (!empty($data['filter_question'])) {
-			$sql .= " AND nd.question LIKE '" . $this->db->escape($data['filter_question']) . "%'";
+			$sql .= " AND fd.question LIKE '" . $this->db->escape($data['filter_question']) . "%'";
 		}
 		
 		if (isset($data['filter_status']) && !is_null($data['filter_status'])) {
-			$sql .= " AND n.status = '" . (int)$data['filter_status'] . "'";
+			$sql .= " AND f.status = '" . (int)$data['filter_status'] . "'";
 		}
 		
-		$sql .= " GROUP BY n.id";
+		$sql .= " GROUP BY f.id";
 					
 		$sort_data = array(
-			'nd.question',
-			'n.status',
-			'n.sort_order'
+			'fd.question',
+			'f.status',
+			'f.date_added',
+			'f.sort_order'
 		);	
 		
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
 			$sql .= " ORDER BY " . $data['sort'];	
 		} else {
-			$sql .= " ORDER BY nd.question";	
+			$sql .= " ORDER BY f.date_added";	
 		}
 		
-		if (isset($data['order']) && ($data['order'] == 'DESC')) {
-			$sql .= " DESC";
-		} else {
+		if (isset($data['order']) && ($data['order'] == 'ASC')) {
 			$sql .= " ASC";
+		} else {
+			$sql .= " DESC";
 		}
 	
 		if (isset($data['start']) || isset($data['limit'])) {
@@ -111,20 +110,24 @@ class ModelFaqFaq extends Model {
 	}
 
 	public function getTotalFaqs($data = array()) {
-		$sql = "SELECT COUNT(DISTINCT n.id) AS total FROM " . DB_PREFIX . "faq n LEFT JOIN " . DB_PREFIX . "faq_description nd ON (n.id = nd.faq_id)";
-
+		$sql = "SELECT COUNT(DISTINCT f.id) AS total FROM " . DB_PREFIX . "faq f LEFT JOIN " . DB_PREFIX . "faq_description fd ON (f.id = fd.faq_id) LEFT JOIN " . DB_PREFIX . "faq_category fc ON (fc.id = f.faq_category_id) LEFT JOIN faq_category_description fcd ON (fc.id = fcd.faq_category_id)";
+				
+		$sql .= " WHERE fd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND (fcd.language_id = '" . (int)$this->config->get('config_language_id') . "' OR f.faq_category_id = '0')"; 
+		
 		if (!empty($data['filter_faq_category_id'])) {
-			$sql .= " LEFT JOIN " . DB_PREFIX . "faq_to_faq_category n2nc ON (n.id = n2nc.faq_id)";			
+			$sql .= " AND f.faq_category_id = '" . (int)$data['filter_faq_category_id'] . "'";	
 		}
-		 
-		$sql .= " WHERE nd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
+		
+		if (!empty($data['filter_faq_category_name'])) {
+			$sql .= " AND fcd.name LIKE '" . $this->db->escape($data['filter_faq_category_name']) . "%'";
+		}
 		 			
 		if (!empty($data['filter_question'])) {
-			$sql .= " AND nd.question LIKE '" . $this->db->escape($data['filter_question']) . "%'";
+			$sql .= " AND fd.question LIKE '" . $this->db->escape($data['filter_question']) . "%'";
 		}
 		
 		if (isset($data['filter_status']) && !is_null($data['filter_status'])) {
-			$sql .= " AND n.status = '" . (int)$data['filter_status'] . "'";
+			$sql .= " AND f.status = '" . (int)$data['filter_status'] . "'";
 		}
 		
 		$query = $this->db->query($sql);

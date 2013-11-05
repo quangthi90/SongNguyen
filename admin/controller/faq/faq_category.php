@@ -356,6 +356,7 @@ class ControllerFaqFaqCategory extends Controller {
 				
 			foreach ($results as $result) {
 				$json[] = array(
+					'parent_name' => ($result['parent_name']) ? strip_tags(html_entity_decode($result['parent_name'], ENT_QUOTES, 'UTF-8')) : 'root',
 					'faq_category_id' => $result['faq_category_id'], 
 					'name'        => strip_tags(html_entity_decode($result['name'], ENT_QUOTES, 'UTF-8'))
 				);
