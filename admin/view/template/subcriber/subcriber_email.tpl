@@ -118,7 +118,7 @@ function send(url) {
 	$.ajax({
 		url: url,
 		type: 'post',
-		data: $('select, input, textarea'),		
+		data: $('select, input'),		
 		dataType: 'json',
 		beforeSend: function() {
 			$('#button-send').attr('disabled', true);
@@ -160,6 +160,9 @@ function send(url) {
 					$('.success').fadeIn('slow');
 				}					
 			}				
+		},
+		error: function (xhr, error) {
+			alert(xhr.responseText);
 		}
 	});
 }

@@ -400,5 +400,112 @@ class ControllerSubcriberSubcriber extends Controller {
 
 		$this->response->setOutput(json_encode($json));
 	}
+
+	public function send() {
+		$this->language->load('subcriber/subcriber');
+		
+		$json = array();
+		
+		if ($this->request->server['REQUEST_METHOD'] == 'POST') {
+			if (!$this->user->hasPermission('modify', 'subcriber/subcriber')) {
+				$json['error']['warning'] = $this->language->get('error_permission');
+			}
+					
+			if (!$this->request->post['subject']) {
+				$json['error']['subject'] = $this->language->get('error_subject');
+			}
+	
+			if (!$this->request->post['message']) {
+				$json['error']['message'] = $this->language->get('error_message');
+			}
+			
+			if (!$json) {
+				$this->load->model('subcriber/subcriber');
+	
+				if (isset($this->request->get['page'])) {
+					$page = $this->request->get['page'];
+				} else {
+					$page = 1;
+				}
+								
+				$email_total = 0;
+							
+				$emails = array();
+				
+				switch ($this->request->post['to']) {
+					case 'all-newsletter':
+						$subcriber_data = array(
+							'status' 			=> 1,
+							'start'             => ($page - 1) * 10,
+							'limit'             => 10,
+						);
+						
+						$email_total = $this->model_subcriber_subcriber->getTotalSubcribers($subcriber_data);
+							
+						$results = $this->model_subcriber_subcriber->getSubcribers($subcriber_data);
+					
+						foreach ($results as $result) {
+							$emails[$result['email']] = $result['email'];
+						}
+						break;
+					case 'newsletter':
+						if (!empty($this->request->post['subcriber_email'])) {					
+							foreach ($this->request->post['subcriber_email'] as $subcriber_id) {
+								$subcriber_info = $this->model_subcriber_subcriber->getSubcriber($customer_id);
+								
+								if ($subcriber_info) {
+									$emails[] = $subcriber_info['email'];
+								}
+							}
+						}
+						break;	
+				}
+				
+				if ($emails) {
+					$start = ($page - 1) * 10;
+					$end = $start + 10;
+					
+					if ($end < $email_total) {
+						$json['success'] = sprintf($this->language->get('text_sent'), $start, $email_total);
+					} else { 
+						$json['success'] = $this->language->get('text_sent_success');
+					}				
+						
+					if ($end < $email_total) {
+						$json['next'] = str_replace('&amp;', '&', $this->url->link('subcriber/subcriber/send', 'token=' . $this->session->data['token'] . '&page=' . ($page + 1), 'SSL'));
+					} else {
+						$json['next'] = '';
+					}
+										
+					$message  = '<html dir="ltr" lang="en">' . "\n";
+					$message .= '  <head>' . "\n";
+					$message .= '    <title>' . $this->request->post['subject'] . '</title>' . "\n";
+					$message .= '    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">' . "\n";
+					$message .= '  </head>' . "\n";
+					$message .= '  <body>' . html_entity_decode($this->request->post['message'], ENT_QUOTES, 'UTF-8') . '</body>' . "\n";
+					$message .= '</html>' . "\n";
+					
+					foreach ($emails as $email) {
+						$mail = new Mail();	
+						$mail->protocol = $this->config->get('config_mail_protocol');
+						$mail->parameter = $this->config->get('config_mail_parameter');
+						$mail->hostname = $this->config->get('config_smtp_host');
+						$mail->username = $this->config->get('config_smtp_username');
+						$mail->password = $this->config->get('config_smtp_password');
+						$mail->port = $this->config->get('config_smtp_port');
+						$mail->timeout = $this->config->get('config_smtp_timeout');				
+						$mail->setTo($email);
+						$mail->setFrom($this->config->get('config_email'));
+						$mail->setSender($this->language->get('text_your_name'));
+						$mail->setSubject(html_entity_decode($this->request->post['subject'], ENT_QUOTES, 'UTF-8'));					
+						$mail->setHtml($message);
+						$mail->send();
+					}
+				}
+			}
+		}
+		
+		$this->response->setOutput(json_encode($json));	
+	}
 }
 ?>
