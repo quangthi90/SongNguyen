@@ -402,6 +402,16 @@ class ControllerSubcriberSubcriber extends Controller {
 	}
 
 	public function send() {
+		$mail_protocol 	= $this->config->get('config_mail_protocol');
+		$mail_parameter = $this->config->get('config_mail_parameter');
+		$mail_hostname 	= $this->config->get('config_smtp_host');
+		$mail_username 	= $this->config->get('config_smtp_username');
+		$mail_password 	= $this->config->get('config_smtp_password');
+		$mail_port 		= $this->config->get('config_smtp_port');
+		$mail_timeout 	= $this->config->get('config_smtp_timeout');	
+		$mail_from 		= $this->config->get('config_email');
+		$mail_sender 	= $this->language->get('text_your_name');
+
 		$this->language->load('subcriber/subcriber');
 		
 		$json = array();
@@ -487,16 +497,16 @@ class ControllerSubcriberSubcriber extends Controller {
 					
 					foreach ($emails as $email) {
 						$mail = new Mail();	
-						$mail->protocol = $this->config->get('config_mail_protocol');
-						$mail->parameter = $this->config->get('config_mail_parameter');
-						$mail->hostname = $this->config->get('config_smtp_host');
-						$mail->username = $this->config->get('config_smtp_username');
-						$mail->password = $this->config->get('config_smtp_password');
-						$mail->port = $this->config->get('config_smtp_port');
-						$mail->timeout = $this->config->get('config_smtp_timeout');				
+						$mail->protocol = $mail_protocol;
+						$mail->parameter = $mail_parameter;
+						$mail->hostname = $mail_hostname;
+						$mail->username = $mail_username;
+						$mail->password = $mail_password;
+						$mail->port = $mail_port;
+						$mail->timeout = $mail_timeout;				
 						$mail->setTo($email);
-						$mail->setFrom($this->config->get('config_email'));
-						$mail->setSender($this->language->get('text_your_name'));
+						$mail->setFrom($mail_from);
+						$mail->setSender($email_sender);
 						$mail->setSubject(html_entity_decode($this->request->post['subject'], ENT_QUOTES, 'UTF-8'));					
 						$mail->setHtml($message);
 						$mail->send();
