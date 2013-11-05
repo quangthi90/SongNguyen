@@ -71,45 +71,7 @@
     </div>
   </div>
 </div>
-<script type="text/javascript" src="view/javascript/ckeditor/ckeditor.js"></script> 
 <script type="text/javascript"><!--
-<?php foreach ($languages as $language) { ?>
-CKEDITOR.replace('question<?php echo $language['language_id']; ?>', {
-	filebrowserBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
-	filebrowserImageBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
-	filebrowserFlashBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
-	filebrowserUploadUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
-	filebrowserImageUploadUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
-	filebrowserFlashUploadUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>'
-});
-
-CKEDITOR.replace('answer<?php echo $language['language_id']; ?>', {
-  filebrowserBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
-  filebrowserImageBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
-  filebrowserFlashBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
-  filebrowserUploadUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
-  filebrowserImageUploadUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
-  filebrowserFlashUploadUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>'
-});
-<?php } ?>
-//--></script> 
-<script type="text/javascript"><!--
-$.widget('custom.catcomplete', $.ui.autocomplete, {
-	_renderMenu: function(ul, items) {
-		var self = this, currentCategory = '';
-		
-		$.each(items, function(index, item) {
-			if (item.category != currentCategory) {
-				ul.append('<li class="ui-autocomplete-category">' + item.category + '</li>');
-				
-				currentCategory = item.category;
-			}
-			
-			self._renderItem(ul, item);
-		});
-	}
-});
-
 // Category
 $('input[name=\'faq_category\']').autocomplete({
 	delay: 500,
@@ -120,15 +82,17 @@ $('input[name=\'faq_category\']').autocomplete({
 			success: function(json) {		
         json.unshift({
           'faq_category_id':  0,
-          'name':  '<?php echo $text_none; ?>'
+          'name':  '',
+          'parent_name': 'root',
         });
-        
-				response($.map(json, function(item) {
-					return {
-						label: item.name,
-						value: item.faq_category_id
-					}
-				}));
+
+        response($.map(json, function(item) {
+          return {
+            label: (item.name) ? item.parent_name + ' > ' + item.name : item.parent_name,
+            value: item.faq_category_id,
+            name: item.name 
+          }
+        }));
 			}
 		});
 	}, 

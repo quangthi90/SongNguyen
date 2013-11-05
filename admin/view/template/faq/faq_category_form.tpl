@@ -74,21 +74,23 @@ $('input[name=\'path\']').autocomplete({
 			dataType: 'json',
 			success: function(json) {
 				json.unshift({
-					'faq_category_id':  0,
-					'name':  '<?php echo $text_none; ?>'
-				});
-				
-				response($.map(json, function(item) {
-					return {
-						label: item.name,
-						value: item.faq_category_id
-					}
-				}));
+          'faq_category_id':  0,
+          'name':  '',
+          'parent_name': 'root',
+        });
+
+        response($.map(json, function(item) {
+          return {
+            label: (item.name) ? item.parent_name + ' > ' + item.name : item.parent_name,
+            value: item.faq_category_id,
+            name: item.name 
+          }
+        }));
 			}
 		});
 	},
 	select: function(event, ui) {
-		$('input[name=\'path\']').val(ui.item.label);
+		$('input[name=\'path\']').val(ui.item.name);
 		$('input[name=\'parent_id\']').val(ui.item.value);
 		
 		return false;
