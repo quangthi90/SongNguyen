@@ -412,7 +412,7 @@ class ControllerDesignBanner extends Controller {
 		if (isset($this->request->post['banner_image'])) {
 			foreach ($this->request->post['banner_image'] as $banner_image_id => $banner_image) {
 				foreach ($banner_image['banner_image_description'] as $language_id => $banner_image_description) {
-					if ((utf8_strlen($banner_image_description['title']) < 2) || (utf8_strlen($banner_image_description['title']) > 64)) {
+					if ((utf8_strlen($banner_image_description['title']) < 2) || (utf8_strlen($banner_image_description['title']) > 255)) {
 						$this->error['banner_image'][$banner_image_id][$language_id] = $this->language->get('error_title'); 
 					}					
 				}
@@ -436,6 +436,43 @@ class ControllerDesignBanner extends Controller {
 		} else {
 			return false;
 		}
+	}
+		
+	public function autocomplete() {
+		$json = array();
+		
+		if (isset($this->request->get['filter_name'])) {
+			$this->load->model('design/banner');
+			
+			if (isset($this->request->get['filter_name'])) {
+				$filter_name = $this->request->get['filter_name'];
+			} else {
+				$filter_name = '';
+			}
+			
+			if (isset($this->request->get['limit'])) {
+				$limit = $this->request->get['limit'];	
+			} else {
+				$limit = 20;	
+			}			
+						
+			$data = array(
+				'filter_name'  => $filter_name,
+				'start'        => 0,
+				'limit'        => $limit
+			);
+			
+			$results = $this->model_design_banner->getBanners($data);
+			
+			foreach ($results as $result) {
+				$json[] = array(
+					'banner_id' => $result['banner_id'],
+					'name'       => strip_tags(html_entity_decode($result['name'], ENT_QUOTES, 'UTF-8')),	
+				);	
+			}
+		}
+
+		$this->response->setOutput(json_encode($json));
 	}
 }
 ?>
