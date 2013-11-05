@@ -88,7 +88,7 @@ class ModelNewsNews extends Model {
 			$sql .= " ORDER BY n.date_added";	
 		}
 		
-		if (isset($data['order']) && ($data['order'] == 'DESC')) {
+		if (isset($data['order']) && ($data['order'] == 'ASC')) {
 			$sql .= " ASC";
 		} else {
 			$sql .= " DESC";

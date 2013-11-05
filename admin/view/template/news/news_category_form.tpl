@@ -107,7 +107,7 @@ $('input[name=\'path\']').autocomplete({
 			dataType: 'json',
 			success: function(json) {
 				json.unshift({
-          'news_category_id':  0,
+          'faq_category_id':  0,
           'name':  '',
           'parent_name': 'root',
         });
@@ -115,7 +115,7 @@ $('input[name=\'path\']').autocomplete({
         response($.map(json, function(item) {
           return {
             label: (item.name) ? item.parent_name + ' > ' + item.name : item.parent_name,
-            value: item.news_category_id,
+            value: item.faq_category_id,
             name: item.name 
           }
         }));
@@ -123,7 +123,7 @@ $('input[name=\'path\']').autocomplete({
 		});
 	},
 	select: function(event, ui) {
-		$('input[name=\'path\']').val(ui.item.label);
+		$('input[name=\'path\']').val(ui.item.name);
 		$('input[name=\'parent_id\']').val(ui.item.value);
 		
 		return false;
