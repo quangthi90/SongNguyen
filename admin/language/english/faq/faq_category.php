@@ -9,6 +9,7 @@ $_['text_default']            = 'Default';
 $_['column_name']            = 'FAQ Category Name';
 $_['column_sort_order']      = 'Sort Order';
 $_['column_action']          = 'Action';
+$_['column_parent'] 		 = 'Parent';
 
 // entry
 $_['entry_name']            = 'FAQ Category Name:';

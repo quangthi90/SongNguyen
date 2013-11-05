@@ -27,14 +27,14 @@
             <table class="form">
               <tr>
                 <td><?php echo $entry_question; ?></td>
-                <td><textarea name="faq_description[<?php echo $language['language_id']; ?>][question]" id="question<?php echo $language['language_id']; ?>"><?php echo isset($faq_description[$language['language_id']]) ? $faq_description[$language['language_id']]['question'] : ''; ?></textarea>
+                <td><textarea style="height: 100px; width: 500px;" name="faq_description[<?php echo $language['language_id']; ?>][question]" id="question<?php echo $language['language_id']; ?>"><?php echo isset($faq_description[$language['language_id']]) ? $faq_description[$language['language_id']]['question'] : ''; ?></textarea>
                   <?php if (isset($error_question[$language['language_id']])) { ?>
                   <span class="error"><?php echo $error_question[$language['language_id']]; ?></span>
                   <?php } ?></td>
               </tr>
               <tr>
                 <td><?php echo $entry_answer; ?></td>
-                <td><textarea name="faq_description[<?php echo $language['language_id']; ?>][answer]" id="answer<?php echo $language['language_id']; ?>"><?php echo isset($faq_description[$language['language_id']]) ? $faq_description[$language['language_id']]['answer'] : ''; ?></textarea>
+                <td><textarea style="height: 100px; width: 500px;" name="faq_description[<?php echo $language['language_id']; ?>][answer]" id="answer<?php echo $language['language_id']; ?>"><?php echo isset($faq_description[$language['language_id']]) ? $faq_description[$language['language_id']]['answer'] : ''; ?></textarea>
                   <?php if (isset($error_answer[$language['language_id']])) { ?>
                   <span class="error"><?php echo $error_answer[$language['language_id']]; ?></span>
                   <?php } ?></td>
