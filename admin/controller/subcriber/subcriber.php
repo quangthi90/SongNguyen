@@ -87,10 +87,26 @@ class ControllerSubcriberSubcriber extends Controller {
 	}
 
 	public function email() {
+		$this->language->load('subcriber/subcriber');
+
+		$this->document->setTitle($this->language->get('heading_title'));
+
+		$this->data['heading_title'] = $this->language->get('heading_title');
+
+		$this->data['text_newsletter'] = $this->language->get('text_newsletter');
+		$this->data['text_all_newsletter'] = $this->language->get('text_all_newsletter');
+
 		$this->data['button_send'] = $this->language->get('button_send');
 		$this->data['button_cancel'] = $this->language->get('button_cancel');
+
+		$this->data['entry_to'] = $this->language->get('entry_to');
+		$this->data['entry_email'] = $this->language->get('entry_email');
+		$this->data['entry_subject'] = $this->language->get('entry_subject');
+		$this->data['entry_message'] = $this->language->get('entry_message');
 		
 		$this->data['token'] = $this->session->data['token'];
+
+		$this->data['cancel'] = $this->url->link('subcriber/subcriber', 'token=' . $this->session->data['token'], 'SSL');
 
   		$this->data['breadcrumbs'] = array();
 
@@ -167,7 +183,7 @@ class ControllerSubcriberSubcriber extends Controller {
 
 			$this->data['subcribers'][] = array(
 				'subcriber_id' => $result['subcriber_id'],
-				'email'        => $result['name'],
+				'email'        => $result['email'],
 				'status'		=> ($result['status']) ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
 				'selected'    => isset($this->request->post['selected']) && in_array($result['subcriber_id'], $this->request->post['selected']),
 				'action'      => $action
@@ -326,38 +342,63 @@ class ControllerSubcriberSubcriber extends Controller {
 			return false;
 		}
 	}
-/*			
+		
 	public function autocomplete() {
 		$json = array();
 		
-		if (isset($this->request->get['filter_name'])) {
-			$this->load->model('catalog/category');
+		if (isset($this->request->get['filter_email'])) {
+			$this->load->model('subcriber/subcriber');
 			
+			if (isset($this->request->get['filter_email'])) {
+				$filter_email = $this->request->get['filter_email'];
+			} else {
+				$filter_email = '';
+			}
+			
+			if (isset($this->request->get['limit'])) {
+				$limit = $this->request->get['limit'];	
+			} else {
+				$limit = 20;	
+			}			
+						
 			$data = array(
-				'filter_name' => $this->request->get['filter_name'],
-				'start'       => 0,
-				'limit'       => 20
+				'filter_email'  => $filter_email,
+				'start'        => 0,
+				'limit'        => $limit
 			);
 			
-			$results = $this->model_catalog_category->getCategories($data);
-				
+			$results = $this->model_subcriber_subcriber->getSubcribers($data);
+			
 			foreach ($results as $result) {
 				$json[] = array(
-					'category_id' => $result['category_id'], 
-					'name'        => strip_tags(html_entity_decode($result['name'], ENT_QUOTES, 'UTF-8'))
-				);
-			}		
+					'subcriber_id' => $result['subcriber_id'],
+					'email'       => strip_tags(html_entity_decode($result['email'], ENT_QUOTES, 'UTF-8')),	
+				);	
+			}
 		}
-
-		$sort_order = array();
-	  
-		foreach ($json as $key => $value) {
-			$sort_order[$key] = $value['name'];
-		}
-
-		array_multisort($sort_order, SORT_ASC, $json);
 
 		$this->response->setOutput(json_encode($json));
-	}*/		
+	}
+
+	public function getSubcribers() {
+		$json = array();
+		
+		$this->load->model('subcriber/subcriber');	
+						
+		$data = array(
+			'filter_status'  => 1,
+		);
+			
+		$results = $this->model_subcriber_subcriber->getAllSubcribers($data);
+			
+		foreach ($results as $result) {
+			$json[] = array(
+				'subcriber_id' => $result['subcriber_id'],
+				'email'       => strip_tags(html_entity_decode($result['email'], ENT_QUOTES, 'UTF-8')),	
+			);	
+		}
+
+		$this->response->setOutput(json_encode($json));
+	}
 }
 ?>

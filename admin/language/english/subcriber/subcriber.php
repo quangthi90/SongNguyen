@@ -4,6 +4,8 @@ $_['heading_title'] = 'Subcriber';
 
 // text 
 $_['text_success']           = 'Success: You have modified subcribers!';
+$_['text_newsletter']           = 'Subcribers';
+$_['text_all_newsletter']           = 'All Subcribers';
 
 // button
 $_['button_email'] = 'Send Email';
@@ -15,6 +17,9 @@ $_['column_status'] = 'Status';
 
 // entry  
 $_['entry_email'] = 'Email:';
+$_['entry_to'] = 'To:';
+$_['entry_subject'] = 'Subject:';
+$_['entry_message'] = 'Message:';
 $_['entry_status'] = 'Status:';
 
 //error    
