@@ -463,3 +463,26 @@ a:hover{
 	color: red;
 	font-size: 12px;
 }
+
+#contact-online-support {
+}
+#contact-online-support .support-list {
+    overflow: hidden;
+}
+.support-list .support-item {
+    display: inline-block;
+    margin: 5px;
+    border: 1px solid #f0f0f0;
+    vertical-align: top;
+    box-shadow: 1px 0px 1px 0px #ccc;
+}
+.support-list .support-item a {
+    display: block;
+    height: 60px;
+    padding: 20px;
+    min-width: 150px;
+}
+.support-list .support-item a img {
+    vertical-align: middle;
+    text-align: center;
+}

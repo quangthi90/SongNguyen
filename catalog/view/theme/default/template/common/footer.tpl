@@ -150,7 +150,23 @@
   <div id="contact-online-support" class="popup-container inline">
     <h2>Hỗ trợ trực tuyến</h2>
     <div class="contentbox">
-      
+      <ul class="support-list">
+        <li class="support-item">
+          <a href="ymsgr:sendim?quangthi_90">
+            <img src="http://opi.yahoo.com/online?u=quangthi_90&m=g&t=2" alt="Support Yahoo" border="0">
+          </a> 
+        </li>
+        <li class="support-item">
+          <a href="skype:nvthiet_90?call">
+            <img src="http://mystatus.skype.com/bigclassic/nvthiet_90" title="Support Skype" style="border: none;" alt="My status">
+          </a>
+        </li>
+        <li class="support-item">
+          <a href="http://www.facebook.com/songnguyen" target="_blank">
+            <img src="<?php echo $urlImg; ?>btn-fb.jpg" alt="Connect FB's Song Nguyen">
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

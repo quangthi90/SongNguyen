@@ -39,8 +39,8 @@ $(document).ready(function() {
     //Popup:
     $('.link-popup.inline').colorbox({
 		inline:true,
-		width:"85%", 
-		height:"90%",
+		width:"75%", 
+		height:"70%",
 		onComplete: function(){
 			$('#cboxLoadedContent').makeCustomScroll(false);
 		}
