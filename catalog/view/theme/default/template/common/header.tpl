@@ -57,11 +57,11 @@ DD_belatedPNG.fix('#logo img');
               <li class="item-with-ul">
                 <a href="#">Giới Thiệu</a>
                 <ul style="display: none;">
-                    <li><a class="" href="#">Về Công Ty</a></li>
-                    <li><a class="" href="#">Giá Trị Cốt Lõi</a></li>
-                    <li><a class="" href="#">Nhiệm Vụ</a></li>
-                    <li><a class="" href="#">Nhân Sự</a></li>
-                    <li><a class="" href="#">Đối Tác</a></li>
+                    <li><a href="<?php echo $news_detail; ?>" class="link-popup iframe">Về Công Ty</a></li>
+                    <li><a href="<?php echo $news_detail; ?>" class="link-popup iframe">Giá Trị Cốt Lõi</a></li>
+                    <li><a href="<?php echo $news_detail; ?>" class="link-popup iframe">Nhiệm Vụ</a></li>
+                    <li><a href="<?php echo $news_detail; ?>" class="link-popup iframe">Nhân Sự</a></li>
+                    <li><a href="<?php echo $news_detail; ?>" class="link-popup iframe">Đối Tác</a></li>
                 </ul>
               </li>
               <li class="item-with-ul">
@@ -100,7 +100,7 @@ DD_belatedPNG.fix('#logo img');
                 </ul>
               </li>
               <li>
-                <a href="<?php echo $news; ?>" class="link-popup iframe">Tin Tức & Sự Kiện</a>
+                <a href="<?php echo $news_list; ?>" class="link-popup iframe">Tin Tức & Sự Kiện</a>
               </li>
               <li class="item-with-ul">
                 <a href="#">Các Lớp Học</a>

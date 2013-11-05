@@ -228,7 +228,12 @@ a:hover{
 	padding-bottom: 5px;
 	margin-bottom: 10px;
 	text-transform: uppercase;
-	border-bottom: 1px solid #ccc;
+}
+.popup-container h2 > span {
+	display: block;
+	font-size: 15px;
+	color: #9E9A9A;
+	font-style: italic;
 }
 .popup-container .contentbox {
 }
@@ -522,6 +527,9 @@ a:hover{
 	right: 0px;
 	bottom: 0px;
 }
+#news-page > h2{
+	border-bottom: none;
+}
 #news-page .img {
 	height: 100%;
 }
@@ -535,8 +543,7 @@ a:hover{
 }
 #news-page .paging a {
     font-weight: bold;
-	padding: 0px 5px;
-	
+	padding: 0px 5px;	
 }
 #news-page .paging a.active {
 	color: red;
@@ -558,6 +565,20 @@ a:hover{
 #news-page .news-list li a:hover{
 	color: #000;
 	text-decoration: underline;
+}
+#news-page .news-content {
+	height: 99%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-size: 14px;
+}
+#news-page .news-content * {
+}
+#news-page #topic-container {
+	top: 70px;
+}
+#news-page #content-container {
+	top: 50px;
 }
 
 /*

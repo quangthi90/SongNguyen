@@ -19,31 +19,8 @@ DD_belatedPNG.fix('#logo img');
 <![endif]-->
 <?php echo $google_analytics; ?>
 <script type="text/javascript">
-  $(document).ready(function(){
-      //FAQ:
-      $('.link-faq').click(function(e){
-        e.preventDefault();
-        if($(this).hasClass('active')){
-        return;
-      }
-        var item = $(this).attr('href');
-        $('.link-faq').removeClass('active');
-        $('.topic-item').removeClass('active').hide();
-        $(this).addClass('active');
-        $(item).addClass('active').slideDown(300);
-      });
-      $('.problem-item').click(function(e){        
-        if($(this).hasClass('active')){
-          $(this).removeClass('active');       
-          $(this).children('.problem-item-answer').slideUp(300);
-        }else {
-          $('.problem-item').removeClass('active');
-          $('.problem-item-answer').hide(200);
-          $(this).addClass('active');       
-          $(this).children('.problem-item-answer').slideDown(300);
-        }        
-      });
-      $('.problem-list').mCustomScrollbar({
+  $(document).ready(function(){      
+      $('.news-content').mCustomScrollbar({
         set_width:false, /*optional element width: boolean, pixels, percentage*/
         set_height:false, /*optional element height: boolean, pixels, percentage*/
         horizontalScroll: false, /*scroll horizontally: boolean*/
@@ -72,211 +49,36 @@ DD_belatedPNG.fix('#logo img');
 </script>
 </head>
 <body>
-  <div id="faq-page" class="popup-container">
-    <h2>Những câu hỏi thường gặp</h2>
+  <div id="news-page" class="popup-container">
+    <h2>
+      Giáo dục Mỹ 
+      <span class="time">06/11/2013</span>
+    </h2>
     <div class="contentbox">
       <div id="topic-container"> 
         <div class="img">    
           <img src="<?php echo $base ?>/image/data/faqs.jpg" alt="FAQ">      
         </div>
-        <ul class="list-topic">
-          <li>
-            <a class="link-faq active" href="#du-hoc-my">Du học Mỹ</a>
-          </li>
-          <li>
-            <a class="link-faq" href="#du-hoc-uc">Du học Úc</a>
-          </li>
-          <li>
-            <a class="link-faq" href="#du-hoc-thuysi">Du học Thụy Sĩ</a>
-          </li>
-          <li>
-            <a class="link-faq" href="#du-hoc-singapor">Du học Singapor</a>
-          </li>
-          <li>
-            <a class="link-faq" href="#du-hoc-anhquoc">Du học Anh Quốc</a>
-          </li>
-        </ul>
       </div>
-      <div id="content-container"> 
-        <div id="du-hoc-my" class="topic-item active">
-          <h3 class="topic-item-name">Những thắc mắc du học Mỹ</h3>
-          <div class="problem-list">
-            <ol>
-              <li class="problem-item">              
-                <p class="problem-item-question">
-                  Em tên Minh Quân, năm nay 16 tuổi. Cho em hỏi có phải đi du học ở từng tiểu bang khác nhau của Mỹ thì cần chứng minh tài chính nhiều ít khác nhau không?
-                </p>
-                <p class="problem-item-answer">
-                  Theo như quy định thông thường thì em phải chứng minh đủ tài chính cho năm học đầu tiên và thuyết phục về khả năng có thể chi trả tiền học cho những năm kế tiếp.
-                </p>
-              </li>
-              <li class="problem-item">              
-                <p class="problem-item-question">
-                  Em tên Minh Quân, năm nay 16 tuổi. Cho em hỏi có phải đi du học ở từng tiểu bang khác nhau của Mỹ thì cần chứng minh tài chính nhiều ít khác nhau không?
-                </p>
-                <p class="problem-item-answer">
-                  Theo như quy định thông thường thì em phải chứng minh đủ tài chính cho năm học đầu tiên và thuyết phục về khả năng có thể chi trả tiền học cho những năm kế tiếp.
-                </p>
-              </li>
-              <li class="problem-item">              
-                <p class="problem-item-question">
-                  Em tên Minh Quân, năm nay 16 tuổi. Cho em hỏi có phải đi du học ở từng tiểu bang khác nhau của Mỹ thì cần chứng minh tài chính nhiều ít khác nhau không?
-                </p>
-                <p class="problem-item-answer">
-                  Theo như quy định thông thường thì em phải chứng minh đủ tài chính cho năm học đầu tiên và thuyết phục về khả năng có thể chi trả tiền học cho những năm kế tiếp.
-                </p>
-              </li>
-              <li class="problem-item">              
-                <p class="problem-item-question">
-                  Em tên Minh Quân, năm nay 16 tuổi. Cho em hỏi có phải đi du học ở từng tiểu bang khác nhau của Mỹ thì cần chứng minh tài chính nhiều ít khác nhau không?
-                </p>
-                <p class="problem-item-answer">
-                  Theo như quy định thông thường thì em phải chứng minh đủ tài chính cho năm học đầu tiên và thuyết phục về khả năng có thể chi trả tiền học cho những năm kế tiếp.
-                </p>
-              </li>
-              <li class="problem-item">              
-                <p class="problem-item-question">
-                  Em tên Minh Quân, năm nay 16 tuổi. Cho em hỏi có phải đi du học ở từng tiểu bang khác nhau của Mỹ thì cần chứng minh tài chính nhiều ít khác nhau không?
-                </p>
-                <p class="problem-item-answer">
-                  Theo như quy định thông thường thì em phải chứng minh đủ tài chính cho năm học đầu tiên và thuyết phục về khả năng có thể chi trả tiền học cho những năm kế tiếp.
-                </p>
-              </li>
-              <li class="problem-item">              
-                <p class="problem-item-question">
-                  Em tên Minh Quân, năm nay 16 tuổi. Cho em hỏi có phải đi du học ở từng tiểu bang khác nhau của Mỹ thì cần chứng minh tài chính nhiều ít khác nhau không?
-                </p>
-                <p class="problem-item-answer">
-                  Theo như quy định thông thường thì em phải chứng minh đủ tài chính cho năm học đầu tiên và thuyết phục về khả năng có thể chi trả tiền học cho những năm kế tiếp.
-                </p>
-              </li>
-            </ol>
-          </div>          
-        </div> 
-        <div id="du-hoc-uc" class="topic-item">
-          <h3 class="topic-item-name">Những thắc mắc du học Úc</h3>
-          <div class="problem-list">
-            <ol>
-              <li class="problem-item">              
-                <p class="problem-item-question">
-                  Em tên Minh Quân, năm nay 16 tuổi. Cho em hỏi có phải đi du học ở từng tiểu bang khác nhau của Mỹ thì cần chứng minh tài chính nhiều ít khác nhau không?
-                </p>
-                <p class="problem-item-answer">
-                  Theo như quy định thông thường thì em phải chứng minh đủ tài chính cho năm học đầu tiên và thuyết phục về khả năng có thể chi trả tiền học cho những năm kế tiếp.
-                </p>
-              </li>
-              <li class="problem-item">              
-                <p class="problem-item-question">
-                  Em tên Minh Quân, năm nay 16 tuổi. Cho em hỏi có phải đi du học ở từng tiểu bang khác nhau của Mỹ thì cần chứng minh tài chính nhiều ít khác nhau không?
-                </p>
-                <p class="problem-item-answer">
-                  Theo như quy định thông thường thì em phải chứng minh đủ tài chính cho năm học đầu tiên và thuyết phục về khả năng có thể chi trả tiền học cho những năm kế tiếp.
-                </p>
-              </li>
-              <li class="problem-item">              
-                <p class="problem-item-question">
-                  Em tên Minh Quân, năm nay 16 tuổi. Cho em hỏi có phải đi du học ở từng tiểu bang khác nhau của Mỹ thì cần chứng minh tài chính nhiều ít khác nhau không?
-                </p>
-                <p class="problem-item-answer">
-                  Theo như quy định thông thường thì em phải chứng minh đủ tài chính cho năm học đầu tiên và thuyết phục về khả năng có thể chi trả tiền học cho những năm kế tiếp.
-                </p>
-              </li>
-            </ol>
-          </div>
-        </div> 
-        <div id="du-hoc-thuysi" class="topic-item">
-          <h3 class="topic-item-name">Những thắc mắc du học Thụy Sĩ</h3>
-          <div class="problem-list">
-            <ol>
-              <li class="problem-item">              
-                <p class="problem-item-question">
-                  Em tên Minh Quân, năm nay 16 tuổi. Cho em hỏi có phải đi du học ở từng tiểu bang khác nhau của Mỹ thì cần chứng minh tài chính nhiều ít khác nhau không?
-                </p>
-                <p class="problem-item-answer">
-                  Theo như quy định thông thường thì em phải chứng minh đủ tài chính cho năm học đầu tiên và thuyết phục về khả năng có thể chi trả tiền học cho những năm kế tiếp.
-                </p>
-              </li>
-              <li class="problem-item">              
-                <p class="problem-item-question">
-                  Em tên Minh Quân, năm nay 16 tuổi. Cho em hỏi có phải đi du học ở từng tiểu bang khác nhau của Mỹ thì cần chứng minh tài chính nhiều ít khác nhau không?
-                </p>
-                <p class="problem-item-answer">
-                  Theo như quy định thông thường thì em phải chứng minh đủ tài chính cho năm học đầu tiên và thuyết phục về khả năng có thể chi trả tiền học cho những năm kế tiếp.
-                </p>
-              </li>
-              <li class="problem-item">              
-                <p class="problem-item-question">
-                  Em tên Minh Quân, năm nay 16 tuổi. Cho em hỏi có phải đi du học ở từng tiểu bang khác nhau của Mỹ thì cần chứng minh tài chính nhiều ít khác nhau không?
-                </p>
-                <p class="problem-item-answer">
-                  Theo như quy định thông thường thì em phải chứng minh đủ tài chính cho năm học đầu tiên và thuyết phục về khả năng có thể chi trả tiền học cho những năm kế tiếp.
-                </p>
-              </li>
-            </ol>
-          </div>
-        </div> 
-        <div id="du-hoc-singapor" class="topic-item">
-          <h3 class="topic-item-name">Những thắc mắc du học Singapor</h3>
-          <div class="problem-list">
-            <ol>
-              <li class="problem-item">              
-                <p class="problem-item-question">
-                  Em tên Minh Quân, năm nay 16 tuổi. Cho em hỏi có phải đi du học ở từng tiểu bang khác nhau của Mỹ thì cần chứng minh tài chính nhiều ít khác nhau không?
-                </p>
-                <p class="problem-item-answer">
-                  Theo như quy định thông thường thì em phải chứng minh đủ tài chính cho năm học đầu tiên và thuyết phục về khả năng có thể chi trả tiền học cho những năm kế tiếp.
-                </p>
-              </li>
-              <li class="problem-item">              
-                <p class="problem-item-question">
-                  Em tên Minh Quân, năm nay 16 tuổi. Cho em hỏi có phải đi du học ở từng tiểu bang khác nhau của Mỹ thì cần chứng minh tài chính nhiều ít khác nhau không?
-                </p>
-                <p class="problem-item-answer">
-                  Theo như quy định thông thường thì em phải chứng minh đủ tài chính cho năm học đầu tiên và thuyết phục về khả năng có thể chi trả tiền học cho những năm kế tiếp.
-                </p>
-              </li>
-              <li class="problem-item">              
-                <p class="problem-item-question">
-                  Em tên Minh Quân, năm nay 16 tuổi. Cho em hỏi có phải đi du học ở từng tiểu bang khác nhau của Mỹ thì cần chứng minh tài chính nhiều ít khác nhau không?
-                </p>
-                <p class="problem-item-answer">
-                  Theo như quy định thông thường thì em phải chứng minh đủ tài chính cho năm học đầu tiên và thuyết phục về khả năng có thể chi trả tiền học cho những năm kế tiếp.
-                </p>
-              </li>
-            </ol>
-          </div>
-        </div> 
-        <div id="du-hoc-anhquoc" class="topic-item">
-          <h3 class="topic-item-name">Những thắc mắc du học Anh Quốc</h3>
-          <div class="problem-list">
-            <ol>
-              <li class="problem-item">              
-                <p class="problem-item-question">
-                  Em tên Minh Quân, năm nay 16 tuổi. Cho em hỏi có phải đi du học ở từng tiểu bang khác nhau của Mỹ thì cần chứng minh tài chính nhiều ít khác nhau không?
-                </p>
-                <p class="problem-item-answer">
-                  Theo như quy định thông thường thì em phải chứng minh đủ tài chính cho năm học đầu tiên và thuyết phục về khả năng có thể chi trả tiền học cho những năm kế tiếp.
-                </p>
-              </li>
-              <li class="problem-item">              
-                <p class="problem-item-question">
-                  Em tên Minh Quân, năm nay 16 tuổi. Cho em hỏi có phải đi du học ở từng tiểu bang khác nhau của Mỹ thì cần chứng minh tài chính nhiều ít khác nhau không?
-                </p>
-                <p class="problem-item-answer">
-                  Theo như quy định thông thường thì em phải chứng minh đủ tài chính cho năm học đầu tiên và thuyết phục về khả năng có thể chi trả tiền học cho những năm kế tiếp.
-                </p>
-              </li>
-              <li class="problem-item">              
-                <p class="problem-item-question">
-                  Em tên Minh Quân, năm nay 16 tuổi. Cho em hỏi có phải đi du học ở từng tiểu bang khác nhau của Mỹ thì cần chứng minh tài chính nhiều ít khác nhau không?
-                </p>
-                <p class="problem-item-answer">
-                  Theo như quy định thông thường thì em phải chứng minh đủ tài chính cho năm học đầu tiên và thuyết phục về khả năng có thể chi trả tiền học cho những năm kế tiếp.
-                </p>
-              </li>
-            </ol>
-          </div>
-        </div> 
+      <div id="content-container">
+        <div class="news-content">
+          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
+          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
+          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
+          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
+          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
+          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
+          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
+          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo   
+          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
+          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
+          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
+          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
+          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
+          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
+          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
+          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo           
+        </div>
       </div>
     </div>
   </div>
