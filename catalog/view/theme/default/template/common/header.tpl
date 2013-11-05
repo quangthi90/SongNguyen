@@ -100,7 +100,7 @@ DD_belatedPNG.fix('#logo img');
                 </ul>
               </li>
               <li>
-                <a href="#">Tin Tức & Sự Kiện</a>
+                <a href="<?php echo $news; ?>" class="link-popup iframe">Tin Tức & Sự Kiện</a>
               </li>
               <li class="item-with-ul">
                 <a href="#">Các Lớp Học</a>

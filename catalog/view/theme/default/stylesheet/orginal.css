@@ -228,7 +228,7 @@ a:hover{
 	padding-bottom: 5px;
 	margin-bottom: 10px;
 	text-transform: uppercase;
-	border-bottom: 1px solid #f0f0f0;
+	border-bottom: 1px solid #ccc;
 }
 .popup-container .contentbox {
 }
@@ -242,8 +242,8 @@ a:hover{
     position: fixed;
     width: 200px;
     background: #ddd;
-    padding-bottom: 30px;
     top: 65px;
+    bottom: 20px;
 }
 #topic-container .img img {
     width: 200px;
@@ -511,6 +511,53 @@ a:hover{
 .support-list .support-item a img {
     vertical-align: middle;
     text-align: center;
+}
+
+/*News Page*/
+#news-page {
+	background: #f0f0f0;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+#news-page .img {
+	height: 100%;
+}
+#news-page .paging {
+	margin-bottom: 10px;
+	text-align: right;
+	font-size: 17px;
+	border-bottom: 1px solid #ddd;
+	padding: 6px 20px;
+	overflow: hidden;
+}
+#news-page .paging a {
+    font-weight: bold;
+	padding: 0px 5px;
+	
+}
+#news-page .paging a.active {
+	color: red;
+}
+#news-page .news-list {
+    height: 92%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+#news-page .news-list li {
+    padding: 5px 0px;
+    margin-bottom: 5px;
+    border-bottom: 1px dotted #ddd;
+}
+#news-page .news-list li a {
+    font-size: 15px;	
+    font-weight: bold;
+}
+#news-page .news-list li a:hover{
+	color: #000;
+	text-decoration: underline;
 }
 
 /*
