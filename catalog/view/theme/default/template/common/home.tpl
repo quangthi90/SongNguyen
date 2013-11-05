@@ -69,4 +69,15 @@
 		</li>
 	</ul>
 </div>
+<div style="display: none;">
+	<div id="popup-text" class="popup-intro">
+		
+	</div>
+	<div id="popup-slide-image" class="popup-intro">
+		
+	</div>
+	<div id="popup-video" class="popup-intro">
+		
+	</div>
+</div>
 <?php echo $footer; ?>
