@@ -84,6 +84,11 @@ $(document).ready(function(){
           <li><a href="<?php echo $popup; ?>"><?php echo $text_popup; ?></a></li>
         </ul>
       </li>
+      <li id="program"><a class="top"><?php echo $text_program; ?></a>
+        <ul>
+          <li><a href="<?php echo $program; ?>"><?php echo $text_program; ?></a></li>
+        </ul>
+      </li>
       <li id="system"><a class="top"><?php echo $text_system; ?></a>
         <ul>
           <li><a href="<?php echo $setting; ?>"><?php echo $text_setting; ?></a></li>

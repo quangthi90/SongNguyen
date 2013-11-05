@@ -105,5 +105,6 @@ $_['text_event']           = 'Events';
 $_['text_faq']           = 'FAQs';
 $_['text_faq_category']           = 'FAQ Categories';
 $_['text_popup']           = 'Popups';
+$_['text_program']           = 'Programs';
 
 ?>
