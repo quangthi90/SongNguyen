@@ -40,7 +40,22 @@
             <tr class="filter">
               <td></td>
               <td><input type="text" name="filter_title" value="<?php echo $filter_title; ?>" /></td>
-              <td></td>
+              <td><select name="filter_type">
+                  <option value="*"></option>
+                  <?php if ($filter_type == 1) { ?>
+                  <option value="0"><?php echo $text_text_popup; ?></option>
+                  <option value="1" selected="selected"><?php echo $text_video_popup; ?></option>
+                  <option value="2"><?php echo $text_carousel_popup; ?></option>
+                  <?php } elseif ($filter_type == 2) { ?>
+                  <option value="0"><?php echo $text_text_popup; ?></option>
+                  <option value="1"><?php echo $text_video_popup; ?></option>
+                  <option value="2" selected="selected"><?php echo $text_carousel_popup; ?></option>
+                  <?php }elseif ($filter_type == 0) { ?>
+                  <option value="0" selected="selected"><?php echo $text_text_popup; ?></option>
+                  <option value="1"><?php echo $text_video_popup; ?></option>
+                  <option value="2"><?php echo $text_carousel_popup; ?></option>
+                  <?php } ?>
+                </select></td>
               <td><select name="filter_status">
                   <option value="*"></option>
                   <?php if ($filter_status) { ?>
@@ -94,10 +109,16 @@ function filter() {
     url += '&filter_title=' + encodeURIComponent(filter_title);
   }
   
+  var filter_type = $('select[name=\'filter_type\']').attr('value');
+  
   var filter_status = $('select[name=\'filter_status\']').attr('value');
   
   if (filter_status != '*') {
     url += '&filter_status=' + encodeURIComponent(filter_status);
+  } 
+  
+  if (filter_type != '*') {
+    url += '&filter_type=' + encodeURIComponent(filter_type);
   } 
 
   location = url;

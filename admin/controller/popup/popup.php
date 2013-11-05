@@ -221,6 +221,12 @@ class ControllerPopupPopup extends Controller {
 			$filter_title = null;
 		}
 
+		if (isset($this->request->get['filter_type'])) {
+			$filter_type = $this->request->get['filter_type'];
+		} else {
+			$filter_type = null;
+		}
+
 		if (isset($this->request->get['filter_status'])) {
 			$filter_status = $this->request->get['filter_status'];
 		} else {
@@ -250,6 +256,10 @@ class ControllerPopupPopup extends Controller {
 		if (isset($this->request->get['filter_title'])) {
 			$url .= '&filter_title=' . urlencode(html_entity_decode($this->request->get['filter_title'], ENT_QUOTES, 'UTF-8'));
 		}	
+
+		if (isset($this->request->get['filter_type'])) {
+			$url .= '&filter_type=' . $this->request->get['filter_type'];
+		}
 
 		if (isset($this->request->get['filter_status'])) {
 			$url .= '&filter_status=' . $this->request->get['filter_status'];
@@ -288,6 +298,7 @@ class ControllerPopupPopup extends Controller {
 
 		$data = array(
 			'filter_title'	  => $filter_title, 
+			'filter_type'   => $filter_type,
 			'filter_status'   => $filter_status,
 			'sort'            => $sort,
 			'order'           => $order,
@@ -341,7 +352,10 @@ class ControllerPopupPopup extends Controller {
 				
 		$this->data['text_enabled'] = $this->language->get('text_enabled');		
 		$this->data['text_disabled'] = $this->language->get('text_disabled');		
-		$this->data['text_no_results'] = $this->language->get('text_no_results');		
+		$this->data['text_no_results'] = $this->language->get('text_no_results');	
+		$this->data['text_carousel_popup'] = $this->language->get('text_carousel_popup');	
+		$this->data['text_video_popup'] = $this->language->get('text_video_popup');	
+		$this->data['text_text_popup'] = $this->language->get('text_text_popup');		
 				
 		$this->data['column_title'] = $this->language->get('column_title');	
 		$this->data['column_type'] = $this->language->get('column_type');	
@@ -374,6 +388,10 @@ class ControllerPopupPopup extends Controller {
 			$url .= '&filter_title=' . urlencode(html_entity_decode($this->request->get['filter_title'], ENT_QUOTES, 'UTF-8'));
 		}
 		
+		if (isset($this->request->get['filter_type'])) {
+			$url .= '&filter_type=' . $this->request->get['filter_type'];
+		}
+		
 		if (isset($this->request->get['filter_status'])) {
 			$url .= '&filter_status=' . $this->request->get['filter_status'];
 		}
@@ -396,6 +414,10 @@ class ControllerPopupPopup extends Controller {
 
 		if (isset($this->request->get['filter_title'])) {
 			$url .= '&filter_title=' . urlencode(html_entity_decode($this->request->get['filter_title'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['filter_type'])) {
+			$url .= '&filter_type=' . $this->request->get['filter_type'];
 		}
 
 		if (isset($this->request->get['filter_status'])) {
@@ -421,6 +443,7 @@ class ControllerPopupPopup extends Controller {
 	
 		$this->data['filter_title'] = $filter_title;
 		$this->data['filter_status'] = $filter_status;
+		$this->data['filter_type'] = $filter_type;
 		
 		$this->data['sort'] = $sort;
 		$this->data['order'] = $order;

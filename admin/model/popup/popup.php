@@ -53,6 +53,10 @@ class ModelPopupPopup extends Model {
 			$sql .= " AND ptd.title LIKE '" . $this->db->escape($data['filter_title']) . "%'";
 		}
 		
+		if (isset($data['filter_type']) && !is_null($data['filter_type'])) {
+			$sql .= " AND pt.type = '" . (int)$data['filter_type'] . "'";
+		}
+		
 		if (isset($data['filter_status']) && !is_null($data['filter_status'])) {
 			$sql .= " AND pt.status = '" . (int)$data['filter_status'] . "'";
 		}
@@ -117,6 +121,10 @@ class ModelPopupPopup extends Model {
 		 			
 		if (!empty($data['filter_title'])) {
 			$sql .= " AND ptd.title LIKE '" . $this->db->escape($data['filter_title']) . "%'";
+		}
+		
+		if (isset($data['filter_type']) && !is_null($data['filter_type'])) {
+			$sql .= " AND pt.type = '" . (int)$data['filter_type'] . "'";
 		}
 		
 		if (isset($data['filter_status']) && !is_null($data['filter_status'])) {
