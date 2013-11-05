@@ -48,35 +48,44 @@ $(document).ready(function() {
 	$('.link-popup.contact').colorbox({
 		inline:true,
 		width:"1000px", 
-		height:"620px",
-		onComplete: function(){
-			$('#cboxLoadedContent').makeCustomScroll(false);
-		}
+		height:"620px"
 	});
 	$('.link-popup.iframe').colorbox({
 		iframe:true,
 		width:"85%", 
 		height:"90%"
 	});
-	$('.link-popup.video').colorbox({
-		iframe:true,
-		innerWidth:800, 
-		innerHeight:600
-	});	
 
 	if($('.content-list').children('.box5').length > 5){
 		$('.content-list').jcarousel({
 			auto: 3,
 			animation:'500',
-			wrap:'first'
+			wrap:'first',
+			itemFallbackDimension: 300
 	    });
 	}	
 	if($('.content-list').children('.box3').length > 3){
 		$('.content-list').jcarousel({
 			auto: 3,
 			animation:'500',
-			wrap:'first'
+			wrap:'first',
+			itemFallbackDimension: 300
 	    });
+	}
+
+	//Slider:
+	$('#slider').nivoSlider(); 
+	//Intro popup:
+	var introPopup = $('.popup-intro').first();
+	if(introPopup.length > 0) {
+		var hrefTo = '#' + introPopup.attr('id');
+		$.colorbox({
+				width:"900px",
+				height:"630px",
+				inline:true, 
+				href: hrefTo
+			}
+		);
 	}	
 });
 

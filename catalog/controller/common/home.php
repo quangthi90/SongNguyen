@@ -12,6 +12,7 @@ class ControllerCommonHome extends Controller {
 			$server = $this->config->get('config_url');
 		}
 		$this->data['categoryImgUrl'] = $server . 'image/data/category';
+		$this->data['introImgUrl'] = $server . 'image/data/intro';
 
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/home.tpl')) {
 			$this->template = $this->config->get('config_template') . '/template/common/home.tpl';

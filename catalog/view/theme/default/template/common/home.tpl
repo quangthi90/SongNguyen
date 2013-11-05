@@ -69,33 +69,41 @@
 		</li>
 	</ul>
 </div>
-<div style="display: none;">
-	<div id="popup-text" class="popup-intro">
-		<p>Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo </p>
-		<p>Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo </p>
-		<p>Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo </p>
-		<p>Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo </p>
-		<p>Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo </p>
-	</div>
-	<div id="popup-slide-image" class="popup-intro">
-		<p>
-			<a class="group2" href="../content/ohoopee1.jpg" title="Title">
-			Grouped Photo 1
-			</a>
-		</p>
-		<p>
-			<a class="group2" href="../content/ohoopee2.jpg" title="Title">
-			Grouped Photo 2
-			</a>
-		</p>
-		<p>
-			<a class="group2" href="../content/ohoopee3.jpg" title="Title">
-			Grouped Photo 3
-			</a>
-		</p>
-	</div>
-	<div id="popup-video" class="popup-intro">
-		<iframe width="854" height="510" src="//www.youtube.com/embed/HLphrgQFHUQ" frameborder="0" allowfullscreen></iframe>
-	</div>
+<div style="display: none;">	
+	<!--<div id="popup-text" class="popup-container popup-intro">
+		<h2>Title of popup intro</h2>
+    	<div class="contentbox">  
+			<p>Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo </p>
+			<p>Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo </p>
+			<p>Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo </p>
+			<p>Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo </p>
+			<p>Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo </p>
+		</div>
+	</div>-->
+	<div id="popup-slide-image" class="popup-container popup-intro">
+		<h2>Title of popup intro</h2>
+		<div class="contentbox"> 
+			<div class="slider-wrapper theme-default">
+	            <div id="slider" class="nivoSlider">
+	                <img src="<?php echo $introImgUrl; ?>/intro-dm-01.jpg" 
+	                	title="slideshow image 1" alt="slideshow image 1">
+	                <img src="<?php echo $introImgUrl; ?>/intro-dm-02.jpg" 
+	                	title="slideshow image 1" alt="slideshow image 2">
+	                <img src="<?php echo $introImgUrl; ?>/intro-dm-03.jpg" 
+	                	title="slideshow image 1" alt="slideshow image 3">
+	                <img src="<?php echo $introImgUrl; ?>/intro-dm-04.jpg" 
+	                	title="slideshow image 1" alt="slideshow image 5">
+	            </div>
+        	</div>
+		</div>
+	</div><!--
+	<div id="popup-video" class="popup-container popup-intro">
+		<h2>Title of popup intro</h2>
+		<div class="contentbox"> 
+			<iframe width="854" height="510" src="//www.youtube.com/embed/HLphrgQFHUQ" 
+				frameborder="0" allowfullscreen>
+			</iframe>
+		</div>
+	</div>-->
 </div>
 <?php echo $footer; ?>
