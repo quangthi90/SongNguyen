@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2013 at 05:51 PM
+-- Generation Time: Nov 05, 2013 at 10:15 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -964,7 +964,7 @@ CREATE TABLE IF NOT EXISTS `currency` (
 
 INSERT INTO `currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
 (1, 'Pound Sterling', 'GBP', '£', '', '2', 0.62669998, 1, '2013-11-04 17:44:46'),
-(2, 'US Dollar', 'USD', '$', '', '2', 1.00000000, 1, '2013-11-04 17:44:46'),
+(2, 'US Dollar', 'USD', '$', '', '2', 1.00000000, 1, '2013-11-05 10:15:22'),
 (3, 'Euro', 'EUR', '', '€', '2', 0.73949999, 1, '2013-11-04 17:44:46');
 
 -- --------------------------------------------------------
@@ -1246,6 +1246,51 @@ CREATE TABLE IF NOT EXISTS `download_description` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `event`
+--
+
+CREATE TABLE IF NOT EXISTS `event` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `image` varchar(255) NOT NULL,
+  `sort_order` int(3) NOT NULL,
+  `date_added` datetime NOT NULL,
+  `date_modified` datetime NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `event`
+--
+
+INSERT INTO `event` (`id`, `image`, `sort_order`, `date_added`, `date_modified`, `status`) VALUES
+(1, 'data/event/nhi-f4054.jpg', 1, '2013-11-04 23:58:07', '2013-11-05 00:56:02', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event_description`
+--
+
+CREATE TABLE IF NOT EXISTS `event_description` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `content` text NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `language_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `event_description`
+--
+
+INSERT INTO `event_description` (`id`, `title`, `content`, `event_id`, `language_id`) VALUES
+(3, 'NỮ SINH VIỆT XINH ĐẸP ĐỖ 6 ĐH DANH TIẾNG NƯỚC MỸ', '&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;Cô nữ sinh Việt Nam này đã khiến nhiều người phải ngưỡng mộ và thán phục khi cùng lúc đỗ 6 trường Đại học danh tiếng ở Mỹ gồm Yale, MIT, Harvard, Brown, UCLA, Ucberkeley.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;Tháng 6/2012, Hồ Ngọc Nhi được vinh danh trên tờ báo riêng của trường THPT Santa Monica khi xuất sắc đỗ vào 6 trường ĐH danh tiếng của Mỹ. Hiện tại, cô bạn đang là sinh viên trường ĐH Harvard, ngành công nghệ Y sinh. Cùng trò chuyện với nữ sinh người Việt vô cùng xuất sắc này!&lt;/p&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;&lt;em&gt;- Chào Nhi. Đỗ 1 lúc cả 6 trường Đại học lớn và nổi tiếng của Mỹ gồm Yale, MIT, Harvard, Brown, UCLA, Ucberkeley, vì sao Nhi lại chọn Harvard làm điểm đến cho mình?&lt;/em&gt;&lt;/p&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;div align=&quot;center&quot; style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;&lt;img _fl=&quot;&quot; align=&quot;middle&quot; alt=&quot;Cô nữ sinh Việt (giữa) vinh dự được 6 trường ĐH hàng đầu Mỹ mời nhập học&quot; src=&quot;http://dantri4.vcmedia.vn/gLC4WLlnU8F79RboyWSp/Image/2012/12/nhi-f4054.jpg&quot; style=&quot;border: 0px;&quot; width=&quot;450&quot; /&gt;&lt;br /&gt;\r\nCô nữ sinh Việt (giữa) vinh dự được 6 trường ĐH hàng đầu Mỹ mời nhập học&lt;/div&gt;\r\n\r\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;Khi biết tin mình đỗ một lúc nhiều trường như vậy, mình không tin đó là sự thật. Sau khi tham quan và tìm hiểu cả 6 trường Đại học này, Nhi thích nhất là Yale và Harvard, bởi vì hai ngôi trường đó có &quot;Liberal arts&quot; (nghệ thuật tự do) trong khi MIT lại là chuyên khoa. Đứng giữa Yale và Harvard, Nhi lại tiếp tục có sự băn khoăn, nhưng sau đó cũng đưa ra quyết định cuối cùng là lựa chọn Harvard.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;Một phần là vì Harvard ở trong thành phố Boston, gần MIT và các cơ sở nghiên cứu quan trọng về Biomedical Engineering, mà ước mơ từ nhỏ của Nhi lại là muốn được nghiên cứu chuyên sâu về sinh học, vậy nên Nhi nghĩ Harvard là sự lựa chọn tối ưu.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;&lt;em&gt;Bạn có thể chia sẻ hành trình chinh phục 6 trường ĐH nổi tiếng này được không?&lt;/em&gt;&lt;/p&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;Gia đình mình qua Mỹ năm 2002. Cuộc sống ban đầu ở bên này khá vất vả. Trong nhà ai cũng bận rộn với công việc hàng ngày nên mình phải quen độc lập tự nhỏ. Chính thói quen này cũng đã giúp mình rất nhiều trong việc học tập về sau.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;Mình rất yêu thích môn Sinh học. Năm lớp 11, mình đỗ USA Biology Olympiad, là 1 trong 20 thí sinh cuối cùng trong 10.000 thí sinh dự thi năm 2011 được chọn để tham gia chương trình đào tạo tại khu dân cư của trường ĐH Purdue (cuộc thi này cũng có cả học sinh Việt Nam tham gia nữa đấy). Hàng năm, mình cũng hay apply vào các khóa học ngắn, xin học bổng của các tổ chức về lĩnh vực mà mình đam mê. Mình từng đến Đức và Trung Quốc trong 6 tuần hồi lớp 10 và 11 để tham gia những khóa học đó.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;div style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;\r\n&lt;div align=&quot;center&quot;&gt;&lt;img _fl=&quot;&quot; align=&quot;middle&quot; alt=&quot;Cô nữ sinh Việt (giữa) vinh dự được 6 trường ĐH hàng đầu Mỹ mời nhập học&quot; src=&quot;http://dantri4.vcmedia.vn/gLC4WLlnU8F79RboyWSp/Image/2012/12/nhi2-f4054.jpg&quot; style=&quot;border: 0px;&quot; width=&quot;450&quot; /&gt;&lt;/div&gt;\r\n&lt;/div&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;Khi còn là học sinh trường Santa Monica, Nhi cũng tham gia nhiều hoạt động xã hội, hoạt động ngoại khóa như tổ chức các buổi trình chiếu phim ảnh và dựng quỹ để nâng cấp Trường học tim mạch cấp 2, kêu gọi quyên góp được khoảng 1.000 USD mỗi năm, là tình nguyện viên nhiều sự kiện khác nhau.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;Nhi cũng là chủ tịch của 1 câu lạc bộ giúp đỡ các trẻ em châu Phi. Nhi nghĩ để thành công phải cần biết kết hợp giữa việc học và tham gia hoạt động xã hội bởi có những kiến thức ta không thể tìm kiếm được trong sách vở mà chỉ có ra thực tiễn mới thu nhận được.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;&lt;em&gt;- Harvard là ngôi trường danh tiếng trên thế giới, được trở thành sinh viên Harvard, Nhi cảm thấy như thế nào?&lt;/em&gt;&lt;/p&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;Khi gia đình chuyển đến đây vào năm 2002, Nhi chưa bao giờ nghĩ sẽ có ngày mình trở thành sinh viên của một trong những trường ĐH bậc nhất thế giới này. Cho đến lúc này, khi đã đi học được một thời gian nhưng mỗi ngày đến trường Nhi cũng vẫn ngỡ như đang mơ vậy. Nhiều lúc đi trong trường, tự nhiên ngừng lại ngước lên những tán là đỏ của mùa thu và tự hỏi: &quot;Mình là sinh viên Harvard rồi ư?&quot; (Cười). Mình cảm thấy mình thật may mắn và tự hào khi đỗ vào Harvard. Mình được như hôm nay là nhờ sự giúp đỡ của gia đình, thầy cô và bạn bè nhiều lắm.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;div style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;\r\n&lt;div align=&quot;center&quot;&gt;&lt;img _fl=&quot;&quot; align=&quot;middle&quot; alt=&quot;Cô nữ sinh Việt (giữa) vinh dự được 6 trường ĐH hàng đầu Mỹ mời nhập học&quot; src=&quot;http://dantri4.vcmedia.vn/gLC4WLlnU8F79RboyWSp/Image/2012/12/nhi-2-f4054.jpg&quot; style=&quot;border: 0px;&quot; width=&quot;450&quot; /&gt;&lt;/div&gt;\r\n\r\n&lt;div align=&quot;center&quot;&gt;\r\n&lt;div&gt;&lt;img _fl=&quot;&quot; align=&quot;middle&quot; alt=&quot;Cô nữ sinh Việt (giữa) vinh dự được 6 trường ĐH hàng đầu Mỹ mời nhập học&quot; src=&quot;http://dantri4.vcmedia.vn/gLC4WLlnU8F79RboyWSp/Image/2012/12/nhi-3-f4054.jpg&quot; style=&quot;border: 0px;&quot; width=&quot;450&quot; /&gt;&lt;/div&gt;\r\n&lt;/div&gt;\r\n&lt;/div&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;&lt;em&gt;- Harvard là ngôi trường danh tiếng trên thế giới, được trở thành sinh viên Harvard, Nhi cảm thấy như thế nào?&lt;/em&gt;&lt;/p&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;Khi gia đình chuyển đến đây vào năm 2002, Nhi chưa bao giờ nghĩ sẽ có ngày mình trở thành sinh viên của một trong những trường ĐH bậc nhất thế giới này. Cho đến lúc này, khi đã đi học được một thời gian nhưng mỗi ngày đến trường Nhi cũng vẫn ngỡ như đang mơ vậy. Nhiều lúc đi trong trường, tự nhiên ngừng lại ngước lên những tán là đỏ của mùa thu và tự hỏi: &quot;Mình là sinh viên Harvard rồi ư?&quot; (Cười). Mình cảm thấy mình thật may mắn và tự hào khi đỗ vào Harvard. Mình được như hôm nay là nhờ sự giúp đỡ của gia đình, thầy cô và bạn bè nhiều lắm.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;&lt;em&gt;- Rời Việt Nam từ năm 9 tuổi, từ đó đến nay Nhi về thăm lại Việt Nam lần nào chưa? Mỗi lần như vậy cảm xúc của Nhi thế nào?&lt;/em&gt;&lt;/p&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;Nhi có về Việt Nam ba lần cùng gia đình, đó là năm 2004 (lúc Nhi 11 tuổi về đám cưới chị hai), năm 2007 về thăm quê và năm 2012 vừa rồi, Nhi về đám cưới chị ba. Chị của Nhi và chồng đều sống và làm việc ở Mỹ nhưng anh chị muốn tổ chức lễ cưới tại Việt Nam để luôn nhớ đến nguồn gốc của mình.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;Dù xa quê nhưng Nhi vẫn luôn nhớ về quê hương, nhớ ông bà, các cô chú, các bác, anh chị của mình. Vì vậy hễ có cơ hội là gia đình Nhi lại về quê. Người Việt Nam luôn yêu thương và đùm bọc nhau, nhất là nơi đất khách. Ở Mỹ, người Việt Nam trong một phố là ai cũng biết và quan tâm lẫn nhau.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;&lt;em&gt;Ở Haravrd bạn có gặp nhiều sinh viên Việt Nam không? Bạn nhận xét thế nào về những sinh viên đó?&lt;/em&gt;&lt;/p&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;Theo Nhi thấy thì ở Harvard không nhiều sinh viên Việt Nam cho lắm. Chỉ có khoảng 50 đến 100 người trên tổng số 6000 đến 7000 sinh viên. Thế nhưng họ cũng rất xuất sắc. Sinh viên Việt Nam rất tự hào về quê hương và văn hóa đất nước mình.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;Hễ có cơ hội là họ sẽ chia sẻ về truyền thống, kể về đất nước Việt Nam cho bạn bè được biết.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;&lt;em&gt;- Bạn có thể chia sẻ một chút về việc cuộc sống hiện tại của mình không?&lt;/em&gt;&lt;/p&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;Nhi học ở Boston trong khi gia đình ở Los Angeles, vì vậy Nhi cũng phải học xa nhà. Mỗi lần về nhà đều phải đi máy bay mất 6 tiếng, mà việc học chiếm khá nhiều thời gian, tiền vé máy bay cũng không rẻ nên Nhi ít về nhà, chỉ về được trong các ngày lễ tết thôi. Nhi mới được về thăm nhà và dự Lễ Tạ Ơn cùng gia đình, vừa quay trường được ít hôm thôi. Nói chung việc học của Nhi vẫn tiến triển bình thường. Học Đại học, nhất lại là Harvard nên lượng kiến thức rất nhiều, phải luôn nỗ lực hết mình thì mới không bị các bạn bỏ xa.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;&lt;em&gt;- Vậy ước mơ trong tương lai của bạn là gì?&lt;/em&gt;&lt;/p&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;Như mình đã chia sẻ, mình rất yêu thích môn sinh học và ngành học hiện tại của mình là Công nghệ Y Sinh, vì vậy sau này mình mong được trở thành một bác sĩ Nhi khoa. Mình rất yêu trẻ con. Nhưng để đạt được ước mơ đó mình sẽ phải cố gắng rất rất nhiều nữa. Bây giờ Nhi mới là sinh viên năm nhất thôi, trước mắt sẽ vẫn là quãng đường dài cần vượt qua nữa.&lt;/p&gt;\r\n\r\n&lt;p style=&quot;color: rgb(117, 117, 117); font-family: ''Times New Roman'', Times, serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px;&quot;&gt;&lt;em&gt;- Cảm ơn và chúc Nhi sẽ luôn thành công trên con đường đã chọn!&lt;/em&gt;&lt;/p&gt;\r\n', 1, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `extension`
 --
 
@@ -1281,6 +1326,113 @@ INSERT INTO `extension` (`extension_id`, `type`, `code`) VALUES
 (407, 'payment', 'free_checkout'),
 (427, 'module', 'featured'),
 (419, 'module', 'slideshow');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faq`
+--
+
+CREATE TABLE IF NOT EXISTS `faq` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sort_order` int(3) NOT NULL,
+  `date_added` datetime NOT NULL,
+  `date_modified` datetime NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `faq_category_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `faq`
+--
+
+INSERT INTO `faq` (`id`, `sort_order`, `date_added`, `date_modified`, `status`, `faq_category_id`) VALUES
+(1, 1, '2013-11-05 00:38:37', '2013-11-05 16:02:08', 1, 1),
+(2, 2, '2013-11-05 00:40:26', '2013-11-05 16:00:17', 1, 1),
+(3, 3, '2013-11-05 00:42:36', '2013-11-05 15:59:59', 1, 1),
+(4, 4, '2013-11-05 00:45:34', '2013-11-05 15:57:39', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faq_category`
+--
+
+CREATE TABLE IF NOT EXISTS `faq_category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sort_order` int(3) NOT NULL,
+  `date_added` datetime NOT NULL,
+  `date_modified` datetime NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `parent_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `faq_category`
+--
+
+INSERT INTO `faq_category` (`id`, `sort_order`, `date_added`, `date_modified`, `status`, `parent_id`) VALUES
+(1, 1, '2013-11-05 00:34:11', '2013-11-05 00:34:11', 1, 0),
+(2, 2, '2013-11-05 00:34:40', '2013-11-05 00:34:40', 1, 0),
+(3, 3, '2013-11-05 00:35:29', '2013-11-05 00:35:36', 1, 0),
+(4, 4, '2013-11-05 00:35:58', '2013-11-05 00:35:58', 1, 0),
+(5, 5, '2013-11-05 00:36:09', '2013-11-05 00:36:16', 1, 0),
+(6, 6, '2013-11-05 00:36:35', '2013-11-05 00:36:35', 1, 0),
+(7, 7, '2013-11-05 00:36:50', '2013-11-05 00:36:50', 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faq_category_description`
+--
+
+CREATE TABLE IF NOT EXISTS `faq_category_description` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `faq_category_id` int(11) NOT NULL,
+  `language_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+
+--
+-- Dumping data for table `faq_category_description`
+--
+
+INSERT INTO `faq_category_description` (`id`, `name`, `faq_category_id`, `language_id`) VALUES
+(1, 'Study in the US', 1, 1),
+(2, 'Study in the Australia', 2, 1),
+(4, 'Study in Singapore', 3, 1),
+(5, 'Study in New Zealand', 4, 1),
+(7, 'Study in the UK', 5, 1),
+(8, 'Study in the Canada', 6, 1),
+(9, 'Study in the France', 7, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faq_description`
+--
+
+CREATE TABLE IF NOT EXISTS `faq_description` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `question` text NOT NULL,
+  `answer` text NOT NULL,
+  `faq_id` int(11) NOT NULL,
+  `language_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `faq_description`
+--
+
+INSERT INTO `faq_description` (`id`, `question`, `answer`, `faq_id`, `language_id`) VALUES
+(8, 'Does taking the SAT exam ensure my chances for financial aids also?\r\n', 'If you score the top scores in the SAT examination, then you can get scholarship offers from the universities you have applied for admissions.\r\n', 1, 1),
+(7, 'How many times SAT is held in a year?\r\n', 'SAT 1 and SAT 2 are both held 6 times a year and you cannot take both the exams together. One can take three SAT 2 exams in a day. The SAT exams are offered on the first Saturdays of May, June, October, November, December and January.\r\n', 2, 1),
+(6, 'What if I miss the deadline for registration part for the SAT exam?\r\n', 'You can directly take the form to the test center with a penalty amount. Do not miss to take the essential id-proofs and other vital documents.\r\n', 3, 1),
+(5, 'How many times SAT exam can be taken?\r\n', 'SAT exam can be taken as many times as you want. However, it is not advisable to do it, as the official body maintains a track of average of marks and frequent taking of exams can affect it.\r\n', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -3122,7 +3274,7 @@ CREATE TABLE IF NOT EXISTS `setting` (
   `value` text NOT NULL,
   `serialized` tinyint(1) NOT NULL,
   PRIMARY KEY (`setting_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=340 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=443 ;
 
 --
 -- Dumping data for table `setting`
@@ -3161,115 +3313,115 @@ INSERT INTO `setting` (`setting_id`, `store_id`, `group`, `key`, `value`, `seria
 (56, 0, 'affiliate', 'affiliate_module', 'a:1:{i:0;a:4:{s:9:"layout_id";s:2:"10";s:8:"position";s:12:"column_right";s:6:"status";s:1:"1";s:10:"sort_order";s:1:"1";}}', 1),
 (57, 0, 'category', 'category_module', 'a:2:{i:0;a:5:{s:9:"layout_id";s:1:"3";s:8:"position";s:11:"column_left";s:5:"count";s:1:"0";s:6:"status";s:1:"1";s:10:"sort_order";s:1:"1";}i:1;a:5:{s:9:"layout_id";s:1:"2";s:8:"position";s:11:"column_left";s:5:"count";s:1:"0";s:6:"status";s:1:"1";s:10:"sort_order";s:1:"1";}}', 1),
 (60, 0, 'account', 'account_module', 'a:1:{i:0;a:4:{s:9:"layout_id";s:1:"6";s:8:"position";s:12:"column_right";s:6:"status";s:1:"1";s:10:"sort_order";s:1:"1";}}', 1),
-(329, 0, 'config', 'config_seo_url', '0', 0),
-(330, 0, 'config', 'config_file_extension_allowed', 'txt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc\r\nrtf\r\nxls\r\nppt\r\nodt\r\nods', 0),
-(331, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/jpeg\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/vnd.microsoft.icon\r\nimage/tiff\r\nimage/tiff\r\nimage/svg+xml\r\nimage/svg+xml\r\napplication/zip\r\napplication/x-rar-compressed\r\napplication/x-msdownload\r\napplication/vnd.ms-cab-compressed\r\naudio/mpeg\r\nvideo/quicktime\r\nvideo/quicktime\r\napplication/pdf\r\nimage/vnd.adobe.photoshop\r\napplication/postscript\r\napplication/postscript\r\napplication/postscript\r\napplication/msword\r\napplication/rtf\r\napplication/vnd.ms-excel\r\napplication/vnd.ms-powerpoint\r\napplication/vnd.oasis.opendocument.text\r\napplication/vnd.oasis.opendocument.spreadsheet', 0),
-(332, 0, 'config', 'config_maintenance', '0', 0),
+(420, 0, 'config', 'config_smtp_port', '25', 0),
+(421, 0, 'config', 'config_smtp_timeout', '5', 0),
+(422, 0, 'config', 'config_alert_mail', '0', 0),
+(423, 0, 'config', 'config_account_mail', '0', 0),
+(424, 0, 'config', 'config_alert_emails', '', 0),
+(425, 0, 'config', 'config_fraud_detection', '0', 0),
+(426, 0, 'config', 'config_fraud_key', '', 0),
+(427, 0, 'config', 'config_fraud_score', '', 0),
+(428, 0, 'config', 'config_fraud_status_id', '7', 0),
+(429, 0, 'config', 'config_secure', '0', 0),
+(430, 0, 'config', 'config_shared', '0', 0),
+(431, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai''hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
 (94, 0, 'voucher', 'voucher_sort_order', '8', 0),
 (95, 0, 'voucher', 'voucher_status', '1', 0),
-(333, 0, 'config', 'config_password', '1', 0),
-(334, 0, 'config', 'config_encryption', '84e13ad3e3f6169924bd6df1d6d023a7', 0),
-(335, 0, 'config', 'config_compression', '0', 0),
-(336, 0, 'config', 'config_error_display', '1', 0),
+(442, 0, 'config', 'config_google_analytics', '', 0),
 (103, 0, 'free_checkout', 'free_checkout_status', '1', 0),
 (104, 0, 'free_checkout', 'free_checkout_order_status_id', '1', 0),
 (108, 0, 'slideshow', 'slideshow_module', 'a:1:{i:0;a:8:{s:9:"banner_id";s:1:"7";s:5:"width";s:3:"980";s:6:"height";s:3:"280";s:11:"resize_type";s:7:"default";s:9:"layout_id";s:1:"1";s:8:"position";s:11:"content_top";s:6:"status";s:1:"1";s:10:"sort_order";s:1:"1";}}', 1),
 (109, 0, 'banner', 'banner_module', 'a:1:{i:0;a:8:{s:9:"banner_id";s:1:"6";s:5:"width";s:3:"182";s:6:"height";s:3:"182";s:11:"resize_type";s:7:"default";s:9:"layout_id";s:1:"3";s:8:"position";s:11:"column_left";s:6:"status";s:1:"1";s:10:"sort_order";s:1:"3";}}', 1),
-(278, 0, 'config', 'config_stock_display', '0', 0),
-(279, 0, 'config', 'config_stock_warning', '0', 0),
-(280, 0, 'config', 'config_stock_checkout', '0', 0),
-(281, 0, 'config', 'config_stock_status_id', '5', 0),
-(282, 0, 'config', 'config_affiliate_id', '4', 0),
-(283, 0, 'config', 'config_commission', '5', 0),
-(284, 0, 'config', 'config_return_id', '0', 0),
-(285, 0, 'config', 'config_return_status_id', '2', 0),
-(286, 0, 'config', 'config_logo', 'data/logo/logo.png', 0),
-(287, 0, 'config', 'config_icon', 'data/cart.png', 0),
-(288, 0, 'config', 'config_image_category_width', '80', 0),
-(328, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai''hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
-(327, 0, 'config', 'config_shared', '0', 0),
-(326, 0, 'config', 'config_secure', '0', 0),
-(325, 0, 'config', 'config_fraud_status_id', '7', 0),
-(324, 0, 'config', 'config_fraud_score', '', 0),
-(323, 0, 'config', 'config_fraud_key', '', 0),
-(322, 0, 'config', 'config_fraud_detection', '0', 0),
-(321, 0, 'config', 'config_alert_emails', '', 0),
-(320, 0, 'config', 'config_account_mail', '0', 0),
-(319, 0, 'config', 'config_alert_mail', '0', 0),
-(318, 0, 'config', 'config_smtp_timeout', '5', 0),
-(317, 0, 'config', 'config_smtp_port', '25', 0),
-(316, 0, 'config', 'config_smtp_password', '', 0),
-(315, 0, 'config', 'config_smtp_username', '', 0),
-(314, 0, 'config', 'config_smtp_host', '', 0),
-(313, 0, 'config', 'config_mail_parameter', '', 0),
-(312, 0, 'config', 'config_mail_protocol', 'mail', 0),
-(311, 0, 'config', 'config_ftp_status', '0', 0),
-(310, 0, 'config', 'config_ftp_root', '', 0),
-(309, 0, 'config', 'config_ftp_password', '', 0),
-(308, 0, 'config', 'config_ftp_username', '', 0),
-(307, 0, 'config', 'config_ftp_port', '21', 0),
-(306, 0, 'config', 'config_ftp_host', 'localhost', 0),
-(305, 0, 'config', 'config_image_cart_height', '47', 0),
-(304, 0, 'config', 'config_image_cart_width', '47', 0),
-(303, 0, 'config', 'config_image_wishlist_height', '47', 0),
-(302, 0, 'config', 'config_image_wishlist_width', '47', 0),
-(301, 0, 'config', 'config_image_compare_height', '90', 0),
-(300, 0, 'config', 'config_image_compare_width', '90', 0),
-(299, 0, 'config', 'config_image_related_height', '80', 0),
-(298, 0, 'config', 'config_image_related_width', '80', 0),
-(297, 0, 'config', 'config_image_additional_height', '74', 0),
-(296, 0, 'config', 'config_image_additional_width', '74', 0),
-(295, 0, 'config', 'config_image_product_height', '80', 0),
-(294, 0, 'config', 'config_image_product_width', '80', 0),
-(293, 0, 'config', 'config_image_popup_height', '500', 0),
-(292, 0, 'config', 'config_image_popup_width', '500', 0),
-(291, 0, 'config', 'config_image_thumb_height', '228', 0),
-(290, 0, 'config', 'config_image_thumb_width', '228', 0),
-(289, 0, 'config', 'config_image_category_height', '80', 0),
-(277, 0, 'config', 'config_complete_status_id', '5', 0),
-(276, 0, 'config', 'config_order_status_id', '1', 0),
-(258, 0, 'config', 'config_review_status', '1', 0),
-(259, 0, 'config', 'config_download', '1', 0),
-(260, 0, 'config', 'config_voucher_min', '1', 0),
-(261, 0, 'config', 'config_voucher_max', '1000', 0),
-(262, 0, 'config', 'config_tax', '1', 0),
-(263, 0, 'config', 'config_vat', '0', 0),
-(264, 0, 'config', 'config_tax_default', 'shipping', 0),
-(265, 0, 'config', 'config_tax_customer', 'shipping', 0),
-(266, 0, 'config', 'config_customer_online', '0', 0),
-(267, 0, 'config', 'config_customer_group_id', '1', 0),
-(268, 0, 'config', 'config_customer_group_display', 'a:1:{i:0;s:1:"1";}', 1),
-(269, 0, 'config', 'config_customer_price', '0', 0),
-(270, 0, 'config', 'config_account_id', '3', 0),
-(271, 0, 'config', 'config_cart_weight', '1', 0),
-(272, 0, 'config', 'config_guest_checkout', '1', 0),
-(273, 0, 'config', 'config_checkout_id', '5', 0),
-(274, 0, 'config', 'config_order_edit', '100', 0),
-(275, 0, 'config', 'config_invoice_prefix', 'INV-2013-00', 0),
-(254, 0, 'config', 'config_weight_class_id', '1', 0),
-(255, 0, 'config', 'config_catalog_limit', '15', 0),
-(256, 0, 'config', 'config_admin_limit', '10', 0),
-(257, 0, 'config', 'config_product_count', '1', 0),
-(242, 0, 'config', 'config_fax', '', 0),
-(243, 0, 'config', 'config_title', 'Your Store', 0),
-(244, 0, 'config', 'config_meta_description', 'My Store', 0),
-(245, 0, 'config', 'config_template', 'default', 0),
-(246, 0, 'config', 'config_layout_id', '4', 0),
-(247, 0, 'config', 'config_country_id', '222', 0),
-(248, 0, 'config', 'config_zone_id', '3563', 0),
-(249, 0, 'config', 'config_language', 'en', 0),
-(250, 0, 'config', 'config_admin_language', 'en', 0),
-(251, 0, 'config', 'config_currency', 'USD', 0),
-(252, 0, 'config', 'config_currency_auto', '1', 0),
-(253, 0, 'config', 'config_length_class_id', '1', 0),
-(241, 0, 'config', 'config_telephone', '123456789', 0),
-(240, 0, 'config', 'config_email', 'quangthi_90@yahoo.com.vn', 0),
-(239, 0, 'config', 'config_address', 'Address 1', 0),
-(238, 0, 'config', 'config_owner', 'Your Name', 0),
-(237, 0, 'config', 'config_name', 'Your Store', 0),
-(337, 0, 'config', 'config_error_log', '1', 0),
-(338, 0, 'config', 'config_error_filename', 'error.txt', 0),
-(339, 0, 'config', 'config_google_analytics', '', 0);
+(441, 0, 'config', 'config_error_filename', 'error.txt', 0),
+(440, 0, 'config', 'config_error_log', '1', 0),
+(439, 0, 'config', 'config_error_display', '1', 0),
+(438, 0, 'config', 'config_compression', '0', 0),
+(437, 0, 'config', 'config_encryption', '84e13ad3e3f6169924bd6df1d6d023a7', 0),
+(436, 0, 'config', 'config_password', '1', 0),
+(435, 0, 'config', 'config_maintenance', '0', 0),
+(432, 0, 'config', 'config_seo_url', '1', 0),
+(433, 0, 'config', 'config_file_extension_allowed', 'txt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc\r\nrtf\r\nxls\r\nppt\r\nodt\r\nods', 0),
+(434, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/jpeg\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/vnd.microsoft.icon\r\nimage/tiff\r\nimage/tiff\r\nimage/svg+xml\r\nimage/svg+xml\r\napplication/zip\r\napplication/x-rar-compressed\r\napplication/x-msdownload\r\napplication/vnd.ms-cab-compressed\r\naudio/mpeg\r\nvideo/quicktime\r\nvideo/quicktime\r\napplication/pdf\r\nimage/vnd.adobe.photoshop\r\napplication/postscript\r\napplication/postscript\r\napplication/postscript\r\napplication/msword\r\napplication/rtf\r\napplication/vnd.ms-excel\r\napplication/vnd.ms-powerpoint\r\napplication/vnd.oasis.opendocument.text\r\napplication/vnd.oasis.opendocument.spreadsheet', 0),
+(419, 0, 'config', 'config_smtp_password', '', 0),
+(418, 0, 'config', 'config_smtp_username', '', 0),
+(417, 0, 'config', 'config_smtp_host', '', 0),
+(416, 0, 'config', 'config_mail_parameter', '', 0),
+(415, 0, 'config', 'config_mail_protocol', 'mail', 0),
+(414, 0, 'config', 'config_ftp_status', '0', 0),
+(413, 0, 'config', 'config_ftp_root', '', 0),
+(412, 0, 'config', 'config_ftp_password', '', 0),
+(411, 0, 'config', 'config_ftp_username', '', 0),
+(410, 0, 'config', 'config_ftp_port', '21', 0),
+(409, 0, 'config', 'config_ftp_host', 'localhost', 0),
+(408, 0, 'config', 'config_image_cart_height', '47', 0),
+(407, 0, 'config', 'config_image_cart_width', '47', 0),
+(406, 0, 'config', 'config_image_wishlist_height', '47', 0),
+(405, 0, 'config', 'config_image_wishlist_width', '47', 0),
+(404, 0, 'config', 'config_image_compare_height', '90', 0),
+(403, 0, 'config', 'config_image_compare_width', '90', 0),
+(402, 0, 'config', 'config_image_related_height', '80', 0),
+(401, 0, 'config', 'config_image_related_width', '80', 0),
+(400, 0, 'config', 'config_image_additional_height', '74', 0),
+(399, 0, 'config', 'config_image_additional_width', '74', 0),
+(398, 0, 'config', 'config_image_product_height', '80', 0),
+(397, 0, 'config', 'config_image_product_width', '80', 0),
+(396, 0, 'config', 'config_image_popup_height', '500', 0),
+(395, 0, 'config', 'config_image_popup_width', '500', 0),
+(394, 0, 'config', 'config_image_thumb_height', '228', 0),
+(393, 0, 'config', 'config_image_thumb_width', '228', 0),
+(392, 0, 'config', 'config_image_category_height', '80', 0),
+(391, 0, 'config', 'config_image_category_width', '80', 0),
+(390, 0, 'config', 'config_icon', 'data/cart.png', 0),
+(389, 0, 'config', 'config_logo', 'data/logo/logo.png', 0),
+(388, 0, 'config', 'config_return_status_id', '2', 0),
+(387, 0, 'config', 'config_return_id', '0', 0),
+(386, 0, 'config', 'config_commission', '5', 0),
+(385, 0, 'config', 'config_affiliate_id', '4', 0),
+(384, 0, 'config', 'config_stock_status_id', '5', 0),
+(383, 0, 'config', 'config_stock_checkout', '0', 0),
+(382, 0, 'config', 'config_stock_warning', '0', 0),
+(381, 0, 'config', 'config_stock_display', '0', 0),
+(380, 0, 'config', 'config_complete_status_id', '5', 0),
+(379, 0, 'config', 'config_order_status_id', '1', 0),
+(378, 0, 'config', 'config_invoice_prefix', 'INV-2013-00', 0),
+(377, 0, 'config', 'config_order_edit', '100', 0),
+(376, 0, 'config', 'config_checkout_id', '5', 0),
+(375, 0, 'config', 'config_guest_checkout', '1', 0),
+(374, 0, 'config', 'config_cart_weight', '1', 0),
+(373, 0, 'config', 'config_account_id', '3', 0),
+(372, 0, 'config', 'config_customer_price', '0', 0),
+(371, 0, 'config', 'config_customer_group_display', 'a:1:{i:0;s:1:"1";}', 1),
+(370, 0, 'config', 'config_customer_group_id', '1', 0),
+(369, 0, 'config', 'config_customer_online', '0', 0),
+(368, 0, 'config', 'config_tax_customer', 'shipping', 0),
+(367, 0, 'config', 'config_tax_default', 'shipping', 0),
+(366, 0, 'config', 'config_vat', '0', 0),
+(365, 0, 'config', 'config_tax', '1', 0),
+(364, 0, 'config', 'config_voucher_max', '1000', 0),
+(363, 0, 'config', 'config_voucher_min', '1', 0),
+(359, 0, 'config', 'config_admin_limit', '10', 0),
+(360, 0, 'config', 'config_product_count', '1', 0),
+(361, 0, 'config', 'config_review_status', '1', 0),
+(362, 0, 'config', 'config_download', '1', 0),
+(358, 0, 'config', 'config_catalog_limit', '15', 0),
+(357, 0, 'config', 'config_weight_class_id', '1', 0),
+(356, 0, 'config', 'config_length_class_id', '1', 0),
+(355, 0, 'config', 'config_currency_auto', '1', 0),
+(354, 0, 'config', 'config_currency', 'USD', 0),
+(353, 0, 'config', 'config_admin_language', 'en', 0),
+(352, 0, 'config', 'config_language', 'en', 0),
+(351, 0, 'config', 'config_zone_id', '3563', 0),
+(350, 0, 'config', 'config_country_id', '222', 0),
+(349, 0, 'config', 'config_layout_id', '4', 0),
+(348, 0, 'config', 'config_template', 'default', 0),
+(347, 0, 'config', 'config_meta_description', 'My Store', 0),
+(345, 0, 'config', 'config_fax', '', 0),
+(346, 0, 'config', 'config_title', 'Your Store', 0),
+(344, 0, 'config', 'config_telephone', '123456789', 0),
+(343, 0, 'config', 'config_email', 'quangthi_90@yahoo.com.vn', 0),
+(342, 0, 'config', 'config_address', 'Address 1', 0),
+(341, 0, 'config', 'config_owner', 'Your Name', 0),
+(340, 0, 'config', 'config_name', 'Your Store', 0);
 
 -- --------------------------------------------------------
 
@@ -3485,7 +3637,7 @@ CREATE TABLE IF NOT EXISTS `user_group` (
 --
 
 INSERT INTO `user_group` (`user_group_id`, `name`, `permission`) VALUES
-(1, 'Top Administrator', 'a:2:{s:6:"access";a:150:{i:0;s:14:"amazon/listing";i:1;s:14:"amazon/product";i:2;s:16:"amazonus/listing";i:3;s:16:"amazonus/product";i:4;s:17:"catalog/attribute";i:5;s:23:"catalog/attribute_group";i:6;s:16:"catalog/category";i:7;s:16:"catalog/download";i:8;s:14:"catalog/filter";i:9;s:19:"catalog/information";i:10;s:20:"catalog/manufacturer";i:11;s:14:"catalog/option";i:12;s:15:"catalog/product";i:13;s:15:"catalog/profile";i:14;s:14:"catalog/review";i:15;s:18:"common/filemanager";i:16;s:13:"design/banner";i:17;s:19:"design/custom_field";i:18;s:13:"design/layout";i:19;s:12:"ebay/profile";i:20;s:13:"ebay/template";i:21;s:14:"extension/feed";i:22;s:17:"extension/manager";i:23;s:16:"extension/module";i:24;s:17:"extension/openbay";i:25;s:17:"extension/payment";i:26;s:18:"extension/shipping";i:27;s:15:"extension/total";i:28;s:16:"feed/google_base";i:29;s:19:"feed/google_sitemap";i:30;s:20:"localisation/country";i:31;s:21:"localisation/currency";i:32;s:21:"localisation/geo_zone";i:33;s:21:"localisation/language";i:34;s:25:"localisation/length_class";i:35;s:25:"localisation/order_status";i:36;s:26:"localisation/return_action";i:37;s:26:"localisation/return_reason";i:38;s:26:"localisation/return_status";i:39;s:25:"localisation/stock_status";i:40;s:22:"localisation/tax_class";i:41;s:21:"localisation/tax_rate";i:42;s:25:"localisation/weight_class";i:43;s:17:"localisation/zone";i:44;s:14:"module/account";i:45;s:16:"module/affiliate";i:46;s:29:"module/amazon_checkout_layout";i:47;s:13:"module/banner";i:48;s:17:"module/bestseller";i:49;s:15:"module/carousel";i:50;s:15:"module/category";i:51;s:18:"module/ebaydisplay";i:52;s:15:"module/featured";i:53;s:13:"module/filter";i:54;s:18:"module/google_talk";i:55;s:18:"module/information";i:56;s:13:"module/latest";i:57;s:16:"module/pp_layout";i:58;s:16:"module/slideshow";i:59;s:14:"module/special";i:60;s:12:"module/store";i:61;s:14:"module/welcome";i:62;s:9:"news/news";i:63;s:18:"news/news_category";i:64;s:14:"openbay/amazon";i:65;s:16:"openbay/amazonus";i:66;s:15:"openbay/openbay";i:67;s:12:"openbay/play";i:68;s:23:"payment/amazon_checkout";i:69;s:24:"payment/authorizenet_aim";i:70;s:21:"payment/bank_transfer";i:71;s:14:"payment/cheque";i:72;s:11:"payment/cod";i:73;s:21:"payment/free_checkout";i:74;s:22:"payment/klarna_account";i:75;s:22:"payment/klarna_invoice";i:76;s:14:"payment/liqpay";i:77;s:20:"payment/moneybookers";i:78;s:14:"payment/nochex";i:79;s:15:"payment/paymate";i:80;s:16:"payment/paypoint";i:81;s:13:"payment/payza";i:82;s:26:"payment/perpetual_payments";i:83;s:18:"payment/pp_express";i:84;s:25:"payment/pp_payflow_iframe";i:85;s:14:"payment/pp_pro";i:86;s:21:"payment/pp_pro_iframe";i:87;s:17:"payment/pp_pro_pf";i:88;s:17:"payment/pp_pro_uk";i:89;s:19:"payment/pp_standard";i:90;s:15:"payment/sagepay";i:91;s:22:"payment/sagepay_direct";i:92;s:18:"payment/sagepay_us";i:93;s:19:"payment/twocheckout";i:94;s:28:"payment/web_payment_software";i:95;s:16:"payment/worldpay";i:96;s:10:"play/order";i:97;s:12:"play/product";i:98;s:27:"report/affiliate_commission";i:99;s:22:"report/customer_credit";i:100;s:22:"report/customer_online";i:101;s:21:"report/customer_order";i:102;s:22:"report/customer_reward";i:103;s:24:"report/product_purchased";i:104;s:21:"report/product_viewed";i:105;s:18:"report/sale_coupon";i:106;s:17:"report/sale_order";i:107;s:18:"report/sale_return";i:108;s:20:"report/sale_shipping";i:109;s:15:"report/sale_tax";i:110;s:14:"sale/affiliate";i:111;s:12:"sale/contact";i:112;s:11:"sale/coupon";i:113;s:13:"sale/customer";i:114;s:20:"sale/customer_ban_ip";i:115;s:19:"sale/customer_group";i:116;s:10:"sale/order";i:117;s:14:"sale/recurring";i:118;s:11:"sale/return";i:119;s:12:"sale/voucher";i:120;s:18:"sale/voucher_theme";i:121;s:15:"setting/setting";i:122;s:13:"setting/store";i:123;s:16:"shipping/auspost";i:124;s:17:"shipping/citylink";i:125;s:14:"shipping/fedex";i:126;s:13:"shipping/flat";i:127;s:13:"shipping/free";i:128;s:13:"shipping/item";i:129;s:23:"shipping/parcelforce_48";i:130;s:15:"shipping/pickup";i:131;s:19:"shipping/royal_mail";i:132;s:12:"shipping/ups";i:133;s:13:"shipping/usps";i:134;s:15:"shipping/weight";i:135;s:11:"tool/backup";i:136;s:14:"tool/error_log";i:137;s:12:"total/coupon";i:138;s:12:"total/credit";i:139;s:14:"total/handling";i:140;s:16:"total/klarna_fee";i:141;s:19:"total/low_order_fee";i:142;s:12:"total/reward";i:143;s:14:"total/shipping";i:144;s:15:"total/sub_total";i:145;s:9:"total/tax";i:146;s:11:"total/total";i:147;s:13:"total/voucher";i:148;s:9:"user/user";i:149;s:20:"user/user_permission";}s:6:"modify";a:150:{i:0;s:14:"amazon/listing";i:1;s:14:"amazon/product";i:2;s:16:"amazonus/listing";i:3;s:16:"amazonus/product";i:4;s:17:"catalog/attribute";i:5;s:23:"catalog/attribute_group";i:6;s:16:"catalog/category";i:7;s:16:"catalog/download";i:8;s:14:"catalog/filter";i:9;s:19:"catalog/information";i:10;s:20:"catalog/manufacturer";i:11;s:14:"catalog/option";i:12;s:15:"catalog/product";i:13;s:15:"catalog/profile";i:14;s:14:"catalog/review";i:15;s:18:"common/filemanager";i:16;s:13:"design/banner";i:17;s:19:"design/custom_field";i:18;s:13:"design/layout";i:19;s:12:"ebay/profile";i:20;s:13:"ebay/template";i:21;s:14:"extension/feed";i:22;s:17:"extension/manager";i:23;s:16:"extension/module";i:24;s:17:"extension/openbay";i:25;s:17:"extension/payment";i:26;s:18:"extension/shipping";i:27;s:15:"extension/total";i:28;s:16:"feed/google_base";i:29;s:19:"feed/google_sitemap";i:30;s:20:"localisation/country";i:31;s:21:"localisation/currency";i:32;s:21:"localisation/geo_zone";i:33;s:21:"localisation/language";i:34;s:25:"localisation/length_class";i:35;s:25:"localisation/order_status";i:36;s:26:"localisation/return_action";i:37;s:26:"localisation/return_reason";i:38;s:26:"localisation/return_status";i:39;s:25:"localisation/stock_status";i:40;s:22:"localisation/tax_class";i:41;s:21:"localisation/tax_rate";i:42;s:25:"localisation/weight_class";i:43;s:17:"localisation/zone";i:44;s:14:"module/account";i:45;s:16:"module/affiliate";i:46;s:29:"module/amazon_checkout_layout";i:47;s:13:"module/banner";i:48;s:17:"module/bestseller";i:49;s:15:"module/carousel";i:50;s:15:"module/category";i:51;s:18:"module/ebaydisplay";i:52;s:15:"module/featured";i:53;s:13:"module/filter";i:54;s:18:"module/google_talk";i:55;s:18:"module/information";i:56;s:13:"module/latest";i:57;s:16:"module/pp_layout";i:58;s:16:"module/slideshow";i:59;s:14:"module/special";i:60;s:12:"module/store";i:61;s:14:"module/welcome";i:62;s:9:"news/news";i:63;s:18:"news/news_category";i:64;s:14:"openbay/amazon";i:65;s:16:"openbay/amazonus";i:66;s:15:"openbay/openbay";i:67;s:12:"openbay/play";i:68;s:23:"payment/amazon_checkout";i:69;s:24:"payment/authorizenet_aim";i:70;s:21:"payment/bank_transfer";i:71;s:14:"payment/cheque";i:72;s:11:"payment/cod";i:73;s:21:"payment/free_checkout";i:74;s:22:"payment/klarna_account";i:75;s:22:"payment/klarna_invoice";i:76;s:14:"payment/liqpay";i:77;s:20:"payment/moneybookers";i:78;s:14:"payment/nochex";i:79;s:15:"payment/paymate";i:80;s:16:"payment/paypoint";i:81;s:13:"payment/payza";i:82;s:26:"payment/perpetual_payments";i:83;s:18:"payment/pp_express";i:84;s:25:"payment/pp_payflow_iframe";i:85;s:14:"payment/pp_pro";i:86;s:21:"payment/pp_pro_iframe";i:87;s:17:"payment/pp_pro_pf";i:88;s:17:"payment/pp_pro_uk";i:89;s:19:"payment/pp_standard";i:90;s:15:"payment/sagepay";i:91;s:22:"payment/sagepay_direct";i:92;s:18:"payment/sagepay_us";i:93;s:19:"payment/twocheckout";i:94;s:28:"payment/web_payment_software";i:95;s:16:"payment/worldpay";i:96;s:10:"play/order";i:97;s:12:"play/product";i:98;s:27:"report/affiliate_commission";i:99;s:22:"report/customer_credit";i:100;s:22:"report/customer_online";i:101;s:21:"report/customer_order";i:102;s:22:"report/customer_reward";i:103;s:24:"report/product_purchased";i:104;s:21:"report/product_viewed";i:105;s:18:"report/sale_coupon";i:106;s:17:"report/sale_order";i:107;s:18:"report/sale_return";i:108;s:20:"report/sale_shipping";i:109;s:15:"report/sale_tax";i:110;s:14:"sale/affiliate";i:111;s:12:"sale/contact";i:112;s:11:"sale/coupon";i:113;s:13:"sale/customer";i:114;s:20:"sale/customer_ban_ip";i:115;s:19:"sale/customer_group";i:116;s:10:"sale/order";i:117;s:14:"sale/recurring";i:118;s:11:"sale/return";i:119;s:12:"sale/voucher";i:120;s:18:"sale/voucher_theme";i:121;s:15:"setting/setting";i:122;s:13:"setting/store";i:123;s:16:"shipping/auspost";i:124;s:17:"shipping/citylink";i:125;s:14:"shipping/fedex";i:126;s:13:"shipping/flat";i:127;s:13:"shipping/free";i:128;s:13:"shipping/item";i:129;s:23:"shipping/parcelforce_48";i:130;s:15:"shipping/pickup";i:131;s:19:"shipping/royal_mail";i:132;s:12:"shipping/ups";i:133;s:13:"shipping/usps";i:134;s:15:"shipping/weight";i:135;s:11:"tool/backup";i:136;s:14:"tool/error_log";i:137;s:12:"total/coupon";i:138;s:12:"total/credit";i:139;s:14:"total/handling";i:140;s:16:"total/klarna_fee";i:141;s:19:"total/low_order_fee";i:142;s:12:"total/reward";i:143;s:14:"total/shipping";i:144;s:15:"total/sub_total";i:145;s:9:"total/tax";i:146;s:11:"total/total";i:147;s:13:"total/voucher";i:148;s:9:"user/user";i:149;s:20:"user/user_permission";}}'),
+(1, 'Top Administrator', 'a:2:{s:6:"access";a:153:{i:0;s:14:"amazon/listing";i:1;s:14:"amazon/product";i:2;s:16:"amazonus/listing";i:3;s:16:"amazonus/product";i:4;s:17:"catalog/attribute";i:5;s:23:"catalog/attribute_group";i:6;s:16:"catalog/category";i:7;s:16:"catalog/download";i:8;s:14:"catalog/filter";i:9;s:19:"catalog/information";i:10;s:20:"catalog/manufacturer";i:11;s:14:"catalog/option";i:12;s:15:"catalog/product";i:13;s:15:"catalog/profile";i:14;s:14:"catalog/review";i:15;s:18:"common/filemanager";i:16;s:13:"design/banner";i:17;s:19:"design/custom_field";i:18;s:13:"design/layout";i:19;s:12:"ebay/profile";i:20;s:13:"ebay/template";i:21;s:11:"event/event";i:22;s:14:"extension/feed";i:23;s:17:"extension/manager";i:24;s:16:"extension/module";i:25;s:17:"extension/openbay";i:26;s:17:"extension/payment";i:27;s:18:"extension/shipping";i:28;s:15:"extension/total";i:29;s:7:"faq/faq";i:30;s:16:"faq/faq_category";i:31;s:16:"feed/google_base";i:32;s:19:"feed/google_sitemap";i:33;s:20:"localisation/country";i:34;s:21:"localisation/currency";i:35;s:21:"localisation/geo_zone";i:36;s:21:"localisation/language";i:37;s:25:"localisation/length_class";i:38;s:25:"localisation/order_status";i:39;s:26:"localisation/return_action";i:40;s:26:"localisation/return_reason";i:41;s:26:"localisation/return_status";i:42;s:25:"localisation/stock_status";i:43;s:22:"localisation/tax_class";i:44;s:21:"localisation/tax_rate";i:45;s:25:"localisation/weight_class";i:46;s:17:"localisation/zone";i:47;s:14:"module/account";i:48;s:16:"module/affiliate";i:49;s:29:"module/amazon_checkout_layout";i:50;s:13:"module/banner";i:51;s:17:"module/bestseller";i:52;s:15:"module/carousel";i:53;s:15:"module/category";i:54;s:18:"module/ebaydisplay";i:55;s:15:"module/featured";i:56;s:13:"module/filter";i:57;s:18:"module/google_talk";i:58;s:18:"module/information";i:59;s:13:"module/latest";i:60;s:16:"module/pp_layout";i:61;s:16:"module/slideshow";i:62;s:14:"module/special";i:63;s:12:"module/store";i:64;s:14:"module/welcome";i:65;s:9:"news/news";i:66;s:18:"news/news_category";i:67;s:14:"openbay/amazon";i:68;s:16:"openbay/amazonus";i:69;s:15:"openbay/openbay";i:70;s:12:"openbay/play";i:71;s:23:"payment/amazon_checkout";i:72;s:24:"payment/authorizenet_aim";i:73;s:21:"payment/bank_transfer";i:74;s:14:"payment/cheque";i:75;s:11:"payment/cod";i:76;s:21:"payment/free_checkout";i:77;s:22:"payment/klarna_account";i:78;s:22:"payment/klarna_invoice";i:79;s:14:"payment/liqpay";i:80;s:20:"payment/moneybookers";i:81;s:14:"payment/nochex";i:82;s:15:"payment/paymate";i:83;s:16:"payment/paypoint";i:84;s:13:"payment/payza";i:85;s:26:"payment/perpetual_payments";i:86;s:18:"payment/pp_express";i:87;s:25:"payment/pp_payflow_iframe";i:88;s:14:"payment/pp_pro";i:89;s:21:"payment/pp_pro_iframe";i:90;s:17:"payment/pp_pro_pf";i:91;s:17:"payment/pp_pro_uk";i:92;s:19:"payment/pp_standard";i:93;s:15:"payment/sagepay";i:94;s:22:"payment/sagepay_direct";i:95;s:18:"payment/sagepay_us";i:96;s:19:"payment/twocheckout";i:97;s:28:"payment/web_payment_software";i:98;s:16:"payment/worldpay";i:99;s:10:"play/order";i:100;s:12:"play/product";i:101;s:27:"report/affiliate_commission";i:102;s:22:"report/customer_credit";i:103;s:22:"report/customer_online";i:104;s:21:"report/customer_order";i:105;s:22:"report/customer_reward";i:106;s:24:"report/product_purchased";i:107;s:21:"report/product_viewed";i:108;s:18:"report/sale_coupon";i:109;s:17:"report/sale_order";i:110;s:18:"report/sale_return";i:111;s:20:"report/sale_shipping";i:112;s:15:"report/sale_tax";i:113;s:14:"sale/affiliate";i:114;s:12:"sale/contact";i:115;s:11:"sale/coupon";i:116;s:13:"sale/customer";i:117;s:20:"sale/customer_ban_ip";i:118;s:19:"sale/customer_group";i:119;s:10:"sale/order";i:120;s:14:"sale/recurring";i:121;s:11:"sale/return";i:122;s:12:"sale/voucher";i:123;s:18:"sale/voucher_theme";i:124;s:15:"setting/setting";i:125;s:13:"setting/store";i:126;s:16:"shipping/auspost";i:127;s:17:"shipping/citylink";i:128;s:14:"shipping/fedex";i:129;s:13:"shipping/flat";i:130;s:13:"shipping/free";i:131;s:13:"shipping/item";i:132;s:23:"shipping/parcelforce_48";i:133;s:15:"shipping/pickup";i:134;s:19:"shipping/royal_mail";i:135;s:12:"shipping/ups";i:136;s:13:"shipping/usps";i:137;s:15:"shipping/weight";i:138;s:11:"tool/backup";i:139;s:14:"tool/error_log";i:140;s:12:"total/coupon";i:141;s:12:"total/credit";i:142;s:14:"total/handling";i:143;s:16:"total/klarna_fee";i:144;s:19:"total/low_order_fee";i:145;s:12:"total/reward";i:146;s:14:"total/shipping";i:147;s:15:"total/sub_total";i:148;s:9:"total/tax";i:149;s:11:"total/total";i:150;s:13:"total/voucher";i:151;s:9:"user/user";i:152;s:20:"user/user_permission";}s:6:"modify";a:153:{i:0;s:14:"amazon/listing";i:1;s:14:"amazon/product";i:2;s:16:"amazonus/listing";i:3;s:16:"amazonus/product";i:4;s:17:"catalog/attribute";i:5;s:23:"catalog/attribute_group";i:6;s:16:"catalog/category";i:7;s:16:"catalog/download";i:8;s:14:"catalog/filter";i:9;s:19:"catalog/information";i:10;s:20:"catalog/manufacturer";i:11;s:14:"catalog/option";i:12;s:15:"catalog/product";i:13;s:15:"catalog/profile";i:14;s:14:"catalog/review";i:15;s:18:"common/filemanager";i:16;s:13:"design/banner";i:17;s:19:"design/custom_field";i:18;s:13:"design/layout";i:19;s:12:"ebay/profile";i:20;s:13:"ebay/template";i:21;s:11:"event/event";i:22;s:14:"extension/feed";i:23;s:17:"extension/manager";i:24;s:16:"extension/module";i:25;s:17:"extension/openbay";i:26;s:17:"extension/payment";i:27;s:18:"extension/shipping";i:28;s:15:"extension/total";i:29;s:7:"faq/faq";i:30;s:16:"faq/faq_category";i:31;s:16:"feed/google_base";i:32;s:19:"feed/google_sitemap";i:33;s:20:"localisation/country";i:34;s:21:"localisation/currency";i:35;s:21:"localisation/geo_zone";i:36;s:21:"localisation/language";i:37;s:25:"localisation/length_class";i:38;s:25:"localisation/order_status";i:39;s:26:"localisation/return_action";i:40;s:26:"localisation/return_reason";i:41;s:26:"localisation/return_status";i:42;s:25:"localisation/stock_status";i:43;s:22:"localisation/tax_class";i:44;s:21:"localisation/tax_rate";i:45;s:25:"localisation/weight_class";i:46;s:17:"localisation/zone";i:47;s:14:"module/account";i:48;s:16:"module/affiliate";i:49;s:29:"module/amazon_checkout_layout";i:50;s:13:"module/banner";i:51;s:17:"module/bestseller";i:52;s:15:"module/carousel";i:53;s:15:"module/category";i:54;s:18:"module/ebaydisplay";i:55;s:15:"module/featured";i:56;s:13:"module/filter";i:57;s:18:"module/google_talk";i:58;s:18:"module/information";i:59;s:13:"module/latest";i:60;s:16:"module/pp_layout";i:61;s:16:"module/slideshow";i:62;s:14:"module/special";i:63;s:12:"module/store";i:64;s:14:"module/welcome";i:65;s:9:"news/news";i:66;s:18:"news/news_category";i:67;s:14:"openbay/amazon";i:68;s:16:"openbay/amazonus";i:69;s:15:"openbay/openbay";i:70;s:12:"openbay/play";i:71;s:23:"payment/amazon_checkout";i:72;s:24:"payment/authorizenet_aim";i:73;s:21:"payment/bank_transfer";i:74;s:14:"payment/cheque";i:75;s:11:"payment/cod";i:76;s:21:"payment/free_checkout";i:77;s:22:"payment/klarna_account";i:78;s:22:"payment/klarna_invoice";i:79;s:14:"payment/liqpay";i:80;s:20:"payment/moneybookers";i:81;s:14:"payment/nochex";i:82;s:15:"payment/paymate";i:83;s:16:"payment/paypoint";i:84;s:13:"payment/payza";i:85;s:26:"payment/perpetual_payments";i:86;s:18:"payment/pp_express";i:87;s:25:"payment/pp_payflow_iframe";i:88;s:14:"payment/pp_pro";i:89;s:21:"payment/pp_pro_iframe";i:90;s:17:"payment/pp_pro_pf";i:91;s:17:"payment/pp_pro_uk";i:92;s:19:"payment/pp_standard";i:93;s:15:"payment/sagepay";i:94;s:22:"payment/sagepay_direct";i:95;s:18:"payment/sagepay_us";i:96;s:19:"payment/twocheckout";i:97;s:28:"payment/web_payment_software";i:98;s:16:"payment/worldpay";i:99;s:10:"play/order";i:100;s:12:"play/product";i:101;s:27:"report/affiliate_commission";i:102;s:22:"report/customer_credit";i:103;s:22:"report/customer_online";i:104;s:21:"report/customer_order";i:105;s:22:"report/customer_reward";i:106;s:24:"report/product_purchased";i:107;s:21:"report/product_viewed";i:108;s:18:"report/sale_coupon";i:109;s:17:"report/sale_order";i:110;s:18:"report/sale_return";i:111;s:20:"report/sale_shipping";i:112;s:15:"report/sale_tax";i:113;s:14:"sale/affiliate";i:114;s:12:"sale/contact";i:115;s:11:"sale/coupon";i:116;s:13:"sale/customer";i:117;s:20:"sale/customer_ban_ip";i:118;s:19:"sale/customer_group";i:119;s:10:"sale/order";i:120;s:14:"sale/recurring";i:121;s:11:"sale/return";i:122;s:12:"sale/voucher";i:123;s:18:"sale/voucher_theme";i:124;s:15:"setting/setting";i:125;s:13:"setting/store";i:126;s:16:"shipping/auspost";i:127;s:17:"shipping/citylink";i:128;s:14:"shipping/fedex";i:129;s:13:"shipping/flat";i:130;s:13:"shipping/free";i:131;s:13:"shipping/item";i:132;s:23:"shipping/parcelforce_48";i:133;s:15:"shipping/pickup";i:134;s:19:"shipping/royal_mail";i:135;s:12:"shipping/ups";i:136;s:13:"shipping/usps";i:137;s:15:"shipping/weight";i:138;s:11:"tool/backup";i:139;s:14:"tool/error_log";i:140;s:12:"total/coupon";i:141;s:12:"total/credit";i:142;s:14:"total/handling";i:143;s:16:"total/klarna_fee";i:144;s:19:"total/low_order_fee";i:145;s:12:"total/reward";i:146;s:14:"total/shipping";i:147;s:15:"total/sub_total";i:148;s:9:"total/tax";i:149;s:11:"total/total";i:150;s:13:"total/voucher";i:151;s:9:"user/user";i:152;s:20:"user/user_permission";}}'),
 (10, 'Demonstration', '');
 
 -- --------------------------------------------------------
