@@ -140,6 +140,7 @@ class ControllerFaqFaqCategory extends Controller {
 			$this->data['faq_categories'][] = array(
 				'faq_category_id' => $result['faq_category_id'],
 				'name'        => $result['name'],
+				'parent_name'        => ($result['parent_name']) ? $result['parent_name'] : 'root',
 				'sort_order'  => $result['sort_order'],
 				'selected'    => isset($this->request->post['selected']) && in_array($result['faq_category_id'], $this->request->post['selected']),
 				'action'      => $action
@@ -151,12 +152,12 @@ class ControllerFaqFaqCategory extends Controller {
 		$this->data['text_no_results'] = $this->language->get('text_no_results');
 
 		$this->data['column_name'] = $this->language->get('column_name');
+		$this->data['column_parent'] = $this->language->get('column_parent');
 		$this->data['column_sort_order'] = $this->language->get('column_sort_order');
 		$this->data['column_action'] = $this->language->get('column_action');
 
 		$this->data['button_insert'] = $this->language->get('button_insert');
 		$this->data['button_delete'] = $this->language->get('button_delete');
- 		//$this->data['button_repair'] = $this->language->get('button_repair');
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
