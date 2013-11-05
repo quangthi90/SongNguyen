@@ -58,6 +58,21 @@ $(document).ready(function() {
 		width:"85%", 
 		height:"90%"
 	});
+
+	if($('.content-list').children('.box5').length > 5){
+		$('.content-list').jcarousel({
+			auto: 3,
+			animation:'500',
+			wrap:'first'
+	    });
+	}	
+	if($('.content-list').children('.box3').length > 3){
+		$('.content-list').jcarousel({
+			auto: 3,
+			animation:'500',
+			wrap:'first'
+	    });
+	}	
 });
 
 function getURLVar(key) {

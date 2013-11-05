@@ -110,11 +110,26 @@ a:hover{
 #body-content{
 	height:auto;
 	overflow:hidden;
+	min-height: 220px;
 }
 #body-content .box-item {
 	overflow: hidden;
 	margin: 5px 5px;
 	float: left;
+	position: relative;
+	box-shadow: 2px 2px 1px 0px #ccc;
+}
+#body-content .box-item .category-title {
+    position: absolute;
+
+    bottom: 20%;
+    background-color: #f0f0f0;
+    width: 100%;
+    padding: 10px 0px;
+    color: #616161;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 15px;
 }
 .box-item .item-avatar {
 	display: block;
@@ -143,7 +158,6 @@ a:hover{
 .item-avatar:hover .item-avatar-img.off {
 	opacity: 1;
 }
-
 #body-content .content-list{
 	overflow: hidden;
 }
@@ -497,4 +511,32 @@ a:hover{
 .support-list .support-item a img {
     vertical-align: middle;
     text-align: center;
+}
+
+/*
+Jcarousel
+*/
+.jcarousel-prev.jcarousel-prev-horizontal {
+	position: absolute;
+	bottom: -30px;
+	right: 40px;
+	height: 25px;
+	width: 25px;
+	background: transparent url(../image/btn-pre.png) 0 0 no-repeat;
+	cursor: pointer;
+}
+.jcarousel-next.jcarousel-next-horizontal {
+	position: absolute;
+	bottom: -30px;
+	right: 10px;
+	height: 25px;
+	width: 25px;
+	background: transparent url(../image/btn-next.png) 0 0 no-repeat;
+	cursor: pointer;
+}
+.jcarousel-prev.jcarousel-prev-disabled {
+	cursor: default;
+}
+.jcarousel-prev.jcarousel-next-disabled {
+	cursor: default;
 }

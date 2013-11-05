@@ -23,6 +23,7 @@
 <link rel="<?php echo $style['rel']; ?>" type="text/css" href="<?php echo $style['href']; ?>" media="<?php echo $style['media']; ?>" />
 <?php } ?>
 <script type="text/javascript" src="catalog/view/javascript/jquery/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="catalog/view/javascript/jquery/jquery.jcarousel.min.js"></script>
 <script type="text/javascript" src="catalog/view/javascript/jquery/colorbox/jquery.colorbox-min.js"></script>
 <script type="text/javascript" src="catalog/view/javascript/jquery/jquery.mcustomscrollbar.min.js"></script>
 <script type="text/javascript" src="catalog/view/javascript/common.js"></script>
@@ -50,7 +51,7 @@ DD_belatedPNG.fix('#logo img');
           </a>
         </div>
         <div id="menu">
-          <ul class="nav" data-breakpoint="800">
+          <ul class="nav">
               <li class="item-with-ul">
                 <a href="#">Giới Thiệu</a>
                 <ul style="display: none;">
@@ -121,6 +122,6 @@ DD_belatedPNG.fix('#logo img');
                     <li><a href="#contact-online-support" class="link-popup inline">Hỗ Trợ Trực Tuyến</a></li>
                 </ul>
               </li>
-            </ul>
+          </ul>
         </div>
   </div>
