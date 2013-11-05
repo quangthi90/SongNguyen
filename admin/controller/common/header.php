@@ -126,6 +126,7 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_faq'] = $this->language->get('text_faq');
 		$this->data['text_faq_category'] = $this->language->get('text_faq_category');
 		$this->data['text_popup'] = $this->language->get('text_popup');
+		$this->data['text_program'] = $this->language->get('text_program');
 
 		if (!$this->user->isLogged() || !isset($this->request->get['token']) || !isset($this->session->data['token']) || ($this->request->get['token'] != $this->session->data['token'])) {
 			$this->data['logged'] = '';
@@ -235,6 +236,7 @@ class ControllerCommonHeader extends Controller {
 			$this->data['faq'] = $this->url->link('faq/faq', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['faq_category'] = $this->url->link('faq/faq_category', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['popup'] = $this->url->link('popup/popup', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['program'] = $this->url->link('program/program', 'token=' . $this->session->data['token'], 'SSL');
 			
 			$this->data['stores'] = array();
 			
