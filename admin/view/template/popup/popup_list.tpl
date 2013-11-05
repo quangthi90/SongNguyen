@@ -27,6 +27,7 @@
                 <?php } else { ?>
                 <a href="<?php echo $sort_title; ?>"><?php echo $column_title; ?></a>
                 <?php } ?></td>
+              <td><?php echo $column_type; ?></td>
               <td class="left"><?php if ($sort == 'pc.status') { ?>
                 <a href="<?php echo $sort_status; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_status; ?></a>
                 <?php } else { ?>
@@ -39,6 +40,7 @@
             <tr class="filter">
               <td></td>
               <td><input type="text" name="filter_title" value="<?php echo $filter_title; ?>" /></td>
+              <td></td>
               <td><select name="filter_status">
                   <option value="*"></option>
                   <?php if ($filter_status) { ?>
@@ -63,6 +65,7 @@
                 <input type="checkbox" name="selected[]" value="<?php echo $popup['popup_id']; ?>" />
                 <?php } ?></td>
               <td class="left"><?php echo $popup['title']; ?></td>
+              <td class="left"><?php echo $popup['type']; ?></td>
               <td class="left"><?php echo $popup['status']; ?></td>
               <td class="right"><?php foreach ($popup['action'] as $action) { ?>
                 [ <a href="<?php echo $action['href']; ?>"><?php echo $action['text']; ?></a> ]
@@ -71,7 +74,7 @@
             <?php } ?>
             <?php } else { ?>
             <tr>
-              <td class="center" colspan="4"><?php echo $text_no_results; ?></td>
+              <td class="center" colspan="5"><?php echo $text_no_results; ?></td>
             </tr>
             <?php } ?>
           </tbody>
