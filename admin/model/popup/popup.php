@@ -1,7 +1,7 @@
 <?php
 class ModelPopupPopup extends Model {
 	public function addPopup($data) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "popup SET type = '" . (int)$data['type'] . "', banner_id = '" . (int)$data['banner_id'] . "', status = '" . (int)$data['status'] . "', sort_order = '" . (int)$data['sort_order'] . "', embbed = '" . $this->db->escape($data['embbed']) . "'");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "popup SET type = '" . (int)$data['type'] . "', banner_id = '" . (int)$data['banner_id'] . "', status = '0', sort_order = '" . (int)$data['sort_order'] . "', embbed = '" . $this->db->escape($data['embbed']) . "'");
 		
 		$popup_id = $this->db->getLastId();
 		
@@ -13,13 +13,22 @@ class ModelPopupPopup extends Model {
 	}
 	
 	public function editPopup($popup_id, $data) {
-		$this->db->query("UPDATE " . DB_PREFIX . "popup SET type = '" . (int)$data['type'] . "', banner_id = '" . (int)$data['banner_id'] . "',status = '" . (int)$data['status'] . "', sort_order = '" . (int)$data['sort_order'] . "', embbed = '" . $this->db->escape($data['embbed']) . "' WHERE id = '" . (int)$popup_id . "'");
+		$this->db->query("UPDATE " . DB_PREFIX . "popup SET type = '" . (int)$data['type'] . "', banner_id = '" . (int)$data['banner_id'] . "', sort_order = '" . (int)$data['sort_order'] . "', embbed = '" . $this->db->escape($data['embbed']) . "' WHERE id = '" . (int)$popup_id . "'");
 		
 		$this->db->query("DELETE FROM " . DB_PREFIX . "popup_description WHERE popup_id = '" . (int)$popup_id . "'");
 		
 		foreach ($data['popup_description'] as $language_id => $value) {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "popup_description SET popup_id = '" . (int)$popup_id . "', language_id = '" . (int)$language_id . "', title = '" . $this->db->escape($value['title']) . "', description = '" . $this->db->escape($value['description']) . "', content = '" . $this->db->escape($value['content']) . "'");
 		}
+	}
+
+	public function activePopup($popup_id) {
+		$this->db->query("UPDATE " . DB_PREFIX . "popup SET status = '0'");
+		$this->db->query("UPDATE " . DB_PREFIX . "popup SET status = '1' WHERE id = '" . (int)$popup_id . "'");
+	}
+
+	public function deactivePopup($popup_id) {
+		$this->db->query("UPDATE " . DB_PREFIX . "popup SET status = '0' WHERE id = '" . (int)$popup_id . "'");
 	}
 
 	public function deletePopup($popup_id) {

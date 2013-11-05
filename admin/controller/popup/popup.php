@@ -133,6 +133,86 @@ class ControllerPopupPopup extends Controller {
 
     	$this->getList();
   	}
+
+  	public function active() {
+    	$this->language->load('popup/popup');
+
+    	$this->document->setTitle($this->language->get('heading_title'));
+		
+		$this->load->model('popup/popup');
+		
+		if (isset($this->request->get['popup_id']) && $this->validateDelete()) {
+			$this->model_popup_popup->activePopup($this->request->get['popup_id']);
+
+			$this->session->data['success'] = $this->language->get('text_success');
+			
+			$url = '';
+			
+			if (isset($this->request->get['filter_title'])) {
+				$url .= '&filter_title=' . urlencode(html_entity_decode($this->request->get['filter_title'], ENT_QUOTES, 'UTF-8'));
+			}
+		
+			if (isset($this->request->get['filter_status'])) {
+				$url .= '&filter_status=' . $this->request->get['filter_status'];
+			}
+					
+			if (isset($this->request->get['sort'])) {
+				$url .= '&sort=' . $this->request->get['sort'];
+			}
+
+			if (isset($this->request->get['order'])) {
+				$url .= '&order=' . $this->request->get['order'];
+			}
+
+			if (isset($this->request->get['page'])) {
+				$url .= '&page=' . $this->request->get['page'];
+			}
+			
+			$this->redirect($this->url->link('popup/popup', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+		}
+
+    	$this->getList();
+  	}
+
+  	public function deactive() {
+    	$this->language->load('popup/popup');
+
+    	$this->document->setTitle($this->language->get('heading_title'));
+		
+		$this->load->model('popup/popup');
+		
+		if (isset($this->request->get['popup_id']) && $this->validateDelete()) {
+			$this->model_popup_popup->deactivePopup($this->request->get['popup_id']);
+
+			$this->session->data['success'] = $this->language->get('text_success');
+			
+			$url = '';
+			
+			if (isset($this->request->get['filter_title'])) {
+				$url .= '&filter_title=' . urlencode(html_entity_decode($this->request->get['filter_title'], ENT_QUOTES, 'UTF-8'));
+			}
+		
+			if (isset($this->request->get['filter_status'])) {
+				$url .= '&filter_status=' . $this->request->get['filter_status'];
+			}
+					
+			if (isset($this->request->get['sort'])) {
+				$url .= '&sort=' . $this->request->get['sort'];
+			}
+
+			if (isset($this->request->get['order'])) {
+				$url .= '&order=' . $this->request->get['order'];
+			}
+
+			if (isset($this->request->get['page'])) {
+				$url .= '&page=' . $this->request->get['page'];
+			}
+			
+			$this->redirect($this->url->link('popup/popup', 'token=' . $this->session->data['token'] . $url, 'SSL'));
+		}
+
+    	$this->getList();
+  	}
 	
   	protected function getList() {				
 		if (isset($this->request->get['filter_title'])) {
@@ -226,6 +306,18 @@ class ControllerPopupPopup extends Controller {
 				'text' => $this->language->get('text_edit'),
 				'href' => $this->url->link('popup/popup/update', 'token=' . $this->session->data['token'] . '&popup_id=' . $result['popup_id'] . $url, 'SSL')
 			);
+
+			if ($result['status']) {
+				$action[] = array(
+					'text' => $this->language->get('text_deactive'),
+					'href' => $this->url->link('popup/popup/deactive', 'token=' . $this->session->data['token'] . '&popup_id=' . $result['popup_id'] . $url, 'SSL')
+				);
+			}else {
+				$action[] = array(
+					'text' => $this->language->get('text_active'),
+					'href' => $this->url->link('popup/popup/active', 'token=' . $this->session->data['token'] . '&popup_id=' . $result['popup_id'] . $url, 'SSL')
+				);
+			}
 
 			if ($result['type'] == 1) {
 				$type = $this->language->get('text_video_popup');

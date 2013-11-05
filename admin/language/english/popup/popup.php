@@ -7,6 +7,8 @@ $_['text_success']           = 'Success: You have modified popups!';
 $_['text_video_popup']           = 'Video Popup';
 $_['text_text_popup']           = 'Text Popup';
 $_['text_carousel_popup']           = 'Carousel Popup';
+$_['text_active']           = 'Active';
+$_['text_deactive']           = 'Deactive';
 
 // Column
 $_['column_title']      = 'Title';
