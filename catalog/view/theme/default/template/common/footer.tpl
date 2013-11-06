@@ -197,5 +197,15 @@
   </p>
 </div>
 </div>
+<div id="email-sub">
+  <h2>Đăng ký email nhận tin tức mới</h2>
+  <form action="#" method="POST">
+    <div class="container">
+      <input type="text" name="reg-email" id="reg-email" placeholder="Nhập email đăng ký">
+      <p class="error-msg">Email không hợp lệ !</p>
+      <input type="submit" value="OK">
+    </div>
+  </form>
+</div>
 </body>
 </html>

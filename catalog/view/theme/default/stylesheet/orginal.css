@@ -119,9 +119,8 @@ a:hover{
 	position: relative;
 	box-shadow: 2px 2px 1px 0px #ccc;
 }
-#body-content .box-item .category-title {
+.box-item .category-title {
     position: absolute;
-
     bottom: 20%;
     background-color: #f0f0f0;
     width: 100%;
@@ -130,6 +129,11 @@ a:hover{
     text-align: center;
     text-transform: uppercase;
     font-size: 15px;
+    opacity: 0.9;
+}
+.box-item:hover .category-title  {
+	opacity: 1;
+	color: #000;
 }
 .box-item .item-avatar {
 	display: block;
@@ -607,4 +611,52 @@ Jcarousel
 }
 .jcarousel-prev.jcarousel-next-disabled {
 	cursor: default;
+}
+
+/*Email subcription*/
+#email-sub {
+	position: fixed;
+	background: #f0f0f0;
+	bottom: 1px;
+	right: 5px;
+	width: 320px;
+	z-index: 100;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	box-shadow: 0px -2px 10px #ddd;
+}
+#email-sub h2 {
+    font-size: 14px;
+    padding: 10px 20px 10px 45px;
+    background: transparent url(../image/a.png) no-repeat 10px 50%;
+    color: #04266D;
+    text-align: left;
+    cursor: pointer;
+    border-bottom: 2px solid rgb(3, 3, 104);
+}
+#email-sub .container {
+    padding: 20px;
+    position: relative;
+    display: none;
+}
+.container .error-msg {
+	color: red;
+	font-size: 13px;
+	padding: 5px 0px;
+	display: none;
+}
+#email-sub input[type='text'] {
+    padding: 5px;
+    width: 228px;
+}
+#email-sub input[type='submit'] {
+    position: absolute;	
+    top: 20px;
+    right: 20px;
+    border: none;
+    padding: 7px 10px;
+    cursor: pointer;
+    background: #0e0e0e;
+    color: #fff;
 }
