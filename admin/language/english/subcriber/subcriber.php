@@ -29,4 +29,6 @@ $_['entry_status'] = 'Status:';
 $_['error_warning']          = 'Warning: Please check the form carefully for errors!';
 $_['error_permission']       = 'Warning: You do not have permission to modify subcribers!';
 $_['error_email']             = 'Email must be between 2 and 128 characters!';
+$_['error_subject']        = 'E-Mail Subject required!';
+$_['error_message']        = 'E-Mail Message required!';
 ?>
