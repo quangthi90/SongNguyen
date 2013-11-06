@@ -6,6 +6,14 @@ class ControllerCommonHome extends Controller {
 
 		$this->data['heading_title'] = $this->config->get('config_title');
 		
+		if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
+			$server = $this->config->get('config_ssl');
+		} else {
+			$server = $this->config->get('config_url');
+		}
+		$this->data['categoryImgUrl'] = $server . 'image/data/category';
+		$this->data['introImgUrl'] = $server . 'image/data/intro';
+
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/home.tpl')) {
 			$this->template = $this->config->get('config_template') . '/template/common/home.tpl';
 		} else {
@@ -13,10 +21,6 @@ class ControllerCommonHome extends Controller {
 		}
 		
 		$this->children = array(
-			'common/column_left',
-			'common/column_right',
-			'common/content_top',
-			'common/content_bottom',
 			'common/footer',
 			'common/header'
 		);

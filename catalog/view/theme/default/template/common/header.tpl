@@ -16,13 +16,18 @@
 <?php foreach ($links as $link) { ?>
 <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
 <?php } ?>
-<link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/stylesheet.css" />
+<link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/orginal.css" />
+<link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/colorbox/colorbox.css" />
+<link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/mcustomscrollbar.css" />
+<link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/slideshow.css" />
 <?php foreach ($styles as $style) { ?>
 <link rel="<?php echo $style['rel']; ?>" type="text/css" href="<?php echo $style['href']; ?>" media="<?php echo $style['media']; ?>" />
 <?php } ?>
 <script type="text/javascript" src="catalog/view/javascript/jquery/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="catalog/view/javascript/jquery/ui/jquery-ui-1.8.16.custom.min.js"></script>
-<link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/ui/themes/ui-lightness/jquery-ui-1.8.16.custom.css" />
+<script type="text/javascript" src="catalog/view/javascript/jquery/jquery.jcarousel.min.js"></script>
+<script type="text/javascript" src="catalog/view/javascript/jquery/colorbox/jquery.colorbox-min.js"></script>
+<script type="text/javascript" src="catalog/view/javascript/jquery/jquery.mcustomscrollbar.min.js"></script>
+<script type="text/javascript" src="catalog/view/javascript/jquery/nivo-slider/jquery.nivo.slider.js"></script>
 <script type="text/javascript" src="catalog/view/javascript/common.js"></script>
 <?php foreach ($scripts as $script) { ?>
 <script type="text/javascript" src="<?php echo $script; ?>"></script>
@@ -37,66 +42,88 @@
 DD_belatedPNG.fix('#logo img');
 </script>
 <![endif]-->
-<?php if ($stores) { ?>
-<script type="text/javascript"><!--
-$(document).ready(function() {
-<?php foreach ($stores as $store) { ?>
-$('body').prepend('<iframe src="<?php echo $store; ?>" style="display: none;"></iframe>');
-<?php } ?>
-});
-//--></script>
-<?php } ?>
 <?php echo $google_analytics; ?>
 </head>
 <body>
-<div id="container">
-<div id="header">
-  <?php if ($logo) { ?>
-  <div id="logo"><a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" /></a></div>
-  <?php } ?>
-  <?php echo $language; ?>
-  <?php echo $currency; ?>
-  <?php echo $cart; ?>
-  <div id="search">
-    <div class="button-search"></div>
-    <input type="text" name="search" placeholder="<?php echo $text_search; ?>" value="<?php echo $search; ?>" />
+<div id="wrap">
+  <div id="header">
+        <div id="banner">
+          <a href="<?php echo $home; ?>">
+            <img src="<?php echo $logo; ?>" width="266" height="87" alt="Song Nguyen Logo">
+          </a>
+        </div>
+        <div id="menu">
+          <ul class="nav">
+              <li class="item-with-ul">
+                <a href="#">Giới Thiệu</a>
+                <ul style="display: none;">
+                    <li><a href="<?php echo $news_detail; ?>" class="link-popup iframe">Về Công Ty</a></li>
+                    <li><a href="<?php echo $news_detail; ?>" class="link-popup iframe">Giá Trị Cốt Lõi</a></li>
+                    <li><a href="<?php echo $news_detail; ?>" class="link-popup iframe">Nhiệm Vụ</a></li>
+                    <li><a href="<?php echo $news_detail; ?>" class="link-popup iframe">Nhân Sự</a></li>
+                    <li><a href="<?php echo $news_detail; ?>" class="link-popup iframe">Đối Tác</a></li>
+                </ul>
+              </li>
+              <li class="item-with-ul">
+                <a href="#">Du Học</a>
+                <ul style="display: none;">
+                  <li><a href="#">Du Học Mỹ</a></li>
+                  <li><a href="#">Du Học Úc</a></li>
+                  <li><a href="#">Du Học New Zealand</a></li>
+                  <li><a href="#">Du Học Anh</a></li>
+                  <li><a href="#">Du Học Sing</a></li>
+                  <li><a href="#">Du Học Pháp</a></li>
+                  <li><a href="#">Du Học Canada</a></li>        
+                </ul>
+              </li>
+              <li class="item-with-ul">
+                <a href="#">Du Học Hè</a>
+                <ul style="display: none;">
+                  <li><a href="#">Du Học Hè Singapore</a></li>
+                  <li><a href="#">Du Học Hè Mỹ</a></li>
+                  <li><a href="#">Du Học Hè Úc</a></li>
+                  <li><a href="#">Du Học Hè New Zealand</a></li>
+                  <li><a href="#">Du Học Hè Anh</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Chương trình</a>
+              </li>
+              <li class="item-with-ul">
+                <a href="#">Dịch Vụ</a>
+                <ul style="display: none;">               
+                  <li><a href="#">Đăng Ký Nhập Học</a></li>
+                  <li><a href="#">Thủ Tục Visa</a></li>
+                  <li><a href="#">Chứng Minh Tài Chính</a></li>
+                  <li><a href="#">Vé Máy Bay</a></li>
+                  <li><a href="#">Dịch Thuật Và Công Chứng</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="<?php echo $news_list; ?>" class="link-popup iframe">Tin Tức & Sự Kiện</a>
+              </li>
+              <li class="item-with-ul">
+                <a href="#">Các Lớp Học</a>
+                <ul style="display: none;">
+                    <li><a href="#">IELTS, TOEFL</a></li>
+                    <li><a href="#">SAT, SAT II</a></li>
+                    <li><a href="#">Toán, Lý, Hóa bằng tiếng Anh</a></li>
+                    <li><a href="#">Văn Hóa Mỹ</a></li>
+                    <li><a href="#">Kỹ Năng</a></li>
+                </ul>
+              </li>              
+              <li>
+                <a href="<?php echo $faq; ?>" class="link-popup iframe">FAQ</a>
+              </li>
+              <li class="item-with-ul">
+                <a href="<?php echo $pcontact; ?>">Liên hệ</a>
+                <ul style="display: none;">
+                    <li><a href="#contact-address" class="link-popup contact">Thông Tin Liên Hệ</a></li>
+                    <li><a href="<?php echo $contactus; ?>" class="link-popup iframe">Gửi Mail cho Song Nguyen</a>
+                    </li>
+                    <li><a href="#contact-online-support" class="link-popup inline">Hỗ Trợ Trực Tuyến</a></li>
+                </ul>
+              </li>
+          </ul>
+        </div>
   </div>
-  <div id="welcome">
-    <?php if (!$logged) { ?>
-    <?php echo $text_welcome; ?>
-    <?php } else { ?>
-    <?php echo $text_logged; ?>
-    <?php } ?>
-  </div>
-  <div class="links"><a href="<?php echo $home; ?>"><?php echo $text_home; ?></a><a href="<?php echo $wishlist; ?>" id="wishlist-total"><?php echo $text_wishlist; ?></a><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a><a href="<?php echo $shopping_cart; ?>"><?php echo $text_shopping_cart; ?></a><a href="<?php echo $checkout; ?>"><?php echo $text_checkout; ?></a></div>
-</div>
-<?php if ($categories) { ?>
-<div id="menu">
-  <ul>
-    <?php foreach ($categories as $category) { ?>
-    <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a>
-      <?php if ($category['children']) { ?>
-      <div>
-        <?php for ($i = 0; $i < count($category['children']);) { ?>
-        <ul>
-          <?php $j = $i + ceil(count($category['children']) / $category['column']); ?>
-          <?php for (; $i < $j; $i++) { ?>
-          <?php if (isset($category['children'][$i])) { ?>
-          <li><a href="<?php echo $category['children'][$i]['href']; ?>"><?php echo $category['children'][$i]['name']; ?></a></li>
-          <?php } ?>
-          <?php } ?>
-        </ul>
-        <?php } ?>
-      </div>
-      <?php } ?>
-    </li>
-    <?php } ?>
-  </ul>
-</div>
-<?php } ?>
-<?php if ($error) { ?>
-    
-    <div class="warning"><?php echo $error ?><img src="catalog/view/theme/default/image/close.png" alt="" class="close" /></div>
-    
-<?php } ?>
-<div id="notification"></div>
