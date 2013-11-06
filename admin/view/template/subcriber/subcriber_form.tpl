@@ -18,7 +18,11 @@
         <table class="form">
           <tr>
             <td><?php echo $entry_email; ?></td>
-            <td><input type="text" name="email" value="<?php echo $email; ?>" /></td>
+            <td><input type="text" name="email" value="<?php echo $email; ?>" />
+              <?php if (isset($error_email)) { ?>
+              <span class="error"><?php echo $error_email ?></span>
+              <?php } ?>
+            </td>
           </tr>
           <tr>
             <td><?php echo $entry_status; ?></td>

@@ -255,7 +255,7 @@ class ControllerSubcriberSubcriber extends Controller {
  		if (isset($this->error['email'])) {
 			$this->data['error_email'] = $this->error['email'];
 		} else {
-			$this->data['error_email'] = array();
+			$this->data['error_email'] = '';
 		}
 
   		$this->data['breadcrumbs'] = array();
@@ -317,6 +317,8 @@ class ControllerSubcriberSubcriber extends Controller {
 		}
 		
 		if ((utf8_strlen($this->request->post['email']) < 2) || (utf8_strlen($this->request->post['email']) > 255)) {
+			$this->error['email'] = $this->language->get('error_email');
+		}elseif (preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['email'])) {
 			$this->error['email'] = $this->language->get('error_email');
 		}
 		
@@ -402,15 +404,15 @@ class ControllerSubcriberSubcriber extends Controller {
 	}
 
 	public function send() {
-		$mail_protocol 	= 'SMTP';// $this->config->get('config_mail_protocol');
+		$mail_protocol 	= $this->config->get('config_mail_protocol');
 		$mail_parameter = $this->config->get('config_mail_parameter');
-		$mail_hostname 	= 'mail.bommerdesign.com';// $this->config->get('config_smtp_host');
-		$mail_username 	= 'test@bommerdesign.com';// $this->config->get('config_smtp_username');
-		$mail_password 	= 'hZH1AXUG';// $this->config->get('config_smtp_password');
-		$mail_port 		= '25';// $this->config->get('config_smtp_port');
-		$mail_timeout 	= '5';// $this->config->get('config_smtp_timeout');	
-		$mail_from 		= 'test@bommerdesign.com';// $this->config->get('config_email');
-		$mail_sender 	= 'test@bommerdesign.com';// $this->language->get('text_your_name');
+		$mail_hostname 	= $this->config->get('config_smtp_host');
+		$mail_username 	= $this->config->get('config_smtp_username');
+		$mail_password 	= $this->config->get('config_smtp_password');
+		$mail_port 		= $this->config->get('config_smtp_port');
+		$mail_timeout 	= $this->config->get('config_smtp_timeout');	
+		$mail_from 		= $this->config->get('config_email');
+		$mail_sender 	= $this->language->get('text_your_name');
 
 		$this->language->load('subcriber/subcriber');
 		
