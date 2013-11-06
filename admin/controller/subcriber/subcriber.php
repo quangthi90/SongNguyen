@@ -463,7 +463,7 @@ class ControllerSubcriberSubcriber extends Controller {
 					case 'newsletter':
 						if (!empty($this->request->post['subcriber_email'])) {					
 							foreach ($this->request->post['subcriber_email'] as $subcriber_id) {
-								$subcriber_info = $this->model_subcriber_subcriber->getSubcriber($customer_id);
+								$subcriber_info = $this->model_subcriber_subcriber->getSubcriber($subcriber_id);
 								
 								if ($subcriber_info) {
 									$emails[] = $subcriber_info['email'];
