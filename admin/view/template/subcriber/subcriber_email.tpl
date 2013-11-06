@@ -100,7 +100,7 @@ $('select[name=\'to\']').bind('change', function() {
 			dataType: 'json',
 			success: function(json) {	
 				$.each(json, function (index, item) {
-					$('#subcriber-email').append('<div id="subcriber-email' + item.sucriber_id + '">' + item.email + '<img src="view/image/delete.png" alt="" /><input type="hidden" name="subcriber_email[]" value="' + item.sucriber_id + '" /></div>');
+					$('#subcriber-email').append('<div id="subcriber-email' + item.subcriber_id + '">' + item.email + '<img src="view/image/delete.png" alt="" /><input type="hidden" name="subcriber_email[]" value="' + item.subcriber_id + '" /></div>');
 				});
 			}
 		});
