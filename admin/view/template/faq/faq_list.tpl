@@ -61,7 +61,7 @@
                 <input type="checkbox" name="selected[]" value="<?php echo $faq['faq_id']; ?>" />
                 <?php } ?></td>
               <td><?php echo $faq['question']; ?></td>
-              <td><?php echo $faq['category_name']; ?></td>
+              <td><?php echo $faq['faq_category_name']; ?></td>
               <td class="left"><?php echo $faq['status']; ?></td>
               <td class="right"><?php foreach ($faq['action'] as $action) { ?>
                 [ <a href="<?php echo $action['href']; ?>"><?php echo $action['text']; ?></a> ]
