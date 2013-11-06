@@ -46,6 +46,25 @@ class ControllerCommonHeader extends Controller {
 		$this->data['pcontact'] = $this->url->link('information/pcontact');
 		$this->data['news_list'] = $this->url->link('news/list');
 		$this->data['news_detail'] = $this->url->link('news/detail');
+
+		// menu render
+		$this->load->model('news/news_category');
+		$news_categories = $this->news_news_category->getCategories(array(
+			'start' => 0,
+			'limit' => 5,
+			'filter_parent_id' => 0,
+			'status' => 1,
+			));
+
+		$this->data['news_categories'] = array();
+		foreach ($news_categories as $category) {
+			$child_categories = $news_categories = $this->news_news_category->getCategories(array(
+				'start' => 0,
+				'limit' => 5,
+				'filter_parent_id' => $category['news_category_id'],
+				'status' => 1,
+				));
+		}
 		
 		// Daniel's robot detector
 		$status = true;		
