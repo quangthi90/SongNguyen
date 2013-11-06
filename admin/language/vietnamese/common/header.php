@@ -107,5 +107,5 @@ $_['text_faq_category']           = 'Danh Mục FAQ';
 $_['text_popup']           = 'Cửa sổ Popup';
 $_['text_program']           = 'Chương trình';
 $_['text_subcriber']           = 'Người theo dõi';
-
+$_['text_send_email']           = 'Gửi Email';
 ?>
