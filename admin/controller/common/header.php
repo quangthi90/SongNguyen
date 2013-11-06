@@ -128,6 +128,7 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_popup'] = $this->language->get('text_popup');
 		$this->data['text_program'] = $this->language->get('text_program');
 		$this->data['text_subcriber'] = $this->language->get('text_subcriber');
+		$this->data['text_send_email'] = $this->language->get('text_send_email');
 
 		if (!$this->user->isLogged() || !isset($this->request->get['token']) || !isset($this->session->data['token']) || ($this->request->get['token'] != $this->session->data['token'])) {
 			$this->data['logged'] = '';
@@ -239,6 +240,7 @@ class ControllerCommonHeader extends Controller {
 			$this->data['popup'] = $this->url->link('popup/popup', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['program'] = $this->url->link('program/program', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['subcriber'] = $this->url->link('subcriber/subcriber', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['send_email'] = $this->url->link('subcriber/subcriber/email', 'token=' . $this->session->data['token'], 'SSL');
 			
 			$this->data['stores'] = array();
 			

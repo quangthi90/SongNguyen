@@ -160,7 +160,6 @@ class ControllerSubcriberSubcriber extends Controller {
 									
 		$this->data['insert'] = $this->url->link('subcriber/subcriber/insert', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$this->data['delete'] = $this->url->link('subcriber/subcriber/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
-		$this->data['email'] = $this->url->link('subcriber/subcriber/email', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		
 		$this->data['subcribers'] = array();
 		
@@ -200,7 +199,6 @@ class ControllerSubcriberSubcriber extends Controller {
 
 		$this->data['button_insert'] = $this->language->get('button_insert');
 		$this->data['button_delete'] = $this->language->get('button_delete');
-		$this->data['button_email'] = $this->language->get('button_email');
  
  		if (isset($this->error['warning'])) {
 			$this->data['error_warning'] = $this->error['warning'];
