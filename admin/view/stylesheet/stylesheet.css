@@ -41,18 +41,18 @@ label {
 #header .div1 {
 	height: 56px;
 	padding: 0px 30px;
-	background: url('../image/header.png') repeat-x;
+	background: #f0f0f0;
 	min-width: 900px;
 }
 #header .div2 {
 	color: #FFFFFF;
-	padding: 18px 0px 0px 0px;
+	margin: 2px 0px;
 	float: left;
 }
 #header .div3 {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
-	color: #FFF;
+	color: #000;
 	text-align: right;
 	padding: 15px 0px 0px 0px;
 	float: right;
