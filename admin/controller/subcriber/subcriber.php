@@ -402,15 +402,15 @@ class ControllerSubcriberSubcriber extends Controller {
 	}
 
 	public function send() {
-		$mail_protocol 	= $this->config->get('config_mail_protocol');
+		$mail_protocol 	= 'SMTP';// $this->config->get('config_mail_protocol');
 		$mail_parameter = $this->config->get('config_mail_parameter');
-		$mail_hostname 	= $this->config->get('config_smtp_host');
-		$mail_username 	= $this->config->get('config_smtp_username');
-		$mail_password 	= $this->config->get('config_smtp_password');
-		$mail_port 		= $this->config->get('config_smtp_port');
-		$mail_timeout 	= $this->config->get('config_smtp_timeout');	
-		$mail_from 		= $this->config->get('config_email');
-		$mail_sender 	= $this->language->get('text_your_name');
+		$mail_hostname 	= 'mail.bommerdesign.com';// $this->config->get('config_smtp_host');
+		$mail_username 	= 'test@bommerdesign.com';// $this->config->get('config_smtp_username');
+		$mail_password 	= 'hZH1AXUG';// $this->config->get('config_smtp_password');
+		$mail_port 		= '25';// $this->config->get('config_smtp_port');
+		$mail_timeout 	= '5';// $this->config->get('config_smtp_timeout');	
+		$mail_from 		= 'test@bommerdesign.com';// $this->config->get('config_email');
+		$mail_sender 	= 'test@bommerdesign.com';// $this->language->get('text_your_name');
 
 		$this->language->load('subcriber/subcriber');
 		
@@ -506,7 +506,7 @@ class ControllerSubcriberSubcriber extends Controller {
 						$mail->timeout = $mail_timeout;				
 						$mail->setTo($email);
 						$mail->setFrom($mail_from);
-						$mail->setSender($email_sender);
+						$mail->setSender($mail_sender);
 						$mail->setSubject(html_entity_decode($this->request->post['subject'], ENT_QUOTES, 'UTF-8'));					
 						$mail->setHtml($message);
 						$mail->send();
