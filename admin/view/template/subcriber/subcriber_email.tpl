@@ -63,7 +63,7 @@ $('input[name=\'email\']').autocomplete({
 				response($.map(json, function(item) {
 					return {
 						label: item.email,
-						value: item.sucriber_id
+						value: item.subcriber_id
 					}
 				}));
 			}
