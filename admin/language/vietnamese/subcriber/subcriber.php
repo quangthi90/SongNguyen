@@ -1,10 +1,10 @@
 <?php
 // heading title
-$_['heading_title'] = 'Người theo dõi';
+$_['heading_title'] = 'Nhận email mới';
 
 // text 
 $_['text_your_name']           = 'Song Nguyen Edu';
-$_['text_success']           = 'Thành công: Bạn đã sửa đổi Người theo dõi!';
+$_['text_success']           = 'Thành công: Bạn đã sửa đổi Nhận email mới!';
 $_['text_newsletter']           = 'Người theo dõi';
 $_['text_all_newsletter']           = 'Tất cả Người theo dõi';
 $_['text_sent_success']         = 'Tin nhắn của bạn đã được gửi đi thành công!';
@@ -27,7 +27,7 @@ $_['entry_status'] 			= 'Tình Trạng:';
 
 //error     error_subject error_message
 $_['error_warning']          = 'Cảnh báo: Vui lòng kiểm tra biểu mẫu cẩn thận cho các lỗi!';
-$_['error_permission']       = 'Cảnh báo: Bạn không có quyền sửa đổi Người theo dõi!';
+$_['error_permission']       = 'Cảnh báo: Bạn không có quyền sửa đổi Nhận email mới!';
 $_['error_email']             = 'Email phải có từ 2 đến 128 ký tự!';
 $_['error_subject']        = 'Tiêu đề E-Mail là bắt buộc!';
 $_['error_message']        = 'Nội dung E-Mail là bắt buộc!';
