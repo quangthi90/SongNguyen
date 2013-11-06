@@ -446,7 +446,7 @@ class ControllerSubcriberSubcriber extends Controller {
 				
 				switch ($this->request->post['to']) {
 					case 'all-newsletter':
-						$subcriber_data = array(
+						/*$subcriber_data = array(
 							'status' 			=> 1,
 							'start'             => ($page - 1) * 10,
 							'limit'             => 10,
@@ -455,19 +455,21 @@ class ControllerSubcriberSubcriber extends Controller {
 						$email_total = $this->model_subcriber_subcriber->getTotalSubcribers($subcriber_data);
 							
 						$results = $this->model_subcriber_subcriber->getSubcribers($subcriber_data);
-					
+
 						foreach ($results as $result) {
 							$emails[$result['email']] = $result['email'];
+						}*/
+
+						if (!empty($this->request->post['subcriber_email'])) {					
+							foreach ($this->request->post['subcriber_email'] as $email) {
+								$emails[] = $email;
+							}
 						}
 						break;
 					case 'newsletter':
 						if (!empty($this->request->post['subcriber_email'])) {					
-							foreach ($this->request->post['subcriber_email'] as $subcriber_id) {
-								$subcriber_info = $this->model_subcriber_subcriber->getSubcriber($subcriber_id);
-								
-								if ($subcriber_info) {
-									$emails[] = $subcriber_info['email'];
-								}
+							foreach ($this->request->post['subcriber_email'] as $email) {
+								$emails[] = $email;
 							}
 						}
 						break;	

@@ -72,7 +72,7 @@ $('input[name=\'email\']').autocomplete({
 	select: function(event, ui) {
 		$('#subcriber-email' + ui.item.value).remove();
 		
-		$('#subcriber-email').append('<div id="subcriber-email' + ui.item.value + '">' + ui.item.label + '<img src="view/image/delete.png" alt="" /><input type="hidden" name="subcriber_email[]" value="' + ui.item.value + '" /></div>');
+		$('#subcriber-email').append('<div id="subcriber-email' + ui.item.value + '">' + ui.item.label + '<img src="view/image/delete.png" alt="" /><input type="hidden" name="subcriber_email[]" value="' + ui.item.label + '" /></div>');
 
 		$('#subcriber-email div:odd').attr('class', 'odd');
 		$('#subcriber-email div:even').attr('class', 'even');
@@ -100,7 +100,7 @@ $('select[name=\'to\']').bind('change', function() {
 			dataType: 'json',
 			success: function(json) {	
 				$.each(json, function (index, item) {
-					$('#subcriber-email').append('<div id="subcriber-email' + item.subcriber_id + '">' + item.email + '<img src="view/image/delete.png" alt="" /><input type="hidden" name="subcriber_email[]" value="' + item.subcriber_id + '" /></div>');
+					$('#subcriber-email').append('<div id="subcriber-email' + item.subcriber_id + '">' + item.email + '<img src="view/image/delete.png" alt="" /><input type="hidden" name="subcriber_email[]" value="' + item.email + '" /></div>');
 				});
 			}
 		});
