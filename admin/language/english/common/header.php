@@ -106,5 +106,7 @@ $_['text_faq']           = 'FAQs';
 $_['text_faq_category']           = 'FAQ Categories';
 $_['text_popup']           = 'Popups';
 $_['text_program']           = 'Programs';
+$_['text_subcriber']           = 'Subcribers';
+$_['text_send_email']           = 'Send Email';
 
 ?>
