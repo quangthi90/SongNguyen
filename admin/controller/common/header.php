@@ -120,6 +120,14 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_paypal_express_search'] = $this->language->get('text_paypal_search');
 		$this->data['text_recurring_profile'] = $this->language->get('text_recurring_profile');
 
+		$this->data['text_news'] = $this->language->get('text_news');
+		$this->data['text_news_category'] = $this->language->get('text_news_category');
+		$this->data['text_event'] = $this->language->get('text_event');
+		$this->data['text_faq'] = $this->language->get('text_faq');
+		$this->data['text_faq_category'] = $this->language->get('text_faq_category');
+		$this->data['text_popup'] = $this->language->get('text_popup');
+		$this->data['text_program'] = $this->language->get('text_program');
+
 		if (!$this->user->isLogged() || !isset($this->request->get['token']) || !isset($this->session->data['token']) || ($this->request->get['token'] != $this->session->data['token'])) {
 			$this->data['logged'] = '';
 			
@@ -222,6 +230,14 @@ class ControllerCommonHeader extends Controller {
 			$this->data['paypal_express_search'] = $this->url->link('payment/pp_express/search', 'token=' . $this->session->data['token'], 'SSL');
 			$this->data['recurring_profile'] = $this->url->link('sale/recurring', 'token=' . $this->session->data['token'], 'SSL');
 
+			$this->data['news'] = $this->url->link('news/news', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['news_category'] = $this->url->link('news/news_category', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['event'] = $this->url->link('event/event', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['faq'] = $this->url->link('faq/faq', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['faq_category'] = $this->url->link('faq/faq_category', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['popup'] = $this->url->link('popup/popup', 'token=' . $this->session->data['token'], 'SSL');
+			$this->data['program'] = $this->url->link('program/program', 'token=' . $this->session->data['token'], 'SSL');
+			
 			$this->data['stores'] = array();
 			
 			$this->load->model('setting/store');

@@ -50,7 +50,7 @@
           <tbody id="image-row<?php echo $image_row; ?>">
             <tr>
               <td class="left"><?php foreach ($languages as $language) { ?>
-                <input type="text" name="banner_image[<?php echo $image_row; ?>][banner_image_description][<?php echo $language['language_id']; ?>][title]" value="<?php echo isset($banner_image['banner_image_description'][$language['language_id']]) ? $banner_image['banner_image_description'][$language['language_id']]['title'] : ''; ?>" />
+                <textarea name="banner_image[<?php echo $image_row; ?>][banner_image_description][<?php echo $language['language_id']; ?>][title]" ><?php echo isset($banner_image['banner_image_description'][$language['language_id']]) ? $banner_image['banner_image_description'][$language['language_id']]['title'] : ''; ?></textarea>
                 <img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /><br />
                 <?php if (isset($error_banner_image[$image_row][$language['language_id']])) { ?>
                 <span class="error"><?php echo $error_banner_image[$image_row][$language['language_id']]; ?></span>
@@ -85,7 +85,7 @@ function addImage() {
 	html += '<tr>';
     html += '<td class="left">';
 	<?php foreach ($languages as $language) { ?>
-	html += '<input type="text" name="banner_image[' + image_row + '][banner_image_description][<?php echo $language['language_id']; ?>][title]" value="" /> <img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /><br />';
+	html += '<textarea name="banner_image[' + image_row + '][banner_image_description][<?php echo $language['language_id']; ?>][title]" ></textarea> <img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /><br />';
     <?php } ?>
 	html += '</td>';	
 	html += '<td class="left"><input type="text" name="banner_image[' + image_row + '][link]" value="" /></td>';	

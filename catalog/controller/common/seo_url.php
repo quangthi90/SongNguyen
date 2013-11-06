@@ -15,6 +15,10 @@ class ControllerCommonSeoUrl extends Controller {
 				
 				if ($query->num_rows) {
 					$url = explode('=', $query->row['query']);
+
+					if ($url[0] == 'news_category_id') {
+						$this->request->get['news_category_id'] = $url[1];
+					}
 					
 					if ($url[0] == 'product_id') {
 						$this->request->get['product_id'] = $url[1];
@@ -39,8 +43,10 @@ class ControllerCommonSeoUrl extends Controller {
 					$this->request->get['route'] = 'error/not_found';	
 				}
 			}
-			
-			if (isset($this->request->get['product_id'])) {
+
+			if (isset($this->request->get['news_category_id'])) {
+				$this->request->get['route'] = 'news/news_category';
+			} elseif (isset($this->request->get['product_id'])) {
 				$this->request->get['route'] = 'product/product';
 			} elseif (isset($this->request->get['path'])) {
 				$this->request->get['route'] = 'product/category';
@@ -67,7 +73,7 @@ class ControllerCommonSeoUrl extends Controller {
 		
 		foreach ($data as $key => $value) {
 			if (isset($data['route'])) {
-				if (($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/info' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id')) {
+				if (($data['route'] == 'news/news_category' && $key == 'news_category_id') || ($data['route'] == 'product/product' && $key == 'product_id') || (($data['route'] == 'product/manufacturer/info' || $data['route'] == 'product/product') && $key == 'manufacturer_id') || ($data['route'] == 'information/information' && $key == 'information_id')) {
 					$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "url_alias WHERE `query` = '" . $this->db->escape($key . '=' . (int)$value) . "'");
 				
 					if ($query->num_rows) {

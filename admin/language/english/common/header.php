@@ -99,4 +99,12 @@ $_['text_paypal_manage']               = 'PayPal';
 $_['text_paypal_search']               = 'Search';
 $_['text_recurring_profile']           = 'Recurring Profiles';
 
+$_['text_news']           = 'Newses';
+$_['text_news_category']           = 'News Categories';
+$_['text_event']           = 'Events';
+$_['text_faq']           = 'FAQs';
+$_['text_faq_category']           = 'FAQ Categories';
+$_['text_popup']           = 'Popups';
+$_['text_program']           = 'Programs';
+
 ?>
