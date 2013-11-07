@@ -191,9 +191,8 @@
     </form>
   </div>  
   <p class="copyright">
-    Copyright 2011 - Tư Vấn Du Học Song Nguyễn. All right reserved<br>
-    Designed by Nguyen Buu Quoc Dung - Developed by 
-    <a href="http://www.mmcvn.com">Multi Media Connection</a>
+    Copyright 2013 - Tư Vấn Du Học Song Nguyễn. All rights reserved<br>
+    Designed by <strong>BommerDesign Team </strong>
   </p>
 </div>
 </div>
