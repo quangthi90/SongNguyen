@@ -192,7 +192,7 @@
   </div>  
   <p class="copyright">
     Copyright 2013 - Tư Vấn Du Học Song Nguyễn. All rights reserved<br>
-    Designed by <strong>BommerDesign Team </strong>
+    Designed by <strong style="color: #000;">BommerDesign Team </strong>
   </p>
 </div>
 </div>
