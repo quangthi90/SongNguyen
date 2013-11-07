@@ -21,7 +21,6 @@ $_['entry_description']            = 'Mô Tả:';
 $_['entry_keyword'] 			= 'Từ Khóa:';
 $_['entry_primary_image'] 			= 'Hình Ảnh Chính:';
 $_['entry_second_image'] 			= 'Hình Ảnh Phụ:';
-$_['entry_popup']            = 'Popup:';
 $_['entry_sort_order']            = 'Thứ Tự Sắp Xếp:';
 $_['entry_status']            = 'Tình Trạng:';
 $_['entry_parent']           = 'Danh Mục Cha:';
