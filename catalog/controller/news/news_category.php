@@ -96,7 +96,7 @@ class ControllerNewsNewsCategory extends Controller {
 						'title' => $popup_data['title'],
 						'description' => $popup_data['description'],
 						'content' => $popup_data['content'],
-						'embbed' => $popup_data['embbed'],
+						'embbed' => html_entity_decode($popup_data['embbed'], ENT_QUOTES, 'UTF-8'),
 						'banners' => $banners,
 						);
 				}
