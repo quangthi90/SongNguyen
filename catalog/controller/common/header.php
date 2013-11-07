@@ -56,14 +56,28 @@ class ControllerCommonHeader extends Controller {
 			'status' => 1,
 			));
 
-		$this->data['news_categories'] = array();
-		foreach ($news_categories as $category) {
+		$this->data['menu'] = array();
+		foreach ($news_categories as $inc => $category) {
 			$child_categories = $news_categories = $this->news_news_category->getCategories(array(
 				'start' => 0,
 				'limit' => 5,
 				'filter_parent_id' => $category['news_category_id'],
 				'status' => 1,
 				));
+
+			if (empty($child_categories)) {
+
+			}else {
+				$this->data['menu'][] = array(
+					'href' => ,
+					'name' => ,
+					'childs' => array()
+					);
+			}
+
+			if ($inc == 3) {
+
+			}
 		}
 		
 		// Daniel's robot detector
