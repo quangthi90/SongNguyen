@@ -9,6 +9,7 @@ class ControllerNewsNewsCategory extends Controller {
 			}
 		}else {
 			$this->load->model('news/news_category');
+			$this->load->model('news/news');
 
 			$category_data = $this->model_news_news_category->getNewsCategory($this->request->get['news_category_id']);
 
@@ -34,7 +35,7 @@ class ControllerNewsNewsCategory extends Controller {
 				//$this->data['introImgUrl'] = $server . 'image/data/intro';
 				$category_child = $this->model_news_news_category->getNewsCategories(array(
 					'start' => 0,
-					'limit' => 20,
+					'limit' => 999,
 					'filter_parent_id' => $category_data['news_category_id'],
 					'status' => 1,
 					));
@@ -60,11 +61,55 @@ class ControllerNewsNewsCategory extends Controller {
 								'name' => $child['name'],
 								'primary_image' => $primary_image,
 								'second_image' => $second_image,
+								'sort_order' => $child['sort_order'],
 								'href' => $this->url->link('news/news_category', 'news_category_id=' . $child['news_category_id']),
+								'popup' => 0,
 								);
 						}
 					}
 				}
+
+				$newses = $this->model_news_news->getNewses(array(
+					'start' => 0,
+					'limit' => 999,
+					'filter_news_category_id' => $category_data['news_category_id'],
+					'status' => 1,
+					));
+				if (!empty($newses)) {
+					foreach ($newses as $news) {
+						if (file_exists(DIR_IMAGE . $news['primary_image'])) {
+							$primary_image = $this->model_tool_image->resize($news['primary_image'], 190, 129);
+						}else {
+							$primary_image = $this->model_tool_image->resize('no_image.jpg', 190, 129);
+						}
+
+						if (file_exists(DIR_IMAGE . $news['second_image'])) {
+							$second_image = $this->model_tool_image->resize($news['second_image'], 190, 129);
+						}else {
+							$second_image = $this->model_tool_image->resize('no_image.jpg', 190, 129);
+						}
+
+						$childs[] = array(
+							'name' => $news['title'],
+							'primary_image' => $primary_image,
+							'second_image' => $second_image,
+							'sort_order' => $news['sort_order'],
+							'href' => $this->url->link('news/news', 'news_id=' . $news['news_id']),
+							'popup' => 1,
+							);
+					}
+				}
+
+				// Comparison function
+				function cmp($a, $b) {
+				    if ($a['sort_order'] == $b['sort_order']) {
+				        return 0;
+				    }
+				    return ($a['sort_order'] < $b['sort_order']) ? 1 : -1;
+				}
+
+				// Sort and print the resulting array
+				uasort($childs, 'cmp');
 
 				$popup = array();
 				if (!empty($this->session->data['popup'])) {

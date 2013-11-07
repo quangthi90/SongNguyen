@@ -68,7 +68,7 @@
 	<ul class="content-list">
 	<?php foreach ($category['childs'] as $child) { ?>
 		<li class="box-item box5">
-			<a class="item-avatar" href="<?php echo $child['href']; ?>">
+			<a class="item-avatar <?php echo ($child['popup']) ? 'link-popup iframe' : ''; ?>" href="<?php echo $child['href']; ?>">
 				<img class="item-avatar-img on" src="<?php echo $child['primary_image']; ?>" alt="<?php echo $child['name']; ?>">
 				<img class="item-avatar-img off" src="<?php echo $child['second_image']; ?>" alt="<?php echo $child['name']; ?>">
 				<span class="category-title"><?php echo $child['name']; ?></span>
