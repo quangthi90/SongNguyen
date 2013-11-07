@@ -49,7 +49,8 @@ class ControllerCommonHeader extends Controller {
 
 		// menu render
 		$this->load->model('news/news_category');
-		$news_categories = $this->news_news_category->getCategories(array(
+		$this->load->model('news/news');
+		$news_categories = $this->model_news_news_category->getNewsCategories(array(
 			'start' => 0,
 			'limit' => 5,
 			'filter_parent_id' => 0,
@@ -57,28 +58,101 @@ class ControllerCommonHeader extends Controller {
 			));
 
 		$this->data['menu'] = array();
-		foreach ($news_categories as $inc => $category) {
-			$child_categories = $news_categories = $this->news_news_category->getCategories(array(
+		foreach ($news_categories as $inc => $news_category) {
+			$child_categories = $this->model_news_news_category->getNewsCategories(array(
 				'start' => 0,
 				'limit' => 5,
-				'filter_parent_id' => $category['news_category_id'],
+				'filter_parent_id' => $news_category['news_category_id'],
 				'status' => 1,
 				));
 
+			$childs = array();
 			if (empty($child_categories)) {
+				$newses = $this->model_news_news->getNewses(array(
+					'start' => 0,
+					'limit' => 5,
+					'sort'	=> 'n.sort_order',
+					'filter_news_category_id' => $news_category['news_category_id'],
+					'status' => 1,
+					));
 
+				if (!empty($news)) {
+					foreach ($newses as $news) {
+						$childs[] = array(
+							'href' => $this->url->link('news/news', 'news_id=' . $news['news_id']),
+							'label' => $news['title'],
+							'popup' => '1',
+							);
+					}
+				}
 			}else {
+				foreach ($child_categories as $key => $child_category) {
+					$childs[] = array(
+						'href' => $this->url->link('news/news_category', 'news_category_id=' . $child_category['news_category_id']),
+						'label' => $child_category['name'],
+						'popup' => '0',
+						);
+				}
+			}
+			
+			$this->data['menu'][] = array(
+				'href' => $this->url->link('news/news_category', 'news_category_id=' . $news_category['news_category_id']),
+				'label' => $news_category['name'],
+				'popup' => '0',
+				'childs' => $childs,
+				);
+
+			if ($inc == 3) {
 				$this->data['menu'][] = array(
-					'href' => ,
-					'name' => ,
-					'childs' => array()
+					'href' => $this->url->link('program/program', ''),
+					'label' => $this->language->get('text_program'),
+					'popup' => '0',
+					'childs' => array(),
 					);
 			}
 
-			if ($inc == 3) {
-
+			if ($inc == 5) {
+				$this->data['menu'][] = array(
+					'href' => $this->url->link('event/event', ''),
+					'label' => $this->language->get('text_event'),
+					'popup' => '1',
+					'childs' => array(),
+					);
 			}
 		}
+
+		$this->data['menu'][] = array(
+			'href' => $this->url->link('faq/faq', ''),
+			'label' => $this->language->get('text_faq'),
+			'popup' => '1',
+			'childs' => array(),
+			);
+
+		$contact_childs = array();
+		$contact_childs[] = array(
+			'href' => '#',
+			'label' => $this->language->get('text_contact_inf'),
+			'popup' => '1',
+			'childs' => array(),
+			);
+		$contact_childs[] = array(
+			'href' => '#',
+			'label' => $this->language->get('text_send_email'),
+			'popup' => '1',
+			'childs' => array(),
+			);
+		$contact_childs[] = array(
+			'href' => '#',
+			'label' => $this->language->get('text_support_onl'),
+			'popup' => '1',
+			'childs' => array(),
+			);
+		$this->data['menu'][] = array(
+			'href' => '#',
+			'label' => $this->language->get('text_contact'),
+			'popup' => '0',
+			'childs' => $contact_childs,
+			);
 		
 		// Daniel's robot detector
 		$status = true;		
