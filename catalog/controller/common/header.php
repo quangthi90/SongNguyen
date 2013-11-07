@@ -52,7 +52,7 @@ class ControllerCommonHeader extends Controller {
 		$this->load->model('news/news');
 		$news_categories = $this->model_news_news_category->getNewsCategories(array(
 			'start' => 0,
-			'limit' => 5,
+			'limit' => 999,
 			'filter_parent_id' => 0,
 			'status' => 1,
 			));
