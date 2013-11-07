@@ -41,11 +41,11 @@ class ControllerCommonHeader extends Controller {
 		$this->language->load('common/header');		
 		$this->data['text_home'] = $this->language->get('text_home');				
 		$this->data['home'] = $this->url->link('common/home');
-		$this->data['faq'] = $this->url->link('information/faq');
-		$this->data['contactus'] = $this->url->link('information/contact');
-		$this->data['pcontact'] = $this->url->link('information/pcontact');
-		$this->data['news_list'] = $this->url->link('news/list');
-		$this->data['news_detail'] = $this->url->link('news/detail');
+		//$this->data['faq'] = $this->url->link('information/faq');
+		//$this->data['contactus'] = $this->url->link('information/contact');
+		//$this->data['pcontact'] = $this->url->link('information/pcontact');
+		//$this->data['news_list'] = $this->url->link('news/list');
+		//$this->data['news_detail'] = $this->url->link('news/detail');
 
 		// menu render
 		$this->load->model('news/news_category');

@@ -70,12 +70,12 @@ class ModelNewsNewsCategory extends Model {
 		$this->cache->delete('news_category');
 		$this->cache->delete('news');
 	} 
-		
+*/		
 	public function getNewsCategory($news_category_id) {
 		$query = $this->db->query("SELECT DISTINCT nc.id AS news_category_id, nc.parent_id, nc.sort_order, nc.status, ncd.name, nc.primary_image AS primary_image, nc.second_image AS second_image, (SELECT ua.keyword FROM url_alias ua WHERE query = 'news_category_id=" . (int)$news_category_id . "') AS keyword FROM " . DB_PREFIX . "news_category nc LEFT JOIN " . DB_PREFIX . "news_category_description ncd ON (nc.id = ncd.news_category_id) WHERE nc.id = '" . (int)$news_category_id . "'");
 		
 		return $query->row;
-	} */
+	} 
 	
 	public function getNewsCategories($data) {
 		$sql = "SELECT nc.id AS news_category_id, ncd.name, ncd.description, nc.sort_order, nc.date_added, nc.date_modified, nc.status, nc.parent_id, ncd.language_id, pncd.name AS parent_name FROM " . DB_PREFIX . "news_category nc LEFT JOIN " . DB_PREFIX . "news_category_description ncd ON (nc.id = ncd.news_category_id) LEFT JOIN " . DB_PREFIX . "news_category pnc ON (nc.parent_id = pnc.id) LEFT JOIN " . DB_PREFIX . "news_category_description pncd ON (pnc.id = pncd.news_category_id) WHERE ncd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND (pncd.language_id = '" . (int)$this->config->get('config_language_id') . "' OR nc.parent_id = '0')";
