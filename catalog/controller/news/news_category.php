@@ -65,9 +65,46 @@ class ControllerNewsNewsCategory extends Controller {
 						}
 					}
 				}
+
+				$this->load->model('popup/popup');
+				$this->load->model('design/banner');
+				$popup_data = $this->model_popup_popup->getPopup($category_data['popup_id']);
+
+				
+				$popup = array();
+				if (!empty($popup_data) && !empty($popup_data['banner_id'])) {
+					$banner_data = $this->model_design_banner->getBanner($popup_data['banner_id']);
+
+					$banners = array();
+					if (!empty($banner_data)) {
+						foreach ($banner_data as $banner) {
+							if (file_exists($banner['image'])) {
+								$banner_image = $this->model_tool_image->resize($banner['image'], 850, 338);
+							}else {
+								$banner_image = $this->model_tool_image->resize('no_image.jpg', 850, 338);
+							}
+
+							$banners = array(
+								'title' => $banner['title'],
+								'image' => $banner_image,
+								);
+						}
+					}
+
+					$popup = array(
+						'type' => $popup_data['type'],
+						'title' => $popup_data['title'],
+						'popup' => $popup_data['content'],
+						'embbed' => $popup_data['embbed'],
+						'banners' => $banners,
+						);
+				}
+
+
 				$this->data['category'] = array(
 					'name' => $category_data['name'],
 					'childs' => $childs,
+					'popup' => $popup,
 					);
 
 				if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/news/news_category.tpl')) {
