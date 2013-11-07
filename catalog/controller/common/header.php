@@ -94,7 +94,7 @@ class ControllerCommonHeader extends Controller {
 					'status' => 1,
 					));
 
-				if (!empty($news)) {
+				if (!empty($newses)) {
 					foreach ($newses as $news) {
 						$childs[] = array(
 							'href' => $this->url->link('news/news', 'news_id=' . $news['news_id']),
