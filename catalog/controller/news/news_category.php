@@ -71,34 +71,35 @@ class ControllerNewsNewsCategory extends Controller {
 				$popup_data = $this->model_popup_popup->getPopup($category_data['popup_id']);
 
 				$popup = array();
-				if (!empty($popup_data) && !empty($popup_data['banner_id'])) {
-					$banner_data = $this->model_design_banner->getBanner($popup_data['banner_id']);
-
+				if (!empty($popup_data)) {
 					$banners = array();
-					if (!empty($banner_data)) {
-						foreach ($banner_data as $banner) {
-							if (file_exists($banner['image'])) {
-								$banner_image = $this->model_tool_image->resize($banner['image'], 850, 338);
-							}else {
-								$banner_image = $this->model_tool_image->resize('no_image.jpg', 850, 338);
-							}
+					if (!empty($popup_data['banner_id'])) {
+						$banner_data = $this->model_design_banner->getBanner($popup_data['banner_id']);
+						if (!empty($banner_data)) {
+							foreach ($banner_data as $banner) {
+								if (file_exists($banner['image'])) {
+									$banner_image = $this->model_tool_image->resize($banner['image'], 850, 338);
+								}else {
+									$banner_image = $this->model_tool_image->resize('no_image.jpg', 850, 338);
+								}
 
-							$banners = array(
-								'title' => $banner['title'],
-								'image' => $banner_image,
-								);
+								$banners = array(
+									'title' => $banner['title'],
+									'image' => $banner_image,
+									);
+							}
 						}
 					}
 
 					$popup = array(
 						'type' => $popup_data['type'],
 						'title' => $popup_data['title'],
-						'popup' => $popup_data['content'],
+						'description' => $popup_data['description'],
+						'content' => $popup_data['content'],
 						'embbed' => $popup_data['embbed'],
 						'banners' => $banners,
 						);
 				}
-
 
 				$this->data['category'] = array(
 					'name' => $category_data['name'],

@@ -39,7 +39,7 @@ class ModelPopupPopup extends Model {
 	}
 */	
 	public function getPopup($popup_id) {
-		$query = $this->db->query("SELECT DISTINCT pt.id AS popup_id, pt.type AS type, pt.banner_id AS banner_id, pt.sort_order AS sort_order, pt.status AS status, pt.embbed AS embbed, ptd.title AS title FROM " . DB_PREFIX . "popup pt LEFT JOIN " . DB_PREFIX . "popup_description ptd ON (pt.id = ptd.popup_id) WHERE ptd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND pt.id = '" . $popup_id . "'");
+		$query = $this->db->query("SELECT DISTINCT pt.id AS popup_id, pt.type AS type, pt.banner_id AS banner_id, pt.sort_order AS sort_order, pt.status AS status, pt.embbed AS embbed, ptd.title AS title, ptd.content AS content, ptd.description AS description FROM " . DB_PREFIX . "popup pt LEFT JOIN " . DB_PREFIX . "popup_description ptd ON (pt.id = ptd.popup_id) WHERE ptd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND pt.id = '" . $popup_id . "'");
 				
 		return $query->row;
 	}
