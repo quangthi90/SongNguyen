@@ -1,0 +1,121 @@
+<?php
+// Locale
+$_['code']                          = 'vi';
+$_['direction']                     = 'ltr';
+$_['date_format_short']             = 'd/m/Y';
+$_['date_format_long']              = 'l dS F Y';
+$_['time_format']                   = 'h:i:s A';
+$_['decimal_point']                 = '.';
+$_['thousand_point']                = ',';
+
+// Text
+$_['text_yes']                      = 'Có';
+$_['text_no']                       = 'Không';
+$_['text_enabled']                  = 'Bật';
+$_['text_disabled']                 = 'Tắt';
+$_['text_none']                     = ' --- None --- ';
+$_['text_select']                   = ' --- Hãy chọn --- ';
+$_['text_select_all']               = 'Chọn tất cả';
+$_['text_unselect_all']             = 'Bỏ chọn tất cả';
+$_['text_all_zones']                = 'Tất cả các khu vực';
+$_['text_default']                  = ' <b>(Mặc định)</b>';
+$_['text_close']                    = 'Đóng';
+$_['text_pagination']               = 'Hiển thị từ {start} đến {end} trong {total} ({pages} trang)';
+$_['text_no_results']               = 'Không có kết quả!';
+$_['text_separator']                = ' &gt; ';
+$_['text_edit']                     = 'Sửa';
+$_['text_view']                     = 'Xem';
+$_['text_home']                     = 'Trang chủ';
+
+// Button
+$_['button_insert']                 = 'Thêm';
+$_['button_delete']                 = 'Xóa';
+$_['button_save']                   = 'Lưu';
+$_['button_cancel']                 = 'Hủy';
+$_['button_clear']                  = 'Clear Log';
+$_['button_close']                  = 'Đóng';
+$_['button_filter']                 = 'Lọc';
+$_['button_send']                   = 'Gửi';
+$_['button_edit']                   = 'Sửa';
+$_['button_copy']                   = 'Sao Chép';
+$_['button_back']                   = 'Trở Lại';
+$_['button_remove']                 = 'Loại Bỏ';
+$_['button_backup']                 = 'Sao Lưu';
+$_['button_restore']                = 'Khôi Phục';
+$_['button_repair']                 = 'Sửa Chữa';
+$_['button_upload']                 = 'Tải Lên';
+$_['button_submit']                 = 'Submit';
+$_['button_invoice']                = 'In Hóa Đơn';
+$_['button_add_address']            = 'Thêm Địa Chỉ';
+$_['button_add_attribute']          = 'Thêm Thuộc Tính';
+$_['button_add_banner']             = 'Thêm Banner';
+$_['button_add_custom_field_value'] = 'Thêm Trường Tuỳ Chỉnh';
+$_['button_add_product']            = 'Thêm Sản Phẩm';
+$_['button_add_voucher']            = 'Thêm Phiếu';
+$_['button_add_filter']             = 'Thêm Bộ Lọc';
+$_['button_add_option']             = 'Thêm Tùy Chọn';
+$_['button_add_option_value']       = 'Thêm Giá Trị Tùy Chọn';
+$_['button_add_discount']           = 'Thêm Giảm Giá';
+$_['button_add_special']            = 'Thêm Đặc Biệt';
+$_['button_add_image']              = 'Thêm Hình Ảnh';
+$_['button_add_geo_zone']           = 'Thêm Vùng Địa Lý';
+$_['button_add_history']            = 'Thêm Lịch Sử';
+$_['button_add_transaction']        = 'Thêm Giao Dịch';
+$_['button_add_total']              = 'Thêm Tổng Số';
+$_['button_add_reward']             = 'Thêm Điểm Thưởng';
+$_['button_add_route']              = 'Thêm Lộ Trình';
+$_['button_add_rule' ]              = 'Thêm Quy Tắc';
+$_['button_add_module']             = 'Thêm Mô-đun';
+$_['button_add_link']               = 'Thêm Liên Kết';
+$_['button_update_total']           = 'Cập Nhật Tổng Số';
+$_['button_approve']                = 'Phê Duyệt';
+$_['button_reset']                  = 'Thiết Lập Lại';
+$_['button_add_profile']            = 'Thêm Hồ Sơ';
+
+// Tab
+$_['tab_address']                   = 'Địa Chỉ';
+$_['tab_admin']                     = 'Quản Trị';
+$_['tab_attribute']                 = 'Thuộc Tính';
+$_['tab_customer']                  = 'Chi Tiết Khách Hàng';
+$_['tab_data']                      = 'Dữ Liệu';
+$_['tab_design']                    = 'Thiết Kế';
+$_['tab_discount']                  = 'Giảm Giá';
+$_['tab_general']                   = 'Tổng Hợp';
+$_['tab_history']                   = 'Lịch Sử';
+$_['tab_fraud']                     = 'Gian Lận';
+$_['tab_ftp']                       = 'FTP';
+$_['tab_ip']                        = 'Địa Chỉ IP';
+$_['tab_links']                     = 'Liên Kết';
+$_['tab_log']                       = 'Log';
+$_['tab_image']                     = 'Hình Ảnh';
+$_['tab_option']                    = 'Tùy Chọn';
+$_['tab_server']                    = 'Máy Chủ';
+$_['tab_store']                     = 'Cửa Hàng';
+$_['tab_special']                   = 'Đặc Biệt';
+$_['tab_local']                     = 'Địa Phương';
+$_['tab_mail']                      = 'Thư';
+$_['tab_marketplace_links']         = 'Liên Kết Thị Trường';
+$_['tab_module']                    = 'Mô-đun';
+$_['tab_order']                     = 'Chi Tiết Đặt Hàng';
+$_['tab_payment']                   = 'Chi Tiết Thanh Toán';
+$_['tab_product']                   = 'Sản Phẩm';
+$_['tab_return']                    = 'Chi Tiết Trả Hàng';
+$_['tab_reward']                    = 'Điểm Thưởng';
+$_['tab_profile']                   = 'Hồ Sơ';
+$_['tab_shipping']                  = 'Chi Tiết Vận Chuyển';
+$_['tab_total']                     = 'Tổng Số';
+$_['tab_transaction']               = 'Gian Dịch';
+$_['tab_voucher']                   = 'Phiếu Thưởng';
+$_['tab_voucher_history']           = 'Lịch Sử Phiếu Thưởng';
+$_['tab_price']                     = 'Giá';
+
+// Error
+$_['error_upload_1']                = 'Cảnh báo: Tập tin tải lên vượt quá upload_max_filesize ở php.ini!';
+$_['error_upload_2']                = 'Cảnh báo: Tập tin tải lên vượt quá MAX_FILE_SIZE đã được quy định trong các biểu mẫu HTML!';
+$_['error_upload_3']                = 'Cảnh báo: Tập tin tải lên đã chỉ tải lên được một phần!';
+$_['error_upload_4']                = 'Cảnh báo: Không có tập tin được tải lên!';
+$_['error_upload_6']                = 'Cảnh báo: Thiếu một thư mục tạm thời!';
+$_['error_upload_7']                = 'Cảnh báo: Không thể ghi tập tin vào đĩa!';
+$_['error_upload_8']                = 'Cảnh báo: Tập tin tải lên đã dừng vì phần mở rộng!';
+$_['error_upload_999']              = 'Cảnh báo: Không có lỗi mã có sẵn!';
+?>

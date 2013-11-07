@@ -240,9 +240,9 @@ class ControllerFaqFaq extends Controller {
 	
       		$this->data['faqs'][] = array(
 				'faq_id' => $result['faq_id'],
-				'question'       => $result['question'],
+				'question'       => (utf8_strlen($result['question']) > 100) ? substr($result['question'], 0, 100) . '...' : $result['question'],
 				//'answer'       => $result['answer'],
-				'category_name' => (!empty($result['category_name'])) ? $result['category_name'] : 'root',
+				'faq_category_name' => (!empty($result['faq_category_name'])) ? $result['faq_category_name'] : 'root',
 				'status'     => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
 				'selected'   => isset($this->request->post['selected']) && in_array($result['faq_id'], $this->request->post['selected']),
 				'action'     => $action
