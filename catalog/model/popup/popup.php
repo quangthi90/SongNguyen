@@ -37,28 +37,20 @@ class ModelPopupPopup extends Model {
 		
 		$this->cache->delete('popup');
 	}
-*/	
+	
 	public function getPopup($popup_id) {
 		$query = $this->db->query("SELECT DISTINCT pt.id AS popup_id, pt.type AS type, pt.banner_id AS banner_id, pt.sort_order AS sort_order, pt.status AS status, pt.embbed AS embbed, ptd.title AS title, ptd.content AS content, ptd.description AS description FROM " . DB_PREFIX . "popup pt LEFT JOIN " . DB_PREFIX . "popup_description ptd ON (pt.id = ptd.popup_id) WHERE ptd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND pt.id = '" . $popup_id . "'");
 				
 		return $query->row;
-	}
-/*	
-	public function getPopups($data = array()) {
-		$sql = "SELECT pt.id AS popup_id, pt.type AS type, pt.banner_id AS banner_id, pt.sort_order AS sort_order, pt.status AS status, pt.embbed AS embbed, ptd.title AS title FROM " . DB_PREFIX . "popup pt LEFT JOIN " . DB_PREFIX . "popup_description ptd ON (pt.id = ptd.popup_id)";
+	}*/
+	
+	public function getPopup() {
+		$sql = "SELECT pt.id AS popup_id, pt.type AS type, pt.banner_id AS banner_id, pt.sort_order AS sort_order, pt.status AS status, pt.embbed AS embbed, ptd.title AS title, ptd.content AS content, ptd.description AS description FROM " . DB_PREFIX . "popup pt LEFT JOIN " . DB_PREFIX . "popup_description ptd ON (pt.id = ptd.popup_id)";
 				
 		$sql .= " WHERE ptd.language_id = '" . (int)$this->config->get('config_language_id') . "'"; 
 		
-		if (!empty($data['filter_title'])) {
-			$sql .= " AND ptd.title LIKE '" . $this->db->escape($data['filter_title']) . "%'";
-		}
-		
-		if (isset($data['filter_type']) && !is_null($data['filter_type'])) {
-			$sql .= " AND pt.type = '" . (int)$data['filter_type'] . "'";
-		}
-		
 		if (isset($data['filter_status']) && !is_null($data['filter_status'])) {
-			$sql .= " AND pt.status = '" . (int)$data['filter_status'] . "'";
+			$sql .= " AND pt.status = '1'";
 		}
 		
 		$sql .= " GROUP BY pt.id";
@@ -80,24 +72,14 @@ class ModelPopupPopup extends Model {
 		} else {
 			$sql .= " DESC";
 		}
-	
-		if (isset($data['start']) || isset($data['limit'])) {
-			if ($data['start'] < 0) {
-				$data['start'] = 0;
-			}				
-
-			if ($data['limit'] < 1) {
-				$data['limit'] = 20;
-			}	
 		
-			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
-		}	
+		$sql .= " LIMIT 0,1";
 		
 		$query = $this->db->query($sql);
 	
-		return $query->rows;
+		return $query->row;
 	}
-
+/*
 	public function getPopupDescriptions($popup_id) {
 		$popup_description_data = array();
 		
