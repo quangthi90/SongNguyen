@@ -153,7 +153,7 @@ $('input[name=\'popup\']').autocomplete({
         response($.map(json, function(item) {
           return {
             label: item.title,
-            value: item.faq_category_id
+            value: item.popup_id
           }
         }));
       }
