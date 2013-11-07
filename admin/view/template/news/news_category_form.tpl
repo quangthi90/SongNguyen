@@ -64,6 +64,11 @@
               <td><input type="text" name="keyword" value="<?php echo $keyword; ?>"/></td>
             </tr>
             <tr>
+              <td><?php echo $entry_popup; ?></td>
+              <td><input type="text" name="popup" value="<?php echo $popup; ?>" size="100" />
+                <input type="hidden" name="popup_id" value="<?php echo $popup_id; ?>" /></td>
+            </tr>
+            <tr>
               <td><?php echo $entry_sort_order; ?></td>
               <td><input type="text" name="sort_order" value="<?php echo $sort_order; ?>" size="1" /></td>
             </tr>
@@ -131,6 +136,38 @@ $('input[name=\'path\']').autocomplete({
 	focus: function(event, ui) {
       	return false;
    	}
+});
+
+$('input[name=\'popup\']').autocomplete({
+  delay: 500,
+  source: function(request, response) {   
+    $.ajax({
+      url: 'index.php?route=popup/popup/autocomplete&token=<?php echo $token; ?>&filter_title=' +  encodeURIComponent(request.term),
+      dataType: 'json',
+      success: function(json) {
+        json.unshift({
+          'popup_id':  0,
+          'title':  '<?php echo $text_none; ?>',
+        });
+
+        response($.map(json, function(item) {
+          return {
+            label: item.title,
+            value: item.faq_category_id
+          }
+        }));
+      }
+    });
+  },
+  select: function(event, ui) {
+    $('input[name=\'popup\']').val(ui.item.label);
+    $('input[name=\'popup_id\']').val(ui.item.value);
+    
+    return false;
+  },
+  focus: function(event, ui) {
+        return false;
+    }
 });
 //--></script> 
 <script type="text/javascript"><!--

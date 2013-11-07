@@ -208,6 +208,7 @@ class ControllerNewsNewsCategory extends Controller {
 		$this->data['entry_description'] = $this->language->get('entry_description');
     	$this->data['entry_primary_image'] = $this->language->get('entry_primary_image');
     	$this->data['entry_second_image'] = $this->language->get('entry_second_image');
+		$this->data['entry_popup'] = $this->language->get('entry_popup');
 		$this->data['entry_sort_order'] = $this->language->get('entry_sort_order');
 		$this->data['entry_status'] = $this->language->get('entry_status');
 		$this->data['entry_parent'] = $this->language->get('entry_parent');
@@ -323,6 +324,25 @@ class ControllerNewsNewsCategory extends Controller {
 			$this->data['parent_id'] = $news_category_info['parent_id'];
 		} else {
 			$this->data['parent_id'] = 0;
+		}
+		
+		$this->load->model('popup/popup');
+		$this->data['popup'] = $this->language->get('text_none');
+		if (isset($this->request->post['popup'])) {
+			$this->data['popup'] = $this->request->post['popup'];
+		} elseif (!empty($news_category_info)) {
+			$popup_descripntions = $this->model_popup_popup->getPopup($news_category_info['popup_id']);
+			if (!empty($popup_descripntions)) {
+				$this->data['popup'] = $popup_descripntions['name'];
+			}
+		}
+		
+		if (isset($this->request->post['popup_id'])) {
+			$this->data['popup_id'] = $this->request->post['popup_id'];
+		} elseif (!empty($news_category_info)) {
+			$this->data['popup_id'] = $news_category_info['popup_id'];
+		} else {
+			$this->data['popup_id'] = 0;
 		}
 				
 		if (isset($this->request->post['sort_order'])) {

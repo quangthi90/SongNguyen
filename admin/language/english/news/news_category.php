@@ -21,6 +21,7 @@ $_['entry_description']            = 'Description:';
 $_['entry_keyword'] 			= 'Keyword:';
 $_['entry_primary_image'] 			= 'Primary Image:';
 $_['entry_second_image'] 			= 'Second Image:';
+$_['entry_popup']            = 'Popup:';
 $_['entry_sort_order']            = 'Sort Order:';
 $_['entry_status']            = 'Status:';
 $_['entry_parent']           = 'Parent:';
