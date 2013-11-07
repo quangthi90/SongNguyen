@@ -105,7 +105,7 @@ class ControllerNewsNewsCategory extends Controller {
 				    if ($a['sort_order'] == $b['sort_order']) {
 				        return 0;
 				    }
-				    return ($a['sort_order'] < $b['sort_order']) ? 1 : -1;
+				    return ($a['sort_order'] < $b['sort_order']) ? -1 : 1;
 				}
 
 				// Sort and print the resulting array
