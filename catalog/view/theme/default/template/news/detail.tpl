@@ -52,17 +52,17 @@ DD_belatedPNG.fix('#logo img');
   <div id="news-page" class="popup-container">
     <h2>
       </php echo $news['title']; ?> 
-      <span class="time"></php echo $news['date-added']; ?></span>
+      <span class="time"><?php echo $news['date_added']; ?></span>
     </h2>
     <div class="contentbox">
       <div id="topic-container"> 
         <div class="img">    
-          <img src="</php echo $news['image']; ?>" alt="FAQ">      
+          <img src="<?php echo $news['image']; ?>" alt="FAQ">      
         </div>
       </div>
       <div id="content-container">
         <div class="news-content">
-          </php echo $news['content']; ?>         
+          <?php echo $news['content']; ?>         
         </div>
       </div>
     </div>
