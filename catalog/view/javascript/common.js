@@ -113,6 +113,17 @@ $(document).ready(function() {
     		if(!pattern.test(email.val())){
     			msg.show();
     			return false;
+    		}else {
+    			$.ajax({
+					url: $(this).data('url') . '&filter_name=' +  encodeURIComponent(email.val()),
+					dataType: 'json',
+					success: function(json) {	
+						if (json.message != 'ok') {
+							msg.show();
+    						return false;
+						}
+					}
+				});
     		}
     		msg.hide();    		
 		}
