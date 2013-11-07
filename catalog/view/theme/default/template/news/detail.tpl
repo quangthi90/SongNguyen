@@ -51,33 +51,18 @@ DD_belatedPNG.fix('#logo img');
 <body>
   <div id="news-page" class="popup-container">
     <h2>
-      Giáo dục Mỹ 
-      <span class="time">06/11/2013</span>
+      </php echo $news['title']; ?> 
+      <span class="time"></php echo $news['date-added']; ?></span>
     </h2>
     <div class="contentbox">
       <div id="topic-container"> 
         <div class="img">    
-          <img src="<?php echo $base ?>/image/data/faqs.jpg" alt="FAQ">      
+          <img src="</php echo $news['image']; ?>" alt="FAQ">      
         </div>
       </div>
       <div id="content-container">
         <div class="news-content">
-          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
-          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
-          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
-          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
-          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
-          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
-          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
-          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo   
-          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
-          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
-          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
-          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
-          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
-          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
-          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo 
-          Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo Content demo demo           
+          </php echo $news['content']; ?>         
         </div>
       </div>
     </div>

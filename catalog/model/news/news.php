@@ -44,13 +44,13 @@ class ModelNewsNews extends Model {
 		
 		$this->cache->delete('news');
 	}
-	
+*/	
 	public function getNews($news_id) {
-		$query = $this->db->query("SELECT DISTINCT n.id AS news_id, n.sort_order AS sort_order, n.format AS format, nd.title AS title, n.status AS status, n.primary_image AS primary_image, n.second_image AS second_image, n.news_category_id AS news_category_id FROM " . DB_PREFIX . "news n LEFT JOIN " . DB_PREFIX . "news_description nd ON (n.id = nd.news_id) WHERE n.id = '" . (int)$news_id . "' AND nd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
+		$query = $this->db->query("SELECT DISTINCT n.id AS news_id, n.sort_order AS sort_order, n.format AS format, nd.title AS title, n.status AS status, n.primary_image AS primary_image, n.second_image AS second_image, n.news_category_id AS news_category_id, n.date_added AS date_added, nd.content AS content FROM " . DB_PREFIX . "news n LEFT JOIN " . DB_PREFIX . "news_description nd ON (n.id = nd.news_id) WHERE n.id = '" . (int)$news_id . "' AND nd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
 				
 		return $query->row;
 	}
-*/	
+	
 	public function getNewses($data = array()) {
 		$sql = "SELECT n.id AS news_id, n.sort_order AS sort_order, n.format AS format, n.status AS status, n.primary_image AS primary_image, n.second_image AS second_image, n.news_category_id AS news_category_id, nd.title AS title, ncd.name AS news_category_name FROM " . DB_PREFIX . "news n LEFT JOIN " . DB_PREFIX . "news_description nd ON (n.id = nd.news_id) LEFT JOIN " . DB_PREFIX . "news_category nc ON (nc.id = n.news_category_id) LEFT JOIN news_category_description ncd ON (nc.id = ncd.news_category_id)";
 				
