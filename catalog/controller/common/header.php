@@ -59,6 +59,24 @@ class ControllerCommonHeader extends Controller {
 
 		$this->data['menu'] = array();
 		foreach ($news_categories as $inc => $news_category) {
+			if ($inc == 3) {
+				$this->data['menu'][] = array(
+					'href' => $this->url->link('program/program', ''),
+					'label' => $this->language->get('text_program'),
+					'popup' => '0',
+					'childs' => array(),
+					);
+			}
+
+			if ($inc == 4) {
+				$this->data['menu'][] = array(
+					'href' => $this->url->link('event/event', ''),
+					'label' => $this->language->get('text_event'),
+					'popup' => '1',
+					'childs' => array(),
+					);
+			}
+
 			$child_categories = $this->model_news_news_category->getNewsCategories(array(
 				'start' => 0,
 				'limit' => 5,
@@ -101,24 +119,6 @@ class ControllerCommonHeader extends Controller {
 				'popup' => '0',
 				'childs' => $childs,
 				);
-
-			if ($inc == 3) {
-				$this->data['menu'][] = array(
-					'href' => $this->url->link('program/program', ''),
-					'label' => $this->language->get('text_program'),
-					'popup' => '0',
-					'childs' => array(),
-					);
-			}
-
-			if ($inc == 5) {
-				$this->data['menu'][] = array(
-					'href' => $this->url->link('event/event', ''),
-					'label' => $this->language->get('text_event'),
-					'popup' => '1',
-					'childs' => array(),
-					);
-			}
 		}
 
 		$this->data['menu'][] = array(
