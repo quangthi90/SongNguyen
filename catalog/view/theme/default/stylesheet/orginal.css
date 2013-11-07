@@ -129,11 +129,11 @@ a:hover{
     text-align: center;
     text-transform: uppercase;
     font-size: 15px;
-    opacity: 0.9;
+    opacity: 0.8;
 }
 .box-item:hover .category-title  {
-	opacity: 1;
-	color: #000;
+	opacity: 0.8;
+	color: #616161;
 }
 .box-item .item-avatar {
 	display: block;
