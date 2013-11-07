@@ -43,7 +43,7 @@ class ModelFaqFaqCategory extends Model {
 	} 
 			
 	public function getFaqCategory($faq_category_id) {
-		$query = $this->db->query("SELECT DISTINCT nc.id AS faq_category_id, nc.parent_id, nc.sort_order, nc.status, ncd.name FROM " . DB_PREFIX . "faq_category nc LEFT JOIN " . DB_PREFIX . "faq_category_description ncd ON (nc.id = ncd.faq_category_id) WHERE nc.id = '" . (int)$faq_category_id . "'");
+		$query = $this->db->query("SELECT DISTINCT nc.id AS faq_category_id, nc.parent_id, nc.sort_order, nc.status, ncd.name FROM " . DB_PREFIX . "faq_category nc LEFT JOIN " . DB_PREFIX . "faq_category_description ncd ON (nc.id = ncd.faq_category_id) WHERE ncd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND nc.id = '" . (int)$faq_category_id . "'");
 		
 		return $query->row;
 	} 
