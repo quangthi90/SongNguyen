@@ -70,7 +70,6 @@ class ControllerNewsNewsCategory extends Controller {
 				$this->load->model('design/banner');
 				$popup_data = $this->model_popup_popup->getPopup($category_data['popup_id']);
 
-				
 				$popup = array();
 				if (!empty($popup_data) && !empty($popup_data['banner_id'])) {
 					$banner_data = $this->model_design_banner->getBanner($popup_data['banner_id']);
