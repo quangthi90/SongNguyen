@@ -130,25 +130,25 @@ class ControllerCommonHeader extends Controller {
 
 		$contact_childs = array();
 		$contact_childs[] = array(
-			'href' => '#',
+			'href' => '#contact-address',
 			'label' => $this->language->get('text_contact_inf'),
 			'popup' => '1',
 			'childs' => array(),
 			);
 		$contact_childs[] = array(
-			'href' => '#',
+			'href' => $this->url->link('contact/contact/email'),
 			'label' => $this->language->get('text_send_email'),
 			'popup' => '1',
 			'childs' => array(),
 			);
 		$contact_childs[] = array(
-			'href' => '#',
+			'href' => '#contact-online-support',
 			'label' => $this->language->get('text_support_onl'),
 			'popup' => '1',
 			'childs' => array(),
 			);
 		$this->data['menu'][] = array(
-			'href' => '#',
+			'href' => $this->url->link('contact/contact'),
 			'label' => $this->language->get('text_contact'),
 			'popup' => '0',
 			'childs' => $contact_childs,
