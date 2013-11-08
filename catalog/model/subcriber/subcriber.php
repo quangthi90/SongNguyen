@@ -1,7 +1,19 @@
 <?php
 class ModelSubcriberSubcriber extends Model {
 	public function addSubcriber($email) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "subcriber SET status = '1', email = '" . $this->db->escape($email) . "'");
+		if (!$this->isExistEmail($email)) {
+			$this->db->query("INSERT INTO " . DB_PREFIX . "subcriber SET status = '1', email = '" . $this->db->escape($email) . "'");
+		}
+	}
+
+	public function isExistEmail($email) {
+		$query = $this->db->query("SELECT email " . DB_PREFIX . "subcriber WHERE email = '" . $this->db->escape($email) . "'");
+
+		if ($query->row) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 /*	
 	public function editSubcriber($subcriber_id, $data) {

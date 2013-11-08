@@ -10,7 +10,7 @@ class ControllerCommonFooter extends Controller {
 		$this->data['urlImg'] = $server.'image/data/';
 		$this->language->load('common/footer');
 		$this->data['powered'] = sprintf($this->language->get('text_powered'), $this->config->get('config_name'), date('Y', time()));
-		
+		$this->data['subcriber'] = $this->url->link('subcriber/subcriber');
 		
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/footer.tpl')) {
 			$this->template = $this->config->get('config_template') . '/template/common/footer.tpl';

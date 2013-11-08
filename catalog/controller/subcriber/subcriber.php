@@ -3,10 +3,10 @@ class ControllerSubcriberSubcriber extends Controller {
 	public function index() {
 		$json = array();
 
-		if (!empty($this->request->get['reg-email']) && $this->isValidateEmail($this->request->get['reg-email'])) {
+		if (!empty($this->request->post['reg-email']) && $this->isValidateEmail($this->request->post['reg-email'])) {
 			$this->load->model('subcriber/subcriber');
 
-			$this->model_subcriber_subcriber->addSubcriber($this->request->get['reg-email']);
+			$this->model_subcriber_subcriber->addSubcriber($this->request->post['reg-email']);
 
 
 			$json['message'] = 'ok';

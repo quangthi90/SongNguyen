@@ -115,17 +115,23 @@ $(document).ready(function() {
     			return false;
     		}else {
     			$.ajax({
-					url: $(this).data('url') . '&filter_name=' +  encodeURIComponent(email.val()),
+					url: $(this).data('url'),
+					type: 'POST',
 					dataType: 'json',
-					success: function(json) {	
+					data: {'reg-email': email.val()},
+					success: function(json) {
 						if (json.message != 'ok') {
 							msg.show();
     						return false;
 						}
+					},
+					error: function (xhr, error) {
+						alert(xhr.responseText);
 					}
 				});
     		}
-    		msg.hide();    		
+    		msg.hide();  
+    		return false;  		
 		}
 	});
 });
