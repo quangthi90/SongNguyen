@@ -53,7 +53,7 @@ DD_belatedPNG.fix('#logo img');
           </a>
         </div>
         <div id="menu">
-          <ul class="nav">
+          <!--<ul class="nav">
               <li class="item-with-ul">
                 <a href="#">Giới Thiệu</a>
                 <ul style="display: none;">
@@ -124,6 +124,22 @@ DD_belatedPNG.fix('#logo img');
                     <li><a href="#contact-online-support" class="link-popup inline">Hỗ Trợ Trực Tuyến</a></li>
                 </ul>
               </li>
+          </ul>-->
+          <?php if (!empty($menu)) { ?>
+          <ul class="nav">
+          <?php foreach ($menu as $item) { ?>
+            <li <?php if (!empty($item['childs'])) { ?>class="item-with-ul"<?php } ?>>
+              <a href="<?php echo $item['href']; ?>" <?php if ($item['popup']) { ?>class="link-popup iframe"<?php } ?>><?php echo $item['label']; ?></a>
+              <?php if (!empty($item['childs'])) { ?>
+              <ul style="display: none;">
+              <?php foreach ($item['childs'] as $child) { ?>
+                <li><a href="<?php echo $child['href']; ?>" <?php if ($child['popup']) { ?>class="link-popup iframe"<?php } ?>><?php echo $child['label']; ?></a></li>
+              <?php } ?>
+              </ul>
+              <?php } ?>
+            </li>
+          <?php } ?>
           </ul>
+          <?php } ?>
         </div>
   </div>
