@@ -17,8 +17,8 @@ class ControllerProgramProgram extends Controller {
 		$this->data['direction'] = $this->language->get('direction');
 		$this->data['text_title'] = 'Chương trình';//$this->language->get('text_program');
 		$this->data['google_analytics'] = html_entity_decode($this->config->get('config_google_analytics'), ENT_QUOTES, 'UTF-8');
-
 		$this->data['base'] = $server;
+		$this->data['left_image'] = $server . '/image/data/program.jpg';
 
 		if (empty($this->request->get['page'])) {
 			$page = 1;

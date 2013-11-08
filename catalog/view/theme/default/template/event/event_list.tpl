@@ -54,7 +54,7 @@ DD_belatedPNG.fix('#logo img');
     <div class="contentbox">
       <div id="topic-container"> 
         <div class="img">    
-          <img src="<?php echo $base ?>/image/data/event.jpg" alt="FAQ">      
+          <img src="<?php echo $left_image; ?>" alt="FAQ">      
         </div>
       </div>
       <div id="content-container">
