@@ -1,6 +1,12 @@
 <?php  
 class ControllerCommonFooter extends Controller {
 	protected function index() {
+		if (isset($this->request->post['redirect'])) {
+			header('Location: ' . $this->request->post['redirect']);
+			unset($this->request->post['redirect']);
+			exit();
+		}
+		
 		if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
 			$server = $this->config->get('config_ssl');
 		} else {
