@@ -17,7 +17,9 @@ $_['text_select']           = ' --- Please Select --- ';
 $_['text_all_zones']        = 'All Zones';
 $_['text_pagination']       = 'Showing {start} to {end} of {total} ({pages} Pages)';
 $_['text_separator']        = ' &raquo; ';
-$_['text_faq']        = 'Những câu hỏi thường gặp';
+$_['text_faq']        = 'Nh?ng c�u h?i thu?ng g?p';
+$_['text_event_news']        = 'Tin t?c v� s? ki?n';
+$_['text_program']        = 'Chuong tr�nh';
 
 // Buttons
 $_['button_add_address']    = 'Add Address';
