@@ -57,7 +57,7 @@ DD_belatedPNG.fix('#logo img');
     <div class="contentbox">
       <div id="topic-container"> 
         <div class="img">    
-          <img src="<?php echo $news['image']; ?>" alt="FAQ">      
+          <img src="<?php echo $news['image']; ?>" alt="<?php echo $news['title']; ?>">      
         </div>
       </div>
       <div id="content-container">
