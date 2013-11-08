@@ -174,35 +174,38 @@
   <div id="menulang">
     <form action="<?php echo $lang_url; ?>" method="post" enctype="multipart/form-data">
         <ul class="list-flag has-site-map">
-          <li class="lang-item" title="Tiếng Anh" 
+          <!--<li class="lang-item" title="Tiếng Anh" 
             onclick="$('input[name=\'language_code\']').attr('value', 'en'); $(this).parents('form').submit();">
             <span>Tiếng Anh</span>
           </li>
           <li class="lang-item" title="Tiếng Việt"
              onclick="$('input[name=\'language_code\']').attr('value', 'vn'); $(this).parents('form').submit();"  >
             <span>Tiếng Việt</span>
-          </li>   
+          </li>-->
+          <?php foreach ($languages as $language) { ?>
+          <li class="lang-item" title="<?php echo $language['name']; ?>" 
+            onclick="$('input[name=\'language_code\']').attr('value', '<?php echo $language['code']; ?>'); $(this).parents('form').submit();">
+            <span><?php echo $language['name']; ?></span>
+          </li>
+          <?php } ?>
           <li>
-            <a href="#site-map" class="link-popup inline">Sitemap</a>
+            <a href="#site-map" class="link-popup inline"><?php echo $text_sitemap; ?></a>
           </li>
           </ul>    
         <input type="hidden" name="language_code" value="">
-        <input type="hidden" name="redirect" value="<?php echo $home; ?>">
+        <input type="hidden" name="redirect" value="<?php echo $redirect; ?>">
     </form>
   </div>  
-  <p class="copyright">
-    Copyright 2013 - Tư Vấn Du Học Song Nguyễn. All rights reserved<br>
-    Designed by <strong style="color: #000;">BommerDesign Team </strong>
-  </p>
+  <p class="copyright"><?php echo $text_copyright; ?></p>
 </div>
 </div>
 <div id="email-sub">
-  <h2>Đăng ký email nhận tin tức mới</h2>
+  <h2><?php echo $text_newsletter; ?></h2>
   <form action="#" method="POST" data-url="<?php echo $subcriber; ?>">
     <div class="container">
-      <input type="text" name="reg-email" id="reg-email" placeholder="Nhập email đăng ký">
-      <p class="error-msg">Email không hợp lệ !</p>
-      <input type="submit" value="OK">
+      <input type="text" name="reg-email" id="reg-email" placeholder="<?php echo $text_enter_email; ?>">
+      <p class="error-msg"><?php echo $text_invalid_email; ?></p>
+      <input type="submit" value="<?php echo $text_ok; ?>">
     </div>
   </form>
 </div>
