@@ -35,6 +35,8 @@ class ControllerNewsNews extends Controller {
 				$this->data['direction'] = $this->language->get('direction');
 				$this->data['google_analytics'] = html_entity_decode($this->config->get('config_google_analytics'), ENT_QUOTES, 'UTF-8');
 
+				$this->data['base'] = $server;
+				
 				$this->load->model('tool/image');
 				if (file_exists(DIR_IMAGE . $news['primary_image'])) {
 					$primary_image = $this->model_tool_image->resize($news['primary_image'], 190, 129);
