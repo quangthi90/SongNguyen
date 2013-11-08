@@ -1,5 +1,5 @@
 <?php
-class ControllerEventEvent extends Controller {
+class ControllerProgramProgram extends Controller {
 	private $limit = 10;
 
 	public function index() {
@@ -14,12 +14,11 @@ class ControllerEventEvent extends Controller {
 
 		$this->data['heading_title'] = $this->config->get('config_title');
 
-
 		$this->data['direction'] = $this->language->get('direction');
-		$this->data['text_title'] = $this->language->get('text_event_news');
+		$this->data['text_title'] = $this->language->get('text_program');
 		$this->data['google_analytics'] = html_entity_decode($this->config->get('config_google_analytics'), ENT_QUOTES, 'UTF-8');
 		$this->data['base'] = $server;
-		$this->data['left_image'] = $server . '/image/data/event.jpg';
+		$this->data['left_image'] = $server . '/image/data/program.jpg';
 
 		if (empty($this->request->get['page'])) {
 			$page = 1;
@@ -27,7 +26,7 @@ class ControllerEventEvent extends Controller {
 			$page = $this->request->get['page'];
 		}
 
-		$this->load->model('event/event');
+		$this->load->model('program/program');
 
 		$data = array(
 			'sort'            => 'n.date_added',
@@ -37,21 +36,21 @@ class ControllerEventEvent extends Controller {
 			'filter_status'	  => 1,
 		);
 
-		$event_total = $this->model_event_event->getTotalEvents($data);
+		$program_total = $this->model_program_program->getTotalPrograms($data);
 			
-		$results = $this->model_event_event->getEvents($data);
+		$results = $this->model_program_program->getPrograms($data);
 		
 		$this->data['items'] =array();	    	
 		foreach ($results as $result) {
       		$this->data['items'][] = array(
-				'href' => $this->url->link('event/event/detail', 'event_id=' . $result['event_id']),
+				'href' => $this->url->link('program/program/detail', 'program_id=' . $result['program_id']),
 				'title'       => $result['title'] . ' (' . (new DateTime($result['date_added']))->format($this->language->get('date_format_short')) . ')',
 			);
     	}
 
     	$num_links = 4;
-    	$pagination_url = $this->url->link('event/event', 'page={page}');
-    	$num_pages = ceil($event_total / $data['limit']);
+    	$pagination_url = $this->url->link('program/program', 'page={page}');
+    	$num_pages = ceil($program_total / $data['limit']);
 		$this->data['pagination'] = '';
 		if ($num_pages >= 1) {
 			if ($num_pages <= $num_links) {
@@ -94,14 +93,14 @@ class ControllerEventEvent extends Controller {
 	}
 
 	public function detail() {
-		if (empty($this->request->get['event_id'])) {
+		if (empty($this->request->get['program_id'])) {
 
 		}else {
-			$this->load->model('event/event');
+			$this->load->model('program/program');
 
-			$event = $this->model_event_event->getEvent($this->request->get['event_id']);
+			$program = $this->model_program_program->getProgram($this->request->get['program_id']);
 
-			if (empty($event)) {
+			if (empty($program)) {
 
 			}else {
 				if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
@@ -120,15 +119,15 @@ class ControllerEventEvent extends Controller {
 				$this->data['base'] = $server;
 
 				$this->load->model('tool/image');
-				if(file_exists(DIR_IMAGE . $event['image'])) {
-					$image = $this->model_tool_image->resize($event['image'], 200, 124);
+				if(file_exists(DIR_IMAGE . $program['image'])) {
+					$image = $this->model_tool_image->resize($program['image'], 200, 124);
 				}else {
 					$image = $this->model_tool_image->resize('no_image.jpg', 200, 124);
 				}
 
-				$this->data['title'] = $event['title'];
-				$this->data['content'] = html_entity_decode($event['content'], ENT_QUOTES, 'UTF-8');
-				$this->data['date_added'] = (new DateTime($event['date_added']))->format($this->language->get('date_format_short'));
+				$this->data['title'] = $program['title'];
+				$this->data['content'] = html_entity_decode($program['content'], ENT_QUOTES, 'UTF-8');
+				$this->data['date_added'] = (new DateTime($program['date_added']))->format($this->language->get('date_format_short'));
 				$this->data['image'] = $image;
 
 
