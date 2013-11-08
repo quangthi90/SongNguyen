@@ -55,12 +55,7 @@ DD_belatedPNG.fix('#logo img');
       <span class="time"><?php echo $date_added; ?></span>
     </h2>
     <div class="contentbox">
-      <div id="topic-container"> 
-        <div class="img">    
-          <img src="<?php echo $image; ?>" alt="<?php echo $title; ?>">      
-        </div>
-      </div>
-      <div id="content-container">
+      <div id="content-container" style="top: 80px;left: 20px;padding-left: 20px;">
         <div class="news-content"><?php echo $content; ?></div>
       </div>
     </div>
