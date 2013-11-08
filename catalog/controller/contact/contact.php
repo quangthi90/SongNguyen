@@ -57,7 +57,7 @@ class ControllerContactContact extends Controller {
 			$server = $this->config->get('config_url');
 		}
 		$this->data['base'] = $server;
-    	$this->data['action'] = $this->url->link('information/contact');
+    	$this->data['action'] = $this->url->link('contact/contact/email');
 		$this->data['lang'] = $this->language->get('code');
 		$this->data['direction'] = $this->language->get('direction');
 		$this->data['google_analytics'] = html_entity_decode($this->config->get('config_google_analytics'), ENT_QUOTES, 'UTF-8');
@@ -112,7 +112,7 @@ class ControllerContactContact extends Controller {
 		if (isset($this->request->post['name'])) {
 			$this->data['name'] = $this->request->post['name'];
 		} else {
-			$this->data['name'] = $this->customer->getFirstName();
+			$this->data['name'] = '';
 		}
 
 		if (isset($this->request->post['phone'])) {
@@ -124,7 +124,7 @@ class ControllerContactContact extends Controller {
 		if (isset($this->request->post['email'])) {
 			$this->data['email'] = $this->request->post['email'];
 		} else {
-			$this->data['email'] = $this->customer->getEmail();
+			$this->data['email'] = '';
 		}
 		
 		if (isset($this->request->post['enquiry'])) {

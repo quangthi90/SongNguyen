@@ -195,7 +195,7 @@ class ControllerContactContact extends Controller {
 		$this->data['name'] = $contact_info['name'];
 		$this->data['content'] = $contact_info['content'];
 		$this->data['phone'] = $contact_info['phone'];
-		$this->data['date_posted'] = $contact_info['date_posted'];
+		$this->data['date_posted'] = (new DateTime($contact_info['date_posted']))->format($this->language->get('date_format_short'));
 		$this->data['status'] = $contact_info['status'];
 						
 		$this->template = 'contact/contact_form.tpl';
