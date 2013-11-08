@@ -43,6 +43,8 @@ class ControllerNewsNews extends Controller {
 				$this->data['direction'] = $this->language->get('direction');
 				$this->data['google_analytics'] = html_entity_decode($this->config->get('config_google_analytics'), ENT_QUOTES, 'UTF-8');
 
+				$this->data['base'] = $server;
+				
 				$this->load->model('tool/image');
 				if (file_exists(DIR_IMAGE . $news['primary_image'])) {
 					$primary_image = $this->model_tool_image->resize($news['primary_image'], 190, 129);
@@ -60,10 +62,18 @@ class ControllerNewsNews extends Controller {
 					'href' => $this->url->link('news/news', 'news_id=' . $news['news_id']),
 					);
 
-				if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/news/detail.tpl')) {
-					$this->template = $this->config->get('config_template') . '/template/news/detail.tpl';
-				} else {
-					$this->template = 'default/template/news/detail.tpl';
+				if ($news['format']) {
+					if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/news/news_detail0.tpl')) {
+						$this->template = $this->config->get('config_template') . '/template/news/news_detail0.tpl';
+					} else {
+						$this->template = 'default/template/news/news_detail0.tpl';
+					}
+				}else {
+					if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/news/news_detail1.tpl')) {
+						$this->template = $this->config->get('config_template') . '/template/news/news_detail1.tpl';
+					} else {
+						$this->template = 'default/template/news/news_detail.tpl';
+					}
 				}
 				
 				$this->children = array(
