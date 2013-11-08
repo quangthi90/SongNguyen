@@ -636,9 +636,12 @@ Jcarousel
     border-bottom: 2px solid rgb(3, 3, 104);
 }
 #email-sub .container {
-    padding: 20px;
+    padding: 25px 20px;
     position: relative;
     display: none;
+}
+.container  .row {
+	overflow: hidden;
 }
 .container .error-msg {
 	color: red;
@@ -646,17 +649,24 @@ Jcarousel
 	padding: 5px 0px;
 	display: none;
 }
+.container .success-msg {
+	color: #065988;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 0px 0px 15px 0px;
+	display: none;
+	background: transparent url(../image/success.png) 100% 0 no-repeat;
+}
 #email-sub input[type='text'] {
     padding: 5px;
-    width: 228px;
+    width: 227px;
+    float: left;
 }
-#email-sub input[type='submit'] {
-    position: absolute;	
-    top: 20px;
-    right: 20px;
+#email-sub input[type='submit'] {	
     border: none;
     padding: 7px 10px;
     cursor: pointer;
     background: #0e0e0e;
     color: #fff;
+    float: right;
 }
