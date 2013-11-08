@@ -7,7 +7,8 @@ class ControllerCommonFooter extends Controller {
 			$server = $this->config->get('config_url');
 		}
 		$this->data['urlImg'] = $server.'image/data/';
-		$this->language->load('common/footer');		
+		$this->language->load('common/footer');	
+		$this->language->load('common/header');		
 
 		$this->data['text_sitemap'] = $this->language->get('text_sitemap');
 		$this->data['text_newsletter'] = $this->language->get('text_newsletter');
@@ -16,6 +17,9 @@ class ControllerCommonFooter extends Controller {
 		$this->data['text_invalid_email'] = $this->language->get('text_invalid_email');
 		$this->data['text_success'] = $this->language->get('text_invalid_email');
 		$this->data['text_copyright'] = $this->language->get('text_copyright');
+		$this->data['text_contact_inf'] = $this->language->get('text_contact_inf');
+		$this->data['text_send_email'] = $this->language->get('text_send_email');
+		$this->data['text_support_onl'] = $this->language->get('text_support_onl');
 
 		$this->data['lang_url'] = $this->url->link('module/language');
 		$this->data['powered'] = sprintf($this->language->get('text_powered'), $this->config->get('config_name'), date('Y', time()));
