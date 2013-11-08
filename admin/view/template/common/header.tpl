@@ -95,6 +95,11 @@ $(document).ready(function(){
           <li><a href="<?php echo $send_email; ?>"><?php echo $text_send_email; ?></a></li>
         </ul>
       </li>
+      <li id="contact"><a class="top"><?php echo $text_contact; ?></a>
+        <ul>
+          <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
+        </ul>
+      </li>
       <li id="system"><a class="top"><?php echo $text_system; ?></a>
         <ul>
           <li><a href="<?php echo $setting; ?>"><?php echo $text_setting; ?></a></li>

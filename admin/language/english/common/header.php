@@ -108,5 +108,6 @@ $_['text_popup']           = 'Popups';
 $_['text_program']           = 'Programs';
 $_['text_subcriber']           = 'Subcribers';
 $_['text_send_email']           = 'Send Email';
+$_['text_contact']           = 'Contact';
 
 ?>
