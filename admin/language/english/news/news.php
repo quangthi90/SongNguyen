@@ -7,8 +7,8 @@ $_['text_success']			= 'Success: You have modified news!';
 $_['text_browse']			= 'Browse';
 $_['text_clear']			= 'Clear';
 $_['text_image_manager']			= 'Image Manager';
-$_['text_format_one']			= 'Format 1';
-$_['text_format_two']			= 'Format 2';
+$_['text_format_one']			= '1 Column';
+$_['text_format_two']			= '2 Column';
 
 // column
 $_['column_title'] 			= 'Title';
