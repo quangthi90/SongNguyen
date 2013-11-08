@@ -122,16 +122,18 @@ $(document).ready(function() {
 					success: function(json) {
 						if (json.message != 'ok') {
 							msg.show();
-    						return false;
+							return false;	
+						}else {
+							msg.hide();
+							$('#email-sub').find('.container').removeClass('open');
+    						return false;	
 						}
 					},
 					error: function (xhr, error) {
-						alert(xhr.responseText);
+						
 					}
 				});
-    		}
-    		msg.hide();  
-    		return false;  		
+    		} 		
 		}
 	});
 });

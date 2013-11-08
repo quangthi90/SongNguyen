@@ -201,7 +201,7 @@
 </div>
 <div id="email-sub">
   <h2><?php echo $text_newsletter; ?></h2>
-  <form action="#" method="POST" data-url="<?php echo $subcriber; ?>">
+  <form method="POST" data-url="<?php echo $subcriber; ?>">
     <div class="container">
       <input type="text" name="reg-email" id="reg-email" placeholder="<?php echo $text_enter_email; ?>">
       <p class="error-msg"><?php echo $text_invalid_email; ?></p>

@@ -7,7 +7,7 @@ class ModelSubcriberSubcriber extends Model {
 	}
 
 	public function isExistEmail($email) {
-		$query = $this->db->query("SELECT email " . DB_PREFIX . "subcriber WHERE email = '" . $this->db->escape($email) . "'");
+		$query = $this->db->query("SELECT s.email FROM " . DB_PREFIX . "subcriber s WHERE s.email = '" . $this->db->escape($email) . "'");
 
 		if ($query->row) {
 			return true;
