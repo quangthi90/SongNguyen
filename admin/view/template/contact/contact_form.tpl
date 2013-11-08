@@ -15,39 +15,27 @@
         <table class="form">
           <tr>
             <td><?php echo $entry_name; ?></td>
-            <td><input type="text" value="<?php echo $name; ?>" disabled="disabled" />
-            </td>
+            <td><?php echo $name; ?></td>
           </tr>
           <tr>
             <td><?php echo $entry_email; ?></td>
-            <td><input type="text" value="<?php echo $email; ?>" disabled="disabled" />
-            </td>
+            <td><?php echo $email; ?></td>
           </tr>
           <tr>
             <td><?php echo $entry_phone; ?></td>
-            <td><input type="text" value="<?php echo $phone; ?>" disabled="disabled" />
-            </td>
+            <td><?php echo $phone; ?></td>
           </tr>
           <tr>
             <td><?php echo $entry_content; ?></td>
-            <td><textarea disabled="disabled" cols="80" rows="5"><?php echo $content; ?></textarea></td>
+            <td><?php echo $content; ?></td>
           </tr>
           <tr>
             <td><?php echo $entry_status; ?></td>
-            <td><select name="status" disabled="disabled">
-              <?php if ($status) { ?>
-              <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
-              <option value="0"><?php echo $text_disabled; ?></option>
-              <?php } else { ?>
-              <option value="1"><?php echo $text_enabled; ?></option>
-              <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
-              <?php } ?>
-            </select></td>
+            <td><?php echo ($status) ? $text_enabled : $text_disabled; ?></td>
           </tr>
           <tr>
             <td><?php echo $entry_date_posted; ?></td>
-            <td><input type="text" value="<?php echo $date_posted; ?>" disabled="disabled" />
-            </td>
+            <td><?php echo $date_posted; ?></td>
           </tr>
         </table>
       </form>

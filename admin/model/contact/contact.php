@@ -42,19 +42,20 @@ class ModelContactContact extends Model {
 		$sort_data = array(
 			'c.email',
 			'c.name',
+			'c.date_posted',
 			'c.status',
 		);	
 		
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
 			$sql .= " ORDER BY " . $data['sort'];	
 		} else {
-			$sql .= " ORDER BY c.email";	
+			$sql .= " ORDER BY c.date_posted";	
 		}
 		
-		if (isset($data['order']) && ($data['order'] == 'DESC')) {
-			$sql .= " DESC";
-		} else {
+		if (isset($data['order']) && ($data['order'] == 'ASC')) {
 			$sql .= " ASC";
+		} else {
+			$sql .= " DESC";
 		}
 	
 		if (isset($data['start']) || isset($data['limit'])) {
