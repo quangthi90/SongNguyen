@@ -5,6 +5,7 @@ $_['heading_title']  = 'Contact Us';
 // Text 
 $_['text_contact']   = 'Contact Form';
 $_['text_message']   = '<p>Your enquiry has been successfully sent to the store owner!</p>';
+$_['text_goback']      = 'Go back';
 
 // Entry Fields
 $_['entry_name']     = 'Your Name';

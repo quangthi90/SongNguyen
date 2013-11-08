@@ -19,7 +19,17 @@ DD_belatedPNG.fix('#logo img');
     <div id="contact-page" class="popup-container">
         <h2><?php echo $heading_title; ?></h2>
         <div class="contentbox">
-          <?php echo $text_message; ?>
+        	<div class="result-fail">
+        		<?php echo $text_message; ?>		
+        	</div>
+          	<div class="result-success">
+        		<?php echo $text_message; ?>		
+        	</div>
+        </div>
+        <div class="btn-container">
+        	<a href="<?php echo $base; ?>index.php?route=contact/contact/email" class="btn-link">
+        		<?php echo $text_goback; ?>
+    		</a>
         </div>
     </div>
 </body>

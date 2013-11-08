@@ -42,6 +42,21 @@ a {
 a:hover{
 	color: #000;	
 }
+.btn-container {
+	padding: 40px 0px;
+}
+.btn-link {
+	padding: 7px 20px;
+	border: 1px solid #021D64;
+	background-color: #f0f0f0;
+	color: #000;
+	text-align: center;
+	font-weight: bold;
+}
+.btn-link:hover {
+	background: #021D64;
+	color: #fff;	
+}
 #wrap{
 	width:1000px;
 	height:100%;
@@ -497,6 +512,18 @@ a:hover{
 #contact-page table td.value span.error {
 	color: red;
 	font-size: 12px;
+}
+#contact-page .result-fail {
+    font-size: 17px;
+    padding: 15px 10px 15px 35px;
+    border: 1px solid #C00B0B;
+    background: transparent url(../image/warning.png) 10px 50% no-repeat;
+}
+#contact-page .result-success {
+    font-size: 17px;
+    padding: 15px 10px 15px 35px;	
+    border: 1px solid #00440B;
+	background: transparent url(../image/success.png) 10px 50% no-repeat;
 }
 
 #contact-online-support {

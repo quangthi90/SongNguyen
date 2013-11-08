@@ -107,6 +107,7 @@ class ControllerInformationContact extends Controller {
 		$this->data['direction'] = $this->language->get('direction');		
     	$this->data['heading_title'] = $this->language->get('heading_title');
     	$this->data['text_message'] = $this->language->get('text_message');
+    	$this->data['text_goback'] = $this->language->get('text_goback');
 
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/success.tpl')) {
 			$this->template = $this->config->get('config_template') . '/template/common/success.tpl';
