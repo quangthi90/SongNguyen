@@ -203,8 +203,8 @@
   <h2><?php echo $text_newsletter; ?></h2>
   <form method="POST" data-url="<?php echo $subcriber; ?>">
     <div class="container">
-		<p class="success-msg"><?php echo $text_success; ?></p>
-      <div class="row">
+    <p class="success-msg"><?php echo $text_success; ?></p>
+    <div class="row">
 		<input type="text" name="reg-email" id="reg-email" placeholder="<?php echo $text_enter_email; ?>">      
 		<input type="submit" value="<?php echo $text_ok; ?>">
 	  </div>	  
