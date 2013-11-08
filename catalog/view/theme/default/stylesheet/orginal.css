@@ -129,11 +129,11 @@ a:hover{
     text-align: center;
     text-transform: uppercase;
     font-size: 15px;
-    opacity: 0.9;
+    opacity: 0.8;
 }
 .box-item:hover .category-title  {
-	opacity: 1;
-	color: #000;
+	opacity: 0.8;
+	color: #616161;
 }
 .box-item .item-avatar {
 	display: block;
@@ -275,7 +275,7 @@ a:hover{
 #content-container {
     position: absolute;
     top: 42px;
-    left: 240px;
+    left: 200px;
     right: 0px;
     bottom: 0px;
     padding: 20px;
@@ -571,10 +571,11 @@ a:hover{
 	text-decoration: underline;
 }
 #news-page .news-content {
-	height: 99%;
+	height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
     font-size: 14px;
+	background-color: #FFF;
 }
 #news-page .news-content * {
 }
@@ -582,7 +583,12 @@ a:hover{
 	top: 70px;
 }
 #news-page #content-container {
-	top: 50px;
+	top: 70px;
+	left: 200px;
+	right: 20px;
+	bottom: 20px;
+	padding: 20px 5px 20px 50px;
+	background-color: #FFF;
 }
 
 /*

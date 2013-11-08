@@ -131,13 +131,10 @@ $(document).ready(function() {
 							});
 						}
 					},
-					error: function (xhr, error) {
-						alert(xhr.responseText);
+					error: function (xhr, error) {						
 					}
 				});
-    		}
-    		msg.hide();  
-    		return false;  		
+    		} 		
 		}
 	});
 });

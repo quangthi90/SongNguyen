@@ -201,7 +201,7 @@
 </div>
 <div id="email-sub">
   <h2><?php echo $text_newsletter; ?></h2>
-  <form action="#" method="POST" data-url="<?php echo $subcriber; ?>">
+  <form method="POST" data-url="<?php echo $subcriber; ?>">
     <div class="container">
 		<p class="success-msg"><?php echo $text_success; ?></p>
       <div class="row">
