@@ -14,27 +14,27 @@
       <form method="post" enctype="multipart/form-data" id="form">
         <table class="form">
           <tr>
-            <td><?php echo $entry_name; ?></td>
+            <td><strong><?php echo $entry_name; ?></strong></td>
             <td><?php echo $name; ?></td>
           </tr>
           <tr>
-            <td><?php echo $entry_email; ?></td>
+            <td><strong><?php echo $entry_email; ?></strong></td>
             <td><?php echo $email; ?></td>
           </tr>
           <tr>
-            <td><?php echo $entry_phone; ?></td>
+            <td><strong><?php echo $entry_phone; ?></strong></td>
             <td><?php echo $phone; ?></td>
           </tr>
           <tr>
-            <td><?php echo $entry_content; ?></td>
+            <td><strong><?php echo $entry_content; ?></strong></td>
             <td><?php echo $content; ?></td>
           </tr>
           <tr>
-            <td><?php echo $entry_status; ?></td>
+            <td><strong><?php echo $entry_status; ?></strong></td>
             <td><?php echo ($status) ? $text_enabled : $text_disabled; ?></td>
           </tr>
           <tr>
-            <td><?php echo $entry_date_posted; ?></td>
+            <td><strong><?php echo $entry_date_posted; ?></strong></td>
             <td><?php echo $date_posted; ?></td>
           </tr>
         </table>
