@@ -16,7 +16,7 @@ class ControllerEventEvent extends Controller {
 
 
 		$this->data['direction'] = $this->language->get('direction');
-		$this->data['text_title'] = 'Tin tức và sự kiện';//$this->language->get('text_event_news');
+		$this->data['text_title'] = $this->language->get('text_event_news');
 		$this->data['google_analytics'] = html_entity_decode($this->config->get('config_google_analytics'), ENT_QUOTES, 'UTF-8');
 		$this->data['base'] = $server;
 		$this->data['left_image'] = $server . '/image/data/event.jpg';
