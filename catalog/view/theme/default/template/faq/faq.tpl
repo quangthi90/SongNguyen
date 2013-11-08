@@ -73,7 +73,7 @@ DD_belatedPNG.fix('#logo img');
 </head>
 <body>
   <div id="faq-page" class="popup-container">
-    <h2>Những câu hỏi thường gặp</h2>
+    <h2><?php echo $text_faq; ?></h2>
     <div class="contentbox">
       <div id="topic-container"> 
         <div class="img">    

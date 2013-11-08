@@ -5,6 +5,8 @@ class ControllerFaqFaq extends Controller {
 		$this->document->setDescription($this->config->get('config_meta_description'));
 
 		$this->data['heading_title'] = $this->config->get('config_title');
+
+		$this->data['text_faq'] = $this->language->get('text_faq');
 				
 		if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
 			$server = $this->config->get('config_ssl');
