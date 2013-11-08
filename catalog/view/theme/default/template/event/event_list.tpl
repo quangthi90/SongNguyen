@@ -50,7 +50,7 @@ DD_belatedPNG.fix('#logo img');
 </head>
 <body>
   <div id="news-page" class="popup-container">
-    <h2><?php echo $text_event_news; ?></h2>
+    <h2><?php echo $text_title; ?></h2>
     <div class="contentbox">
       <div id="topic-container"> 
         <div class="img">    
@@ -63,9 +63,9 @@ DD_belatedPNG.fix('#logo img');
         </div>-->
         <div class="paging"><?php echo $pagination; ?></div>
         <ul class="news-list">
-          <?php foreach ($events as $event) { ?>
+          <?php foreach ($items as $item) { ?>
             <li>
-            <a href="<?php echo $event['href']; ?>"><?php echo $event['title']; ?></a>
+            <a href="<?php echo $item['href']; ?>"><?php echo $item['title']; ?></a>
           </li>
           <?php } ?>
           <!--<li>

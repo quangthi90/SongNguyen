@@ -14,7 +14,7 @@ class ControllerEventEvent extends Controller {
 
 		$this->data['heading_title'] = $this->config->get('config_title');
 
-		$this->data['text_event_news'] = 'Tin tức và sự kiện';//$this->language->get('text_event_news');
+		$this->data['text_title'] = 'Tin tức và sự kiện';//$this->language->get('text_event_news');
 		$this->data['google_analytics'] = html_entity_decode($this->config->get('config_google_analytics'), ENT_QUOTES, 'UTF-8');
 
 		$this->data['base'] = $server;
@@ -39,9 +39,9 @@ class ControllerEventEvent extends Controller {
 			
 		$results = $this->model_event_event->getEvents($data);
 		
-		$this->data['events'] =array();	    	
+		$this->data['items'] =array();	    	
 		foreach ($results as $result) {
-      		$this->data['events'][] = array(
+      		$this->data['items'][] = array(
 				'href' => $this->url->link('event/event/detail', 'event_id=' . $result['event_id']),
 				'title'       => $result['title'] . ' (' . (new DateTime($result['date_added']))->format($this->language->get('date_format_short')) . ')',
 			);
@@ -124,12 +124,11 @@ class ControllerEventEvent extends Controller {
 					$image = $this->model_tool_image->resize('no_image.jpg', 200, 124);
 				}
 
-				$this->data['event'] = array(
-					'title' => $event['title'],
-					'content' => html_entity_decode($event['content'], ENT_QUOTES, 'UTF-8'),
-					'date_added' => (new DateTime($event['date_added']))->format($this->language->get('date_format_short')),
-					'image' => $image,
-					);
+				$this->data['title'] = $event['title'];
+				$this->data['content'] = html_entity_decode($event['content'], ENT_QUOTES, 'UTF-8');
+				$this->data['date_added'] = (new DateTime($event['date_added']))->format($this->language->get('date_format_short'));
+				$this->data['image'] = $image;
+
 
 				if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/event/event_detail.tpl')) {
 					$this->template = $this->config->get('config_template') . '/template/event/event_detail.tpl';
