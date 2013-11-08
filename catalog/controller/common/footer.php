@@ -1,12 +1,6 @@
 <?php  
 class ControllerCommonFooter extends Controller {
 	protected function index() {
-		if (isset($this->request->post['redirect'])) {
-			header('Location: ' . $this->request->post['redirect']);
-			unset($this->request->post['redirect']);
-			exit();
-		}
-		
 		if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
 			$server = $this->config->get('config_ssl');
 		} else {
@@ -22,7 +16,7 @@ class ControllerCommonFooter extends Controller {
 		$this->data['text_invalid_email'] = 'Email không hợp lệ !';//$this->language->get('text_invalid_email');
 		$this->data['text_copyright'] = 'Copyright 2013 - Tư Vấn Du Học Song Nguyễn. All rights reserved<br>Designed by <strong style="color: #000;">BommerDesign Team </strong>';// $this->language->get('text_copyright');
 
-		$this->data['lang_url'] = $this->url->link('common/home');
+		$this->data['lang_url'] = $this->url->link('module/language');
 		$this->data['powered'] = sprintf($this->language->get('text_powered'), $this->config->get('config_name'), date('Y', time()));
 		$this->data['subcriber'] = $this->url->link('subcriber/subcriber');
 
