@@ -63,7 +63,7 @@ class ControllerCommonHeader extends Controller {
 				$this->data['menu'][] = array(
 					'href' => $this->url->link('program/program', ''),
 					'label' => $this->language->get('text_program'),
-					'popup' => '0',
+					'popup' => '1',
 					'childs' => array(),
 					);
 			}
