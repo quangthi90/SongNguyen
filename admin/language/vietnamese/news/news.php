@@ -7,8 +7,8 @@ $_['text_success']			= 'Thành công: Bạn đã sửa đổi tin tức!';
 $_['text_browse']			= 'Duyệt';
 $_['text_clear']			= 'Dọn Dẹp';
 $_['text_image_manager']			= 'Quản Lý Hình Ảnh';
-$_['text_format_one']			= 'Định Dạng 1';
-$_['text_format_two']			= 'Định Dạng 2';
+$_['text_format_one']			= '1 Cột';
+$_['text_format_two']			= '2 Cột';
 
 // column
 $_['column_title'] 			= 'Tiêu Đề';
