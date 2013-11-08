@@ -163,7 +163,7 @@ class ControllerNewsNews extends Controller {
 		if (isset($this->request->get['order'])) {
 			$order = $this->request->get['order'];
 		} else {
-			$order = 'ASC';
+			$order = 'DESC';
 		}
 		
 		if (isset($this->request->get['page'])) {
