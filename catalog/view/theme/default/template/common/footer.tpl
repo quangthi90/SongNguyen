@@ -203,9 +203,12 @@
   <h2><?php echo $text_newsletter; ?></h2>
   <form method="POST" data-url="<?php echo $subcriber; ?>">
     <div class="container">
-      <input type="text" name="reg-email" id="reg-email" placeholder="<?php echo $text_enter_email; ?>">
-      <p class="error-msg"><?php echo $text_invalid_email; ?></p>
-      <input type="submit" value="<?php echo $text_ok; ?>">
+		<p class="success-msg"><?php echo $text_success; ?></p>
+      <div class="row">
+		<input type="text" name="reg-email" id="reg-email" placeholder="<?php echo $text_enter_email; ?>">      
+		<input type="submit" value="<?php echo $text_ok; ?>">
+	  </div>	  
+	  <p class="error-msg"><?php echo $text_invalid_email; ?></p>
     </div>
   </form>
 </div>

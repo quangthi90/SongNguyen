@@ -105,6 +105,7 @@ $(document).ready(function() {
 	$('#email-sub form').submit(function(){
 		var email = $(this).find('input#reg-email');
 		var msg = $(this).find('.error-msg');	
+		var suc_msg = $(this).find('.success-msg');
 		if(email.val().length == 0) {
 			email.focus();
 			return false;
@@ -122,15 +123,15 @@ $(document).ready(function() {
 					success: function(json) {
 						if (json.message != 'ok') {
 							msg.show();
-							return false;	
+    						return false;
 						}else {
-							msg.hide();
-							$('#email-sub').find('.container').removeClass('open');
-    						return false;	
+							suc_msg.slideDown(500).delay(2000).slideUp(400, function(){
+								email.val('');
+								$('#email-sub h2').trigger('click');
+							});
 						}
 					},
-					error: function (xhr, error) {
-						
+					error: function (xhr, error) {						
 					}
 				});
     		} 		

@@ -14,6 +14,7 @@ class ControllerCommonFooter extends Controller {
 		$this->data['text_ok'] = 'OK';//$this->language->get('text_ok');
 		$this->data['text_enter_email'] = 'Nhập email đăng ký';//$this->language->get('text_enter_email');
 		$this->data['text_invalid_email'] = 'Email không hợp lệ !';//$this->language->get('text_invalid_email');
+		$this->data['text_success'] = 'Đăng ký email nhận tin thành công !';//$this->language->get('text_invalid_email');
 		$this->data['text_copyright'] = 'Copyright 2013 - Tư Vấn Du Học Song Nguyễn. All rights reserved<br>Designed by <strong style="color: #000;">BommerDesign Team </strong>';// $this->language->get('text_copyright');
 
 		$this->data['lang_url'] = $this->url->link('module/language');
