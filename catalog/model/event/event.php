@@ -36,13 +36,13 @@ class ModelEventEvent extends Model {
 		
 		$this->cache->delete('event');
 	}
-	
+*/	
 	public function getEvent($event_id) {
 		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "event n LEFT JOIN " . DB_PREFIX . "event_description nd ON (n.id = nd.event_id) WHERE n.id = '" . (int)$event_id . "' AND nd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
 				
 		return $query->row;
 	}
-*/	
+	
 	public function getEvents($data = array()) {
 		$sql = "SELECT * FROM " . DB_PREFIX . "event n LEFT JOIN " . DB_PREFIX . "event_description nd ON (n.id = nd.event_id)";
 				

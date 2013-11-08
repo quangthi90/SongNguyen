@@ -1,5 +1,7 @@
 <?php
 class ControllerEventEvent extends Controller {
+	private $limit = 10;
+
 	public function index() {
 		if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
 			$server = $this->config->get('config_ssl');
@@ -28,8 +30,8 @@ class ControllerEventEvent extends Controller {
 		$data = array(
 			'sort'            => 'n.date_added',
 			'order'           => 'DESC',
-			'start'           => ($page - 1) * $this->config->get('config_catalog_limit'),
-			'limit'           => $this->config->get('config_catalog_limit'),
+			'start'           => ($page - 1) * $this->limit,
+			'limit'           => $this->limit,
 			'filter_status'	  => 1,
 		);
 
@@ -87,6 +89,57 @@ class ControllerEventEvent extends Controller {
 		}
 										
 		$this->response->setOutput($this->render());
+	}
+
+	public function detail() {
+		if (empty($this->request->get['event_id'])) {
+
+		}else {
+			$this->load->model('event/event');
+
+			$event = $this->model_event_event->getEvent($this->request->get['event_id']);
+
+			if (empty($event)) {
+
+			}else {
+				if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
+					$server = $this->config->get('config_ssl');
+				} else {
+					$server = $this->config->get('config_url');
+				}
+
+				$this->document->setTitle($this->config->get('config_title'));
+				$this->document->setDescription($this->config->get('config_meta_description'));
+
+				$this->data['heading_title'] = $this->config->get('config_title');
+
+				$this->data['google_analytics'] = html_entity_decode($this->config->get('config_google_analytics'), ENT_QUOTES, 'UTF-8');
+
+				$this->data['base'] = $server;
+
+				$this->load->model('tool/image');
+				if(file_exists(DIR_IMAGE . $event['image'])) {
+					$image = $this->model_tool_image->resize($event['image'], 200, 124);
+				}else {
+					$image = $this->model_tool_image->resize('no_image.jpg', 200, 124);
+				}
+
+				$this->data['event'] = array(
+					'title' => $event['title'],
+					'content' => html_entity_decode($event['content'], ENT_QUOTES, 'UTF-8'),
+					'date_added' => (new DateTime($event['date_added']))->format($this->language->get('date_format_short')),
+					'image' => $image,
+					);
+
+				if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/event/event_detail.tpl')) {
+					$this->template = $this->config->get('config_template') . '/template/event/event_detail.tpl';
+				} else {
+					$this->template = 'default/template/event/event_detail.tpl';
+				}
+												
+				$this->response->setOutput($this->render());
+			}
+		}
 	}
 }
 ?>
