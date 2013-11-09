@@ -84,6 +84,16 @@ class ControllerContactContact extends Controller {
     	}
 
       	$this->data['heading_title'] = $this->language->get('heading_title');
+
+    	$this->data['text_error_enquiry'] = $this->language->get('text_error_enquiry');
+    	$this->data['text_error_name'] = $this->language->get('text_error_name');
+    	$this->data['text_error_email'] = $this->language->get('text_error_email');
+    	$this->data['text_error_phone'] = $this->language->get('text_error_phone');
+    	$this->data['text_success_enquiry'] = $this->language->get('text_success_enquiry');
+    	$this->data['text_success_name'] = $this->language->get('text_success_name');
+    	$this->data['text_success_email'] = $this->language->get('text_success_email');
+    	$this->data['text_success_phone'] = $this->language->get('text_success_phone');
+
     	$this->data['entry_name'] = $this->language->get('entry_name');
     	$this->data['entry_phone'] = $this->language->get('entry_phone');
     	$this->data['entry_email'] = $this->language->get('entry_email');
