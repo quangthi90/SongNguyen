@@ -19,6 +19,7 @@ $_['text_pagination']       = 'Showing {start} to {end} of {total} ({pages} Page
 $_['text_separator']        = ' &raquo; ';
 $_['text_event_news']        = 'Newses & Events';
 $_['text_program']        = 'Programs';
+$_['text_faq']        = 'FAQs';
 
 // Buttons
 $_['button_add_address']    = 'Add Address';
