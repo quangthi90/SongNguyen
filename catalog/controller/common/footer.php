@@ -29,6 +29,7 @@ class ControllerCommonFooter extends Controller {
 			$route = $this->request->get['route'];
 			
 			unset($this->request->get['route']);
+			unset($this->request->get['_route_']);
 			
 			$url = '';
 						

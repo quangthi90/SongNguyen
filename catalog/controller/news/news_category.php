@@ -37,7 +37,7 @@ class ControllerNewsNewsCategory extends Controller {
 					'start' => 0,
 					'limit' => 999,
 					'filter_parent_id' => $category_data['news_category_id'],
-					'status' => 1,
+					'filter_status' => 1,
 					));
 				$childs = array();
 				$this->load->model('tool/image');
@@ -73,7 +73,7 @@ class ControllerNewsNewsCategory extends Controller {
 					'start' => 0,
 					'limit' => 999,
 					'filter_news_category_id' => $category_data['news_category_id'],
-					'status' => 1,
+					'filter_status' => 1,
 					));
 				if (!empty($newses)) {
 					foreach ($newses as $news) {

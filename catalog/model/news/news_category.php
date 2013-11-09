@@ -72,7 +72,7 @@ class ModelNewsNewsCategory extends Model {
 	} 
 */		
 	public function getNewsCategory($news_category_id) {
-		$query = $this->db->query("SELECT DISTINCT nc.id AS news_category_id, nc.parent_id, nc.sort_order, nc.status, ncd.name, nc.primary_image AS primary_image, nc.second_image AS second_image, (SELECT ua.keyword FROM url_alias ua WHERE query = 'news_category_id=" . (int)$news_category_id . "') AS keyword FROM " . DB_PREFIX . "news_category nc LEFT JOIN " . DB_PREFIX . "news_category_description ncd ON (nc.id = ncd.news_category_id) WHERE nc.id = '" . (int)$news_category_id . "'");
+		$query = $this->db->query("SELECT DISTINCT nc.id AS news_category_id, nc.parent_id, nc.sort_order, nc.status, ncd.name, nc.primary_image AS primary_image, nc.second_image AS second_image, (SELECT ua.keyword FROM url_alias ua WHERE query = 'news_category_id=" . (int)$news_category_id . "') AS keyword FROM " . DB_PREFIX . "news_category nc LEFT JOIN " . DB_PREFIX . "news_category_description ncd ON (nc.id = ncd.news_category_id) WHERE nc.id = '" . (int)$news_category_id . "' AND ncd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
 		
 		return $query->row;
 	} 
