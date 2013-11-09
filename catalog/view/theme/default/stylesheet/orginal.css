@@ -516,6 +516,13 @@ a:hover{
 	display: block;
 	background: transparent url(../image/warning.png) 0 50% no-repeat;
 }
+#contact-page table td.value span.success {
+	color: green;
+	font-size: 12px;
+	padding: 10px 0px 10px 23px;
+	display: block;
+	background: transparent url(../image/success.png) 0 50% no-repeat;
+}
 #contact-page .result-fail {
     font-size: 17px;
     padding: 15px 10px 15px 35px;
