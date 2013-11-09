@@ -512,6 +512,9 @@ a:hover{
 #contact-page table td.value span.error {
 	color: red;
 	font-size: 12px;
+	padding: 10px 0px 10px 23px;
+	display: block;
+	background: transparent url(../image/warning.png) 0 50% no-repeat;
 }
 #contact-page .result-fail {
     font-size: 17px;
