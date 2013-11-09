@@ -45,8 +45,8 @@ DD_belatedPNG.fix('#logo img');
             this.inputPhone.blur(function () {
                 $(this).parent().find('.error, .success, br').remove();
 
-                var phonePartern = new RegExp('/^[0-9-()+]{3,20}/$');
-                if (!phonePartern.test($(this).val()) && $(this).val() != '') {
+                var phonePartern = new RegExp('^[0-9]{3,20}$');
+                if ((!phonePartern.test($(this).val())) && ($(this).val() != '')) {
                     $(this).after('<br /><span class="error">' + $(this).data('error') + '</span>');
                 }else {
                     $(this).after('<br /><span class="success">' + $(this).data('success') + '</span>');
