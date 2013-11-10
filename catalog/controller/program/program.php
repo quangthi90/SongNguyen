@@ -42,9 +42,10 @@ class ControllerProgramProgram extends Controller {
 		
 		$this->data['items'] =array();	    	
 		foreach ($results as $result) {
+			$date_added = new DateTime($result['date_added']);
       		$this->data['items'][] = array(
 				'href' => $this->url->link('program/program/detail', 'program_id=' . $result['program_id']),
-				'title'       => $result['title'] . ' (' . (new DateTime($result['date_added']))->format($this->language->get('date_format_short')) . ')',
+				'title'       => $result['title'] . ' (' . $date_added->format($this->language->get('date_format_short')) . ')',
 			);
     	}
 
@@ -127,7 +128,8 @@ class ControllerProgramProgram extends Controller {
 
 				$this->data['title'] = $program['title'];
 				$this->data['content'] = html_entity_decode($program['content'], ENT_QUOTES, 'UTF-8');
-				$this->data['date_added'] = (new DateTime($program['date_added']))->format($this->language->get('date_format_short'));
+				$date_added = new DateTime($program['date_added']);
+				$this->data['date_added'] = $date_added->format($this->language->get('date_format_short'));
 				$this->data['image'] = $image;
 
 
