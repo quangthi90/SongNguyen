@@ -81,7 +81,6 @@ class ControllerContactContact extends Controller {
 	  		$mail->setSubject(html_entity_decode(sprintf($this->language->get('email_subject'), $this->request->post['name']), ENT_QUOTES, 'UTF-8'));
 	  		$mail->setText(strip_tags(html_entity_decode($this->request->post['enquiry'], ENT_QUOTES, 'UTF-8')));
       		$mail->send();*/
-echo 'alo';exit();
 	  		$this->redirect($this->url->link('information/contact/success'));
     	}
 
@@ -186,7 +185,7 @@ echo 'alo';exit();
       		$this->error['email'] = $this->language->get('error_email');
     	}
 
-    	if ((utf8_strlen(trim($this->request->post['enquiry']) < 10)) || (utf8_strlen(trim($this->request->post['enquiry'])) > 3000)) {
+    	if ((utf8_strlen(trim($this->request->post['enquiry'])) < 10) || (utf8_strlen(trim($this->request->post['enquiry'])) > 3000)) {
       		$this->error['enquiry'] = $this->language->get('error_enquiry');
     	}
 		

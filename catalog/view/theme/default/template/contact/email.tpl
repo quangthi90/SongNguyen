@@ -56,6 +56,7 @@ DD_belatedPNG.fix('#logo img');
             this.inputEnquiry.blur(function () {
                 $(this).parent().find('.error, .success, br').remove();
 
+                $(this).val($.trim($(this).val()));
                 var enquiry = $.trim($(this).val());
                 if (enquiry.length < 10 || enquiry.length > 3000)
                 {
@@ -125,9 +126,7 @@ DD_belatedPNG.fix('#logo img');
                                 <b><?php echo $entry_enquiry; ?></b> <span class="required">(*)</span>
                             </td>
                             <td class="value">
-                                <textarea name="enquiry" cols="40" rows="10" style="width: 99%;" data-error="<?php echo $text_error_enquiry; ?>" data-success="<?php echo $text_success_enquiry; ?>" >
-                                    <?php echo $enquiry; ?>
-                                </textarea>
+                                <textarea name="enquiry" cols="40" rows="10" style="width: 99%;" data-error="<?php echo $text_error_enquiry; ?>" data-success="<?php echo $text_success_enquiry; ?>" ><?php echo $enquiry; ?></textarea>
                                 <?php if ($error_enquiry) { ?>
                                    <br /> <span class="error"><?php echo $error_enquiry; ?></span>
                                 <?php } ?>
