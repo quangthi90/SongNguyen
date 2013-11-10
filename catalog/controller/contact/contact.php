@@ -1,5 +1,7 @@
 <?php
 class ControllerContactContact extends Controller {
+	private $error = array();
+
 	public function index() {
 		$this->document->setTitle($this->config->get('config_title'));
 		$this->document->setDescription($this->config->get('config_meta_description'));
@@ -79,7 +81,6 @@ class ControllerContactContact extends Controller {
 	  		$mail->setSubject(html_entity_decode(sprintf($this->language->get('email_subject'), $this->request->post['name']), ENT_QUOTES, 'UTF-8'));
 	  		$mail->setText(strip_tags(html_entity_decode($this->request->post['enquiry'], ENT_QUOTES, 'UTF-8')));
       		$mail->send();*/
-
 	  		$this->redirect($this->url->link('information/contact/success'));
     	}
 
@@ -176,15 +177,15 @@ class ControllerContactContact extends Controller {
 	}
 	
   	protected function validate() {
-    	if ((utf8_strlen($this->request->post['name']) < 3) || (utf8_strlen($this->request->post['name']) > 32)) {
+    	if ((utf8_strlen(trim($this->request->post['name'])) < 3) || (utf8_strlen(trim($this->request->post['name'])) > 32)) {
       		$this->error['name'] = $this->language->get('error_name');
     	}
 
-    	if (!preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['email'])) {
+    	if (!preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', trim($this->request->post['email']))) {
       		$this->error['email'] = $this->language->get('error_email');
     	}
 
-    	if ((utf8_strlen($this->request->post['enquiry']) < 10) || (utf8_strlen($this->request->post['enquiry']) > 3000)) {
+    	if ((utf8_strlen(trim($this->request->post['enquiry'])) < 10) || (utf8_strlen(trim($this->request->post['enquiry'])) > 3000)) {
       		$this->error['enquiry'] = $this->language->get('error_enquiry');
     	}
 		

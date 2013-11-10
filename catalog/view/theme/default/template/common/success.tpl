@@ -19,9 +19,9 @@ DD_belatedPNG.fix('#logo img');
     <div id="contact-page" class="popup-container">
         <h2><?php echo $heading_title; ?></h2>
         <div class="contentbox">
-        	<div class="result-fail">
+        	<!--<div class="result-fail">
         		<?php echo $text_message; ?>		
-        	</div>
+        	</div>-->
           	<div class="result-success">
         		<?php echo $text_message; ?>		
         	</div>
