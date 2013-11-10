@@ -1,8 +1,57 @@
-<?php 
-class ControllerInformationContact extends Controller {
-	private $error = array(); 
-	    
-  	public function index() {
+<?php
+class ControllerContactContact extends Controller {
+	private $error = array();
+
+	public function index() {
+		$this->document->setTitle($this->config->get('config_title'));
+		$this->document->setDescription($this->config->get('config_meta_description'));
+
+		$this->language->load('common/header');	
+
+		$this->data['heading_title'] = $this->config->get('config_title');
+
+		$this->data['title'] = $this->config->get('text_contact_inf');
+				
+		if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
+			$server = $this->config->get('config_ssl');
+		} else {
+			$server = $this->config->get('config_url');
+		}
+
+		$this->data['items'][] = array(
+			'name' => $this->language->get('text_send_email'),
+			'image' => $server . 'image/data/category/banner-formemail.jpg',
+			'href' => $this->url->link('contact/contact/email'),
+			'class' => 'link-popup iframe',
+			);
+		$this->data['items'][] = array(
+			'name' => $this->language->get('text_contact_inf'),
+			'image' => $server . 'image/data/category/banner-thongtinlienhe.jpg',
+			'href' => '#contact-address',
+			'class' => 'link-popup contact',
+			);
+		$this->data['items'][] = array(
+			'name' => $this->language->get('text_support_onl'),
+			'image' => $server . 'image/data/category/banner-hotrotructuyen.jpg',
+			'href' => '#contact-online-support',
+			'class' => 'link-popup inline',
+			);
+
+		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/contact/contact.tpl')) {
+			$this->template = $this->config->get('config_template') . '/template/contact/contact.tpl';
+		} else {
+			$this->template = 'default/template/contact/contact.tpl';
+		}
+
+		$this->children = array(
+			'common/footer',
+			'common/header'
+		);
+										
+		$this->response->setOutput($this->render());
+	}
+
+	public function email() {
 		$this->language->load('information/contact');		
 		if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
 			$server = $this->config->get('config_ssl');
@@ -10,13 +59,15 @@ class ControllerInformationContact extends Controller {
 			$server = $this->config->get('config_url');
 		}
 		$this->data['base'] = $server;
-    	$this->data['action'] = $this->url->link('information/contact');
+    	$this->data['action'] = $this->url->link('contact/contact/email');
 		$this->data['lang'] = $this->language->get('code');
 		$this->data['direction'] = $this->language->get('direction');
 		$this->data['google_analytics'] = html_entity_decode($this->config->get('config_google_analytics'), ENT_QUOTES, 'UTF-8');
 	 
     	if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$mail = new Mail();
+			$this->load->model('contact/contact');	
+			$this->model_contact_contact->addContact($this->request->post);
+			/*$mail = new Mail();
 			$mail->protocol = $this->config->get('config_mail_protocol');
 			$mail->parameter = $this->config->get('config_mail_parameter');
 			$mail->hostname = $this->config->get('config_smtp_host');
@@ -29,12 +80,21 @@ class ControllerInformationContact extends Controller {
 	  		$mail->setSender($this->request->post['name']);
 	  		$mail->setSubject(html_entity_decode(sprintf($this->language->get('email_subject'), $this->request->post['name']), ENT_QUOTES, 'UTF-8'));
 	  		$mail->setText(strip_tags(html_entity_decode($this->request->post['enquiry'], ENT_QUOTES, 'UTF-8')));
-      		$mail->send();
-
+      		$mail->send();*/
 	  		$this->redirect($this->url->link('information/contact/success'));
     	}
 
       	$this->data['heading_title'] = $this->language->get('heading_title');
+
+    	$this->data['text_error_enquiry'] = $this->language->get('text_error_enquiry');
+    	$this->data['text_error_name'] = $this->language->get('text_error_name');
+    	$this->data['text_error_email'] = $this->language->get('text_error_email');
+    	$this->data['text_error_phone'] = $this->language->get('text_error_phone');
+    	$this->data['text_success_enquiry'] = $this->language->get('text_success_enquiry');
+    	$this->data['text_success_name'] = $this->language->get('text_success_name');
+    	$this->data['text_success_email'] = $this->language->get('text_success_email');
+    	$this->data['text_success_phone'] = $this->language->get('text_success_phone');
+
     	$this->data['entry_name'] = $this->language->get('entry_name');
     	$this->data['entry_phone'] = $this->language->get('entry_phone');
     	$this->data['entry_email'] = $this->language->get('entry_email');
@@ -63,7 +123,7 @@ class ControllerInformationContact extends Controller {
 		if (isset($this->request->post['name'])) {
 			$this->data['name'] = $this->request->post['name'];
 		} else {
-			$this->data['name'] = $this->customer->getFirstName();
+			$this->data['name'] = '';
 		}
 
 		if (isset($this->request->post['phone'])) {
@@ -75,7 +135,7 @@ class ControllerInformationContact extends Controller {
 		if (isset($this->request->post['email'])) {
 			$this->data['email'] = $this->request->post['email'];
 		} else {
-			$this->data['email'] = $this->customer->getEmail();
+			$this->data['email'] = '';
 		}
 		
 		if (isset($this->request->post['enquiry'])) {
@@ -85,10 +145,10 @@ class ControllerInformationContact extends Controller {
 		}
 		
 
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/information/contact.tpl')) {
-			$this->template = $this->config->get('config_template') . '/template/information/contact.tpl';
+		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/contact/email.tpl')) {
+			$this->template = $this->config->get('config_template') . '/template/contact/email.tpl';
 		} else {
-			$this->template = 'default/template/information/contact.tpl';
+			$this->template = 'default/template/contact/email.tpl';
 		}
 			
  		$this->response->setOutput($this->render());		
@@ -107,7 +167,6 @@ class ControllerInformationContact extends Controller {
 		$this->data['direction'] = $this->language->get('direction');		
     	$this->data['heading_title'] = $this->language->get('heading_title');
     	$this->data['text_message'] = $this->language->get('text_message');
-    	$this->data['text_goback'] = $this->language->get('text_goback');
 
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/success.tpl')) {
 			$this->template = $this->config->get('config_template') . '/template/common/success.tpl';
@@ -118,15 +177,15 @@ class ControllerInformationContact extends Controller {
 	}
 	
   	protected function validate() {
-    	if ((utf8_strlen($this->request->post['name']) < 3) || (utf8_strlen($this->request->post['name']) > 32)) {
+    	if ((utf8_strlen(trim($this->request->post['name'])) < 3) || (utf8_strlen(trim($this->request->post['name'])) > 32)) {
       		$this->error['name'] = $this->language->get('error_name');
     	}
 
-    	if (!preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', $this->request->post['email'])) {
+    	if (!preg_match('/^[^\@]+@.*\.[a-z]{2,6}$/i', trim($this->request->post['email']))) {
       		$this->error['email'] = $this->language->get('error_email');
     	}
 
-    	if ((utf8_strlen($this->request->post['enquiry']) < 10) || (utf8_strlen($this->request->post['enquiry']) > 3000)) {
+    	if ((utf8_strlen(trim($this->request->post['enquiry'])) < 10) || (utf8_strlen(trim($this->request->post['enquiry'])) > 3000)) {
       		$this->error['enquiry'] = $this->language->get('error_enquiry');
     	}
 		
@@ -145,6 +204,6 @@ class ControllerInformationContact extends Controller {
 		$this->session->data['captcha'] = $captcha->getCode();
 		
 		$captcha->showImage();
-	}	
+	}
 }
 ?>

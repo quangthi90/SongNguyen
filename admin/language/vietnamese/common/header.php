@@ -108,4 +108,5 @@ $_['text_popup']           = 'Cửa sổ Popup';
 $_['text_program']           = 'Chương trình';
 $_['text_subcriber']           = 'Nhận email mới';
 $_['text_send_email']           = 'Gửi Email';
+$_['text_contact']           = 'Liên hệ';
 ?>

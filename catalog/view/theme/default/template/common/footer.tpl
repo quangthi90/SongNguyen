@@ -130,7 +130,7 @@
     </div>
   </div>
   <div id="contact-address" class="popup-container inline">
-    <h2>Thông tin liên hệ</h2>
+    <h2><?php echo $text_contact_inf; ?></h2>
     <div class="contentbox">
       <div class="contact-info">
         <p class="logo"><img src="<?php echo $urlImg; ?>logo.png" width="266" height="87" alt="Logo Song Nguyen Education Services"></p>
@@ -148,7 +148,7 @@
     </div>
   </div>
   <div id="contact-online-support" class="popup-container inline">
-    <h2>Hỗ trợ trực tuyến</h2>
+    <h2><?php echo $text_support_onl; ?></h2>
     <div class="contentbox">
       <ul class="support-list">
         <li class="support-item">

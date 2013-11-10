@@ -129,11 +129,11 @@ DD_belatedPNG.fix('#logo img');
           <ul class="nav">
           <?php foreach ($menu as $item) { ?>
             <li <?php if (!empty($item['childs'])) { ?>class="item-with-ul"<?php } ?>>
-              <a href="<?php echo $item['href']; ?>" <?php if ($item['popup']) { ?>class="link-popup iframe"<?php } ?>><?php echo $item['label']; ?></a>
+              <a href="<?php echo $item['href']; ?>" class="<?php echo ($item['class']) ? $item['class'] : ''; ?>"><?php echo $item['label']; ?></a>
               <?php if (!empty($item['childs'])) { ?>
               <ul style="display: none;">
               <?php foreach ($item['childs'] as $child) { ?>
-                <li><a href="<?php echo $child['href']; ?>" <?php if ($child['popup']) { ?>class="link-popup iframe"<?php } ?>><?php echo $child['label']; ?></a></li>
+                <li><a href="<?php echo $child['href']; ?>" class="<?php echo ($child['class']) ? $child['class'] : ''; ?>"><?php echo $child['label']; ?></a></li>
               <?php } ?>
               </ul>
               <?php } ?>

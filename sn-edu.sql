@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2013 at 07:26 PM
+-- Generation Time: Nov 10, 2013 at 06:38 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -669,14 +669,19 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `status` tinyint(1) NOT NULL,
   `date_posted` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `contact`
 --
 
 INSERT INTO `contact` (`id`, `email`, `name`, `phone`, `content`, `status`, `date_posted`) VALUES
-(1, 'quangthi_90@yahoo.com.vn', 'Bommer Luu', '083024892', '      sdaf sadf sadf sadfs ad  fdas fsad         fsad fdas fsda fdsa fsdafasdfsad fsdaf asfsad fas                                                               ', 1, '2013-11-08 22:23:56');
+(1, 'quangthi_90@yahoo.com.vn', 'Bommer Luu', '083024892', '      sdaf sadf sadf sadfs ad  fdas fsad         fsad fdas fsda fdsa fsdafasdfsad fsdaf asfsad fas                                                               ', 1, '2013-11-08 22:23:56'),
+(2, 'tester@abc.com', 'Main Slide Show', '083024892', '        f wfdasfsafas                                                            ', 1, '2013-11-09 01:28:49'),
+(4, 'quangthi_90@yahoo.com.vn', 'Bommer Luu', '0909090099', 'dsfasdf saf asf asf asf                                                 ', 1, '2013-11-09 09:56:59'),
+(5, 'quangthi_90@yahoo.com.vn', 'Bommer Luu', '083024892', 'abc xyz...', 1, '2013-11-09 21:05:35'),
+(10, 'quangthi_90@yahoo.com.vn', 'Bommer Luu', '083024892', 'khkjhnkjhkjmkjhjklhjkh', 1, '2013-11-10 12:37:21'),
+(8, 'quangthi_90@yahoo.com.vn', 'Bommer Luu', '', '   fsdafas fsa                                                                 ', 1, '2013-11-09 23:03:10');
 
 -- --------------------------------------------------------
 
