@@ -11,8 +11,8 @@ $_['text_error_email']      = 'E-Mail Address does not appear to be valid!';
 $_['text_error_phone']      = 'Phone number does not appear to be valid!';
 $_['text_success_enquiry']      = 'Valid email!';
 $_['text_success_name']      = 'Valid name!';
-$_['text_success_email']      = 'Valid email!';
-$_['text_success_phone']      = 'Valid phone';
+$_['text_success_email']      = 'Valid Content!';
+$_['text_success_phone']      = 'Valid phone!';
 $_['text_goback']      = 'Go back';
 
 // Entry Fields
