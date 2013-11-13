@@ -354,22 +354,28 @@ a:hover{
 	font-weight: bold;
 	clear: both;
 }
-#menulang .list-flag {	
+#menulang .list-flag {
+    text-align: right;	
 }
 #menulang .list-flag li {	
 	display: inline-block;
 	text-align:center;
 	cursor: pointer;
-	padding: 5px 20px;
-	margin: 0px;
+	padding: 2px 10px;
+	border-right: 1px solid #ccc;
 }
-#menulang .list-flag li:hover {
-	background-color: #f0f0f0;
+#menulang .list-flag li:last-child {
+	border-right: none;
+}
+#menulang .list-flag li:hover span {
+	border-bottom: 1px solid #ccc;
 }
 #menulang .list-flag img {
 }
 #menulang .list-flag span {
 	display: block;
+	font-size: 16px;
+	text-transform: uppercase;
 }
 #menulang .list-flag li:hover span {
 	color: #000;	
