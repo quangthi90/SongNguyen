@@ -106,7 +106,7 @@ class ControllerCommonHeader extends Controller {
 			}else {
 				foreach ($child_categories as $key => $child_category) {
 					$childs[] = array(
-						'href' => $this->url->link('news/news_category', 'news_category_id=' . $child_category['news_category_id']),
+						'href' => ($child_category['have_popup'])? $this->url->link('news/news_category', 'news_category_id=' . $child_category['news_category_id'] . '&have_popup=' . (int)$child_category['have_popup']) : $this->url->link('news/news_category', 'news_category_id=' . $child_category['news_category_id']),
 						'label' => $child_category['name'],
 						'class' => '',
 						);
@@ -114,10 +114,11 @@ class ControllerCommonHeader extends Controller {
 			}
 			
 			$this->data['menu'][] = array(
-				'href' => $this->url->link('news/news_category', 'news_category_id=' . $news_category['news_category_id']),
+				'href' => ($news_category['have_popup'])? $this->url->link('news/news_category', 'news_category_id=' . $news_category['news_category_id'] . '&have_popup=' . (int)$news_category['have_popup']) : $this->url->link('news/news_category', 'news_category_id=' . $news_category['news_category_id']),
 				'label' => $news_category['name'],
 				'class' => '',
 				'childs' => $childs,
+				'class' => ($news_category['have_popup'])? 'link-popup iframe' : '',
 				);
 		}
 

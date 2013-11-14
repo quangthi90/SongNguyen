@@ -136,7 +136,6 @@ class ControllerNewsNewsCategory extends Controller {
 		);
 										
 		$this->response->setOutput($this->render());
-
 	}
 }
 ?>
