@@ -16,14 +16,11 @@ class ModelIntroIntro extends Model {
 	public function deactiveIntro($intro_id) {
 		$this->db->query("UPDATE " . DB_PREFIX . "intro SET status = '0' WHERE id = '" . (int)$intro_id . "'");
 	}
-/*
+
 	public function deleteIntro($intro_id) {
-		$this->db->query("DELETE FROM " . DB_PREFIX . "popup WHERE id = '" . (int)$popup_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "popup_description WHERE popup_id = '" . (int)$popup_id . "'");
-		
-		$this->cache->delete('popup');
+		$this->db->query("DELETE FROM " . DB_PREFIX . "intro WHERE id = '" . (int)$intro_id . "'");
 	}
-*/	
+	
 	public function getIntro($intro_id) {
 		$query = $this->db->query("SELECT DISTINCT i.id AS intro_id, i.name AS name, i.url AS url, i.status AS status FROM " . DB_PREFIX . "intro i WHERE id = '" . $intro_id . "'");
 				

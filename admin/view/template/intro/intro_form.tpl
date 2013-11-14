@@ -23,7 +23,7 @@
           </tr>
           <tr>
             <td><strong><?php echo $entry_url; ?></strong></td>
-            <td><input type="text" name="url" id="url" value="<?php echo $url; ?>" disabled="disalbe"/><a class="button" onclick="file_upload('url');"><?php echo $text_browser; ?></a></td>
+            <td><input name="url" type="text" id="url" value="<?php echo $url; ?>" /><a class="button" onclick="file_upload('url');"><?php echo $text_browser; ?></a></td>
           </tr>
           <tr>
             <td><strong><?php echo $entry_status; ?></strong></td>
