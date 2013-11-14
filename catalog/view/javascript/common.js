@@ -63,18 +63,15 @@ $(document).ready(function() {
 
 	if($('.content-list').children('.box5').length > 5){
 		$('.content-list').jcarousel({
-			auto: 3,
-			animation:'500',
-			wrap:'first',
-			itemFallbackDimension: 300
+			auto: 5,
+			animation:'slow'
 	    });
 	}	
 	if($('.content-list').children('.box3').length > 3){
 		$('.content-list').jcarousel({
-			auto: 3,
-			animation:'500',
-			wrap:'first',
-			itemFallbackDimension: 300
+			auto: 5,
+			animation:'slow',
+			wrap: "circular"
 	    });
 	}
 
@@ -95,18 +92,6 @@ $(document).ready(function() {
 			}
 		);
 	}
-
-	//Email sub:
-	//$('#email-sub h2').click(function(){
-	//	var container = $('#email-sub').find('.container');
-	//	if($(this).hasClass('open')) {
-	//		container.slideUp();
-	//		$(this).removeClass('open');
-	//	}else {
-	//		container.slideDown();
-	//		$(this).addClass('open');
-	//	}
-	//});
 	$('#email-sub form').submit(function(){
 		var email = $(this).find('input#reg-email');
 		var msg = $(this).find('.error-msg');	

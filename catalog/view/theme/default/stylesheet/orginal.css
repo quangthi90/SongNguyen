@@ -403,7 +403,8 @@ a:hover{
 }
 #menulang .has-site-map li span {
 	text-transform: capitalize;	
-	font-size: 13px;
+	font-size: 14px;
+	color: #646464;
 }
 #menulang .has-site-map li:hover span {
 	border-bottom: none;
@@ -669,27 +670,37 @@ Jcarousel
 */
 .jcarousel-prev.jcarousel-prev-horizontal {
 	position: absolute;
-	bottom: -30px;
-	right: 40px;
+	top: 48%;
+	left: 0px;
 	height: 25px;
 	width: 25px;
 	background: transparent url(../image/btn-pre.png) 0 0 no-repeat;
+	opacity: 0;
 	cursor: pointer;
 }
 .jcarousel-next.jcarousel-next-horizontal {
 	position: absolute;
-	bottom: -30px;
-	right: 10px;
+	right: 0px;
+	top: 48%;
 	height: 25px;
 	width: 25px;
 	background: transparent url(../image/btn-next.png) 0 0 no-repeat;
+	opacity: 0;
 	cursor: pointer;
 }
 .jcarousel-prev.jcarousel-prev-disabled {
 	cursor: default;
+	opacity: 0;
 }
-.jcarousel-prev.jcarousel-next-disabled {
+.jcarousel-next.jcarousel-next-disabled {
 	cursor: default;
+	opacity: 0;
+}
+.jcarousel-container:hover .jcarousel-prev.jcarousel-prev-horizontal {
+	opacity: 0.7;
+}
+.jcarousel-container:hover .jcarousel-next.jcarousel-next-horizontal {
+	opacity: 0.7;
 }
 
 /*Email subcription*/
