@@ -50,6 +50,11 @@ $(document).ready(function() {
 		width:"1000px", 
 		height:"620px"
 	});
+	$('.link-popup.email-subscription').colorbox({
+		inline:true,
+		width:"600px", 
+		height:"300px"
+	});
 	$('.link-popup.iframe').colorbox({
 		iframe:true,
 		width:"85%", 
@@ -92,16 +97,16 @@ $(document).ready(function() {
 	}
 
 	//Email sub:
-	$('#email-sub h2').click(function(){
-		var container = $('#email-sub').find('.container');
-		if($(this).hasClass('open')) {
-			container.slideUp();
-			$(this).removeClass('open');
-		}else {
-			container.slideDown();
-			$(this).addClass('open');
-		}
-	});
+	//$('#email-sub h2').click(function(){
+	//	var container = $('#email-sub').find('.container');
+	//	if($(this).hasClass('open')) {
+	//		container.slideUp();
+	//		$(this).removeClass('open');
+	//	}else {
+	//		container.slideDown();
+	//		$(this).addClass('open');
+	//	}
+	//});
 	$('#email-sub form').submit(function(){
 		var email = $(this).find('input#reg-email');
 		var msg = $(this).find('.error-msg');	
@@ -127,13 +132,13 @@ $(document).ready(function() {
 							msg.show();
 						}else {
 							email.val('');
-							suc_msg.slideDown(500).delay(2000).slideUp(400, function(){
-								$('#email-sub h2').trigger('click');
+							suc_msg.slideDown(200).delay(2000).slideUp(200, function(){
+								$.colorbox.close();
 							});
 						}
 					},
 					error: function (xhr, error) {	
-					alert(xhr.responseText);					
+						alert(xhr.responseText);					
 					}
 				});
 				return false;

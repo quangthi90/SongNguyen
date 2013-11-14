@@ -43,7 +43,7 @@ body{
 	font-weight: 400;
 	font-family: ArnoProRegular,Time New Roman, serif;
 	background-color:#fff;
-	color:#757575;
+	color: #646464;
 }
 a {
 	text-decoration:none;
@@ -456,7 +456,7 @@ a:hover{
 	margin-top:30px;
 	padding-bottom: 15px;
 	float:left;
-	font-size: 13px;
+	font-size: 14px;
 }
 
 #site-map {
@@ -694,56 +694,46 @@ Jcarousel
 
 /*Email subcription*/
 #email-sub {
-	position: fixed;
-	background: #f0f0f0;
-	bottom: 1px;
-	right: 5px;
-	width: 320px;
-	z-index: 100;
-	border-left: 1px solid #ccc;
-	border-right: 1px solid #ccc;
-	border-top: 1px solid #ccc;
-	box-shadow: 0px -2px 10px #ddd;
+	width: 500px;
 }
 #email-sub h2 {
-    font-size: 14px;
     padding: 10px 20px 10px 45px;
     background: transparent url(../image/a.png) no-repeat 10px 50%;
-    color: #04266D;
     text-align: left;
-    cursor: pointer;
-    border-bottom: 2px solid rgb(3, 3, 104);
+    border-bottom: 1px solid #0e0e0e;
 }
 #email-sub .container {
-    padding: 25px 20px;
+    padding: 30px 30px;
     position: relative;
-    display: none;
 }
 .container  .row {
 	overflow: hidden;
 }
 .container .error-msg {
 	color: red;
-	font-size: 13px;
-	padding: 5px 0px;
+	font-size: 14px;
+	padding: 10px 0px;
 	display: none;
 }
 .container .success-msg {
-	color: #065988;
+	color: #235000;
 	font-size: 16px;
-	font-weight: bold;
 	padding: 0px 0px 15px 0px;
 	display: none;
 	background: transparent url(../image/success.png) 100% 0 no-repeat;
 }
 #email-sub input[type='text'] {
-    padding: 5px;
-    width: 227px;
+    padding: 10px;
+    width: 338px;
     float: left;
+    border: 1px solid #969696;
+    border-right: none;
 }
 #email-sub input[type='submit'] {	
     border: none;
     padding: 7px 10px;
+    width: 81px;
+    height: 38px;
     cursor: pointer;
     background: #0e0e0e;
     color: #fff;
