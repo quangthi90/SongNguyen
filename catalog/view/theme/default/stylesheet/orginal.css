@@ -111,7 +111,7 @@ a:hover{
 }
 #menu > ul > li > a {
 	font-weight: bold;
-	font-size: 15px;
+	font-size: 16px;
 }
 #menu > ul > li > ul {
     position: absolute;	
@@ -190,6 +190,8 @@ a:hover{
 }
 #body-content .content-list{
 	overflow: hidden;
+	margin: 0px auto;
+	width: 100%;
 }
 #body-content .box{
 	float: left;
@@ -206,7 +208,7 @@ a:hover{
 #body-content .box3{
 	width: 275px;
 	height: 186px;
-	margin-right: 50px;	
+	margin-left: 42px;	
 }
 .box3 img{
 	width: 100%;

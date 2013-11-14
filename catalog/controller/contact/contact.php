@@ -7,10 +7,8 @@ class ControllerContactContact extends Controller {
 		$this->document->setDescription($this->config->get('config_meta_description'));
 
 		$this->language->load('common/header');	
-
-		$this->data['heading_title'] = $this->config->get('config_title');
-
-		$this->data['title'] = $this->config->get('text_contact_inf');
+		$this->data['heading_title'] = $this->language->get('config_title');
+		$this->data['title'] = $this->language->get('text_contact');
 				
 		if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
 			$server = $this->config->get('config_ssl');
@@ -20,19 +18,19 @@ class ControllerContactContact extends Controller {
 
 		$this->data['items'][] = array(
 			'name' => $this->language->get('text_send_email'),
-			'image' => $server . 'image/data/category/banner-formemail.jpg',
+			'image' => $server . 'image/data/contact/'.$this->language->get('email_form_img'),
 			'href' => $this->url->link('contact/contact/email'),
 			'class' => 'link-popup iframe',
 			);
 		$this->data['items'][] = array(
 			'name' => $this->language->get('text_contact_inf'),
-			'image' => $server . 'image/data/category/banner-thongtinlienhe.jpg',
+			'image' => $server . 'image/data/contact/'.$this->language->get('contact_info_img'),
 			'href' => '#contact-address',
 			'class' => 'link-popup contact',
 			);
 		$this->data['items'][] = array(
 			'name' => $this->language->get('text_support_onl'),
-			'image' => $server . 'image/data/category/banner-hotrotructuyen.jpg',
+			'image' => $server . 'image/data/contact/'.$this->language->get('online_support_img'),
 			'href' => '#contact-online-support',
 			'class' => 'link-popup inline',
 			);
