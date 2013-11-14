@@ -348,7 +348,7 @@ a:hover{
 #menulang {
 	text-align: center;
 	border-top: 2px solid #021D63;
-	padding: 10px 0px;
+	padding: 5px 0px;
 	font-weight: bold;
 	clear: both;
 }
@@ -381,10 +381,16 @@ a:hover{
 #menulang .has-site-map{
 	text-align: center;
 }
-#menulang .has-site-map li {
-	padding: 3px 10px;
-	margin: 0px 2px;
-	border: 1px solid #ddd;
+#menulang .has-site-map li {	
+	margin: 0px;
+	font-weight: normal;
+}
+#menulang .has-site-map li span {
+	text-transform: capitalize;	
+	font-size: 13px;
+}
+#menulang .has-site-map li:hover span {
+	border-bottom: none;
 }
 
 /* Contact Page */
@@ -432,6 +438,7 @@ a:hover{
 	height:auto;
 	text-align:center;
 	margin-top:30px;
+	padding-bottom: 15px;
 	float:left;
 	font-size:12px;
 }

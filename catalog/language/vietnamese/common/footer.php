@@ -18,6 +18,6 @@ $_['text_newsletter'] = 'Đăng ký email nhận tin tức mới';
 $_['text_ok'] = 'OK';
 $_['text_enter_email'] = 'Nhập email đăng ký';
 $_['text_invalid_email'] = 'Email không hợp lệ !';
-$_['text_copyright'] = 'Copyright 2013 - Tư Vấn Du Học Song Nguyễn. All rights reserved<br>Designed by <strong style="color: #000;">BommerDesign Team </strong>';
+$_['text_copyright'] = 'Copyright 2013 - Tư Vấn Du Học Song Nguyen. All rights reserved<br>Designed by <strong style="color: #757575;">BommerDesign Team </strong>';
 
 ?>
