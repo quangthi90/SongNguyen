@@ -17,6 +17,7 @@ $_['column_parent']          = 'Danh Mục Cha';
 
 // entry
 $_['entry_name']            = 'Tên Danh Mục Tin Tức:';
+$_['entry_have_popup']            = 'Có popup:';
 $_['entry_description']            = 'Mô Tả:';
 $_['entry_keyword'] 			= 'Từ Khóa:';
 $_['entry_primary_image'] 			= 'Hình Ảnh Chính:';
