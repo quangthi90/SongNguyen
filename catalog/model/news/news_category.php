@@ -97,6 +97,12 @@ class ModelNewsNewsCategory extends Model {
 		}else {
 			$sql .= " ORDER BY nc.sort_order";
 		}
+
+		if (!empty($data['order']) && $data['order'] == 'DESC') {
+			$sql .= " DESC";
+		}else {
+			$sql .= " ASC";
+		}
 		
 		if (isset($data['start']) || isset($data['limit'])) {
 			if ($data['start'] < 0) {
@@ -129,11 +135,24 @@ class ModelNewsNewsCategory extends Model {
 		
 		return $news_category_description_data;
 	}	
+*/		
+	public function getTotalNewsCategories($data = array()) {
+		$sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "news_category nc LEFT JOIN " . DB_PREFIX . "news_category_description ncd ON (nc.id = ncd.news_category_id) WHERE ncd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
 		
-	public function getTotalNewsCategories() {
-      	$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "news_category");
-		
+		if (!empty($data['filter_name'])) {
+			$sql .= " AND ncd.name LIKE '" . $this->db->escape($data['filter_name']) . "%'";
+		}
+
+		if (isset($data['filter_parent_id'])) {
+			$sql .= " AND nc.parent_id = '" . (int)$data['filter_parent_id'] . "'";
+		}
+
+		if (!empty($data['filter_status'])) {
+			$sql .= " AND nc.status = '" . (int)$data['filter_status'] . "'";
+		}
+					
+		$query = $this->db->query($sql);
 		return $query->row['total'];
-	}	*/
+	}	
 }
 ?>
