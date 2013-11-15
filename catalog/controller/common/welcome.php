@@ -22,11 +22,20 @@ class ControllerCommonWelcome extends Controller {
 		} else {
 			$this->data['icon'] = '';
 		}		
-		if (file_exists(DIR_IMAGE . 'flash/intro.swf')) {
+
+		$this->load->model('intro/intro');
+		$intro = $this->model_intro_intro->getIntro();
+
+		/*if (file_exists(DIR_IMAGE . 'flash/intro.swf')) {
 			$this->data['flash'] = $server . 'image/flash/intro.swf';
 		} else {
 			$this->data['flash'] = '';
-		}		
+		}*/		
+		if (!empty($intro['url']) && file_exists(DIR_IMAGE . $intro['url'])) {
+			$this->data['flash'] = $server . 'image/' . $intro['url'];
+		} else {
+			$this->data['flash'] = '';
+		}
 		
 		$this->language->load('common/welcome');
 		$this->data['title'] = $this->language->get('text_welcome_title');

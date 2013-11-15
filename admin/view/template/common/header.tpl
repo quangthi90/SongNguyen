@@ -68,11 +68,6 @@ $(document).ready(function(){
           <li><a href="<?php echo $news_category; ?>"><?php echo $text_news_category; ?></a></li>
         </ul>
       </li>
-      <li id="event"><a class="top"><?php echo $text_event; ?></a>
-        <ul>
-          <li><a href="<?php echo $event; ?>"><?php echo $text_event; ?></a></li>
-        </ul>
-      </li>
       <li id="faq"><a class="top"><?php echo $text_faq; ?></a>
         <ul>
           <li><a href="<?php echo $faq; ?>"><?php echo $text_faq; ?></a></li>
@@ -84,15 +79,15 @@ $(document).ready(function(){
           <li><a href="<?php echo $popup; ?>"><?php echo $text_popup; ?></a></li>
         </ul>
       </li>
-      <li id="program"><a class="top"><?php echo $text_program; ?></a>
-        <ul>
-          <li><a href="<?php echo $program; ?>"><?php echo $text_program; ?></a></li>
-        </ul>
-      </li>
       <li id="subcriber"><a class="top"><?php echo $text_subcriber; ?></a>
         <ul>
           <li><a href="<?php echo $subcriber; ?>"><?php echo $text_subcriber; ?></a></li>
           <li><a href="<?php echo $send_email; ?>"><?php echo $text_send_email; ?></a></li>
+        </ul>
+      </li>
+      <li id="intro"><a class="top"><?php echo $text_intro; ?></a>
+        <ul>
+          <li><a href="<?php echo $intro; ?>"><?php echo $text_intro; ?></a></li>
         </ul>
       </li>
       <li id="contact"><a class="top"><?php echo $text_contact; ?></a>

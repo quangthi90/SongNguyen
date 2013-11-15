@@ -52,14 +52,14 @@ class ControllerCommonHeader extends Controller {
 		$this->load->model('news/news');
 		$news_categories = $this->model_news_news_category->getNewsCategories(array(
 			'start' => 0,
-			'limit' => 999,
+			'limit' => 7,
 			'filter_parent_id' => 0,
 			'status' => 1,
 			));
 
 		$this->data['menu'] = array();
 		foreach ($news_categories as $inc => $news_category) {
-			if ($inc == 3) {
+			/*if ($inc == 3) {
 				$this->data['menu'][] = array(
 					'href' => $this->url->link('program/program', ''),
 					'label' => $this->language->get('text_program'),
@@ -75,7 +75,7 @@ class ControllerCommonHeader extends Controller {
 					'class' => 'link-popup iframe',
 					'childs' => array(),
 					);
-			}
+			}*/
 
 			$child_categories = $this->model_news_news_category->getNewsCategories(array(
 				'start' => 0,
@@ -108,7 +108,7 @@ class ControllerCommonHeader extends Controller {
 					$childs[] = array(
 						'href' => $this->url->link('news/news_category', 'news_category_id=' . $child_category['news_category_id']),
 						'label' => $child_category['name'],
-						'class' => '',
+						'class' => ($child_category['have_popup'])? 'link-popup iframe' : '',
 						);
 				}
 			}
@@ -118,6 +118,7 @@ class ControllerCommonHeader extends Controller {
 				'label' => $news_category['name'],
 				'class' => '',
 				'childs' => $childs,
+				'class' => ($news_category['have_popup'])? 'link-popup iframe' : '',
 				);
 		}
 
