@@ -85,6 +85,11 @@ $(document).ready(function(){
           <li><a href="<?php echo $send_email; ?>"><?php echo $text_send_email; ?></a></li>
         </ul>
       </li>
+      <li id="intro"><a class="top"><?php echo $text_intro; ?></a>
+        <ul>
+          <li><a href="<?php echo $intro; ?>"><?php echo $text_intro; ?></a></li>
+        </ul>
+      </li>
       <li id="contact"><a class="top"><?php echo $text_contact; ?></a>
         <ul>
           <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
