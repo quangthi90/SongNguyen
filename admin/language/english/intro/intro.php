@@ -15,6 +15,7 @@ $_['column_status']      = 'Status';
 $_['column_action']      = 'Action';
 
 // Entry
+$_['entry_name']      = 'Name:';
 $_['entry_title']      = 'Title:';
 $_['entry_url']      = 'Url:';
 $_['entry_status']      = 'Status:';
