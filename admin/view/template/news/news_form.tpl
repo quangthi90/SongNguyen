@@ -50,13 +50,13 @@
                 <?php } ?></td>
             </tr>
             <tr>
-              <td><?php echo $entry_primary_image; ?></td>
+              <td><?php echo $entry_primary_image; ?> (300x204 px)</td>
               <td><div class="primary_image"><img src="<?php echo $primary_thumb; ?>" alt="" id="primary_thumb" /><br />
                   <input type="hidden" name="primary_image" value="<?php echo $primary_image; ?>" id="primary_image" />
                   <a onclick="image_upload('primary_image', 'primary_thumb');"><?php echo $text_browse; ?></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a onclick="$('#primary_thumb').attr('src', '<?php echo $no_image; ?>'); $('#primary_image').attr('value', '');"><?php echo $text_clear; ?></a></div></td>
             </tr>
             <tr>
-              <td><?php echo $entry_second_image; ?></td>
+              <td><?php echo $entry_second_image; ?> (300x204 px)</td>
               <td><div class="second_image"><img src="<?php echo $second_thumb; ?>" alt="" id="second_thumb" /><br />
                   <input type="hidden" name="second_image" value="<?php echo $second_image; ?>" id="second_image" />
                   <a onclick="image_upload('second_image', 'second_thumb');"><?php echo $text_browse; ?></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a onclick="$('#second_thumb').attr('src', '<?php echo $no_image; ?>'); $('#second_image').attr('value', '');"><?php echo $text_clear; ?></a></div></td>

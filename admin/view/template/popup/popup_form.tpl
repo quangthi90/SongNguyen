@@ -47,7 +47,7 @@
         <div id="tab-data">
           <table class="form">
             <tr>
-              <td><?php echo $entry_embbed; ?></td>
+              <td><?php echo $entry_embbed; ?> (853x480 px)</td>
               <td><textarea name="embbed" id="embbed"><?php echo $embbed; ?></textarea></td>
             </tr>
             <tr>
