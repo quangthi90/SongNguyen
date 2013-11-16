@@ -58,9 +58,6 @@ DD_belatedPNG.fix('#logo img');
         </div>
       </div>
       <div id="content-container">
-        <!--<div class="paging">
-          <a href="#" class="active">1</a> | <a href="#">2</a> | <a href="#">3</a> | <a href="#">4</a>
-        </div>-->
         <div class="paging"><?php echo $pagination; ?></div>
         <ul class="news-list">
           <?php foreach ($items as $item) { ?>

@@ -200,7 +200,7 @@
           </li>
           <?php } ?>
           <li>
-            <a href="#site-map" class="link-popup inline"><?php echo $text_sitemap; ?></a>
+            <a href="#site-map" class="link-popup sitemap-ref"><?php echo $text_sitemap; ?></a>
           </li>
           <li>
             <a href="#email-sub" class="link-popup email-subscription"><?php echo $text_newsletter; ?></a>

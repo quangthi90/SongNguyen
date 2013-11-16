@@ -50,6 +50,14 @@ $(document).ready(function() {
 		width:"1000px", 
 		height:"620px"
 	});
+	$('.link-popup.sitemap-ref').colorbox({
+		inline:true,
+		width:"1000px", 
+		height:"620px",
+		onComplete: function(){
+			$('#cboxLoadedContent').makeCustomScroll(false);
+		}
+	});
 	$('.link-popup.email-subscription').colorbox({
 		inline:true,
 		width:"600px", 
@@ -81,16 +89,29 @@ $(document).ready(function() {
 	var introPopup = $('.popup-intro').first();
 	if(introPopup.length > 0) {
 		var hrefTo = '#' + introPopup.attr('id');
-		$.colorbox({
-				width:"900px",
-				height:"630px",
-				inline:true, 
-				href: hrefTo,
-				onClosed: function() {
-					$('.popup-intro').remove();
+		if(hrefTo == '#popup-video'){
+			$.colorbox({
+					width:"900px",
+					height:"600px",
+					inline:true, 
+					href: hrefTo,
+					onClosed: function() {
+						$('.popup-intro').remove();
+					}
 				}
-			}
-		);
+			);
+		}else {
+			$.colorbox({
+					width:"900px",
+					height:"630px",
+					inline:true, 
+					href: hrefTo,
+					onClosed: function() {
+						$('.popup-intro').remove();
+					}
+				}
+			);
+		}
 	}
 	$('#email-sub form').submit(function(){
 		var email = $(this).find('input#reg-email');
