@@ -7,6 +7,7 @@ class ControllerCommonFooter extends Controller {
 			$server = $this->config->get('config_url');
 		}
 		$this->data['urlImg'] = $server.'image/data/';
+		$this->data['base'] = $server;
 		$this->language->load('common/footer');	
 		$this->language->load('common/header');		
 
@@ -15,7 +16,7 @@ class ControllerCommonFooter extends Controller {
 		$this->data['text_ok'] = $this->language->get('text_ok');
 		$this->data['text_enter_email'] = $this->language->get('text_enter_email');
 		$this->data['text_invalid_email'] = $this->language->get('text_invalid_email');
-		$this->data['text_success'] = $this->language->get('text_invalid_email');
+		$this->data['text_success'] = $this->language->get('text_success');
 		$this->data['text_copyright'] = $this->language->get('text_copyright');
 		$this->data['text_contact_inf'] = $this->language->get('text_contact_inf');
 		$this->data['text_send_email'] = $this->language->get('text_send_email');

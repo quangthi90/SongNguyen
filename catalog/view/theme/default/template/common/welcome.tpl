@@ -15,7 +15,6 @@
 <?php } ?>
 <link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/orginal.css" />
 <script type="text/javascript" src="catalog/view/javascript/jquery/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="catalog/view/javascript/common.js"></script>
 <!--[if IE 7]> 
 <link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/ie7.css" />
 <![endif]-->
@@ -40,16 +39,14 @@ DD_belatedPNG.fix('#logo img');
 		<div id="menulang">
         	<form action="<?php echo $lang_url; ?>" method="post" enctype="multipart/form-data">
 			    <ul class="list-flag">
-	                <li class="lang-item" title="Tiếng Anh" 
-	                	onclick="$('input[name=\'language_code\']').attr('value', 'en'); $(this).parents('form').submit();">
-	                	<img src="<?php echo $base; ?>image/flags/gb.png" alt="English">
-	                	<span>Tiếng Anh</span>
-	                </li>
 	                <li class="lang-item" title="Tiếng Việt"
-	                	 onclick="$('input[name=\'language_code\']').attr('value', 'vn'); $(this).parents('form').submit();"  >
-	                	<img src="<?php echo $base; ?>image/flags/vn.png" alt="Vietnamese">
+	                	 onclick="$('input[name=\'language_code\']').attr('value', 'vn'); $(this).parents('form').submit();">
 	                	<span>Tiếng Việt</span>
 	                </li>	  
+	                <li class="lang-item" title="English" 
+	                	onclick="$('input[name=\'language_code\']').attr('value', 'en'); $(this).parents('form').submit();">
+	                	<span>English</span>
+	                </li>
 	            </ul>    
 			    <input type="hidden" name="language_code" value="">
 			    <input type="hidden" name="redirect" value="<?php echo $home; ?>">

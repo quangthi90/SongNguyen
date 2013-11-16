@@ -133,7 +133,11 @@
     <h2><?php echo $text_contact_inf; ?></h2>
     <div class="contentbox">
       <div class="contact-info">
-        <p class="logo"><img src="<?php echo $urlImg; ?>logo.png" width="266" height="87" alt="Logo Song Nguyen Education Services"></p>
+        <p class="logo">
+          <a href="<?php echo $base; ?>">
+            <img src="<?php echo $urlImg; ?>logo.png" width="266" height="87" alt="Logo Song Nguyen Education Services">  
+          </a>
+        </p>
         <p class="address">  
           Địa chỉ: R4-92 Hưng Gia 2, Phú Mỹ Hưng, Quận 7, Hồ Chí Minh, Việt Nam<br>
           Điện thoại: +84 8 5410 5770 / 5410 57771<br>
@@ -169,19 +173,26 @@
       </ul>
     </div>
   </div>
+  <div id="email-sub" class="popup-container inline">
+    <h2><?php echo $text_newsletter; ?></h2>
+    <div class="contentbox">
+      <form method="POST" data-url="<?php echo $subcriber; ?>">
+        <div class="container">
+        <p class="success-msg"><?php echo $text_success; ?></p>
+        <div class="row">
+        <input type="text" name="reg-email" id="reg-email" placeholder="<?php echo $text_enter_email; ?>">      
+        <input type="submit" value="<?php echo $text_ok; ?>">
+        </div>    
+        <p class="error-msg"><?php echo $text_invalid_email; ?></p>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
 <div id="footer">
   <div id="menulang">
     <form action="<?php echo $lang_url; ?>" method="post" enctype="multipart/form-data">
         <ul class="list-flag has-site-map">
-          <!--<li class="lang-item" title="Tiếng Anh" 
-            onclick="$('input[name=\'language_code\']').attr('value', 'en'); $(this).parents('form').submit();">
-            <span>Tiếng Anh</span>
-          </li>
-          <li class="lang-item" title="Tiếng Việt"
-             onclick="$('input[name=\'language_code\']').attr('value', 'vn'); $(this).parents('form').submit();"  >
-            <span>Tiếng Việt</span>
-          </li>-->
           <?php foreach ($languages as $language) { ?>
           <li class="lang-item" title="<?php echo $language['name']; ?>" 
             onclick="$('input[name=\'language_code\']').attr('value', '<?php echo $language['code']; ?>'); $(this).parents('form').submit();">
@@ -189,28 +200,18 @@
           </li>
           <?php } ?>
           <li>
-            <a href="#site-map" class="link-popup inline"><?php echo $text_sitemap; ?></a>
+            <a href="#site-map" class="link-popup sitemap-ref"><?php echo $text_sitemap; ?></a>
           </li>
-          </ul>    
+          <li>
+            <a href="#email-sub" class="link-popup email-subscription"><?php echo $text_newsletter; ?></a>
+          </li>
+        </ul>    
         <input type="hidden" name="language_code" value="">
         <input type="hidden" name="redirect" value="<?php echo $redirect; ?>">
     </form>
   </div>  
   <p class="copyright"><?php echo $text_copyright; ?></p>
 </div>
-</div>
-<div id="email-sub">
-  <h2><?php echo $text_newsletter; ?></h2>
-  <form method="POST" data-url="<?php echo $subcriber; ?>">
-    <div class="container">
-    <p class="success-msg"><?php echo $text_success; ?></p>
-    <div class="row">
-		<input type="text" name="reg-email" id="reg-email" placeholder="<?php echo $text_enter_email; ?>">      
-		<input type="submit" value="<?php echo $text_ok; ?>">
-	  </div>	  
-	  <p class="error-msg"><?php echo $text_invalid_email; ?></p>
-    </div>
-  </form>
 </div>
 </body>
 </html>

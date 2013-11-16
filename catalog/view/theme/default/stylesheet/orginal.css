@@ -1,6 +1,17 @@
 @charset "utf-8";
 /* CSS Document */
 
+@font-face
+{
+	font-family: ArnoProBold;
+	src: url('../type/ArnoPro-Bold.otf'); 
+}
+@font-face
+{
+	font-family: ArnoProRegular;
+	src: url('../type/ArnoPro-Regular.otf'); 
+}
+
 *{
 	padding: 0px;
 	margin: 0px;
@@ -30,9 +41,9 @@ h2{
 body{
 	font-size:14px;
 	font-weight: 400;
-	font-family: Time New Roman, Times, serif;
+	font-family: ArnoProRegular,Time New Roman, serif;
 	background-color:#fff;
-	color:#757575;
+	color: #646464;
 }
 a {
 	text-decoration:none;
@@ -75,8 +86,7 @@ a:hover{
 }
 #menu{
 	width:100%;
-	border-bottom:1px solid #C70115;
-	border-top:1px solid #C70115;
+	border-bottom: 1px solid #021D63;
 	padding: 1px 0px;
 	margin: 150px 0px 20px 0px;
 }
@@ -89,36 +99,37 @@ a:hover{
 }
 #menu > ul > li a {
 	text-transform: uppercase;
-	font-weight: bold;
+	font-weight: normal;
 	display: block;
-	padding: 5px 12px;
+	padding: 5px 8px 2px 8px;
 	text-decoration: none;
-	color: #0e0e0e;
+	color: #4D4D4D;
 }
 #menu > ul > li > a:hover,
 #menu > ul > li.active > a {
-	color: #fff;
-	background: #C70115;
+	color: #000;
+}
+#menu > ul > li > a {
+	font-weight: bold;
+	font-size: 16px;
 }
 #menu > ul > li > ul {
     position: absolute;	
-    border: 1px solid #f0f0f0;
-    bottom: 28px;
+    bottom: 26px;
 }
 #menu > ul > li > ul > li {
-    display: block;  
-    border-top: 1px solid #f0f0f0;      
+    display: block;       
 }
 #menu > ul > li > ul > li > a {
     display: block;	
     white-space: nowrap;
-    padding: 8px 20px;
-    font-size: 13px;
+    padding: 8px 10px;
+    font-size: 14px;
     min-width: 130px;
 }
 #menu > ul > li > ul > li > a:hover{
-	background: #f0f0f0;
-	color: #000;
+	color: #4D4D4D;
+	font-weight: bold;
 }
 
 /* Body CSS */
@@ -179,6 +190,8 @@ a:hover{
 }
 #body-content .content-list{
 	overflow: hidden;
+	margin: 0px auto;
+	width: 100%;
 }
 #body-content .box{
 	float: left;
@@ -195,7 +208,7 @@ a:hover{
 #body-content .box3{
 	width: 275px;
 	height: 186px;
-	margin-right: 50px;	
+	margin-left: 42px;	
 }
 .box3 img{
 	width: 100%;
@@ -216,6 +229,7 @@ a:hover{
 	background: transparent url(../image/icon-redbox.gif) 0 50% no-repeat;
 	margin-bottom: 15px;
 	border-bottom: 1px solid #f0f0f0;
+	text-transform: uppercase;
 }
 .contentbox{
 	overflow-x:hidden;
@@ -247,6 +261,9 @@ a:hover{
 	padding-bottom: 5px;
 	margin-bottom: 10px;
 	text-transform: uppercase;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 .popup-container h2 > span {
 	display: block;
@@ -350,34 +367,50 @@ a:hover{
 #menulang {
 	text-align: center;
 	border-top: 2px solid #021D63;
-	padding: 10px 0px;
+	padding: 5px 0px;
 	font-weight: bold;
 	clear: both;
 }
-#menulang .list-flag {	
+#menulang .list-flag {
+    text-align: right;	
 }
 #menulang .list-flag li {	
 	display: inline-block;
 	text-align:center;
 	cursor: pointer;
-	padding: 5px 20px;
-	margin: 0px;
+	padding: 2px 10px;
+	border-right: 1px solid #ccc;
 }
-#menulang .list-flag li:hover {
-	background-color: #f0f0f0;
+#menulang .list-flag li:last-child {
+	border-right: none;
+}
+#menulang .list-flag li:hover span {
+	border-bottom: 1px solid #ccc;
 }
 #menulang .list-flag img {
 }
 #menulang .list-flag span {
 	display: block;
+	font-size: 16px;
+	text-transform: uppercase;
 }
 #menulang .list-flag li:hover span {
 	color: #000;	
 }
-#menulang .has-site-map li {
-	padding: 3px 10px;
-	margin: 0px 2px;
-	border: 1px solid #ddd;
+#menulang .has-site-map{
+	text-align: center;
+}
+#menulang .has-site-map li {	
+	margin: 0px;
+	font-weight: normal;
+}
+#menulang .has-site-map li span {
+	text-transform: capitalize;	
+	font-size: 14px;
+	color: #646464;
+}
+#menulang .has-site-map li:hover span {
+	border-bottom: none;
 }
 
 /* Contact Page */
@@ -425,8 +458,9 @@ a:hover{
 	height:auto;
 	text-align:center;
 	margin-top:30px;
+	padding-bottom: 15px;
 	float:left;
-	font-size:12px;
+	font-size: 14px;
 }
 
 #site-map {
@@ -639,81 +673,81 @@ Jcarousel
 */
 .jcarousel-prev.jcarousel-prev-horizontal {
 	position: absolute;
-	bottom: -30px;
-	right: 40px;
+	top: 48%;
+	left: 0px;
 	height: 25px;
 	width: 25px;
 	background: transparent url(../image/btn-pre.png) 0 0 no-repeat;
+	opacity: 0;
 	cursor: pointer;
 }
 .jcarousel-next.jcarousel-next-horizontal {
 	position: absolute;
-	bottom: -30px;
-	right: 10px;
+	right: 0px;
+	top: 48%;
 	height: 25px;
 	width: 25px;
 	background: transparent url(../image/btn-next.png) 0 0 no-repeat;
+	opacity: 0;
 	cursor: pointer;
 }
 .jcarousel-prev.jcarousel-prev-disabled {
 	cursor: default;
+	opacity: 0;
 }
-.jcarousel-prev.jcarousel-next-disabled {
+.jcarousel-next.jcarousel-next-disabled {
 	cursor: default;
+	opacity: 0;
+}
+.jcarousel-container:hover .jcarousel-prev.jcarousel-prev-horizontal {
+	opacity: 0.7;
+}
+.jcarousel-container:hover .jcarousel-next.jcarousel-next-horizontal {
+	opacity: 0.7;
 }
 
 /*Email subcription*/
 #email-sub {
-	position: fixed;
-	background: #f0f0f0;
-	bottom: 1px;
-	right: 5px;
-	width: 320px;
-	z-index: 100;
-	border-left: 1px solid #ccc;
-	border-right: 1px solid #ccc;
-	border-top: 1px solid #ccc;
-	box-shadow: 0px -2px 10px #ddd;
+	width: 500px;
 }
 #email-sub h2 {
-    font-size: 14px;
     padding: 10px 20px 10px 45px;
     background: transparent url(../image/a.png) no-repeat 10px 50%;
-    color: #04266D;
     text-align: left;
-    cursor: pointer;
-    border-bottom: 2px solid rgb(3, 3, 104);
+    border-bottom: 1px solid #0e0e0e;
 }
 #email-sub .container {
-    padding: 25px 20px;
+    padding: 30px 30px;
     position: relative;
-    display: none;
 }
 .container  .row {
 	overflow: hidden;
 }
 .container .error-msg {
 	color: red;
-	font-size: 13px;
-	padding: 5px 0px;
+	font-size: 14px;
+	padding: 10px 0px;
 	display: none;
 }
 .container .success-msg {
-	color: #065988;
+	color: #235000;
 	font-size: 16px;
-	font-weight: bold;
 	padding: 0px 0px 15px 0px;
 	display: none;
 	background: transparent url(../image/success.png) 100% 0 no-repeat;
 }
 #email-sub input[type='text'] {
-    padding: 5px;
-    width: 227px;
+    padding: 10px;
+    width: 338px;
     float: left;
+    border: 1px solid #969696;
+    border-right: none;
 }
 #email-sub input[type='submit'] {	
     border: none;
     padding: 7px 10px;
+    width: 81px;
+    height: 38px;
     cursor: pointer;
     background: #0e0e0e;
     color: #fff;

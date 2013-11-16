@@ -139,15 +139,15 @@ class ControllerNewsNewsCategory extends Controller {
 							$child = $this->model_news_news_category->getNewsCategory($child['news_category_id']);
 							if (!empty($child)) {
 								if (file_exists(DIR_IMAGE . $child['primary_image'])) {
-									$primary_image = $this->model_tool_image->resize($child['primary_image'], 190, 129);
+									$primary_image = $this->model_tool_image->resize($child['primary_image'], 275, 187);
 								}else {
-									$primary_image = $this->model_tool_image->resize('no_image.jpg', 190, 129);
+									$primary_image = $this->model_tool_image->resize('no_image.jpg', 275, 187);
 								}
 
 								if (file_exists(DIR_IMAGE . $child['second_image'])) {
-									$second_image = $this->model_tool_image->resize($child['second_image'], 190, 129);
+									$second_image = $this->model_tool_image->resize($child['second_image'], 275, 187);
 								}else {
-									$second_image = $this->model_tool_image->resize('no_image.jpg', 190, 129);
+									$second_image = $this->model_tool_image->resize('no_image.jpg', 275, 187);
 								}
 
 								$childs[] = array(
@@ -171,15 +171,15 @@ class ControllerNewsNewsCategory extends Controller {
 					if (!empty($newses)) {
 						foreach ($newses as $news) {
 							if (file_exists(DIR_IMAGE . $news['primary_image'])) {
-								$primary_image = $this->model_tool_image->resize($news['primary_image'], 190, 129);
+								$primary_image = $this->model_tool_image->resize($news['primary_image'], 275, 187);
 							}else {
-								$primary_image = $this->model_tool_image->resize('no_image.jpg', 190, 129);
+								$primary_image = $this->model_tool_image->resize('no_image.jpg', 275, 187);
 							}
 
 							if (file_exists(DIR_IMAGE . $news['second_image'])) {
-								$second_image = $this->model_tool_image->resize($news['second_image'], 190, 129);
+								$second_image = $this->model_tool_image->resize($news['second_image'], 275, 187);
 							}else {
-								$second_image = $this->model_tool_image->resize('no_image.jpg', 190, 129);
+								$second_image = $this->model_tool_image->resize('no_image.jpg', 275, 187);
 							}
 
 							$childs[] = array(

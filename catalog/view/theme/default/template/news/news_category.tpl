@@ -1,73 +1,12 @@
 <?php echo $header; ?>
 <div id="body-content">
-	<!--<div class="pagelocation">
-		Du học
-	</div>
-	<ul class="content-list">
-		<li class="box-item box5">
-			<a class="item-avatar" href="#">
-				<img class="item-avatar-img on" src="<?php echo $categoryImgUrl; ?>/demo-01.jpg" alt="Du Học Hè Singapore">
-				<img class="item-avatar-img off" src="<?php echo $categoryImgUrl; ?>/demo-02.jpg" alt="Du Học Mỹ">
-				<span class="category-title">Du học Mỹ</span>
-			</a>			
-		</li>
-		<li class="box-item box5">
-			<a class="item-avatar" href="#">
-				<img class="item-avatar-img on" src="<?php echo $categoryImgUrl; ?>/demo-01.jpg" alt="Du Học Hè Singapore">
-				<img class="item-avatar-img off" src="<?php echo $categoryImgUrl; ?>/demo-02.jpg" alt="Du Học Mỹ">
-				<span class="category-title">Du học Mỹ</span>
-			</a>			
-		</li>
-		<li class="box-item box5">
-			<a class="item-avatar" href="#">
-				<img class="item-avatar-img on" src="<?php echo $categoryImgUrl; ?>/demo-01.jpg" alt="Du Học Hè Singapore">
-				<img class="item-avatar-img off" src="<?php echo $categoryImgUrl; ?>/demo-02.jpg" alt="Du Học Mỹ">
-				<span class="category-title">Du học Mỹ</span>
-			</a>			
-		</li>
-		<li class="box-item box5">
-			<a class="item-avatar" href="#">
-				<img class="item-avatar-img on" src="<?php echo $categoryImgUrl; ?>/demo-01.jpg" alt="Du Học Hè Singapore">
-				<img class="item-avatar-img off" src="<?php echo $categoryImgUrl; ?>/demo-02.jpg" alt="Du Học Mỹ">
-				<span class="category-title">Du học Mỹ</span>
-			</a>			
-		</li>
-		<li class="box-item box5">
-			<a class="item-avatar" href="#">
-				<img class="item-avatar-img on" src="<?php echo $categoryImgUrl; ?>/demo-01.jpg" alt="Du Học Hè Singapore">
-				<img class="item-avatar-img off" src="<?php echo $categoryImgUrl; ?>/demo-02.jpg" alt="Du Học Mỹ">
-				<span class="category-title">Du học Mỹ</span>
-			</a>			
-		</li>
-		<li class="box-item box5">
-			<a class="item-avatar" href="#">
-				<img class="item-avatar-img on" src="<?php echo $categoryImgUrl; ?>/demo-01.jpg" alt="Du Học Hè Singapore">
-				<img class="item-avatar-img off" src="<?php echo $categoryImgUrl; ?>/demo-02.jpg" alt="Du Học Mỹ">
-				<span class="category-title">Du học Mỹ</span>
-			</a>			
-		</li>
-		<li class="box-item box5">
-			<a class="item-avatar" href="#">
-				<img class="item-avatar-img on" src="<?php echo $categoryImgUrl; ?>/demo-01.jpg" alt="Du Học Hè Singapore">
-				<img class="item-avatar-img off" src="<?php echo $categoryImgUrl; ?>/demo-02.jpg" alt="Du Học Mỹ">
-				<span class="category-title">Du học Mỹ</span>
-			</a>			
-		</li>
-		<li class="box-item box5">
-			<a class="item-avatar" href="#">
-				<img class="item-avatar-img on" src="<?php echo $categoryImgUrl; ?>/demo-01.jpg" alt="Du Học Hè Singapore">
-				<img class="item-avatar-img off" src="<?php echo $categoryImgUrl; ?>/demo-02.jpg" alt="Du Học Mỹ">
-				<span class="category-title">Du học Mỹ</span>
-			</a>			
-		</li>		
-	</ul>-->
 	<div class="pagelocation">
 		<?php echo $category['name']; ?>
 	</div>
 	<?php if (!empty($category['childs'])) { ?>
 	<ul class="content-list">
 	<?php foreach ($category['childs'] as $child) { ?>
-		<li class="box-item box5">
+		<li class="box-item box3">
 			<a class="item-avatar <?php echo ($child['popup']) ? 'link-popup iframe' : ''; ?>" href="<?php echo $child['href']; ?>">
 				<img class="item-avatar-img on" src="<?php echo $child['primary_image']; ?>" alt="<?php echo $child['name']; ?>">
 				<img class="item-avatar-img off" src="<?php echo $child['second_image']; ?>" alt="<?php echo $child['name']; ?>">

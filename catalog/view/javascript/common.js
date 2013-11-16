@@ -50,6 +50,19 @@ $(document).ready(function() {
 		width:"1000px", 
 		height:"620px"
 	});
+	$('.link-popup.sitemap-ref').colorbox({
+		inline:true,
+		width:"1000px", 
+		height:"620px",
+		onComplete: function(){
+			$('#cboxLoadedContent').makeCustomScroll(false);
+		}
+	});
+	$('.link-popup.email-subscription').colorbox({
+		inline:true,
+		width:"600px", 
+		height:"300px"
+	});
 	$('.link-popup.iframe').colorbox({
 		iframe:true,
 		width:"85%", 
@@ -58,18 +71,15 @@ $(document).ready(function() {
 
 	if($('.content-list').children('.box5').length > 5){
 		$('.content-list').jcarousel({
-			auto: 3,
-			animation:'500',
-			wrap:'first',
-			itemFallbackDimension: 300
+			auto: 5,
+			animation:'slow'
 	    });
 	}	
 	if($('.content-list').children('.box3').length > 3){
 		$('.content-list').jcarousel({
-			auto: 3,
-			animation:'500',
-			wrap:'first',
-			itemFallbackDimension: 300
+			auto: 5,
+			animation:'slow',
+			wrap: "circular"
 	    });
 	}
 
@@ -79,29 +89,30 @@ $(document).ready(function() {
 	var introPopup = $('.popup-intro').first();
 	if(introPopup.length > 0) {
 		var hrefTo = '#' + introPopup.attr('id');
-		$.colorbox({
-				width:"900px",
-				height:"630px",
-				inline:true, 
-				href: hrefTo,
-				onClosed: function() {
-					$('.popup-intro').remove();
+		if(hrefTo == '#popup-video'){
+			$.colorbox({
+					width:"900px",
+					height:"600px",
+					inline:true, 
+					href: hrefTo,
+					onClosed: function() {
+						$('.popup-intro').remove();
+					}
 				}
-			}
-		);
-	}
-
-	//Email sub:
-	$('#email-sub h2').click(function(){
-		var container = $('#email-sub').find('.container');
-		if($(this).hasClass('open')) {
-			container.slideUp();
-			$(this).removeClass('open');
+			);
 		}else {
-			container.slideDown();
-			$(this).addClass('open');
+			$.colorbox({
+					width:"900px",
+					height:"630px",
+					inline:true, 
+					href: hrefTo,
+					onClosed: function() {
+						$('.popup-intro').remove();
+					}
+				}
+			);
 		}
-	});
+	}
 	$('#email-sub form').submit(function(){
 		var email = $(this).find('input#reg-email');
 		var msg = $(this).find('.error-msg');	
@@ -127,13 +138,13 @@ $(document).ready(function() {
 							msg.show();
 						}else {
 							email.val('');
-							suc_msg.slideDown(500).delay(2000).slideUp(400, function(){
-								$('#email-sub h2').trigger('click');
+							suc_msg.slideDown(200).delay(2000).slideUp(200, function(){
+								$.colorbox.close();
 							});
 						}
 					},
 					error: function (xhr, error) {	
-					alert(xhr.responseText);					
+						alert(xhr.responseText);					
 					}
 				});
 				return false;
