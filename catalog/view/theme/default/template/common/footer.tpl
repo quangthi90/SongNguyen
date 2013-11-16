@@ -133,7 +133,11 @@
     <h2><?php echo $text_contact_inf; ?></h2>
     <div class="contentbox">
       <div class="contact-info">
-        <p class="logo"><img src="<?php echo $urlImg; ?>logo.png" width="266" height="87" alt="Logo Song Nguyen Education Services"></p>
+        <p class="logo">
+          <a href="<?php echo $base; ?>">
+            <img src="<?php echo $urlImg; ?>logo.png" width="266" height="87" alt="Logo Song Nguyen Education Services">  
+          </a>
+        </p>
         <p class="address">  
           Địa chỉ: R4-92 Hưng Gia 2, Phú Mỹ Hưng, Quận 7, Hồ Chí Minh, Việt Nam<br>
           Điện thoại: +84 8 5410 5770 / 5410 57771<br>

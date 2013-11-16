@@ -7,6 +7,7 @@ class ControllerCommonFooter extends Controller {
 			$server = $this->config->get('config_url');
 		}
 		$this->data['urlImg'] = $server.'image/data/';
+		$this->data['base'] = $server;
 		$this->language->load('common/footer');	
 		$this->language->load('common/header');		
 

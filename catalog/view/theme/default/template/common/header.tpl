@@ -48,7 +48,7 @@ DD_belatedPNG.fix('#logo img');
 <div id="wrap">
   <div id="header">
         <div id="banner">
-          <a href="<?php echo $home; ?>">
+          <a href="<?php echo $base; ?>">
             <img src="<?php echo $logo; ?>" width="354" height="115" alt="Song Nguyen Logo">
           </a>
         </div>
