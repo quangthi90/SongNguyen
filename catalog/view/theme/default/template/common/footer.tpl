@@ -200,10 +200,10 @@
           </li>
           <?php } ?>
           <li>
-            <a href="#site-map" class="link-popup sitemap-ref"><?php echo $text_sitemap; ?></a>
+            <a href="#site-map" class="link-popup sitemap-ref"><span><?php echo $text_sitemap; ?></span></a>
           </li>
           <li>
-            <a href="#email-sub" class="link-popup email-subscription"><?php echo $text_newsletter; ?></a>
+            <a href="#email-sub" class="link-popup email-subscription"><span><?php echo $text_newsletter; ?></span></a>
           </li>
         </ul>    
         <input type="hidden" name="language_code" value="">

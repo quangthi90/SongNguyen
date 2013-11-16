@@ -43,7 +43,7 @@ body{
 	font-weight: 400;
 	font-family: ArnoProRegular,Time New Roman, serif;
 	background-color:#fff;
-	color: #646464;
+	color: #333333;
 }
 a {
 	text-decoration:none;
@@ -406,11 +406,12 @@ a:hover{
 }
 #menulang .has-site-map li span {
 	text-transform: capitalize;	
-	font-size: 14px;
-	color: #646464;
+	font-size: 15px;
+	color: #141414;
 }
 #menulang .has-site-map li:hover span {
 	border-bottom: none;
+	color: #021D63;
 }
 
 /* Contact Page */
