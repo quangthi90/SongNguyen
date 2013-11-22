@@ -18,6 +18,6 @@ $_['text_newsletter']   = 'Newsletter';
 $_['text_enter_email'] = 'Enter your email';
 $_['text_invalid_email'] = 'Invalid email!';
 $_['text_success'] = 'Subscribe email successfully !';
-$_['text_copyright'] = 'Copyright 2013 - Tư Vấn Du Học Song Nguyen. All rights reserved<br>Designed by <strong style="color: #9E9E9E;">BommerDesign Team </strong>';
+$_['text_copyright'] = 'Copyright © 2013 – Song Nguyen Education Services. All rights reserved<br>Designed by <strong style="color: #9E9E9E;">BommerDesign Team </strong>';
 $_['text_powered']      = 'Powered By <a href="http://www.opencart.com">OpenCart</a><br /> %s &copy; %s';
 ?>

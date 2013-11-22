@@ -19,6 +19,6 @@ $_['text_ok'] = 'OK';
 $_['text_enter_email'] = 'Nhập email đăng ký';
 $_['text_invalid_email'] = 'Email không hợp lệ !';
 $_['text_success'] = 'Đăng ký email thành công !';
-$_['text_copyright'] = 'Copyright 2013 - Tư Vấn Du Học Song Nguyen. All rights reserved<br>Designed by <strong style="color: #9E9E9E;">BommerDesign Team </strong>';
+$_['text_copyright'] = 'Copyright © 2013 – Song Nguyen Education Services. All rights reserved<br>Designed by <strong style="color: #9E9E9E;">BommerDesign Team </strong>';
 
 ?>

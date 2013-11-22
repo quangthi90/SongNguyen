@@ -36,7 +36,7 @@ DD_belatedPNG.fix('#logo img');
 				</embed>
 			</object>
 		</div>
-		<div id="menulang">
+		<div id="menulang" style="border-top: 2px solid #021D63;">
         	<form action="<?php echo $lang_url; ?>" method="post" enctype="multipart/form-data">
 			    <ul class="list-flag">
 	                <li class="lang-item" title="Tiếng Việt"

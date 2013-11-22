@@ -82,13 +82,13 @@ a:hover{
 #banner{
 	clear:both;
 	text-align:center;
-	padding: 20px 0px;
+	padding: 0px 0px;
 }
 #menu{
 	width:100%;
-	border-bottom: 1px solid #021D63;
+	border-bottom: 2px solid #021D63;
 	padding: 1px 0px;
-	margin: 150px 0px 20px 0px;
+	margin: 120px 0px 20px 0px;
 }
 #menu > ul{
 	
@@ -111,7 +111,7 @@ a:hover{
 }
 #menu > ul > li > a {
 	font-weight: bold;
-	font-size: 16px;
+	font-size: 1.1em;
 }
 #menu > ul > li > ul {
     position: absolute;	
@@ -124,8 +124,9 @@ a:hover{
     display: block;	
     white-space: nowrap;
     padding: 8px 10px;
-    font-size: 14px;
+    font-size: 1.1em;
     min-width: 130px;
+    font-weight: bold;
 }
 #menu > ul > li > ul > li > a:hover{
 	color: #4D4D4D;
@@ -225,11 +226,9 @@ a:hover{
 #body-content .pagelocation{
 	font-weight: bold;
 	font-size: 16px;
-	padding: 5px 0px 5px 20px;
+	padding: 5px 0px 0px 20px;
 	background: transparent url(../image/icon-redbox.gif) 0 50% no-repeat;
-	margin-bottom: 15px;
-	border-bottom: 1px solid #f0f0f0;
-	text-transform: uppercase;
+	margin-bottom: 8px;
 }
 .contentbox{
 	overflow-x:hidden;
@@ -366,7 +365,6 @@ a:hover{
 }
 #menulang {
 	text-align: center;
-	border-top: 2px solid #021D63;
 	padding: 5px 0px;
 	font-weight: bold;
 	clear: both;
