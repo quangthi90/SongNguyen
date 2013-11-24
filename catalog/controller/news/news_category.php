@@ -71,6 +71,7 @@ class ControllerNewsNewsCategory extends Controller {
 				      		$this->data['items'][] = array(
 								'href' => $this->url->link('news/news_category', 'news_category_id=' . $result['news_category_id']),
 								'title'       => $result['name'] . ' (' . $date_added->format($this->language->get('date_format_short')) . ')',
+								'popup' => $result['have_popup'],
 							);
 				    	}
 			    	}else {
@@ -85,6 +86,7 @@ class ControllerNewsNewsCategory extends Controller {
 							'limit'           => $this->limit,
 							'filter_status'	  => 1,
 							'filter_news_category_id'=> $category_data['news_category_id'],
+							'popup' => 1,
 						));
 
 						foreach ($results as $result) {
