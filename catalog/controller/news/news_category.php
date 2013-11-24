@@ -74,7 +74,6 @@ class ControllerNewsNewsCategory extends Controller {
 						'limit'           => $this->limit,
 						'filter_status'	  => 1,
 						'filter_news_category_id'=> $category_data['news_category_id'],
-						'popup' => 1,
 					));
 
 					$this->data['items'] =array();	
