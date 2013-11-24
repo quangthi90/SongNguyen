@@ -1,5 +1,7 @@
 <?php
 class ControllerNewsNewsCategory extends Controller {
+	private $limit = 10;
+
 	public function index() {
 		if (empty($this->request->get['news_category_id'])) {
 			// redirect to error page
@@ -18,20 +20,22 @@ class ControllerNewsNewsCategory extends Controller {
 				$this->document->setDescription($this->config->get('config_meta_description'));
 
 				$this->data['heading_title'] = $this->config->get('config_title');
-				
+
 				if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
 					$server = $this->config->get('config_ssl');
 				} else {
 					$server = $this->config->get('config_url');
 				}
 
+				$this->data['direction'] = $this->language->get('direction');
+				$this->data['text_title'] = $category_data['name'];
+				$this->data['google_analytics'] = html_entity_decode($this->config->get('config_google_analytics'), ENT_QUOTES, 'UTF-8');
+				$this->data['base'] = $server;
+				$this->data['lang'] = $this->language->get('code');
+
 				$this->load->model('tool/image');
 
 				if ($category_data['have_popup']) {
-					$this->data['direction'] = $this->language->get('direction');
-					$this->data['text_title'] = $category_data['name'];
-					$this->data['google_analytics'] = html_entity_decode($this->config->get('config_google_analytics'), ENT_QUOTES, 'UTF-8');
-					$this->data['base'] = $server;
 
 					if (file_exists(DIR_IMAGE . $category_data['primary_image'])) {
 						$this->data['left_image'] = $this->model_tool_image->resize($category_data['primary_image'], 200, 136);
@@ -54,7 +58,7 @@ class ControllerNewsNewsCategory extends Controller {
 						'filter_parent_id'=> $category_data['news_category_id'],
 					);
 
-					$news_category_total = $this->model_news_news_category->getTotalNewsCategories($data);
+					$total = $this->model_news_news_category->getTotalNewsCategories($data);
 						
 			    	$results = $this->model_news_news_category->getNewsCategories($data);
 
@@ -68,6 +72,10 @@ class ControllerNewsNewsCategory extends Controller {
 							);
 				    	}
 			    	}else {
+			    		$total = $this->model_news_news->getTotalNewses(array(
+							'filter_status'	  => 1,
+							'filter_news_category_id'=> $category_data['news_category_id'],
+						));
 			    		$results = $this->model_news_news->getNewses(array(
 							'sort'            => 'n.date_added',
 							'order'           => 'DESC',
@@ -88,7 +96,7 @@ class ControllerNewsNewsCategory extends Controller {
 
 			    	$num_links = 4;
 			    	$pagination_url = $this->url->link('news/news_category', 'page={page}' . '&news_category_id=' . $category_data['news_category_id']);
-			    	$num_pages = ceil($news_category_total / $data['limit']);
+			    	$num_pages = ceil($total / $this->limit);
 					$this->data['pagination'] = '';
 					if ($num_pages >= 1) {
 						if ($num_pages <= $num_links) {
@@ -156,7 +164,7 @@ class ControllerNewsNewsCategory extends Controller {
 									'second_image' => $second_image,
 									'sort_order' => $child['sort_order'],
 									'href' => $this->url->link('news/news_category', 'news_category_id=' . $child['news_category_id']),
-									'popup' => 0,
+									'class' => ($child['have_popup'])? 'link-popup iframe' : '',
 									);
 							}
 						}
@@ -188,7 +196,7 @@ class ControllerNewsNewsCategory extends Controller {
 								'second_image' => $second_image,
 								'sort_order' => $news['sort_order'],
 								'href' => $this->url->link('news/news', 'news_id=' . $news['news_id']),
-								'popup' => 1,
+								'class' => 'link-popup iframe',
 								);
 						}
 					}

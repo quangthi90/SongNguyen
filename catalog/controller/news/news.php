@@ -72,7 +72,7 @@ class ControllerNewsNews extends Controller {
 					if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/news/news_detail1.tpl')) {
 						$this->template = $this->config->get('config_template') . '/template/news/news_detail1.tpl';
 					} else {
-						$this->template = 'default/template/news/news_detail.tpl';
+						$this->template = 'default/template/news/news_detail1.tpl';
 					}
 				}
 				
