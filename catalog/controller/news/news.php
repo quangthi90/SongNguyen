@@ -1,7 +1,6 @@
 <?php  
 class ControllerNewsNews extends Controller {
 	public function index() {
-
 		if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
 			$server = $this->config->get('config_ssl');
 		} else {
@@ -42,8 +41,14 @@ class ControllerNewsNews extends Controller {
 				$this->data['lang'] = $this->language->get('code');
 				$this->data['direction'] = $this->language->get('direction');
 				$this->data['google_analytics'] = html_entity_decode($this->config->get('config_google_analytics'), ENT_QUOTES, 'UTF-8');
+				if (isset($this->session->data['back_link'])) {
+					$this->data['back_link'] = $this->session->data['back_link'];
+					unset($this->session->data['back_link']);
+				}
 
 				$this->data['base'] = $server;
+
+				$this->data['text_go_back'] = $this->language->get('text_go_back');
 				
 				$this->load->model('tool/image');
 				if (file_exists(DIR_IMAGE . $news['primary_image'])) {

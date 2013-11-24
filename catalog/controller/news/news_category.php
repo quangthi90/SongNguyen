@@ -51,6 +51,8 @@ class ControllerNewsNewsCategory extends Controller {
 						$page = $this->request->get['page'];
 					}
 
+					$this->session->data['back_link'] = $this->url->link('news/news_category', 'news_category_id=' . $this->request->get['news_category_id'] . '&page=' . $page);
+
 					$data = array(
 						'sort'            => 'nc.date_added',
 						'order'           => 'DESC',
