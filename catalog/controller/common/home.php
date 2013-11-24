@@ -2,13 +2,14 @@
 class ControllerCommonHome extends Controller {
 	public function index() {
 		$this->load->model('popup/popup');
-		$this->load->model('design/banner');
 		$popup_data = $this->model_popup_popup->getPopup();
 
 		$popup = array();
 		if (!empty($popup_data)) {
 			$banners = array();
-			if (!empty($popup_data['banner_id'])) {
+			if (!empty($popup_data['banner_id']) && $popup_data['type'] == 2) {
+				$this->load->model('design/banner');
+				$this->load->model('tool/image');
 				$banner_data = $this->model_design_banner->getBanner($popup_data['banner_id']);
 				if (!empty($banner_data)) {
 					foreach ($banner_data as $banner) {
@@ -30,7 +31,7 @@ class ControllerCommonHome extends Controller {
 				'type' => $popup_data['type'],
 				'title' => $popup_data['title'],
 				'description' => $popup_data['description'],
-				'content' => $popup_data['content'],
+				'content' => html_entity_decode($popup_data['content'], ENT_QUOTES, 'UTF-8'),
 				'embbed' => html_entity_decode($popup_data['embbed'], ENT_QUOTES, 'UTF-8'),
 				'banners' => $banners,
 				);

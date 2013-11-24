@@ -49,9 +49,7 @@ class ModelPopupPopup extends Model {
 				
 		$sql .= " WHERE ptd.language_id = '" . (int)$this->config->get('config_language_id') . "'"; 
 		
-		if (isset($data['filter_status']) && !is_null($data['filter_status'])) {
-			$sql .= " AND pt.status = '1'";
-		}
+		$sql .= " AND pt.status = '1'";
 		
 		$sql .= " GROUP BY pt.id";
 					
