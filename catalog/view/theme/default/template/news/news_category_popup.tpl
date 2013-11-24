@@ -20,31 +20,35 @@ DD_belatedPNG.fix('#logo img');
 <?php echo $google_analytics; ?>
 <script type="text/javascript">
   $(document).ready(function(){      
-      $('.news-list').mCustomScrollbar({
-        set_width:false, /*optional element width: boolean, pixels, percentage*/
-        set_height:false, /*optional element height: boolean, pixels, percentage*/
-        horizontalScroll: false, /*scroll horizontally: boolean*/
-        scrollInertia:950, /*scrolling inertia: integer (milliseconds)*/
-        mouseWheel:true, /*mousewheel support: boolean*/
-        mouseWheelPixels:"auto", /*mousewheel pixels amount: integer, "auto"*/
-        autoDraggerLength:true, /*auto-adjust scrollbar dragger length: boolean*/
-        autoHideScrollbar:true, /*auto-hide scrollbar when idle*/
-        scrollButtons:{ /*scroll buttons*/
-          enable:false, /*scroll buttons support: boolean*/
-          scrollType:"continuous", /*scroll buttons scrolling type: "continuous", "pixels"*/
-          scrollSpeed:"auto", /*scroll buttons continuous scrolling speed: integer, "auto"*/
-          scrollAmount:40 /*scroll buttons pixels scroll amount: integer (pixels)*/
-        },
-        advanced:{
-          updateOnBrowserResize:true, /*update scrollbars on browser resize (for layouts based on percentages): boolean*/
-          updateOnContentResize:false, /*auto-update scrollbars on content resize (for dynamic content): boolean*/
-          autoExpandHorizontalScroll:false, /*auto-expand width for horizontal scrolling: boolean*/
-          autoScrollOnFocus:true, /*auto-scroll on focused elements: boolean*/
-          normalizeMouseWheelDelta:false /*normalize mouse-wheel delta (-1/1)*/
-        },
-        contentTouchScroll:true, /*scrolling by touch-swipe content: boolean*/
-        theme:"dark" /*"light", "dark", "light-2", "dark-2", "light-thick", "dark-thick", "light-thin", "dark-thin"*/
-      });
+    $('.news-list').mCustomScrollbar({
+      set_width:false, /*optional element width: boolean, pixels, percentage*/
+      set_height:false, /*optional element height: boolean, pixels, percentage*/
+      horizontalScroll: false, /*scroll horizontally: boolean*/
+      scrollInertia:950, /*scrolling inertia: integer (milliseconds)*/
+      mouseWheel:true, /*mousewheel support: boolean*/
+      mouseWheelPixels:"auto", /*mousewheel pixels amount: integer, "auto"*/
+      autoDraggerLength:true, /*auto-adjust scrollbar dragger length: boolean*/
+      autoHideScrollbar:true, /*auto-hide scrollbar when idle*/
+      scrollButtons:{ /*scroll buttons*/
+        enable:false, /*scroll buttons support: boolean*/
+        scrollType:"continuous", /*scroll buttons scrolling type: "continuous", "pixels"*/
+        scrollSpeed:"auto", /*scroll buttons continuous scrolling speed: integer, "auto"*/
+        scrollAmount:40 /*scroll buttons pixels scroll amount: integer (pixels)*/
+      },
+      advanced:{
+        updateOnBrowserResize:true, /*update scrollbars on browser resize (for layouts based on percentages): boolean*/
+        updateOnContentResize:false, /*auto-update scrollbars on content resize (for dynamic content): boolean*/
+        autoExpandHorizontalScroll:false, /*auto-expand width for horizontal scrolling: boolean*/
+        autoScrollOnFocus:true, /*auto-scroll on focused elements: boolean*/
+        normalizeMouseWheelDelta:false /*normalize mouse-wheel delta (-1/1)*/
+      },
+      contentTouchScroll:true, /*scrolling by touch-swipe content: boolean*/
+      theme:"dark" /*"light", "dark", "light-2", "dark-2", "light-thick", "dark-thick", "light-thin", "dark-thin"*/
+    });
+    $('.normal-link').on('click', function(e){
+      e.preventDefault();
+      top.location = $(this).attr('href');
+    });
   });
 </script>
 </head>
@@ -62,8 +66,8 @@ DD_belatedPNG.fix('#logo img');
         <ul class="news-list">
           <?php foreach ($items as $item) { ?>
             <li>
-            <a href="<?php echo $item['href']; ?>" class="<?php echo (!$item['popup']) ? 'no-popup' : ''; ?>"><?php echo $item['title']; ?></a>
-          </li>
+              <a href="<?php echo $item['href']; ?>" class="<?php echo (!$item['popup']) ? 'normal-link' : 'link-popup iframe'; ?>"><?php echo $item['title']; ?></a>
+            </li>  
           <?php } ?>
           <!--<li>
             <a href="#">Aabc der ddf ddfd df d d ddfd  </a>
