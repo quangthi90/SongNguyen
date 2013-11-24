@@ -119,7 +119,7 @@ $('input[name=\'path\']').autocomplete({
 			dataType: 'json',
 			success: function(json) {
 				json.unshift({
-          'faq_category_id':  0,
+          'news_category_id':  0,
           'name':  '',
           'parent_name': 'root',
         });
@@ -127,7 +127,7 @@ $('input[name=\'path\']').autocomplete({
         response($.map(json, function(item) {
           return {
             label: (item.name) ? item.parent_name + ' > ' + item.name : item.parent_name,
-            value: item.faq_category_id,
+            value: item.news_category_id,
             name: item.name 
           }
         }));
