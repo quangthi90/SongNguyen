@@ -49,6 +49,7 @@ class ControllerNewsNews extends Controller {
 				$this->data['base'] = $server;
 
 				$this->data['text_go_back'] = $this->language->get('text_go_back');
+				$this->data['text_older_post'] = $this->language->get('text_older_post');
 				
 				$this->load->model('tool/image');
 				if (file_exists(DIR_IMAGE . $news['primary_image'])) {
