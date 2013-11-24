@@ -6,7 +6,7 @@
 	<?php if (!empty($category['childs'])) { ?>
 	<ul class="content-list">
 	<?php foreach ($category['childs'] as $child) { ?>
-		<li class="box-item box3">
+		<li class="box-item <?php echo ($parent_id == 0) ? 'box3' : 'box5'; ?>">
 			<a class="item-avatar <?php echo (!empty($child['class'])) ? $child['class'] : ''; ?>" href="<?php echo $child['href']; ?>">
 				<img class="item-avatar-img on" src="<?php echo $child['primary_image']; ?>" alt="<?php echo $child['name']; ?>">
 				<img class="item-avatar-img off" src="<?php echo $child['second_image']; ?>" alt="<?php echo $child['name']; ?>">

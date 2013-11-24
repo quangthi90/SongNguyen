@@ -16,6 +16,8 @@ class ControllerNewsNewsCategory extends Controller {
 				// redirect to error page
 				exit();
 			}else {
+				$this->data['parent_id'] = $category_data['parent_id'];
+
 				$this->document->setTitle($this->config->get('config_title'));
 				$this->document->setDescription($this->config->get('config_meta_description'));
 
@@ -142,20 +144,29 @@ class ControllerNewsNewsCategory extends Controller {
 						'filter_status' => 1,
 						));
 					$childs = array();
+
+					if ($category_data['parent_id'] == 0) {
+						$img_width = 275;
+						$img_height = 187;
+					}else {
+						$img_width = 190;
+						$img_height = 129;
+					}
+
 					if (!empty($category_child)) {
 						foreach ($category_child as $child) {
 							$child = $this->model_news_news_category->getNewsCategory($child['news_category_id']);
 							if (!empty($child)) {
 								if (file_exists(DIR_IMAGE . $child['primary_image'])) {
-									$primary_image = $this->model_tool_image->resize($child['primary_image'], 275, 187);
+									$primary_image = $this->model_tool_image->resize($child['primary_image'], $img_width, $img_height);
 								}else {
-									$primary_image = $this->model_tool_image->resize('no_image.jpg', 275, 187);
+									$primary_image = $this->model_tool_image->resize('no_image.jpg', $img_width, $img_height);
 								}
 
 								if (file_exists(DIR_IMAGE . $child['second_image'])) {
-									$second_image = $this->model_tool_image->resize($child['second_image'], 275, 187);
+									$second_image = $this->model_tool_image->resize($child['second_image'], $img_width, $img_height);
 								}else {
-									$second_image = $this->model_tool_image->resize('no_image.jpg', 275, 187);
+									$second_image = $this->model_tool_image->resize('no_image.jpg', $img_width, $img_height);
 								}
 
 								$childs[] = array(
@@ -179,15 +190,15 @@ class ControllerNewsNewsCategory extends Controller {
 					if (!empty($newses)) {
 						foreach ($newses as $news) {
 							if (file_exists(DIR_IMAGE . $news['primary_image'])) {
-								$primary_image = $this->model_tool_image->resize($news['primary_image'], 275, 187);
+								$primary_image = $this->model_tool_image->resize($news['primary_image'], $img_width, $img_height);
 							}else {
-								$primary_image = $this->model_tool_image->resize('no_image.jpg', 275, 187);
+								$primary_image = $this->model_tool_image->resize('no_image.jpg', $img_width, $img_height);
 							}
 
 							if (file_exists(DIR_IMAGE . $news['second_image'])) {
-								$second_image = $this->model_tool_image->resize($news['second_image'], 275, 187);
+								$second_image = $this->model_tool_image->resize($news['second_image'], $img_width, $img_height);
 							}else {
-								$second_image = $this->model_tool_image->resize('no_image.jpg', 275, 187);
+								$second_image = $this->model_tool_image->resize('no_image.jpg', $img_width, $img_height);
 							}
 
 							$childs[] = array(
