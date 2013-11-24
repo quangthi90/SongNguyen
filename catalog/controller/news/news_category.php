@@ -84,6 +84,7 @@ class ControllerNewsNewsCategory extends Controller {
 				      		$this->data['items'][] = array(
 								'href' => $this->url->link('news/news', 'news_id=' . $result['news_id']),
 								'title'       => $result['title'] . ' (' . $date_added->format($this->language->get('date_format_short')) . ')',
+								'popup' => 1,
 							);
 				    	}
 			    	}else {

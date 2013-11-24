@@ -26,6 +26,10 @@ class ModelNewsNews extends Model {
 		if (isset($data['filter_status']) && !is_null($data['filter_status'])) {
 			$sql .= " AND n.status = '" . (int)$data['filter_status'] . "'";
 		}
+
+		if (isset($data['filter_older']) && !is_null($data['filter_older'])) {
+			$sql .= " AND n.date_added < '" . $this->db->escape($data['filter_older']) . "'";
+		}
 		
 		$sql .= " GROUP BY n.id";
 					

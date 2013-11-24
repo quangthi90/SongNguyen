@@ -67,6 +67,12 @@ class ControllerNewsNews extends Controller {
 					'href' => $this->url->link('news/news', 'news_id=' . $news['news_id']),
 					);
 
+				$result = $this->model_news_news->getNewses(array(
+					'start' => 0,
+					'limit' => 5,
+					'filter_older' => $news['date_added'],
+					));
+
 				if ($news['format']) {
 					if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/news/news_detail0.tpl')) {
 						$this->template = $this->config->get('config_template') . '/template/news/news_detail0.tpl';
