@@ -752,3 +752,39 @@ Jcarousel
     color: #fff;
     float: right;
 }
+.news-detail-content {
+	margin-bottom: 15px;
+}
+.additional-news-info {
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+}
+.additional-news-info  h4{
+    font-size: 18px;	
+    padding-bottom: 5px;
+}
+.additional-news-info .list-old-news {
+    padding-left: 30px;	
+    list-style: square;
+}
+ .list-old-news li {
+    padding: 3px 0px 3px 0px;
+ }
+ .list-old-news li a {
+    font-size: 16px;
+    color: #424242;
+}
+.list-old-news li a:hover {
+	color: #000;
+	text-decoration: underline;
+}
+.additional-news-info .btn-container {
+    padding: 15px 0px;	
+}
+.additional-news-info .btn-container a {
+    font-size: 15px;	
+    font-weight: bold;
+    display: inline-block;
+    background: #E4E4E4;
+    padding: 5px 15px;
+}

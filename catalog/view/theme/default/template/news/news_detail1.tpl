@@ -45,6 +45,10 @@ DD_belatedPNG.fix('#logo img');
         contentTouchScroll:true, /*scrolling by touch-swipe content: boolean*/
         theme:"dark" /*"light", "dark", "light-2", "dark-2", "light-thick", "dark-thick", "light-thin", "dark-thin"*/
       });
+      $('.normal-link').on('click', function(e){
+        e.preventDefault();
+        top.location = $(this).attr('href');
+      });
   });
 </script>
 </head>
@@ -62,7 +66,33 @@ DD_belatedPNG.fix('#logo img');
       </div>
       <div id="content-container">
         <div class="news-content">
-          <?php echo $news['content']; ?>         
+          <div class="news-detail-content">
+            <?php echo $news['content']; ?>  
+          </div>
+          <div class="additional-news-info">
+            <h4>Bài cũ hơn</h4>
+            <ul class="list-old-news">
+              <li>
+                <a href="#">Title of news </a>
+              </li>
+              <li>
+                <a href="#">Title of news </a>
+              </li>
+              <li>
+                <a href="#">Title of news </a>
+              </li>
+              <li>
+                <a href="#">Title of news </a>
+              </li>
+              <li>
+                <a href="#">Title of news </a>
+              </li>
+            </ul>
+            <p class="btn-container">
+              <a href="#" class="button link-popup iframe">Go Back</a>
+              <a href="#" class="button normal-link">Go Back</a>
+            </p>
+          </div>
         </div>
       </div>
     </div>
