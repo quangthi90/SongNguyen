@@ -60,35 +60,23 @@ class ControllerNewsNewsCategory extends Controller {
 						'filter_parent_id'=> $category_data['news_category_id'],
 					);
 
-					$total = $this->model_news_news_category->getTotalNewsCategories($data);
 						
-			    	$results = $this->model_news_news_category->getNewsCategories($data);
+			    	$total = $this->model_news_news->getTotalNewses(array(
+						'filter_status'	  => 1,
+						'filter_news_category_id'=> $category_data['news_category_id'],
+					));
+			    	$results = $this->model_news_news->getNewses(array(
+						'sort'            => 'n.date_added',
+						'order'           => 'DESC',
+						'start'           => ($page - 1) * $this->limit,
+						'limit'           => $this->limit,
+						'filter_status'	  => 1,
+						'filter_news_category_id'=> $category_data['news_category_id'],
+						'popup' => 1,
+					));
 
 					$this->data['items'] =array();	
-			    	if (!$results) {
-						foreach ($results as $result) {
-						$date_added = new DateTime($result['date_added']);
-				      		$this->data['items'][] = array(
-								'href' => $this->url->link('news/news_category', 'news_category_id=' . $result['news_category_id']),
-								'title'       => $result['name'] . ' (' . $date_added->format($this->language->get('date_format_short')) . ')',
-								'popup' => $result['have_popup'],
-							);
-				    	}
-			    	}else {
-			    		$total = $this->model_news_news->getTotalNewses(array(
-							'filter_status'	  => 1,
-							'filter_news_category_id'=> $category_data['news_category_id'],
-						));
-			    		$results = $this->model_news_news->getNewses(array(
-							'sort'            => 'n.date_added',
-							'order'           => 'DESC',
-							'start'           => ($page - 1) * $this->limit,
-							'limit'           => $this->limit,
-							'filter_status'	  => 1,
-							'filter_news_category_id'=> $category_data['news_category_id'],
-							'popup' => 1,
-						));
-
+			    	if ($results) {
 						foreach ($results as $result) {
 							$date_added = new DateTime($result['date_added']);
 				      		$this->data['items'][] = array(
@@ -96,7 +84,21 @@ class ControllerNewsNewsCategory extends Controller {
 								'title'       => $result['title'] . ' (' . $date_added->format($this->language->get('date_format_short')) . ')',
 							);
 				    	}
+			    	}else {
+			    		$total = $this->model_news_news_category->getTotalNewsCategories($data);
+						
+			    		$results = $this->model_news_news_category->getNewsCategories($data);
+
+			    		foreach ($results as $result) {
+						$date_added = new DateTime($result['date_added']);
+				      		$this->data['items'][] = array(
+								'href' => $this->url->link('news/news_category', 'news_category_id=' . $result['news_category_id']),
+								'title'       => $result['name'] . ' (' . $date_added->format($this->language->get('date_format_short')) . ')',
+								'popup' => $result['have_popup'],
+							);
+				    	}
 			    	}
+
 
 			    	$num_links = 4;
 			    	$pagination_url = $this->url->link('news/news_category', 'page={page}' . '&news_category_id=' . $category_data['news_category_id']);
