@@ -65,27 +65,16 @@ DD_belatedPNG.fix('#logo img');
             <?php echo $news['content']; ?>  
           </div>      
           <div class="additional-news-info">
-            <h4>Bài cũ hơn</h4>
+            <h4><?php echo $text_older_post; ?></h4>
             <ul class="list-old-news">
+              <?php foreach ($older as $news) { ?>
               <li>
-                <a href="#">Title of news </a>
+                <a href="<?php echo $news['href']; ?>"><?php echo $news['title'] . '(' . $news['date_added'] . ')'; ?></a>
               </li>
-              <li>
-                <a href="#">Title of news </a>
-              </li>
-              <li>
-                <a href="#">Title of news </a>
-              </li>
-              <li>
-                <a href="#">Title of news </a>
-              </li>
-              <li>
-                <a href="#">Title of news </a>
-              </li>
+              <?php } ?>
             </ul>
             <p class="btn-container">
-              <a href="#" class="button link-popup iframe">Go Back</a>
-              <a href="#" class="button normal-link">Go Back</a>
+              <a href="<?php echo $back_link['href']; ?>" class="button <?php echo ($back_link['popup']) ? 'link-popup iframe' : 'normal-link'; ?>"><?php echo $text_go_back; ?></a>
             </p>
           </div>
         </div>

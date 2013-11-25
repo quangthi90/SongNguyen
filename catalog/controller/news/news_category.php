@@ -51,7 +51,8 @@ class ControllerNewsNewsCategory extends Controller {
 						$page = $this->request->get['page'];
 					}
 
-					$this->session->data['back_link'] = $this->url->link('news/news_category', 'news_category_id=' . $this->request->get['news_category_id'] . '&page=' . $page);
+					$this->session->data['back_link']['href'] = $this->url->link('news/news_category', 'news_category_id=' . $this->request->get['news_category_id'] . '&page=' . $page);
+					$this->session->data['back_link']['popup'] = $category_data['have_popup'];
 
 					$data = array(
 						'sort'            => 'nc.date_added',
@@ -143,6 +144,9 @@ class ControllerNewsNewsCategory extends Controller {
 						$this->template = 'default/template/news/news_category_popup.tpl';
 					}
 				}else {
+					$this->session->data['back_link']['href'] = $this->url->link('news/news_category', 'news_category_id=' . $this->request->get['news_category_id']);
+					$this->session->data['back_link']['popup'] = $category_data['have_popup'];
+					
 					$category_child = $this->model_news_news_category->getNewsCategories(array(
 						'start' => 0,
 						'limit' => 999,

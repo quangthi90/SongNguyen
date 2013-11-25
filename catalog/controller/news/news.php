@@ -42,8 +42,12 @@ class ControllerNewsNews extends Controller {
 				$this->data['direction'] = $this->language->get('direction');
 				$this->data['google_analytics'] = html_entity_decode($this->config->get('config_google_analytics'), ENT_QUOTES, 'UTF-8');
 				if (isset($this->session->data['back_link'])) {
-					$this->data['back_link'] = $this->session->data['back_link'];
+					$this->data['back_link']['href'] = $this->session->data['back_link']['href'];
+					$this->data['back_link']['popup'] = $this->session->data['back_link']['popup'];
 					unset($this->session->data['back_link']);
+				}else {
+					$this->data['back_link']['href'] = $this->url->link('common/home');
+					$this->data['back_link']['popup'] = 0;
 				}
 
 				$this->data['base'] = $server;
