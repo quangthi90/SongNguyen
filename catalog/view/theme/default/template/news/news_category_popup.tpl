@@ -66,7 +66,7 @@ DD_belatedPNG.fix('#logo img');
         <ul class="news-list">
           <?php foreach ($items as $item) { ?>
             <li>
-              <a href="<?php echo $item['href']; ?>" class="<?php echo (!$item['popup']) ? 'normal-link' : 'link-popup iframe'; ?>"><?php echo $item['title']; ?></a>
+              <a href="<?php echo $item['href']; ?>" class="<?php echo ($item['popup']) ? 'link-popup iframe' : 'normal-link'; ?>"><?php echo $item['title']; ?></a>
             </li>  
           <?php } ?>
           <!--<li>
