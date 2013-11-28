@@ -106,7 +106,7 @@ class ControllerCommonHeader extends Controller {
 			}else {
 				foreach ($child_categories as $key => $child_category) {
 					$childs[] = array(
-						'href' => $this->url->link('news/news_category', 'news_category_id=' . $child_category['news_category_id']),
+						'href' => (!empty($child_category['link'])) ? $child_category['link'] : $this->url->link('news/news_category', 'news_category_id=' . $child_category['news_category_id']),
 						'label' => $child_category['name'],
 						'class' => ($child_category['have_popup'])? 'link-popup iframe' : '',
 						);
@@ -114,7 +114,7 @@ class ControllerCommonHeader extends Controller {
 			}
 			
 			$this->data['menu'][] = array(
-				'href' => $this->url->link('news/news_category', 'news_category_id=' . $news_category['news_category_id']),
+				'href' => (!empty($news_category['link'])) ? $news_category['link'] :$this->url->link('news/news_category', 'news_category_id=' . $news_category['news_category_id']),
 				'label' => $news_category['name'],
 				'class' => '',
 				'childs' => $childs,

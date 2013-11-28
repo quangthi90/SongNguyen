@@ -20,6 +20,7 @@ $_['entry_name']            = 'Tên Danh Mục Tin Tức:';
 $_['entry_have_popup']            = 'Có popup:';
 $_['entry_description']            = 'Mô Tả:';
 $_['entry_keyword'] 			= 'Từ Khóa:';
+$_['entry_link']            = 'Liên kết:';
 $_['entry_primary_image'] 			= 'Hình Ảnh Chính:';
 $_['entry_second_image'] 			= 'Hình Ảnh Phụ:';
 $_['entry_sort_order']            = 'Thứ Tự Sắp Xếp:';

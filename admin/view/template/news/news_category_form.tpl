@@ -64,6 +64,10 @@
               <td><input type="text" name="keyword" value="<?php echo $keyword; ?>"/></td>
             </tr>
             <tr>
+              <td><?php echo $entry_link; ?></td>
+              <td><input type="text" name="link" value="<?php echo $link; ?>"/></td>
+            </tr>
+            <tr>
               <td><?php echo $entry_sort_order; ?></td>
               <td><input type="text" name="sort_order" value="<?php echo $sort_order; ?>" size="1" /></td>
             </tr>

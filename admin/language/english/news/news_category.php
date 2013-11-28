@@ -18,6 +18,7 @@ $_['column_parent']          = 'Parent Category';
 // entry
 $_['entry_name']            = 'News Category Name:';
 $_['entry_have_popup']            = 'Have popup:';
+$_['entry_link']            = 'Link:';
 $_['entry_description']            = 'Description:';
 $_['entry_keyword'] 			= 'Keyword:';
 $_['entry_primary_image'] 			= 'Primary Image:';
