@@ -22,6 +22,22 @@ class ControllerCommonFooter extends Controller {
 		$this->data['text_send_email'] = $this->language->get('text_send_email');
 		$this->data['text_support_onl'] = $this->language->get('text_support_onl');
 
+		//Contact information:
+		$this->data['text_company_name'] = $this->language->get('text_company_name');
+		$this->data['text_company_main_location'] = $this->language->get('text_company_main_location');
+		$this->data['text_company_main_address'] = $this->language->get('text_company_main_address');
+		$this->data['text_company_main_fone'] = $this->language->get('text_company_main_fone');
+		$this->data['text_company_main_fax'] = $this->language->get('text_company_main_fax');
+		$this->data['text_company_main_email'] = $this->language->get('text_company_main_email');
+		$this->data['text_company_main_website'] = $this->language->get('text_company_main_website');
+		$this->data['text_company_behalf_location'] = $this->language->get('text_company_behalf_location');
+		$this->data['text_company_behalf_address'] = $this->language->get('text_company_behalf_address');
+		$this->data['text_company_behalf_fone'] = $this->language->get('text_company_behalf_fone');
+		$this->data['text_company_behalf_fax'] = $this->language->get('text_company_behalf_fax');
+		$this->data['text_company_behalf_email'] = $this->language->get('text_company_behalf_email');
+		$this->data['text_company_behalf_website'] = $this->language->get('text_company_behalf_website');
+		$this->data['text_company_behalf_fanpage'] = $this->language->get('text_company_behalf_fanpage');
+
 		$this->data['lang_url'] = $this->url->link('module/language');
 		$this->data['powered'] = sprintf($this->language->get('text_powered'), $this->config->get('config_name'), date('Y', time()));
 		$this->data['subcriber'] = $this->url->link('subcriber/subcriber');

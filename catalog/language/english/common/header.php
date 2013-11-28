@@ -11,10 +11,10 @@ $_['text_checkout']       = 'Checkout';
 $_['text_program'] = 'Programs';
 $_['text_event'] = 'News & Event';
 $_['text_faq'] = 'FAQs';
-$_['text_contact'] = 'Contact';
+$_['text_contact'] = 'Contact Us';
 $_['text_contact_inf'] = 'Contact Information';
-$_['text_send_email'] = 'Send Email to Song Nguyen';
-$_['text_support_onl'] = 'Support Online';
+$_['text_send_email'] = 'Email Us';
+$_['text_support_onl'] = 'Online Support';
 
 //Img
 $_['email_form_img'] 		= 'banner-formemail-en.jpg';

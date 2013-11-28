@@ -133,21 +133,54 @@
     <h2><?php echo $text_contact_inf; ?></h2>
     <div class="contentbox">
       <div class="contact-info">
-        <p class="logo">
-          <a href="<?php echo $base; ?>">
-            <img src="<?php echo $urlImg; ?>logo.png" width="266" height="87" alt="Logo Song Nguyen Education Services">  
-          </a>
-        </p>
-        <p class="address">  
-          Địa chỉ: R4-92 Hưng Gia 2, Phú Mỹ Hưng, Quận 7, Hồ Chí Minh, Việt Nam<br>
-          Điện thoại: +84 8 5410 5770 / 5410 57771<br>
-          Fax: +84 8 5410 5772<br>
-          Email: contact@sn.edu.vn<br>
-          Website: www.sn.edu.vn
-        </p>
+        <h2 class="company-name">
+          <?php echo $text_company_name; ?>
+        </h2>
+        <div class="contact-item">
+          <h3><?php echo $text_company_main_location; ?></h3>
+          <div class="group-contact-info">
+            <?php echo $text_company_main_address; ?>
+          </div>
+          <div class="group-contact-info">
+            <?php echo $text_company_main_fone; ?><br>
+            <?php echo $text_company_main_fax; ?>
+          </div>
+          <div class="group-contact-info">
+            <?php echo $text_company_main_email; ?><br>
+            <?php echo $text_company_main_website; ?>
+          </div>
+        </div>
+        <div class="contact-item">
+          <h3><?php echo $text_company_behalf_location; ?></h3>
+          <div class="group-contact-info">
+            <?php echo $text_company_behalf_address; ?>
+          </div>
+          <div class="group-contact-info">
+            <?php echo $text_company_behalf_fone; ?> <br>
+            <?php echo $text_company_behalf_fax; ?>
+          </div>
+          <div class="group-contact-info">
+            <?php echo $text_company_behalf_email; ?> <br>
+            <?php echo $text_company_behalf_website; ?>
+          </div>
+          <div class="group-contact-info">
+            <?php echo $text_company_behalf_fanpage; ?>
+          </div>          
+        </div>        
       </div>
-      <div class="contact-map">
-        <img src="<?php echo $urlImg; ?>map.jpg" alt="Bản Đồ Đến Song Nguyen">
+      <div class="contact-map">        
+        <a class="link-popup map-item" href="<?php echo $urlImg; ?>contact/map-01.jpg">
+          <img src="<?php echo $urlImg; ?>contact/map-01.jpg">
+        </a>
+        <a class="link-popup map-item" href="<?php echo $urlImg; ?>contact/map-02.jpg">
+          <img src="<?php echo $urlImg; ?>contact/map-02.jpg">
+        </a>
+        <a class="link-popup map-item" href="<?php echo $urlImg; ?>contact/map-03.jpg">
+          <img src="<?php echo $urlImg; ?>contact/map-03.jpg">
+        </a>
+        <a class="link-popup map-item" href="<?php echo $urlImg; ?>contact/map-04.jpg">
+          <img src="<?php echo $urlImg; ?>contact/map-04.jpg">
+        </a>
       </div>
     </div>
   </div>
