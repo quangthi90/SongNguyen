@@ -11,17 +11,19 @@ class ControllerCommonHome extends Controller {
 				$this->load->model('design/banner');
 				$this->load->model('tool/image');
 				$banner_data = $this->model_design_banner->getBanner($popup_data['banner_id']);
+				$banners = array();
 				if (!empty($banner_data)) {
 					foreach ($banner_data as $banner) {
-						if (file_exists($banner['image'])) {
+						if (file_exists(DIR_IMAGE . $banner['image'])) {
 							$banner_image = $this->model_tool_image->resize($banner['image'], 850, 338);
 						}else {
 							$banner_image = $this->model_tool_image->resize('no_image.jpg', 850, 338);
 						}
 
-						$banners = array(
+						$banners[] = array(
 							'title' => $banner['title'],
 							'image' => $banner_image,
+							'href' => $banner['link'],
 							);
 					}
 				}

@@ -27,7 +27,11 @@
 			<div class="slider-wrapper theme-default">
 	            <div id="slider" class="nivoSlider">
 	            	<?php foreach ($category['popup']['banners'] as $banner) { ?>
-	                	<img src="<?php echo $banner['image']; ?>" title="slideshow image 1" alt="<?php echo $banner['title']; ?>">
+	            		<?php if (!empty($banner['href'])) { ?>
+	                	<a href="<?php echo $banner['href']; ?>"><img src="<?php echo $banner['image']; ?>" title="slideshow image 1" alt="<?php echo $banner['title']; ?>" /></a>
+	            		<?php }else { ?>
+	                	<img src="<?php echo $banner['image']; ?>" title="slideshow image 1" alt="<?php echo $banner['title']; ?>" />
+	            		<?php } ?>
 	            	<?php } ?>
 	            </div>
         	</div>
