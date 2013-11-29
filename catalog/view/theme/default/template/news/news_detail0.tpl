@@ -49,6 +49,13 @@ DD_belatedPNG.fix('#logo img');
         e.preventDefault();
         top.location = $(this).attr('href');
       });
+      $('.news-detail-content img').each(function(){
+        var linkPopup = $('<a></a>').attr('href', $(this).attr('src'));
+        linkPopup.colorbox({
+          height:"100%"
+        });
+        $(this).wrap(linkPopup);
+      });
   });
 </script>
 </head>

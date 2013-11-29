@@ -4,8 +4,10 @@
 <meta charset="UTF-8" />
 <base href="<?php echo $base; ?>" />
 <link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/orginal.css" />
+<link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/colorbox/colorbox.css" />
 <link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/mcustomscrollbar.css" />
 <script type="text/javascript" src="catalog/view/javascript/jquery/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="catalog/view/javascript/jquery/colorbox/jquery.colorbox-min.js"></script>
 <script type="text/javascript" src="catalog/view/javascript/jquery/jquery.mcustomscrollbar.min.js"></script>
 <!--[if IE 7]> 
 <link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/ie7.css" />
@@ -48,6 +50,13 @@ DD_belatedPNG.fix('#logo img');
       $('.normal-link').on('click', function(e){
         e.preventDefault();
         top.location = $(this).attr('href');
+      });
+      $('.news-detail-content img').each(function(){
+        var linkPopup = $('<a></a>').attr('href', $(this).attr('src'));
+        linkPopup.colorbox({
+          height:"100%"
+        });
+        $(this).wrap(linkPopup);
       });
   });
 </script>

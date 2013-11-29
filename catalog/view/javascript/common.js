@@ -68,8 +68,8 @@ $(document).ready(function() {
 	});
 	$('.link-popup.iframe').colorbox({
 		iframe:true,
-		width:"85%", 
-		height:"90%"
+		width:"90%", 
+		height:"95%"
 	});
 	$('.link-popup.map-item').colorbox({
 		width:"95%", 
@@ -114,7 +114,7 @@ $(document).ready(function() {
 				}
 			);
 		}else {
-			introPopup.height(550).css({'overflow-y':'auto', 'margin-top':'20px'});
+			introPopup.height(550).css({'overflow-y':'auto', 'margin-top':'10px'});
 			$.colorbox({
 					width:"900px",
 					height:"630px",
