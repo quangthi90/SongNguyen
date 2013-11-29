@@ -92,9 +92,7 @@ $(document).ready(function() {
 			wrap: "circular"
 	    });
 	}
-
-	//Slider:
-	$('#slider').nivoSlider(); 
+	
 	//Intro popup:
 	var introPopup = $('.popup-intro').first();
 	if(introPopup.length > 0) {
@@ -110,6 +108,19 @@ $(document).ready(function() {
 					},
 					onComplete: function(){
 						$('#cboxLoadedContent .popup-intro').makeCustomScroll(false);
+					}
+				}
+			);
+		}else if(hrefTo == '#popup-slide-image') {
+			//Slider:
+			$('#slider').nivoSlider();
+			$.colorbox({
+					width:"900px",
+					height:"520px",
+					inline:true, 
+					href: hrefTo,
+					onClosed: function() {
+						$('.popup-intro').remove();
 					}
 				}
 			);
