@@ -16,9 +16,4 @@ $_['text_contact_inf'] = 'Contact Information';
 $_['text_send_email'] = 'Email Us';
 $_['text_support_onl'] = 'Online Support';
 
-//Img
-$_['email_form_img'] 		= 'banner-formemail-en.jpg';
-$_['contact_info_img'] 		= 'banner-thongtinlienhe-en.jpg';
-$_['online_support_img'] 	= 'banner-hotrotructuyen-en.jpg';
-
 ?>

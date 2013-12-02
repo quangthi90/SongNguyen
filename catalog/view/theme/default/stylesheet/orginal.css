@@ -88,7 +88,7 @@ a:hover{
 	width:100%;
 	border-bottom: 2px solid #021D63;
 	padding: 1px 0px;
-	margin: 120px 0px 20px 0px;
+	margin: 140px 0px 20px 0px;
 }
 #menu > ul{
 	
@@ -236,7 +236,7 @@ a:hover{
 	margin-bottom: 20px;
 }
 #body-content .pagelocation.margin-box5 {
-	margin-bottom: 52px;
+	margin-bottom: 40px;
 }
 .contentbox{
 	overflow-x:hidden;

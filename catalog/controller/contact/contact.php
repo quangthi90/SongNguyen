@@ -18,19 +18,22 @@ class ControllerContactContact extends Controller {
 
 		$this->data['items'][] = array(
 			'name' => $this->language->get('text_send_email'),
-			'image' => $server . 'image/data/contact/'.$this->language->get('email_form_img'),
+			'image1' => $server . 'image/data/contact/email-1.jpg',
+			'image2' => $server . 'image/data/contact/email-2.jpg',
 			'href' => $this->url->link('contact/contact/email'),
 			'class' => 'link-popup iframe',
 			);
 		$this->data['items'][] = array(
 			'name' => $this->language->get('text_contact_inf'),
-			'image' => $server . 'image/data/contact/'.$this->language->get('contact_info_img'),
+			'image1' => $server . 'image/data/contact/info-1.jpg',
+			'image2' => $server . 'image/data/contact/info-2.jpg',
 			'href' => '#contact-address',
 			'class' => 'link-popup contact',
 			);
 		$this->data['items'][] = array(
 			'name' => $this->language->get('text_support_onl'),
-			'image' => $server . 'image/data/contact/'.$this->language->get('online_support_img'),
+			'image1' => $server . 'image/data/contact/online-1.jpg',
+			'image2' => $server . 'image/data/contact/online-2.jpg',
 			'href' => '#contact-online-support',
 			'class' => 'link-popup inline',
 			);
