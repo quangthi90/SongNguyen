@@ -54,7 +54,12 @@ DD_belatedPNG.fix('#logo img');
       $('.news-detail-content img').each(function(){
         var linkPopup = $('<a></a>').attr('href', $(this).attr('src'));
         linkPopup.colorbox({
-          height:"100%"
+          height:"100%",
+          onComplete: function(){
+            $('#cboxLoadedContent').css('background-color', '#1A1A1A');
+            var marginTop = parseInt($('#cboxLoadedContent').find('img.cboxPhoto').css('margin-top'));
+            $('#cboxClose').css('top', (marginTop + 5) + 'px');
+          }
         });
         $(this).wrap(linkPopup);
       });
