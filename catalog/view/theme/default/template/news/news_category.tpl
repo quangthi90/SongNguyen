@@ -28,9 +28,9 @@
 	            <div id="slider" class="nivoSlider">
 	            	<?php foreach ($category['popup']['banners'] as $banner) { ?>
 	            		<?php if (!empty($banner['href'])) { ?>
-	                	<a href="<?php echo $banner['href']; ?>"><img src="<?php echo $banner['image']; ?>" title="slideshow image 1" alt="<?php echo $banner['title']; ?>" /></a>
+	                	<a href="<?php echo $banner['href']; ?>"><img src="<?php echo $banner['image']; ?>" title="<?php echo $banner['title']; ?>" alt="<?php echo $banner['title']; ?>" /></a>
 	            		<?php }else { ?>
-	                	<img src="<?php echo $banner['image']; ?>" title="slideshow image 1" alt="<?php echo $banner['title']; ?>" />
+	                	<img src="<?php echo $banner['image']; ?>" title="<?php echo $banner['title']; ?>" alt="<?php echo $banner['title']; ?>" />
 	            		<?php } ?>
 	            	<?php } ?>
 	            </div>
@@ -55,41 +55,4 @@
 	<?php } ?>
 </div>
 <?php } ?>
-<!--<div style="display: none;">	
-	<div id="popup-text" class="popup-container popup-intro">
-		<h2>Title of popup intro</h2>
-    	<div class="contentbox">  
-			<p>Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo </p>
-			<p>Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo </p>
-			<p>Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo </p>
-			<p>Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo </p>
-			<p>Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo Demo </p>
-		</div>
-	</div>
-	<div id="popup-slide-image" class="popup-container popup-intro">
-		<h2>Title of popup intro</h2>
-		<div class="contentbox"> 
-			<div class="slider-wrapper theme-default">
-	            <div id="slider" class="nivoSlider">
-	                <img src="<?php echo $introImgUrl; ?>/intro-dm-01.jpg" 
-	                	title="slideshow image 1" alt="slideshow image 1">
-	                <img src="<?php echo $introImgUrl; ?>/intro-dm-02.jpg" 
-	                	title="slideshow image 1" alt="slideshow image 2">
-	                <img src="<?php echo $introImgUrl; ?>/intro-dm-03.jpg" 
-	                	title="slideshow image 1" alt="slideshow image 3">
-	                <img src="<?php echo $introImgUrl; ?>/intro-dm-04.jpg" 
-	                	title="slideshow image 1" alt="slideshow image 5">
-	            </div>
-        	</div>
-		</div>
-	</div>
-	<div id="popup-video" class="popup-container popup-intro">
-		<h2>Title of popup intro</h2>
-		<div class="contentbox"> 
-			<iframe width="854" height="510" src="//www.youtube.com/embed/HLphrgQFHUQ" 
-				frameborder="0" allowfullscreen>
-			</iframe>
-		</div>
-	</div>
-</div>-->
 <?php echo $footer; ?>

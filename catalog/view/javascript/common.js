@@ -112,13 +112,15 @@ $(document).ready(function() {
 				}
 			);
 		}else if(hrefTo == '#popup-slide-image') {
-			//Slider:
-			$('#slider').nivoSlider();
+			//Slider:			
 			$.colorbox({
 					width:"900px",
 					height:"520px",
 					inline:true, 
 					href: hrefTo,
+					onLoad: function() {
+						$('#slider').nivoSlider();
+					},
 					onClosed: function() {
 						$('.popup-intro').remove();
 					}
