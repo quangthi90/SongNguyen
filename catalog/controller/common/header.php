@@ -79,7 +79,7 @@ class ControllerCommonHeader extends Controller {
 
 			$child_categories = $this->model_news_news_category->getNewsCategories(array(
 				'start' => 0,
-				'limit' => 5,
+				'limit' => 4,
 				'filter_parent_id' => $news_category['news_category_id'],
 				'status' => 1,
 				));
@@ -88,7 +88,7 @@ class ControllerCommonHeader extends Controller {
 			if (empty($child_categories)) {
 				$newses = $this->model_news_news->getNewses(array(
 					'start' => 0,
-					'limit' => 5,
+					'limit' => 4,
 					'sort'	=> 'n.sort_order',
 					'filter_news_category_id' => $news_category['news_category_id'],
 					'status' => 1,
