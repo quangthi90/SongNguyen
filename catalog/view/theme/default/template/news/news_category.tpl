@@ -1,6 +1,6 @@
 <?php echo $header; ?>
 <div id="body-content">
-	<div class="pagelocation">
+	<div class="pagelocation <?php echo ($parent_id == 0) ? 'margin-box3' : 'margin-box5'; ?>">
 		<?php echo $category['name']; ?>
 	</div>
 	<?php if (!empty($category['childs'])) { ?>

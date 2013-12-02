@@ -153,10 +153,11 @@ a:hover{
     background-color: #f0f0f0;
     width: 100%;
     padding: 10px 0px;
-    color: #616161;
+    color: #3C3C3C;
     text-align: center;
     text-transform: uppercase;
-    font-size: 15px;
+    font-size: 16px;
+    font-weight: bold;
     opacity: 0.8;
 }
 .box-item:hover .category-title  {
@@ -230,6 +231,12 @@ a:hover{
 	padding: 5px 0px 0px 20px;
 	background: transparent url(../image/icon-redbox.gif) 0 50% no-repeat;
 	margin-bottom: 8px;
+}
+#body-content .pagelocation.margin-box3 {
+	margin-bottom: 23px;
+}
+#body-content .pagelocation.margin-box5 {
+	margin-bottom: 52px;
 }
 .contentbox{
 	overflow-x:hidden;
@@ -410,7 +417,7 @@ a:hover{
 }
 #menulang .has-site-map li:hover span {
 	border-bottom: none;
-	color: #011446;
+	color: #0C0C0C;
 }
 
 /* Contact Page */
@@ -651,8 +658,9 @@ a:hover{
     font-weight: bold;
 	padding: 0px 5px;	
 }
-#news-page .paging a.active {
-	color: red;
+#news-page .paging a.active,
+#news-page .paging a:hover{
+	color: #585858;
 }
 #news-page .news-list {
     height: 92%;
