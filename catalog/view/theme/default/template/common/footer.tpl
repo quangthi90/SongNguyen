@@ -1,8 +1,44 @@
 <div style="display: none;">
   <div id="site-map" class="popup-container inline">
-    <h2>Sơ đồ Website</h2>
-    <div class="contentbox">                                       
+    <h2><?php echo $text_sitemap; ?></h2>
+    <div class="contentbox">  
+      <?php if (isset($sitemap['items'])) { ?>
       <ul>
+      <?php $i = 0; ?>
+      <?php $column = 4; ?>
+      <?php foreach ($sitemap['items'] as $key => $item) { ?> 
+        <?php $i++; ?>
+          <li>
+            <a href="<?php echo $item['href']; ?>"><?php echo $item['text']; ?></a>
+            <?php if (isset($item['items'])) { ?>  
+            <?php $i += count($item['items']); ?>  
+            <ul> 
+              <?php foreach ($item['items'] as $item) { ?> 
+              <li><a class="" href="<?php echo $item['href']; ?>"><?php echo $item['text']; ?></a>
+                <?php if (isset($item['items'])) { ?> 
+                <?php $i += count($item['items']); ?>  
+                <ul>    
+                <?php foreach ($item['items'] as $item) { ?> 
+                  <li><a class="" href="<?php echo $item['href']; ?>"><?php echo $item['text']; ?></a></li>
+                <?php } ?>
+                </ul>
+                <?php } ?>
+              </li>
+              <?php } ?>
+            </ul>
+            <?php } ?>
+          </li>  
+        <?php if ($i >= $count/$column) { ?>
+        <?php $count -= $i; ?>
+        <?php $i = 0; ?>
+        <?php $column--; ?>
+      </ul>
+      <ul>
+        <?php } ?>   
+      <?php } ?>  
+      </ul>
+      <?php } ?>                                   
+      <!--<ul>
         <li><a href="#">Giới Thiệu</a>
             <ul>
                 <li><a class="" href="#">Về Công Ty</a></li>
@@ -126,7 +162,7 @@
             <li><a class="" href="#">Hỗ Trợ Trực Tuyến</a></li>
           </ul>
         </li>
-      </ul>                
+      </ul>-->                
     </div>
   </div>
   <div id="contact-address" class="popup-container inline">
