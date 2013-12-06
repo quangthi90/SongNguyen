@@ -410,7 +410,7 @@ class ControllerSubcriberSubcriber extends Controller {
 		$mail_port 		= $this->config->get('config_smtp_port');
 		$mail_timeout 	= $this->config->get('config_smtp_timeout');	
 		$mail_from 		= $this->config->get('config_email');
-		$mail_sender 	= $this->language->get('config_name');
+		$mail_sender 	= $this->config->get('config_name');
 
 		$this->language->load('subcriber/subcriber');
 		

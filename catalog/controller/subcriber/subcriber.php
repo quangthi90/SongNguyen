@@ -25,6 +25,13 @@ class ControllerSubcriberSubcriber extends Controller {
 	}
 
 	private function send($email) {
+
+		if ($this->config->get('config_logo') && file_exists(DIR_IMAGE . $this->config->get('config_logo'))) {
+			$logo = HTTP_SERVER . 'image/' . $this->config->get('config_logo');
+		} else {
+			$logo = '';
+		}
+
 		$mail_protocol 	= $this->config->get('config_mail_protocol');
 		$mail_parameter = $this->config->get('config_mail_parameter');
 		$mail_hostname 	= $this->config->get('config_smtp_host');
@@ -33,20 +40,20 @@ class ControllerSubcriberSubcriber extends Controller {
 		$mail_port 		= $this->config->get('config_smtp_port');
 		$mail_timeout 	= $this->config->get('config_smtp_timeout');	
 		$mail_from 		= $this->config->get('config_email');
-		$mail_sender 	= $this->language->get('config_name');
+		$mail_sender 	= $this->config->get('config_name');
 
 		$subject = 'Thank you for your Subscription!';
-		$link_1 = '';
-		$link_2 = '';
-		$link_3 = '';
-		$link_4 = '';
-		$link_5 = '';
-		$img_1_300x95 = '';
-		$img_2_640x425 = '';
-		$img_3_22x22 = '';
-		$img_4_22x22 = '';
-		$img_5_22x22 = '';
-		$img_6_556x21 = '';
+		$link_1 = HTTP_SERVER;
+		$link_2 = HTTP_SERVER;
+		$link_3 = HTTP_SERVER;
+		$link_4 = HTTP_SERVER;
+		$link_5 = HTTP_SERVER;
+		$img_1_300x95 = $logo;
+		$img_2_640x425 = HTTP_SERVER . 'image/data/thanks-subscribe-1.jpg';
+		$img_3_22x22 = HTTP_SERVER . 'image/data/thanks-subscribe-logo-1.png';
+		$img_4_22x22 = HTTP_SERVER . 'image/data/thanks-subscribe-logo-2.jpg';
+		$img_5_22x22 = HTTP_SERVER . 'image/data/thanks-subscribe-logo-4.png';		
+		$img_6_556x21 = HTTP_SERVER . 'image/data/thanks-subscribe-shadow.png';
 		$message_1 = 'Thank you for subscribing to our e-newsletter service!';
 		$message_2 = 'Cám ơn quý khách!';
 		$message_3 = 'Xin chân thành cám ơn quý khách đã đăng ký tham gia cập nhật thông tin du học thường xuyên từ Công ty tư vấn du học Song Nguyên. Chúng tôi hy vọng sẽ mang đến cho quý khách các thông tin bổ ích về du học, cập nhật các lịch diễn ra hội thảo hoặc các chương trình học bổng. Chúng tôi rất mong quý khách chia sẻ với bạn bè và người thân của mình về dịch vụ của chúng tôi. Xin cảm ơn!<br/><br/>We rely on word of mouth referrals for much of our business. If you enjoyed your experience with us, please tell your friends by sharing this email on your social networks or forwarding to their email address. We appreciate your support!';
@@ -69,9 +76,9 @@ class ControllerSubcriberSubcriber extends Controller {
 		$message .= '          </a>' . "\n";
 		$message .= '        </div>' . "\n";
 		$message .= '        <div style="width:640px;margin-top:28px;background:#cd0216;">' . "\n";
-		$message .= '          <i style="color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:14pt;line-height:44px;">' . $message_1 . '</i>' . "\n";
+		$message .= '          <i style="color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:14pt;line-height:44px;margin-left:20px;">' . $message_1 . '</i>' . "\n";
 		$message .= '        </div>' . "\n";
-		$message .= '        <div style="width:640px;margin-top:8px;">' . "\n";
+		$message .= '        <div style="width:640px;margin-top:8px;margin-bottom:-3px;">' . "\n";
 		$message .= '          <img src="' . $img_2_640x425 .'" width="640" height="425"/>' . "\n";
 		$message .= '        </div>' . "\n";
 		$message .= '      </div>' . "\n";
@@ -85,7 +92,7 @@ class ControllerSubcriberSubcriber extends Controller {
 		$message .= '          </div>' . "\n";
 		$message .= '        </div>' . "\n";
 		$message .= '        <div style="width:638px;padding:8px 0 28px 0;">' . "\n";
-		$message .= '        	<a href="' . $link_2 . '" style="width:138px;line-height:38px;margin-left:250px;background-color:#021d64;font-style:italic;color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-weight:bold;text-decoration:none;font-size:12pt;">' . $message_4 . '</a>' . "\n";
+		$message .= '        	<a href="' . $link_2 . '" style="padding:10px 39px 9px 40px;font-style:italic;color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-weight:bold;text-decoration:none;font-size:12pt;">' . $message_4 . '</a>' . "\n";
 		$message .= '        </div>' . "\n";
 		$message .= '        <div style="width:638px;border-top:solid 5px #cd0216;padding:18px 0px 14px 0px;text-align:center;">' . "\n";
 		$message .= '          <b style="color: #625467;font-family: Arial,Helvetica,sans-serif;font-size: 8pt;"><i>' . $message_5 . '</i></b><br/><br/>' . "\n";
