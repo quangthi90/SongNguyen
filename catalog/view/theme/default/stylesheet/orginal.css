@@ -228,6 +228,7 @@ a:hover{
 #body-content .pagelocation{
 	font-weight: bold;
 	font-size: 16px;
+	text-transform: uppercase;
 	padding: 5px 0px 0px 20px;
 	background: transparent url(../image/icon-redbox.gif) 0 50% no-repeat;
 	margin-bottom: 8px;
