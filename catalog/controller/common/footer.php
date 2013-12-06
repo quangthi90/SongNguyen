@@ -121,7 +121,7 @@ class ControllerCommonFooter extends Controller {
 		$result = array();
 		if ($categories) {
 			foreach ($categories as $category) {
-				if ($current_lv < $max_lv) {
+				if ($current_lv <= $max_lv) {
 					$current_lv++;
 					$childs = $this->getSitemap($category['news_category_id'], $current_lv, $max_lv);
 				
