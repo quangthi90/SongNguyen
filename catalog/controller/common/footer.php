@@ -63,7 +63,6 @@ class ControllerCommonFooter extends Controller {
 
 		$this->data['languages'] = $this->model_localisation_language->getLanguages();
 
-		$this->data['text_sitemap'] = 'Sơ đồ Website';
 		$this->data['sitemap']['items'] = $this->getSitemap(0, 1, 3);
 
 		// faqs
