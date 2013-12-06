@@ -96,7 +96,13 @@ class ControllerCommonFooter extends Controller {
 			'items' => $contact_childs,
 			);
 
-		$this->data['count'] = $this->count + 4;
+		$this->data['sitemap']['items'][] = array(
+			'href' => '',
+			'text' => $this->language->get('text_sitemap'),
+			'class' => '',
+			);
+
+		$this->data['count'] = $this->count + 5;
 		
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/footer.tpl')) {
 			$this->template = $this->config->get('config_template') . '/template/common/footer.tpl';

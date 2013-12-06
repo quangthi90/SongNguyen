@@ -9,17 +9,17 @@
       <?php foreach ($sitemap['items'] as $key => $item) { ?> 
         <?php $i++; ?>
           <li>
-            <a class="<?php echo $item['class']; ?>" href="<?php echo $item['href']; ?>"><?php echo $item['text']; ?></a>
+            <a class="<?php echo $item['class']; ?>" <?php if ($item['href']) { ?>href="<?php echo $item['href']; ?>"<?php } ?>><?php echo $item['text']; ?></a>
             <?php if (isset($item['items'])) { ?>  
             <?php $i += count($item['items']); ?>  
             <ul> 
               <?php foreach ($item['items'] as $item) { ?> 
-              <li><a class="<?php echo $item['class']; ?>" href="<?php echo $item['href']; ?>"><?php echo $item['text']; ?></a>
+              <li><a class="<?php echo $item['class']; ?>" <?php if ($item['href']) { ?>href="<?php echo $item['href']; ?>"<?php } ?>><?php echo $item['text']; ?></a>
                 <?php if (isset($item['items'])) { ?> 
                 <?php $i += count($item['items']); ?>  
                 <ul>    
                 <?php foreach ($item['items'] as $item) { ?> 
-                  <li><a class="<?php echo $item['class']; ?>" href="<?php echo $item['href']; ?>"><?php echo $item['text']; ?></a></li>
+                  <li><a class="<?php echo $item['class']; ?>" <?php if ($item['href']) { ?>href="<?php echo $item['href']; ?>"<?php } ?>><?php echo $item['text']; ?></a></li>
                 <?php } ?>
                 </ul>
                 <?php } ?>
@@ -28,10 +28,10 @@
             </ul>
             <?php } ?>
           </li>  
-        <?php if ($i >= $count/$column) { ?>
+        <?php if ($i > $count/$column) { ?>
         <?php $count -= $i; ?>
         <?php $i = 0; ?>
-        <?php $column--; ?>
+        <?php if ($column > 1) $column--; ?>
       </ul>
       <ul>
         <?php } ?>   
