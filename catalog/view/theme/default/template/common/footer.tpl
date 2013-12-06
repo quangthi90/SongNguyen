@@ -9,17 +9,17 @@
       <?php foreach ($sitemap['items'] as $key => $item) { ?> 
         <?php $i++; ?>
           <li>
-            <a href="<?php echo $item['href']; ?>"><?php echo $item['text']; ?></a>
+            <a class="<?php echo $item['class']; ?>" href="<?php echo $item['href']; ?>"><?php echo $item['text']; ?></a>
             <?php if (isset($item['items'])) { ?>  
             <?php $i += count($item['items']); ?>  
             <ul> 
               <?php foreach ($item['items'] as $item) { ?> 
-              <li><a class="" href="<?php echo $item['href']; ?>"><?php echo $item['text']; ?></a>
+              <li><a class="<?php echo $item['class']; ?>" href="<?php echo $item['href']; ?>"><?php echo $item['text']; ?></a>
                 <?php if (isset($item['items'])) { ?> 
                 <?php $i += count($item['items']); ?>  
                 <ul>    
                 <?php foreach ($item['items'] as $item) { ?> 
-                  <li><a class="" href="<?php echo $item['href']; ?>"><?php echo $item['text']; ?></a></li>
+                  <li><a class="<?php echo $item['class']; ?>" href="<?php echo $item['href']; ?>"><?php echo $item['text']; ?></a></li>
                 <?php } ?>
                 </ul>
                 <?php } ?>
