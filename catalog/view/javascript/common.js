@@ -157,7 +157,9 @@ $(document).ready(function() {
 					inline:true, 
 					href: hrefTo,
 					onLoad: function() {
-						$('#slider').nivoSlider();
+						$('#slider').nivoSlider({
+							pauseOnHover: true
+						});
 					},
 					onClosed: function() {
 						$('.popup-intro').remove();
