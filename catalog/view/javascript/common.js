@@ -79,18 +79,56 @@ $(document).ready(function() {
 		}
 	});
 
+	function initScroll() {
+		var wrapper = $('.caroufredsel_wrapper');
+		var prevBtn = $('#prev-scroll');
+		var nextBtn = $('#next-scroll');
+		wrapper.width(1000);
+		wrapper.append(prevBtn).append(nextBtn);
+		prevBtn.fadeOut(10);
+		nextBtn.fadeOut(10);
+		wrapper.hover(function(){
+			prevBtn.fadeIn(200);
+			nextBtn.fadeIn(200);
+		}, function() {
+			prevBtn.fadeOut(10);
+			nextBtn.fadeOut(10);
+		});	
+	}
+
 	if($('.content-list').children('.box5').length > 5){
-		$('.content-list').jcarousel({
-			auto: 5,
-			animation:'slow'
-	    });
-	}	
+		$('.content-list').carouFredSel({
+			scroll : {
+	            items           : 2,
+	            duration        : 1000,                         
+	            pauseOnHover    : true
+	        },
+	        prev: '#prev-scroll',
+			next: '#next-scroll',
+	        auto: {
+	        	timeoutDuration: 10000
+	        }
+		});
+		setTimeout(function(){
+			initScroll();		
+		}, 1000);
+	}
 	if($('.content-list').children('.box3').length > 3){
-		$('.content-list').jcarousel({
-			auto: 5,
-			animation:'slow',
-			wrap: "circular"
-	    });
+		$('.content-list').carouFredSel({
+			scroll : {
+	            items           : 1,
+	            duration        : 1000,                         
+	            pauseOnHover    : true
+	        },
+	        prev: '#prev-scroll',
+			next: '#next-scroll',
+	        auto: {
+	        	timeoutDuration: 10000
+	        }
+		});
+		setTimeout(function(){
+			initScroll();
+		}, 1000);
 	}
 	
 	//Intro popup:

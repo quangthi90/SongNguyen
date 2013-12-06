@@ -15,6 +15,10 @@
 		</li>
 	<?php } ?>
 	</ul>
+	<div class="carousel-container">
+		<a href="#" id="next-scroll" class="btn-scroll"></a>
+		<a href="#" id="prev-scroll" class="btn-scroll"></a>
+	</div>
 	<?php } ?>
 </div>
 <?php if (!empty($category['popup'])) { ?>
