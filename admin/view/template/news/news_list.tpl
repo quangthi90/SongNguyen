@@ -46,7 +46,7 @@
               <td></td>
               <td></td>
               <td><input type="text" name="filter_title" value="<?php echo $filter_title; ?>" /></td>
-              <td><input type="text" name="filter_news_category_name" value="<?php echo $filter_news_category_name; ?>" /></td>
+              <td><input type="text" name="filter_news_category_name" value="<?php echo $filter_news_category_name; ?>" /><input type="hidden" name="filter_news_category_id" value="<?php echo $filter_news_category_id; ?>" /></td>
               <td><select name="filter_status">
                   <option value="*"></option>
                   <?php if ($filter_status) { ?>
@@ -100,6 +100,12 @@ function filter() {
 	if (filter_title) {
 		url += '&filter_title=' + encodeURIComponent(filter_title);
 	}
+  
+  var filter_news_category_id = $('input[name=\'filter_news_category_id\']').attr('value');
+  
+  if (filter_news_category_id) {
+    url += '&filter_news_category_id=' + encodeURIComponent(filter_news_category_id);
+  }
   
   var filter_news_category_name = $('input[name=\'filter_news_category_name\']').attr('value');
   
