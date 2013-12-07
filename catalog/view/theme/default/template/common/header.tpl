@@ -24,7 +24,7 @@
 <link rel="<?php echo $style['rel']; ?>" type="text/css" href="<?php echo $style['href']; ?>" media="<?php echo $style['media']; ?>" />
 <?php } ?>
 <script type="text/javascript" src="catalog/view/javascript/jquery/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="catalog/view/javascript/jquery/jquery.jcarousel.min.js"></script>
+<script type="text/javascript" src="catalog/view/javascript/jquery/jquery.caroufredsel-6.2.1-packed.js"></script>
 <script type="text/javascript" src="catalog/view/javascript/jquery/colorbox/jquery.colorbox-min.js"></script>
 <script type="text/javascript" src="catalog/view/javascript/jquery/jquery.mcustomscrollbar.min.js"></script>
 <script type="text/javascript" src="catalog/view/javascript/jquery/nivo-slider/jquery.nivo.slider.js"></script>
