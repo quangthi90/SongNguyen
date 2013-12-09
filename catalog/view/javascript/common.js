@@ -47,8 +47,8 @@ $(document).ready(function() {
 	});
 	$('.link-popup.contact').colorbox({
 		inline:true,
-		width:"1200px", 
-		height:"620px",
+		width:"1000px", 
+		height:"600px",
 		onComplete: function(){
 			$('#cboxLoadedContent').css('overflow','hidden');
 		}
@@ -99,14 +99,14 @@ $(document).ready(function() {
 	if($('.content-list').children('.box5').length > 5){
 		$('.content-list').carouFredSel({
 			scroll : {
-	            items           : 2,
+	            items           : 3,
 	            duration        : 1000,                         
 	            pauseOnHover    : true
 	        },
 	        prev: '#prev-scroll',
 			next: '#next-scroll',
 	        auto: {
-	        	timeoutDuration: 10000
+	        	timeoutDuration: 5000
 	        }
 		});
 		setTimeout(function(){
@@ -116,14 +116,14 @@ $(document).ready(function() {
 	if($('.content-list').children('.box3').length > 3){
 		$('.content-list').carouFredSel({
 			scroll : {
-	            items           : 1,
+	            items           : 3,
 	            duration        : 1000,                         
 	            pauseOnHover    : true
 	        },
 	        prev: '#prev-scroll',
 			next: '#next-scroll',
 	        auto: {
-	        	timeoutDuration: 10000
+	        	timeoutDuration: 5000
 	        }
 		});
 		setTimeout(function(){
