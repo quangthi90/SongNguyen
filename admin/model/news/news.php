@@ -61,7 +61,7 @@ class ModelNewsNews extends Model {
 		}
 		
 		if (!empty($data['filter_news_category_name'])) {
-			$sql .= " AND ncd.name LIKE '" . $this->db->escape($data['filter_news_category_name']) . "%'";
+			//$sql .= " AND ncd.name LIKE '" . $this->db->escape($data['filter_news_category_name']) . "%'";
 		}
 		
 		if (!empty($data['filter_title'])) {
