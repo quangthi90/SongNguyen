@@ -43,6 +43,12 @@ $(document).ready(function() {
 		height:"70%",
 		onComplete: function(){
 			$('#cboxLoadedContent').makeCustomScroll(false);
+			$('.content-list').trigger('stop');
+		},
+		onClosed: function() {
+			setTimeout(function(){
+				$('.content-list').trigger('play', true);
+			}, 1000);			
 		}
 	});
 	$('.link-popup.contact').colorbox({
@@ -51,6 +57,12 @@ $(document).ready(function() {
 		height:"600px",
 		onComplete: function(){
 			$('#cboxLoadedContent').css('overflow','hidden');
+			$('.content-list').trigger('stop');
+		},
+		onClosed: function() {
+			setTimeout(function(){
+				$('.content-list').trigger('play', true);
+			}, 1000);			
 		}
 	});
 	$('.link-popup.sitemap-ref').colorbox({
@@ -59,17 +71,39 @@ $(document).ready(function() {
 		height:"620px",
 		onComplete: function(){
 			$('#cboxLoadedContent').makeCustomScroll(false);
+			$('.content-list').trigger('stop');
+		},
+		onClosed: function() {
+			setTimeout(function(){
+				$('.content-list').trigger('play', true);
+			}, 1000);			
 		}
 	});
 	$('.link-popup.email-subscription').colorbox({
 		inline:true,
 		width:"600px", 
-		height:"300px"
+		height:"300px",
+		onComplete: function(){
+			$('.content-list').trigger('stop');
+		},
+		onClosed: function() {
+			setTimeout(function(){
+				$('.content-list').trigger('play', true);
+			}, 1000);			
+		}
 	});
 	$('.link-popup.iframe').colorbox({
 		iframe:true,
 		width:"90%", 
-		height:"95%"
+		height:"95%",
+		onComplete: function(){
+			$('.content-list').trigger('stop');
+		},
+		onClosed: function() {
+			setTimeout(function(){
+				$('.content-list').trigger('play', true);
+			}, 1000);			
+		}
 	});
 	$('.link-popup.map-item').colorbox({
 		width:"95%", 
@@ -100,7 +134,7 @@ $(document).ready(function() {
 		$('.content-list').carouFredSel({
 			scroll : {
 	            items           : 3,
-	            duration        : 1000,                         
+	            duration        : 1000,                  
 	            pauseOnHover    : true
 	        },
 	        prev: '#prev-scroll',
