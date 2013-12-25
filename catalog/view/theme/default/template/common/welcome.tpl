@@ -30,11 +30,7 @@ DD_belatedPNG.fix('#logo img');
 <body>
 	<div id="wrap">
 		<div id="flashintro">
-		  	<object width="1000" height="500" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0">
-				<param name="SRC" value="<?php echo $flash; ?>">
-				<embed src="<?php echo $flash; ?>" width="1000" height="500">
-				</embed>
-			</object>
+		  	<embed src="<?php echo $flash; ?>" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent" allowscriptaccess="always" width="1000" height="500">
 		</div>
 		<div id="menulang" style="border-top: 2px solid #021D63;">
         	<form action="<?php echo $lang_url; ?>" method="post" enctype="multipart/form-data">
