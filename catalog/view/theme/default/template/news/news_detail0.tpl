@@ -83,7 +83,7 @@ DD_belatedPNG.fix('#logo img');
             <ul class="list-old-news">
               <?php foreach ($older as $news) { ?>
               <li>
-                <a href="<?php echo $news['href']; ?>"><?php echo $news['title'] . '(' . $news['date_added'] . ')'; ?></a>
+                <a href="<?php echo $news['href']; ?>"><?php echo $news['title']; ?></a>
               </li>
               <?php } ?>
             </ul>
