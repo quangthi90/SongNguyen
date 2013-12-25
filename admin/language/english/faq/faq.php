@@ -8,6 +8,7 @@ $_['text_success']			= 'Success: You have modified faq!';
 // column
 $_['column_id'] 			= 'FAQ Id';
 $_['column_question'] 			= 'Question';
+$_['column_order'] 			= 'Order';
 $_['column_status'] 			= 'Status';
 $_['column_category'] 			= 'Category';
 $_['column_action'] 			= 'Action';

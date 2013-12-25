@@ -8,6 +8,7 @@ $_['text_success']			= 'Thành công: Bạn đã sửa đổi faq!';
 // column
 $_['column_id'] 			= 'FAQ Id';
 $_['column_question'] 			= 'Câu Hỏi';
+$_['column_order'] 			= 'Thứ tự';
 $_['column_status'] 			= 'Tình Trạng';
 $_['column_category'] 			= 'Danh Mục';
 $_['column_action'] 			= 'Hoạt Động';

@@ -156,13 +156,13 @@ class ControllerFaqFaq extends Controller {
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
 		} else {
-			$sort = 'f.date_added';
+			$sort = 'f.sort_order';
 		}
 		
 		if (isset($this->request->get['order'])) {
 			$order = $this->request->get['order'];
 		} else {
-			$order = 'DESC';
+			$order = 'ASC';
 		}
 		
 		if (isset($this->request->get['page'])) {
@@ -245,6 +245,7 @@ class ControllerFaqFaq extends Controller {
 				'faq_category_name' => (!empty($result['faq_category_name'])) ? $result['faq_category_name'] : 'root',
 				'status'     => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
 				'selected'   => isset($this->request->post['selected']) && in_array($result['faq_id'], $this->request->post['selected']),
+				'sort_order' => $result['sort_order'],
 				'action'     => $action
 			);
     	}
@@ -260,6 +261,7 @@ class ControllerFaqFaq extends Controller {
 		$this->data['column_category'] = $this->language->get('column_category');
 		$this->data['column_question'] = $this->language->get('column_question');	
 		$this->data['column_anwser'] = $this->language->get('column_anwser');			
+		$this->data['column_order'] = $this->language->get('column_order');
 		$this->data['column_status'] = $this->language->get('column_status');		
 		$this->data['column_action'] = $this->language->get('column_action');		
 					

@@ -24,6 +24,7 @@
               <td width="1" style="text-align: center;"><input type="checkbox" onclick="$('input[name*=\'selected\']').attr('checked', this.checked);" /></td>
               <td class="left"><?php echo $column_question; ?></td>
               <td class="left"><?php echo $column_category; ?></td>
+              <td class="left"><?php echo $column_order; ?></td>
               <td class="left"><?php if ($sort == 'n.status') { ?>
                 <a href="<?php echo $sort_status; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_status; ?></a>
                 <?php } else { ?>
@@ -37,6 +38,7 @@
               <td></td>
               <td><input type="text" name="filter_question" value="<?php echo $filter_question; ?>" /></td>
               <td><input type="text" name="filter_faq_category_name" value="<?php echo $filter_faq_category_name; ?>" /></td>
+              <td></td>
               <td><select name="filter_status">
                   <option value="*"></option>
                   <?php if ($filter_status) { ?>
@@ -62,6 +64,7 @@
                 <?php } ?></td>
               <td><?php echo $faq['question']; ?></td>
               <td><?php echo $faq['faq_category_name']; ?></td>
+              <td class="left"><?php echo $faq['sort_order']; ?></td>
               <td class="left"><?php echo $faq['status']; ?></td>
               <td class="right"><?php foreach ($faq['action'] as $action) { ?>
                 [ <a href="<?php echo $action['href']; ?>"><?php echo $action['text']; ?></a> ]
