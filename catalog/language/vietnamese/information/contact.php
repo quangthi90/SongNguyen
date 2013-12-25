@@ -4,7 +4,7 @@ $_['heading_title']  = 'Liên hệ với chúng tôi';
 
 // Text 
 $_['text_contact']   = 'Biểu mẫu liên hệ';
-$_['text_message']   = '<p>Yêu cầu của bạn đã được gửi đi thành công cho chủ sở hữu cửa hàng!</p>';
+$_['text_message']   = '<p>Yêu cầu của bạn đã được gửi đi thành công cho Công ty tư vấn du học Song Nguyễn!</p>';
 $_['text_goback']      = 'Trở lại';
 $_['text_error_enquiry']      = 'Nội dung phải từ 10 đến 3000 ký tự!';
 $_['text_error_name']      = 'Tên phải từ 3 đến 32 ký tự!';

@@ -92,14 +92,15 @@ DD_belatedPNG.fix('#logo img');
         <div id="faq<?php echo $category['faq_category_id']; ?>" class="topic-item <?php echo ($category['active']) ? 'active' : ''; ?>">
           <h3 class="topic-item-name"><?php echo $category['name']; ?></h3>
           <div class="problem-list">
-            <ol>
-              <?php foreach ($category['faqs'] as $faq) { ?>
+            <ul>
+              <?php for ($index = 0; $index < count($category['faqs']); $index ++) { ?>
+              <?php $faq = $category['faqs'][$index]; ?>
               <li class="problem-item">              
-                <p class="problem-item-question"><?php echo $faq['question']; ?></p>
+                <p class="problem-item-question"><?php echo ($index + 1).'. '.$faq['question']; ?></p>
                 <p class="problem-item-answer"><?php echo $faq['answer']; ?></p>
               </li>
               <?php } ?>
-            </ol>
+            </ul>
           </div>          
         </div> 
         <?php } ?>

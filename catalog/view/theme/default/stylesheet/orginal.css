@@ -343,11 +343,11 @@ a:hover{
     right: 0px;
     bottom: 0px;
 }
-.topic-item .problem-list ol {
-	padding-left: 20px;
+.topic-item .problem-list ul {
+	padding-left: 0px;
 }
 .problem-list .problem-item {
-    padding: 10px;
+    padding: 10px 10px 10px 5px;
     margin-bottom: 10px;
     border-left: 1px solid #fff;
 }
@@ -359,10 +359,12 @@ a:hover{
 .problem-item .problem-item-question {
     font-weight: bold;
     cursor: pointer;
+    font-size: 15px;
 }
 .problem-item .problem-item-answer {
 	display: none;	
     margin-top: 10px;
+    font-size: 15px;
 }
 
 /* Intro Page */
@@ -820,13 +822,13 @@ Jcarousel
     float: right;
 }
 .news-detail-content {
-	margin-bottom: 15px;
+	margin-bottom: 30px;
 }
 .news-detail-content img {
 	cursor: pointer;
 }
 .additional-news-info {
-    padding-top: 15px;
+    padding-top: 10px;
     border-top: 1px solid #ddd;
 }
 .additional-news-info  h4{
