@@ -37,7 +37,12 @@
                 <?php } else { ?>
                 <input type="checkbox" name="selected[]" value="<?php echo $contact['contact_id']; ?>" />
                 <?php } ?></td>
-              <td class="left"><?php echo $contact['email']; ?></td>
+              <td class="left">
+                <?php if ($contact['read'] == 0){ ?>
+                <b><?php echo $contact['email']; ?></b>
+                <?php }else{ ?>
+                <?php echo $contact['email']; ?>
+                <?php } ?></td>
               <td class="right"><?php echo $contact['name']; ?></td>
               <td class="right"><?php echo $contact['status']; ?></td>
               <td class="right"><?php foreach ($contact['action'] as $action) { ?>

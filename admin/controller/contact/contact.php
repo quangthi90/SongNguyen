@@ -100,6 +100,7 @@ class ControllerContactContact extends Controller {
 				'contact_id' => $result['contact_id'],
 				'email'        => $result['email'],
 				'name'        => $result['name'],
+				'read'		 => $result['read'],
 				'status'		=> ($result['status']) ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
 				'selected'    => isset($this->request->post['selected']) && in_array($result['contact_id'], $this->request->post['selected']),
 				'action'      => $action
@@ -188,6 +189,8 @@ class ControllerContactContact extends Controller {
     		$this->session->data['error_warning'] = $this->language->get('error_not_found');
     		$this->forward($this->data['cancel']);
     	}
+
+    	$this->model_contact_contact->readContact($this->request->get['contact_id']);
 		
 		$this->data['token'] = $this->session->data['token'];
 

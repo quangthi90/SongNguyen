@@ -44,13 +44,11 @@ class ModelNewsNews extends Model {
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
 			$sql .= " ORDER BY " . $data['sort'];	
 		} else {
-			$sql .= " ORDER BY n.date_added";	
+			$sql .= " ORDER BY RAND()";	
 		}
 		
 		if (isset($data['order']) && ($data['order'] == 'ASC')) {
 			$sql .= " ASC";
-		} else {
-			$sql .= " DESC";
 		}
 	
 		if (isset($data['start']) || isset($data['limit'])) {

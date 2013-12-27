@@ -75,7 +75,7 @@ class ControllerNewsNews extends Controller {
 				$results = $this->model_news_news->getNewses(array(
 					'start' => 0,
 					'limit' => 5,
-					'filter_older' => $news['date_added'],
+					// 'filter_older' => $news['date_added'],
 					'filter_status'	  => 1,
 					'filter_news_category_id' => $news['news_category_id'],
 					));

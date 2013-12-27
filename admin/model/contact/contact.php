@@ -19,7 +19,7 @@ class ModelContactContact extends Model {
 	}
 		
 	public function getContacts($data = array()) {
-		$sql = "SELECT c.id AS contact_id, c.email AS email, c.name AS name, c.status AS status FROM " . DB_PREFIX . "contact c";
+		$sql = "SELECT c.id AS contact_id, c.email AS email, c.name AS name, c.status AS status, c.read AS 'read' FROM " . DB_PREFIX . "contact c";
 
 		/*if (!empty($data['filter_email'])) {
 			$sql .= " WHERE c.email LIKE '" . $this->db->escape($data['filter_email']) . "%'";
@@ -93,6 +93,10 @@ class ModelContactContact extends Model {
 		$query = $this->db->query($sql);
 		
 		return $query->row['total'];
+	}
+
+	public function readContact($contact_id) {
+		$this->db->query("UPDATE " . DB_PREFIX . "contact c SET c.read = '1' WHERE id = '" . (int)$contact_id . "'");
 	}
 }
 ?>
