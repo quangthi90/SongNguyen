@@ -69,8 +69,7 @@ DD_belatedPNG.fix('#logo img');
 <body>
   <div id="news-page" class="popup-container">
     <h2>
-      <?php echo $news['title']; ?> 
-      <span class="time"><?php echo $news['date_added']; ?></span>
+      <?php echo $news['title']; ?>
     </h2>
     <div class="contentbox">
       <div id="content-container" style="top: 80px;left: 20px;padding-left: 20px;">
