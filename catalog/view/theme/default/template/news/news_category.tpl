@@ -25,7 +25,9 @@
 <div style="display: none;">
 	<?php if ($category['popup']['type'] == 2) { ?>
 	<div id="popup-slide-image" class="popup-container popup-intro">
+		<?php if ( !empty($category['popup']['title']) ){ ?>
 		<h2><?php echo $category['popup']['title']; ?></h2>
+		<?php } ?>
 		<div class="contentbox"> 
 			<?php if (!empty($category['popup']['banners'])) { ?>
 			<div class="slider-wrapper theme-default">
