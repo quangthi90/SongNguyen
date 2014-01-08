@@ -187,12 +187,13 @@ $(document).ready(function() {
 			//Slider:			
 			$.colorbox({
 					width:"900px",
-					height:"520px",
+					height:"515px",
 					inline:true, 
 					href: hrefTo,
 					onLoad: function() {
 						$('#slider').nivoSlider({
-							pauseOnHover: true
+							pauseOnHover: true,
+							pauseTime: 4000
 						});
 					},
 					onClosed: function() {

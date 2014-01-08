@@ -15,9 +15,9 @@ class ControllerCommonHome extends Controller {
 				if (!empty($banner_data)) {
 					foreach ($banner_data as $banner) {
 						if (file_exists(DIR_IMAGE . $banner['image'])) {
-							$banner_image = $this->model_tool_image->resize($banner['image'], 850, 338);
+							$banner_image = $this->model_tool_image->resize($banner['image'], 900, 450);
 						}else {
-							$banner_image = $this->model_tool_image->resize('no_image.jpg', 850, 338);
+							$banner_image = $this->model_tool_image->resize('no_image.jpg', 900, 450);
 						}
 
 						$banners[] = array(
