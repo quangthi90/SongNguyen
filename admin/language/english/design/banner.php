@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title']      = 'Banners';
+$_['heading_title']      = 'Banners (900x450)';
 
 // Text
 $_['text_success']       = 'Success: You have modified banners!';
