@@ -20,6 +20,17 @@ class ModelNewsNewsCategory extends Model {
 		if ($data['keyword']) {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'news_category_id=" . (int) $news_category_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
 		}
+        // addition for automatic generate keyword
+        else {
+            $this->load->helper('vietnamese');
+            $language_id = (int)$this->config->get('config_language_id');
+            $keyword = vietnamese_removesign($this->db->escape($data['news_category_description'][$language_id]['name']));
+            if ($this->db->query("SELECT COUNT(*) AS total FROM " . "url_alias WHERE keyword = '" . $keyword . "'")->row['total'] == 0) {
+                $this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'news_category_id=" . (int) $news_category_id . "', keyword = '" . $keyword . "'");
+            }else {
+                $this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'news_category_id=" . (int) $news_category_id . "', keyword = '" . $keyword . '-' . $news_category_id . "'");
+            }
+        }
 		
 		$this->cache->delete('news_category');
 	}
@@ -46,7 +57,18 @@ class ModelNewsNewsCategory extends Model {
 		if ($data['keyword']) {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'news_category_id=" . (int) $news_category_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
 		}
-		
+        // addition for automatic generate keyword
+        else {
+            $this->load->helper('vietnamese');
+            $language_id = (int)$this->config->get('config_language_id');
+            $keyword = vietnamese_removesign($this->db->escape($data['news_category_description'][$language_id]['name']));
+            if ($this->db->query("SELECT COUNT(*) AS total FROM " . "url_alias WHERE keyword = '" . $keyword . "'")->row['total'] == 0) {
+                $this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'news_category_id=" . (int) $news_category_id . "', keyword = '" . $keyword . "'");
+            }else {
+                $this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'news_category_id=" . (int) $news_category_id . "', keyword = '" . $keyword . '-' . $news_category_id . "'");
+            }
+        }
+
 		$this->cache->delete('news_category');
 	}
 	
