@@ -36,7 +36,7 @@ $(document).ready(function() {
       	$(this).removeClass('active');
     });
 
-    var current_url = window.location.pathname;
+    var current_url = $(location).attr('href');
     //Popup:
     $('.link-popup.inline').colorbox({
 		inline:true,
