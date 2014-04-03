@@ -184,7 +184,7 @@ class ControllerNewsNewsCategory extends Controller {
 									'primary_image' => $primary_image,
 									'second_image' => $second_image,
 									'sort_order' => $child['sort_order'],
-									'href' => $this->url->link('news/news_category', 'news_category_id=' . $child['news_category_id'] . ($child['have_popup'])? '&popup=1' : ''),
+									'href' => $this->url->link('news/news_category', 'news_category_id=' . $child['news_category_id'] . (($child['have_popup'])? '&popup=1' : '')),
 									'class' => ($child['have_popup'])? 'link-popup iframe' : '',
 									);
 							}
