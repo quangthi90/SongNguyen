@@ -20,7 +20,7 @@ class ControllerContactContact extends Controller {
 			'name' => $this->language->get('text_send_email'),
 			'image1' => $server . 'image/data/contact/email-1.jpg',
 			'image2' => $server . 'image/data/contact/email-2.jpg',
-			'href' => $this->url->link('contact/contact/email'),
+			'href' => $this->url->link('contact/contact/email', 'popup=1'),
 			'class' => 'link-popup iframe',
 			);
 		$this->data['items'][] = array(
@@ -53,106 +53,122 @@ class ControllerContactContact extends Controller {
 	}
 
 	public function email() {
-		$this->language->load('information/contact');		
-		if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
-			$server = $this->config->get('config_ssl');
-		} else {
-			$server = $this->config->get('config_url');
-		}
-		$this->data['base'] = $server;
-    	$this->data['action'] = $this->url->link('contact/contact/email');
-		$this->data['lang'] = $this->language->get('code');
-		$this->data['direction'] = $this->language->get('direction');
-		$this->data['google_analytics'] = html_entity_decode($this->config->get('config_google_analytics'), ENT_QUOTES, 'UTF-8');
-	 
-    	if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$this->load->model('contact/contact');	
-			$this->model_contact_contact->addContact($this->request->post);
-			/*$mail = new Mail();
-			$mail->protocol = $this->config->get('config_mail_protocol');
-			$mail->parameter = $this->config->get('config_mail_parameter');
-			$mail->hostname = $this->config->get('config_smtp_host');
-			$mail->username = $this->config->get('config_smtp_username');
-			$mail->password = $this->config->get('config_smtp_password');
-			$mail->port = $this->config->get('config_smtp_port');
-			$mail->timeout = $this->config->get('config_smtp_timeout');				
-			$mail->setTo($this->config->get('config_email'));
-	  		$mail->setFrom($this->request->post['email']);
-	  		$mail->setSender($this->request->post['name']);
-	  		$mail->setSubject(html_entity_decode(sprintf($this->language->get('email_subject'), $this->request->post['name']), ENT_QUOTES, 'UTF-8'));
-	  		$mail->setText(strip_tags(html_entity_decode($this->request->post['enquiry'], ENT_QUOTES, 'UTF-8')));
-      		$mail->send();*/
-	  		$this->redirect($this->url->link('information/contact/success'));
-    	}
+		if (isset($this->request->get['popup']) && $this->request->get['popup']) {
+            $this->language->load('information/contact');
+            if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
+                $server = $this->config->get('config_ssl');
+            } else {
+                $server = $this->config->get('config_url');
+            }
+            $this->data['base'] = $server;
+            $this->data['action'] = $this->url->link('contact/contact/email');
+            $this->data['lang'] = $this->language->get('code');
+            $this->data['direction'] = $this->language->get('direction');
+            $this->data['google_analytics'] = html_entity_decode($this->config->get('config_google_analytics'), ENT_QUOTES, 'UTF-8');
 
-      	$this->data['heading_title'] = $this->language->get('heading_title');
+            if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+                $this->load->model('contact/contact');
+                $this->model_contact_contact->addContact($this->request->post);
+                /*$mail = new Mail();
+                $mail->protocol = $this->config->get('config_mail_protocol');
+                $mail->parameter = $this->config->get('config_mail_parameter');
+                $mail->hostname = $this->config->get('config_smtp_host');
+                $mail->username = $this->config->get('config_smtp_username');
+                $mail->password = $this->config->get('config_smtp_password');
+                $mail->port = $this->config->get('config_smtp_port');
+                $mail->timeout = $this->config->get('config_smtp_timeout');
+                $mail->setTo($this->config->get('config_email'));
+                  $mail->setFrom($this->request->post['email']);
+                  $mail->setSender($this->request->post['name']);
+                  $mail->setSubject(html_entity_decode(sprintf($this->language->get('email_subject'), $this->request->post['name']), ENT_QUOTES, 'UTF-8'));
+                  $mail->setText(strip_tags(html_entity_decode($this->request->post['enquiry'], ENT_QUOTES, 'UTF-8')));
+                  $mail->send();*/
+                $this->redirect($this->url->link('information/contact/success'));
+            }
 
-    	$this->data['text_error_enquiry'] = $this->language->get('text_error_enquiry');
-    	$this->data['text_error_name'] = $this->language->get('text_error_name');
-    	$this->data['text_error_email'] = $this->language->get('text_error_email');
-    	$this->data['text_error_phone'] = $this->language->get('text_error_phone');
-    	$this->data['text_success_enquiry'] = $this->language->get('text_success_enquiry');
-    	$this->data['text_success_name'] = $this->language->get('text_success_name');
-    	$this->data['text_success_email'] = $this->language->get('text_success_email');
-    	$this->data['text_success_phone'] = $this->language->get('text_success_phone');
+            $this->data['heading_title'] = $this->language->get('heading_title');
 
-    	$this->data['entry_name'] = $this->language->get('entry_name');
-    	$this->data['entry_phone'] = $this->language->get('entry_phone');
-    	$this->data['entry_email'] = $this->language->get('entry_email');
-    	$this->data['entry_enquiry'] = $this->language->get('entry_enquiry');
+            $this->data['text_error_enquiry'] = $this->language->get('text_error_enquiry');
+            $this->data['text_error_name'] = $this->language->get('text_error_name');
+            $this->data['text_error_email'] = $this->language->get('text_error_email');
+            $this->data['text_error_phone'] = $this->language->get('text_error_phone');
+            $this->data['text_success_enquiry'] = $this->language->get('text_success_enquiry');
+            $this->data['text_success_name'] = $this->language->get('text_success_name');
+            $this->data['text_success_email'] = $this->language->get('text_success_email');
+            $this->data['text_success_phone'] = $this->language->get('text_success_phone');
 
-		if (isset($this->error['name'])) {
-    		$this->data['error_name'] = $this->error['name'];
-		} else {
-			$this->data['error_name'] = '';
-		}
-		
-		if (isset($this->error['email'])) {
-			$this->data['error_email'] = $this->error['email'];
-		} else {
-			$this->data['error_email'] = '';
-		}		
-		
-		if (isset($this->error['enquiry'])) {
-			$this->data['error_enquiry'] = $this->error['enquiry'];
-		} else {
-			$this->data['error_enquiry'] = '';
-		}		
+            $this->data['entry_name'] = $this->language->get('entry_name');
+            $this->data['entry_phone'] = $this->language->get('entry_phone');
+            $this->data['entry_email'] = $this->language->get('entry_email');
+            $this->data['entry_enquiry'] = $this->language->get('entry_enquiry');
 
-    	$this->data['button_continue'] = $this->language->get('button_continue');
-    
-		if (isset($this->request->post['name'])) {
-			$this->data['name'] = $this->request->post['name'];
-		} else {
-			$this->data['name'] = '';
-		}
+            if (isset($this->error['name'])) {
+                $this->data['error_name'] = $this->error['name'];
+            } else {
+                $this->data['error_name'] = '';
+            }
 
-		if (isset($this->request->post['phone'])) {
-			$this->data['phone'] = $this->request->post['phone'];
-		} else {
-			$this->data['phone'] = '';
-		}
+            if (isset($this->error['email'])) {
+                $this->data['error_email'] = $this->error['email'];
+            } else {
+                $this->data['error_email'] = '';
+            }
 
-		if (isset($this->request->post['email'])) {
-			$this->data['email'] = $this->request->post['email'];
-		} else {
-			$this->data['email'] = '';
-		}
-		
-		if (isset($this->request->post['enquiry'])) {
-			$this->data['enquiry'] = $this->request->post['enquiry'];
-		} else {
-			$this->data['enquiry'] = '';
-		}
-		
+            if (isset($this->error['enquiry'])) {
+                $this->data['error_enquiry'] = $this->error['enquiry'];
+            } else {
+                $this->data['error_enquiry'] = '';
+            }
 
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/contact/email.tpl')) {
-			$this->template = $this->config->get('config_template') . '/template/contact/email.tpl';
-		} else {
-			$this->template = 'default/template/contact/email.tpl';
-		}
-			
- 		$this->response->setOutput($this->render());		
+            $this->data['button_continue'] = $this->language->get('button_continue');
+
+            if (isset($this->request->post['name'])) {
+                $this->data['name'] = $this->request->post['name'];
+            } else {
+                $this->data['name'] = '';
+            }
+
+            if (isset($this->request->post['phone'])) {
+                $this->data['phone'] = $this->request->post['phone'];
+            } else {
+                $this->data['phone'] = '';
+            }
+
+            if (isset($this->request->post['email'])) {
+                $this->data['email'] = $this->request->post['email'];
+            } else {
+                $this->data['email'] = '';
+            }
+
+            if (isset($this->request->post['enquiry'])) {
+                $this->data['enquiry'] = $this->request->post['enquiry'];
+            } else {
+                $this->data['enquiry'] = '';
+            }
+
+
+            if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/contact/email.tpl')) {
+                $this->template = $this->config->get('config_template') . '/template/contact/email.tpl';
+            } else {
+                $this->template = 'default/template/contact/email.tpl';
+            }
+
+            $this->response->setOutput($this->render());
+        }else {
+            // Get full url
+            $popup_url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+            if (strpos($popup_url, 'popup')) {
+                // Set the $_GET['popup'] = 1
+                $popup_url = str_replace('popup=0', 'popup=1',$popup_url);
+            }else {
+                $popup_url .= '&popup=1';
+            }
+            // Save to session
+            $this->session->data['popup_url'] = $popup_url;
+            // Redirect to studying-aboard
+            header("Location: " . HTTP_SERVER . 'studying-abroad');
+            exit();
+        }
   	}
 
   	public function success() {
