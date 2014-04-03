@@ -99,7 +99,7 @@ $(document).ready(function() {
 		height:"95%",
 		onComplete: function(){
 			$('.content-list').trigger('stop');
-            window.history.pushState('Test', 'Testtitle', $(this).attr('href').replace('&amp;popup=1', '').replace('&popup=1', ''));
+            window.history.pushState('Test', 'Testtitle', $(this).attr('href').replace('&amp;popup=1', '').replace('&popup=1', '').replace('?popup=1', ''));
 		},
 		onClosed: function() {
 			setTimeout(function(){

@@ -17,7 +17,7 @@ class ModelNewsNewsCategory extends Model {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "news_category_description SET news_category_id = '" . (int)$news_category_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', description = '" . $this->db->escape($value['description']) . "'");
 		}
 
-		if ($data['keyword']) {
+		/*if ($data['keyword']) {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'news_category_id=" . (int) $news_category_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
 		}
         // addition for automatic generate keyword
@@ -30,7 +30,18 @@ class ModelNewsNewsCategory extends Model {
             }else {
                 $this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'news_category_id=" . (int) $news_category_id . "', keyword = '" . $keyword . '-' . $news_category_id . "'");
             }
+        }*/
+
+        if ($data['keyword'] && trim($data['keyword'])) {
+            $keyword = strtolower(trim($data['keyword']));
         }
+        else {
+            $this->load->helper('vietnamese');
+            $language_id = (int)$this->config->get('config_language_id');
+            $keyword = vietnamese_removesign($this->db->escape($data['news_category_description'][$language_id]['name']));
+        }
+
+        $this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'news_category_id=" . (int) $news_category_id . "', keyword = '" . $this->db->escape($this->getKeyword($keyword, $news_category_id)) . "'");
 		
 		$this->cache->delete('news_category');
 	}
@@ -54,20 +65,16 @@ class ModelNewsNewsCategory extends Model {
 		
 		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'news_category_id=" . (int)$news_category_id . "'");
 
-		if ($data['keyword']) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'news_category_id=" . (int) $news_category_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
+		if ($data['keyword'] && trim($data['keyword'])) {
+			$keyword = strtolower(trim($data['keyword']));
 		}
-        // addition for automatic generate keyword
         else {
             $this->load->helper('vietnamese');
             $language_id = (int)$this->config->get('config_language_id');
             $keyword = vietnamese_removesign($this->db->escape($data['news_category_description'][$language_id]['name']));
-            if ($this->db->query("SELECT COUNT(*) AS total FROM " . "url_alias WHERE keyword = '" . $keyword . "'")->row['total'] == 0) {
-                $this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'news_category_id=" . (int) $news_category_id . "', keyword = '" . $keyword . "'");
-            }else {
-                $this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'news_category_id=" . (int) $news_category_id . "', keyword = '" . $keyword . '-' . $news_category_id . "'");
-            }
         }
+
+        $this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'news_category_id=" . (int) $news_category_id . "', keyword = '" . $this->db->escape($this->getKeyword($keyword, $news_category_id)) . "'");
 
 		$this->cache->delete('news_category');
 	}
@@ -144,6 +151,14 @@ class ModelNewsNewsCategory extends Model {
       	$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "news_category");
 		
 		return $query->row['total'];
-	}	
+	}
+
+    private function getKeyword($keyword, $id) {
+        if ($this->db->query("SELECT COUNT(*) AS total FROM " . "url_alias WHERE keyword = '" . $keyword . "'")->row['total'] == 0) {
+            return $keyword;
+        }else {
+            return $this->getKeyword($keyword . '-' . $id, $id);
+        }
+    }
 }
 ?>

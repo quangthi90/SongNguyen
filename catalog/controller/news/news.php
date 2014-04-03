@@ -27,7 +27,7 @@ class ControllerNewsNews extends Controller {
 				}
 			}else {
                 // break when not exist $_GET['popup']
-                if (isset($_GET['popup']) && $_GET['popup']) {
+                if (isset($this->request->get['popup']) && $this->request->get['popup']) {
                     $this->document->setTitle($this->config->get('config_title'));
                     $this->document->setDescription($this->config->get('config_meta_description'));
 
@@ -125,6 +125,7 @@ class ControllerNewsNews extends Controller {
                     $this->session->data['popup_url'] = $popup_url;
                     // Redirect to studying-aboard
                     header("Location: " . HTTP_SERVER . 'studying-abroad');
+                    exit();
                 }
 			}
 		}
