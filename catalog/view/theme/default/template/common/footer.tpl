@@ -282,5 +282,13 @@
   <p class="copyright"><?php echo $text_copyright; ?></p>
 </div>
 </div>
+<?php if (isset($popup_url)) { ?>
+<a class="link-popup iframe" id="active-popup" href="<?php echo $popup_url; ?>"></a>
+<script type="text/javascript"><!--//
+    $(document).ready(function() {
+        $('#active-popup').click();
+    });
+//--></script>
+<?php } ?>
 </body>
 </html>

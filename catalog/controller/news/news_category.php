@@ -82,7 +82,7 @@ class ControllerNewsNewsCategory extends Controller {
 						foreach ($results as $result) {
 							$date_added = new DateTime($result['date_added']);
 				      		$this->data['items'][] = array(
-								'href' => $this->url->link('news/news', 'news_id=' . $result['news_id']),
+								'href' => $this->url->link('news/news', 'news_id=' . $result['news_id'] . '&popup=1'),
 								'title'       => $result['title'] . ' (' . $date_added->format($this->language->get('date_format_short')) . ')',
 								'popup' => 1,
 							);
@@ -95,7 +95,7 @@ class ControllerNewsNewsCategory extends Controller {
 			    		foreach ($results as $result) {
 						$date_added = new DateTime($result['date_added']);
 				      		$this->data['items'][] = array(
-								'href' => $this->url->link('news/news_category', 'news_category_id=' . $result['news_category_id']),
+								'href' => $this->url->link('news/news_category', 'news_category_id=' . $result['news_category_id'] . ($result['have_popup']) ? '&popup=1':''),
 								'title'       => $result['name'] . ' (' . $date_added->format($this->language->get('date_format_short')) . ')',
 								'popup' => $result['have_popup'],
 							);
@@ -184,7 +184,7 @@ class ControllerNewsNewsCategory extends Controller {
 									'primary_image' => $primary_image,
 									'second_image' => $second_image,
 									'sort_order' => $child['sort_order'],
-									'href' => $this->url->link('news/news_category', 'news_category_id=' . $child['news_category_id']),
+									'href' => $this->url->link('news/news_category', 'news_category_id=' . $child['news_category_id'] . ($child['have_popup'])? '&popup=1' : ''),
 									'class' => ($child['have_popup'])? 'link-popup iframe' : '',
 									);
 							}
@@ -216,7 +216,7 @@ class ControllerNewsNewsCategory extends Controller {
 								'primary_image' => $primary_image,
 								'second_image' => $second_image,
 								'sort_order' => $news['sort_order'],
-								'href' => $this->url->link('news/news', 'news_id=' . $news['news_id']),
+								'href' => $this->url->link('news/news', 'news_id=' . $news['news_id'] . '&popup=1'),
 								'class' => 'link-popup iframe',
 								);
 						}

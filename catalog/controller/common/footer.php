@@ -103,6 +103,12 @@ class ControllerCommonFooter extends Controller {
 			);
 
 		$this->data['count'] = $this->count + 5;
+
+        // Active popup url
+        if (isset($this->session->data['popup_url']) && $this->session->data['popup_url']) {
+            $this->data['popup_url'] = $this->session->data['popup_url'];
+            unset($this->session->data['popup_url']);
+        }
 		
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/footer.tpl')) {
 			$this->template = $this->config->get('config_template') . '/template/common/footer.tpl';

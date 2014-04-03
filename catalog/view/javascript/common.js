@@ -97,11 +97,9 @@ $(document).ready(function() {
 		iframe:true,
 		width:"90%", 
 		height:"95%",
-        onOpen: function() {
-            window.history.pushState('Test', 'Testtitle', $(this).attr('href'));
-        },
 		onComplete: function(){
 			$('.content-list').trigger('stop');
+            window.history.pushState('Test', 'Testtitle', $(this).attr('href').replace('&amp;popup=1', '').replace('&popup=1', ''));
 		},
 		onClosed: function() {
 			setTimeout(function(){

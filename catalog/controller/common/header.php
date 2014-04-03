@@ -97,7 +97,7 @@ class ControllerCommonHeader extends Controller {
 				if (!empty($newses)) {
 					foreach ($newses as $news) {
 						$childs[] = array(
-							'href' => $this->url->link('news/news', 'news_id=' . $news['news_id']),
+							'href' => $this->url->link('news/news', 'news_id=' . $news['news_id'] . '&popup=1'),
 							'label' => $news['title'],
 							'class' => 'link-popup iframe',
 							);
@@ -106,7 +106,7 @@ class ControllerCommonHeader extends Controller {
 			}else {
 				foreach ($child_categories as $key => $child_category) {
 					$childs[] = array(
-						'href' => (!empty($child_category['link'])) ? $child_category['link'] : $this->url->link('news/news_category', 'news_category_id=' . $child_category['news_category_id']),
+						'href' => (!empty($child_category['link'])) ? $child_category['link'] : $this->url->link('news/news_category', 'news_category_id=' . $child_category['news_category_id'] . (($child_category['have_popup'])?'&popup=1':'')),
 						'label' => $child_category['name'],
 						'class' => ($child_category['have_popup'])? 'link-popup iframe' : '',
 						);
@@ -114,7 +114,7 @@ class ControllerCommonHeader extends Controller {
 			}
 			
 			$this->data['menu'][] = array(
-				'href' => (!empty($news_category['link'])) ? $news_category['link'] :$this->url->link('news/news_category', 'news_category_id=' . $news_category['news_category_id']),
+				'href' => (!empty($news_category['link'])) ? $news_category['link'] :$this->url->link('news/news_category', 'news_category_id=' . $news_category['news_category_id'] . (($news_category['have_popup'])?'&popup=1':'')),
 				'label' => $news_category['name'],
 				'class' => '',
 				'childs' => $childs,
@@ -123,7 +123,7 @@ class ControllerCommonHeader extends Controller {
 		}
 
 		$this->data['menu'][] = array(
-			'href' => $this->url->link('faq/faq', ''),
+			'href' => $this->url->link('faq/faq', 'popup=1'),
 			'label' => $this->language->get('text_faq'),
 			'class' => 'link-popup iframe',
 			'childs' => array(),
@@ -137,7 +137,7 @@ class ControllerCommonHeader extends Controller {
 			'childs' => array(),
 			);
 		$contact_childs[] = array(
-			'href' => $this->url->link('contact/contact/email'),
+			'href' => $this->url->link('contact/contact/email', 'popup=1'),
 			'label' => $this->language->get('text_send_email'),
 			'class' => 'link-popup iframe',
 			'childs' => array(),
@@ -154,7 +154,7 @@ class ControllerCommonHeader extends Controller {
 			'class' => '',
 			'childs' => $contact_childs,
 			);
-		
+
 		// Daniel's robot detector
 		$status = true;		
 		if (isset($this->request->server['HTTP_USER_AGENT'])) {
