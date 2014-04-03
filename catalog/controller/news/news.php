@@ -115,8 +115,12 @@ class ControllerNewsNews extends Controller {
                 }else {
                     // Get full url
                     $popup_url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-                    // Set the $_GET['popup'] = 1
-                    $popup_url = str_replace('popup=0', 'popup=1',$popup_url);
+                    if (strpos($popup_url, 'popup')) {
+                        // Set the $_GET['popup'] = 1
+                        $popup_url = str_replace('popup=0', 'popup=1',$popup_url);
+                    }else {
+                        $popup_url .= '&popup=1';
+                    }
                     // Save to session
                     $this->session->data['popup_url'] = $popup_url;
                     // Redirect to studying-aboard
