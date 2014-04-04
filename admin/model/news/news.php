@@ -16,6 +16,17 @@ class ModelNewsNews extends Model {
 		foreach ($data['news_description'] as $language_id => $value) {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "news_description SET news_id = '" . (int)$news_id . "', language_id = '" . (int)$language_id . "', title = '" . $this->db->escape($value['title']) . "', content = '" . $this->db->escape($value['content']) . "'");
 		}
+
+        if ($data['keyword'] && trim($data['keyword'])) {
+            $keyword = strtolower(trim($data['keyword']));
+        }
+        else {
+            $this->load->helper('vietnamese');
+            $language_id = (int)$this->config->get('config_language_id');
+            $keyword = strtolower(vietnamese_removesign($this->db->escape($data['news_description'][$language_id]['title'])));
+        }
+
+        $this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'news_id=" . (int) $news_id . "', keyword = '" . $this->db->escape($this->getKeyword($keyword, $news_id)) . "'");
 		
 		$this->cache->delete('news');
 	}
@@ -36,17 +47,31 @@ class ModelNewsNews extends Model {
 		foreach ($data['news_description'] as $language_id => $value) {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "news_description SET news_id = '" . (int)$news_id . "', language_id = '" . (int)$language_id . "', title = '" . $this->db->escape($value['title']) . "', content = '" . $this->db->escape($value['content']) . "'");
 		}
+
+        $this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'news_id=" . (int)$news_id . "'");
+
+        if ($data['keyword'] && trim($data['keyword'])) {
+            $keyword = strtolower(trim($data['keyword']));
+        }
+        else {
+            $this->load->helper('vietnamese');
+            $language_id = (int)$this->config->get('config_language_id');
+            $keyword = strtolower(vietnamese_removesign($this->db->escape($data['news_description'][$language_id]['title'])));
+        }
+
+        $this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'news_id=" . (int) $news_id . "', keyword = '" . $this->db->escape($this->getKeyword($keyword, $news_id)) . "'");
 	}
 
 	public function deleteNews($news_id) {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "news WHERE id = '" . (int)$news_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "news_description WHERE news_id = '" . (int)$news_id . "'");
+        $this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'news_id=" . (int)$news_id . "'");
 		
 		$this->cache->delete('news');
 	}
 	
 	public function getNews($news_id) {
-		$query = $this->db->query("SELECT DISTINCT n.id AS news_id, n.sort_order AS sort_order, n.format AS format, nd.title AS title, n.status AS status, n.primary_image AS primary_image, n.second_image AS second_image, n.news_category_id AS news_category_id FROM " . DB_PREFIX . "news n LEFT JOIN " . DB_PREFIX . "news_description nd ON (n.id = nd.news_id) WHERE n.id = '" . (int)$news_id . "' AND nd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
+		$query = $this->db->query("SELECT DISTINCT n.id AS news_id, n.sort_order AS sort_order, n.format AS format, nd.title AS title, n.status AS status, n.primary_image AS primary_image, n.second_image AS second_image, n.news_category_id AS news_category_id, (SELECT ua.keyword FROM url_alias ua WHERE query = 'news_id=" . (int)$news_id . "') AS keyword FROM " . DB_PREFIX . "news n LEFT JOIN " . DB_PREFIX . "news_description nd ON (n.id = nd.news_id) WHERE n.id = '" . (int)$news_id . "' AND nd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
 				
 		return $query->row;
 	}
@@ -150,6 +175,14 @@ class ModelNewsNews extends Model {
 		$query = $this->db->query($sql);
 	
 		return $query->row['total'];
-	}	
+	}
+
+    private function getKeyword($keyword, $id) {
+        if ($this->db->query("SELECT COUNT(*) AS total FROM " . "url_alias WHERE keyword = '" . $keyword . "'")->row['total'] == 0) {
+            return $keyword;
+        }else {
+            return $this->getKeyword($keyword . '-' . $id, $id);
+        }
+    }
 }
 ?>

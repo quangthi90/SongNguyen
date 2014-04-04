@@ -38,7 +38,7 @@ class ModelNewsNewsCategory extends Model {
         else {
             $this->load->helper('vietnamese');
             $language_id = (int)$this->config->get('config_language_id');
-            $keyword = vietnamese_removesign($this->db->escape($data['news_category_description'][$language_id]['name']));
+            $keyword = strtolower(vietnamese_removesign($this->db->escape($data['news_category_description'][$language_id]['name'])));
         }
 
         $this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'news_category_id=" . (int) $news_category_id . "', keyword = '" . $this->db->escape($this->getKeyword($keyword, $news_category_id)) . "'");
@@ -71,7 +71,7 @@ class ModelNewsNewsCategory extends Model {
         else {
             $this->load->helper('vietnamese');
             $language_id = (int)$this->config->get('config_language_id');
-            $keyword = vietnamese_removesign($this->db->escape($data['news_category_description'][$language_id]['name']));
+            $keyword = strtolower(vietnamese_removesign($this->db->escape($data['news_category_description'][$language_id]['name'])));
         }
 
         $this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'news_category_id=" . (int) $news_category_id . "', keyword = '" . $this->db->escape($this->getKeyword($keyword, $news_category_id)) . "'");
@@ -94,6 +94,7 @@ class ModelNewsNewsCategory extends Model {
 			$this->db->query("DELETE FROM " . DB_PREFIX . "news WHERE id = '" . $news['id'] . "'");
 			$this->db->query("DELETE FROM " . DB_PREFIX . "news_description WHERE id = '" . $news['id'] . "'");
 			$this->db->query("DELETE FROM " . DB_PREFIX . "news_option WHERE news_id = '" . $news['id'] . "'");
+            $this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'news_id=" . $news['id'] . "'");
 		}
 		
 		$this->cache->delete('news_category');

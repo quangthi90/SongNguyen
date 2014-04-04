@@ -502,6 +502,14 @@ class ControllerNewsNews extends Controller {
 		} else {
 			$this->data['news_description'] = array();
 		}
+
+        if (isset($this->request->post['keyword'])) {
+            $this->data['keyword'] = $this->request->post['keyword'];
+        } elseif (!empty($news_info)) {
+            $this->data['keyword'] = $news_info['keyword'];
+        } else {
+            $this->data['keyword'] = '';
+        }
 		
 		if (isset($this->request->post['primary_image'])) {
 			$this->data['primary_image'] = $this->request->post['primary_image'];
